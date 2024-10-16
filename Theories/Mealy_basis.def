@@ -1,0 +1,250 @@
+// copyright Richard St-Denis, Universite de Sherbrooke, 2024.
+DEFINITIONS
+ Mealy_machine(X,I,O) == struct(states: POW(X), inputs: POW(I), outputs: POW(O),
+  tf: (X*(I*O))+->X, x_0: X, Xm: POW(X), ctrlEvents: POW(I) );
+
+ DeterministicMealy_machine(M) ==
+  !(x_,i_,o1_,o2_,x1_,x2_).((x_,(i_,o1_),x1_) : M'tf & (x_,(i_,o2_),x2_) : M'tf => x1_ = x2_);
+
+ CausalMap(I,O) == seq(I) +-> seq(O);
+ InputMap(X,I,O) == Trace_M(X,I,O) +-> String(I);
+ OutputMap(X,I,O) == Trace_M(X,I,O) +-> String(O);
+
+
+//---------------------------------------------------------------------
+
+
+// Basic operations on strings.
+ Map_L(L,theta) == UNION(s_).(s_ : L | {theta(s_)});
+ Map_L_1(L,M,theta) == {s_ | s_ : L & theta(s_) : M};
+
+
+//---------------------------------------------------------------------
+
+
+// Functions on traces of a Mealy machine.
+// Given a Mealy machine M, a trace [i_1/o_1][i_2/o_2] \cdots [i_{k-1}/o{k-1}x
+// is represented as a sequence of inputs i_1i_2...i_k, a sequence of outputs
+// o_1i_2...o_k, and a state x, where x is the state reachable after the occurrence
+// of i_1,i_2,...,i_k. The length of a trace is less than or equal to the value of
+// a given bound (i.e., k <= bnd).
+
+ ExecFragment_M(X,I,O) == struct(history: seq(X), ioString: seq(I*O));
+ Trace_M(X,I,O) == struct(ioString: seq(I*O), state: X);
+
+// Generation of execution fragments of a Mealy machine using a logical formula.
+ GetFragments_Mealy(M,bnd) ==
+  UNION(i_).(i_ : 1..bnd+1 | {f_ |
+   f_ : ExecFragment_M(M'states,M'inputs,M'outputs) &
+   f_'history(1) = M'x_0 &
+   size(f_'history) = i_ & size(f_'ioString) = i_-1 &
+   !k_.(k_ : 1..i_-1 =>
+        (f_'history(k_),f_'ioString(k_),f_'history(k_+1)) : M'tf ) });
+
+ GetFragments_MealyNCs(M,bnd) ==
+  UNION(i_).(i_ : 1..bnd+1 | {f_ |
+   f_ : ExecFragment_M(M'states,M'inputs,M'outputs) &
+   f_'history(1) = M'x_0 &
+   size(f_'history) = i_ & size(f_'ioString) = i_-1 &
+   !k_.(k_ : 1..i_-1 =>
+        (f_'history(k_),f_'ioString(k_),f_'history(k_+1)) : M'tf &
+        not(#j_.(j_ : 1..k_-1 & f_'history(j_) = f_'history(k_))) ) });
+
+ GetFragments_MealyNCls(M,bnd,L) ==
+  UNION(i_).(i_ : 1..bnd+1 | {f_ |
+   f_ : ExecFragment_M(M'states,M'inputs,M'outputs) &
+   f_'history(1) = M'x_0 &
+   size(f_'history) = i_ & size(f_'ioString) = i_-1 &
+   !k_.(k_ : 1..i_-1 =>
+        (f_'history(k_),f_'ioString(k_),f_'history(k_+1)) : M'tf &
+        !j_.(j_ : 1..k_-1 & f_'history(j_) : L => f_'history(j_) /= f_'history(k_)) ) });
+
+ Fragments2Traces_Mealy(F) == UNION(f_).(f_ : F |
+  {rec(ioString: f_'ioString, state: last(f_'history))} );
+
+
+//---------------------------------------------------------------------
+
+
+// Generation of traces of a Mealy machine using a logical formula
+// (used by test_composite_component_LB)
+ GetTraces_Mealy(MM,bnd) ==
+  UNION(i_).(i_ : 1..bnd+1 | {t_ |
+   t_ : Trace_M(MM'states,MM'inputs,MM'outputs) & size(t_'ioString) = i_-1 &
+   #seqS_.(seqS_ : seq(MM'states) & size(seqS_) = i_ &
+           seqS_(1) = MM'x_0 & seqS_(i_) = t_'state &
+           !k_.(k_ : 1..i_-1 =>
+             (seqS_(k_),t_'ioString(k_),seqS_(k_+1)) : MM'tf ) )  });
+
+// ... without cycles w.r.t. the first state (used by test_elementary_component_LB_nc1st
+//     and test_composite_component_LB_nc1st).
+ GetTracesNc1st_Mealy(MM,bnd) ==
+  UNION(i_).(i_ : 1..bnd+1 | {t_ |
+   t_ : Trace_M(MM'states,MM'inputs,MM'outputs) & size(t_'ioString) = i_-1 &
+   #seqS_.(seqS_ : seq(MM'states) & size(seqS_) = i_ &
+           seqS_(1) = MM'x_0 & seqS_(i_) = t_'state &
+           !k_.(k_ : 1..i_-1 =>
+             (seqS_(k_),t_'ioString(k_),seqS_(k_+1)) : MM'tf &
+             (k_ > 1 =>  seqS_(k_) /= seqS_(1)) ) ) });
+
+// ... without cycles w.r.t. a set of states.
+ GetTracesNcSst_Mealy(MM,bnd,Sst) ==
+  UNION(i_).(i_ : 1..bnd+1 | {t_ |
+   t_ : Trace_M(MM'states,MM'inputs,MM'outputs) & size(t_'ioString) = i_-1 &
+   #seqS_.(seqS_ : seq(MM'states) & size(seqS_) = i_ &
+           seqS_(1) = MM'x_0 & seqS_(i_) = t_'state &
+           !k_.(k_ : 1..i_-1 =>
+             (seqS_(k_),t_'ioString(k_),seqS_(k_+1)) : MM'tf &
+             !j_.(j_ : 1..k_-1 & seqS_(j_) : Sst => seqS_(k_) /= seqS_(j_)) ) ) });
+
+// ... without cycles w.r.t. a set of states and a set of I/O
+//     (used by test_composite_component_LB_loop).
+ GetTracesNcSstSio_Mealy(MM,bnd,Sst,Sio) ==
+  UNION(i_).(i_ : 1..bnd+1 | {t_ |
+   t_ : Trace_M(MM'states,MM'inputs,MM'outputs) & size(t_'ioString) = i_-1 &
+   #seqS_.(seqS_ : seq(MM'states) & size(seqS_) = i_ &
+           seqS_(1) = MM'x_0 & seqS_(i_) = t_'state &
+           !k_.(k_ : 1..i_-1 =>
+             (seqS_(k_),t_'ioString(k_),seqS_(k_+1)) : MM'tf &
+             !j_.(j_ : 1..k_-1 & seqS_(j_) : Sst => seqS_(k_) /= seqS_(j_)) &
+             !j_.(j_ : 1..k_-1 &
+               t_'ioString(j_) : Sio => t_'ioString(k_) /= t_'ioString(j_) ) ) ) });
+
+// ... without cycles w.r.t. a set of events using a logical formula.
+//     (used by section6_ex7_1).
+//     (used by test_elementary_component_LB_loop).
+ GetTracesNcSio_Mealy(MM,bnd,Sio) ==
+  UNION(i_).(i_ : 1..bnd+1 | {t_ |
+   t_ : Trace_M(MM'states,MM'inputs,MM'outputs) & size(t_'ioString) = i_-1 &
+   #seqS_.(seqS_ : seq(MM'states) & size(seqS_) = i_ &
+           seqS_(1) = MM'x_0 & seqS_(i_) = t_'state &
+           !k_.(k_ : 1..i_-1 =>
+             (seqS_(k_),t_'ioString(k_),seqS_(k_+1)) : MM'tf &
+             !j_.(j_ : 1..k_-1 &
+               t_'ioString(j_) : Sio => t_'ioString(k_) /= t_'ioString(j_) ) ) ) });
+
+//------------------
+
+ Traces2Strings_i(T,I,O) == UNION(t_).(t_ : T | {s_ |
+  s_ : String(I) & size(s_) = size(t_'ioString) &
+  !(k_).(k_ : 1..size(s_) => s_(k_) = prj1(I,O)(t_'ioString(k_))) });
+ Traces2Strings_o(T,I,O) == UNION(t_).(t_ : T | {s_ |
+  s_ : String(O) & size(s_) = size(t_'ioString) &
+  !(k_).(k_ : 1..size(s_) => s_(k_) = prj2(I,O)(t_'ioString(k_))) });
+ Traces2Tasks_i(T,Xm,I,O) == UNION(t_).(t_ : T & t_'state : Xm | {s_ |
+  s_ : String(I) & size(s_) = size(t_'ioString) &
+  !(k_).(k_ : 1..size(s_) => s_(k_) = prj1(I,O)(t_'ioString(k_))) });
+ Traces2Tasks_o(T,Xm,I,O) == UNION(t_).(t_ : T & t_'state : Xm | {s_ |
+  s_ : String(O) & size(s_) = size(t_'ioString) &
+  !(k_).(k_ : 1..size(s_) => s_(k_) = prj2(I,O)(t_'ioString(k_))) });
+
+// A slower solution.
+
+ Mealy_machine_S(X,I,O) == struct(states: POW(X), inputs: POW(I), outputs: POW(O),
+  tf_i: (X*I)+->X, tf_o: (X*O)+->X, x_0: X, Xm: POW(X), ctrlEvents: POW(I),
+  localctrlEvents: POW(I));
+
+ Trace_M_S(X,I,O) == struct(in: seq(I), out: seq(O), state: X);
+
+ GetTraces_Mealy_S(M,bnd) ==
+  UNION(i_).(i_ : 1..bnd+1 | {t_ |
+   t_ : Trace_M_S(M'states, M'inputs, M'outputs) &
+   size(t_'in) = size(t_'out) & size(t_'in) = i_-1 &
+   #seqS_.(seqS_ : seq(M'states) & size(seqS_) = i_ &
+           seqS_(1) = M'x_0 & seqS_(i_) = t_'state &
+           !k_.(k_ : 1..i_-1 =>
+                (seqS_(k_),t_'in(k_),seqS_(k_+1)) : M'tf_i &
+                (seqS_(k_),t_'out(k_),seqS_(k_+1)) : M'tf_o) ) });
+
+ Traces2Strings_i_S(T) == UNION(t_).(t_ : T | {t_'in});
+ Traces2Strings_o_S(T) == UNION(t_).(t_ : T | {t_'out});
+ Traces2Tasks_i_S(T,Xm) == UNION(t_).(t_ : T & t_'state : Xm | {t_'in});
+ Traces2Tasks_o_S(T,Xm) == UNION(t_).(t_ : T & t_'state : Xm | {t_'out});
+
+
+
+// Auxiliary functions.
+
+// Get the input transition of a Mealy machine.
+ GetInTransition_Mealy(MM,I,O,S) == UNION(t_).(t_ : MM'tf | {it_ |
+  it_ : S*I*S &
+  #(s1_,s2_,in_).(                     s2_ = prj2(S*(I*O),S)(t_) &
+                           s1_ = prj1(S,I*O)(prj1(S*(I*O),S)(t_)) &
+                 in_ = prj1(I,O)(prj2(S,I*O)(prj1(S*(I*O),S)(t_))) &
+                 it_ = (s1_,in_,s2_) ) });
+
+// Get the output transition of a Mealy machine.
+ GetOutTransition_Mealy(MM,I,O,S) == UNION(t_).(t_ : MM'tf | {ot_ |
+  ot_ : S*O*S &
+  #(s1_,s2_,out_).(                    s2_ = prj2(S*(I*O),S)(t_) &
+                           s1_ = prj1(S,I*O)(prj1(S*(I*O),S)(t_)) &
+                out_ = prj2(I,O)(prj2(S,I*O)(prj1(S*(I*O),S)(t_))) &
+                ot_ = (s1_,out_,s2_) ) });
+
+// Get a map from the set of traces of a Mealy machine to its set of input strings.
+ GetInputMap(T_M,X,I,O) == UNION(tr_).(tr_ : T_M | {p_ |
+  p_ : Trace_M(X,I,O)*String(I) &
+  #s_.(s_ : String(I) & size(s_) = size(tr_'ioString) &
+   !k_.(k_ : 1..size(tr_'ioString) => s_(k_) = prj1(I,O)(tr_'ioString(k_))) &
+   p_ = tr_|->s_ ) });
+
+// Get a map from the set of traces of a Mealy machine to its set of output strings.
+ GetOutputMap(T_M,X,I,O) == UNION(tr_).(tr_ : T_M | {p_ |
+  p_ : Trace_M(X,I,O)*String(O) &
+  #s_.(s_ : String(O) & size(s_) = size(tr_'ioString) &
+   !k_.(k_ : 1..size(tr_'ioString) => s_(k_) = prj2(I,O)(tr_'ioString(k_))) &
+   p_ = tr_|->s_ ) });
+
+//------------------
+
+
+// Auxiliary functions on epsilon transitions.
+
+
+// Get the pre-states on epsilon transitions to a given state of a Mealy machine.
+ GetPreStates_Mealy(MM,x,bnd) ==
+  UNION(i_).(i_ : 1..bnd+1 | {s_ |
+   s_ : MM'states & s_ /: MM'Xm &
+   #seqS_.(seqS_ : seq(MM'states) & size(seqS_) = i_ &
+           seqS_(1) = x & seqS_(i_) = s_ &
+           !k_.(k_ : 1..i_-1 => #in_.(in_: MM'inputs & seqS_(k_) /: MM'Xm &
+                (seqS_(k_),(seqS_(k_+1),(in_,silentEvent))) : MM'tf~ )) ) });
+
+// Get the post-states on epsilon transitions from a given state of a Mealy machine.
+ GetPostStates_Mealy(MM,x,bnd) ==
+  UNION(i_).(i_ : 1..bnd+1 | {s_ |
+   s_ : MM'states & s_ /: MM'Xm &
+   #seqS_.(seqS_ : seq(MM'states) & size(seqS_) = i_ &
+           seqS_(1) = x & seqS_(i_) = s_ &
+           !k_.(k_ : 1..i_-1 => #in_.(in_: MM'inputs & seqS_(k_) /: MM'Xm &
+                (seqS_(k_),(in_,silentEvent),seqS_(k_+1)) : MM'tf )) ) });
+
+// Get the input string of a trace of a Mealy machine.
+ inputStringTrace(tr,I,O) == {s_ | s_ : String(I) & size(s_) = size(tr'ioString) &
+  !k_.(k_ : 1..size(tr'ioString) => s_(k_) = prj1(I,O)(tr'ioString(k_)))};
+
+// Get the output string of a trace of a Mealy machine.
+ outputStringTrace(tr,I,O) == {s_ | s_ : String(O) & size(s_) = size(tr'ioString) &
+  !k_.(k_ : 1..size(tr'ioString) => s_(k_) = prj2(I,O)(tr'ioString(k_)))};
+
+// epsilon transition from a state x of a Mealy machine.
+ epsilonTR(MM,x) == RTC({x1_,x2_ | x1_ : MM'states & x2_ : MM'states &
+  #in_.(in_: MM'inputs & (x1_,(in_,silentEvent),x2_) : MM'tf)},MM'states ) [{x}];
+
+// epsilon transition to a state x of a Mealy machine.
+ epsilonTR_1(MM,x) == RTC({x1_,x2_ | x1_ : MM'states & x2_ : MM'states &
+  #in_.(in_: MM'inputs & (x1_,(in_,silentEvent),x2_) : MM'tf)},MM'states)~[{x}];
+
+//------------------
+
+// Get the causal map from the traces of a Mealy machine and a set of vocal output.
+ GetCausalMap(T_MM,I,O,V) == UNION(tr_).(tr_ : T_MM | {p_ |
+  p_ : String(I)*String(O) &
+  #(s1_,s2_).(s1_ : String(I) & size(s1_) = size(tr_'ioString) &
+              s2_ : String(O) & size(s2_) = size(tr_'ioString) &
+   !(k_).(k_ : 1..size(tr_'ioString) => s1_(k_) = prj1(I,O)(tr_'ioString(k_)) &
+                                        s2_(k_) = prj2(I,O)(tr_'ioString(k_))) &
+   p_ = s1_|->Ps(s2_,V) ) });
+
+// The definition of a causal map for the slower solution.
+ GetCausalMap_S(T,O) == UNION(t_).(t_ : T | {t_'in|-> Ps(t_'out,O)});

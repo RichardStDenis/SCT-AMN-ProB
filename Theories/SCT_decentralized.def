@@ -1,0 +1,585 @@
+// Richard St-Denis, Universite de Sherbrooke, 2024.
+DEFINITIONS
+ Generator_C_O(X,E) == struct(states: POW(X), events: POW(E),
+  tf: (X*E)+->X, x_0: X, Xm: POW(X), ctrlEvents: POW(E), obsEvents: POW(E) );
+
+ AppendEvent_(L,E) == UNION(s__,e__).(s__ : L & e__: E | {s__<-e__});
+
+// Natural projections.
+ Ps(s,Eo) == {j__, e_ | #k__.(k__ : 1..size(s) &
+  s(k__) : Eo & j__ = card((s /|\ k__) |> Eo) & e_ = s(k__) )};
+
+ P(L,Eo) == UNION(s_).(s_ : L | {Ps(s_,Eo)});
+ P_1s(t,Eo,E) == /*@symbolic*/ {s__ | s__ : String(E) & Ps(s__,Eo) = t};
+ P_1sR(t,Eo,M) == {s__ | s__ : M & Ps(s__,Eo) = t};
+ P_1(L,Eo,E) == /*@symbolic*/ {s__ | s__ : String(E) &
+                 #t_.(t_ : L & Ps(s__,Eo) = t_) };
+ P_1Ps(s,Eo,E) == P_1s(Ps(s, Eo),Eo,E);
+ P_1PsR(s,Eo,M) == P_1sR(Ps(s,Eo),Eo,M);
+ P_1P(L,Eo,E) == /*@symbolic*/ {s1_ | s1_ : String(E) &
+                  #s2_.(s2_ : L & Ps(s1_, Eo) = Ps(s2_,Eo)) };
+ P_1PR(L,Eo,M) == {s1_ | s1_ : M &
+                   #s2_.(s2_ : L & Ps(s1_,Eo) = Ps(s2_,Eo)) };
+
+ Ic(arch,e) == {i_ | i_ : 1..arch'NoSupervisors &
+                     e : arch'Events_c[{i_}]};
+
+ E_(prK,e) == {s_ | s_ : prK & s_<-e : prK};
+ D_(prK,M,e) == {s_ | s_ : prK & s_<-e : M-prK};
+
+// Normality property.
+// Using P_1P(prK,Eobs,E) instead of P_1PR(prK,Eobs,L) leads to a 
+//  VIRTUAL TIME-OUT caused by: ### Warning: enumerating ...
+ Normality_(prK,L,Eobs) == prK = P_1PR(prK,Eobs,L);
+
+// Observability property (e.g., Cassandras and Lafortune with E = Ec).
+ Observability_(prK,L,Eobs,E) ==
+  !(s_,e_).(s_ : prK & e_: E & s_<-e_ /: prK & s_<-e_ : L =>
+   (AppendEvent_(P_1PsR(s_,Eobs,L),{e_}) /\ prK) = {} );
+
+// Normality property.
+ Normality(prK,L,Eobs) ==
+  !(s1_,s2_).(s1_ : L & s2_ : L &
+   Ps(s1_,Eobs) = Ps(s2_,Eobs) & s1_ : prK => s2_ : prK );
+
+// Observability property (e.g., Kumar and Garg).
+ Observability(prK,L,Eobs,E) ==
+  !(s1_,s2_,e_).(s1_ : prK & s2_ : prK & Ps(s1_,Eobs) = Ps(s2_,Eobs) &
+    e_ : E & s1_<-e_ : prK & s2_<-e_ : L => s2_<-e_ : prK);
+
+
+//---------------------------------------------------------------------
+// Formulation of various coobservability properties
+//   T.-S. Yoo and S. Lafortune,
+//     A general architecture for decentralized supervisory control
+//     of dicrete-event systems,
+//     Discrete Event Dynamic Systems: Theory and Applications,
+//     12 (3), 335-377, 2002.
+//---------------------------------------------------------------------
+
+// C&P coobservability property for the conjunctive architecture.
+ CPCoobservability(arch,M,prK) ==
+  !(s1_,e_).(s1_ : D_(prK,M,e_) & e_ : arch'CtrlEvents =>
+   #i_.(i_ : Ic(arch,e_) &
+    !s2_.(s2_: prK &
+     Ps(s2_,arch'Events_o[{i_}]) = Ps(s1_,arch'Events_o[{i_}]) =>
+      s2_<-e_ /: prK ) ) );
+
+ CPCoobservability_(arch,M,prK) ==
+  !(s_,e_).(s_ : D_(prK,M,e_) & e_ : arch'CtrlEvents =>
+   #i_.(i_ : Ic(arch,e_) &
+    P_1PsR(s_,arch'Events_o[{i_}],prK) /\ E_(prK,e_) = {} ) );
+
+// D&A coobservability property for the disjunctive architecture.
+ DACoobservability(arch,M,prK) ==
+  !(s1_,e_).(s1_ : E_(prK,e_) & e_ : arch'CtrlEvents =>
+   #i_.(i_ : Ic(arch,e_) &
+    !s2_.(s2_ : prK & s2_<-e_ : M &
+     Ps(s2_,arch'Events_o[{i_}]) = Ps(s1_,arch'Events_o[{i_}]) =>
+      s2_<-e_ : prK ) ) );
+
+ DACoobservability_(arch,M,prK) ==
+  !(s_,e_).(s_ : E_(prK,e_) & e_ : arch'CtrlEvents =>
+   #i_.(i_ : Ic(arch,e_) &
+    P_1PsR(s_,arch'Events_o[{i_}],prK) /\ D_(prK,M,e_) = {} ) );
+
+// C&P coobservability property for the general architecture.
+ GCPCoobservability(arch,Ece,M,prK) ==
+  !(s1_,e_).(s1_ : D_(prK,M,e_) & e_ : Ece =>
+   #i_.(i_ : Ic(arch,e_) &
+    !s2_.(s2_: prK &
+     Ps(s2_,arch'Events_o[{i_}]) = Ps(s1_,arch'Events_o[{i_}]) =>
+      s2_<-e_ /: prK ) ) );
+
+ GCPCoobservability_(arch,Ece,M,prK) ==
+  !(s_,e_).(s_ : D_(prK,M,e_) & e_ : Ece =>
+   #i_.(i_: 1..arch'NoSupervisors &
+    e_ : arch'Events_c[{i_}] &
+    P_1PsR(s_,arch'Events_o[{i_}],prK) /\ E_(prK,e_) = {} ) );
+
+// D&A coobservability property for the general architecture.
+ GDACoobservability(arch,Ecd,M,prK) ==
+  !(s1_,e_).(s1_ : E_(prK,e_) & e_ : Ecd =>
+   #i_.(i_ : Ic(arch,e_) &
+    !s2_.(s2_ : prK & s2_<-e_ : M &
+     Ps(s2_,arch'Events_o[{i_}]) = Ps(s1_,arch'Events_o[{i_}]) =>
+      s2_<-e_ : prK ) ) );
+
+ GDACoobservability_(arch,Ecd,M,prK) ==
+  !(s_,e_).(s_ : E_(prK,e_) & e_ : Ecd =>
+   #i_.(i_: 1..arch'NoSupervisors &
+    e_ : arch'Events_c[{i_}] &
+    P_1PsR(s_,arch'Events_o[{i_}],prK) /\ D_(prK,M,e_) = {} ) );
+
+// Coobservability property for the general architecture.
+ Coobservability(arch,Ece,Ecd,M,prK) ==
+  GCPCoobservability(arch,Ece,M,prK) &
+  GDACoobservability(arch,Ecd,M,prK);
+
+ Coobservability_(arch,Ece,Ecd,M,prK) ==
+  GCPCoobservability_(arch,Ece,M,prK) &
+  GDACoobservability_(arch,Ecd,M,prK);
+
+// Note: in the sequel, extensions of strings are taken into account to avoid
+//       irrelevant decisions.
+
+// Theoretical definition of permissive local decision rules.
+ def_Sp_P_i(L,E) == NAT1*L*E*STRING;
+
+// Local decisions for the conjunctive architecture.       // (1) page 338
+ LocalDecisionsCP(arch,Eu,prK) ==
+  {i_, t_, e_, c_ | i_ : 1..arch'NoSupervisors &
+                    t_ : P(E_(prK,e_),arch'Events_o[{i_}]) &
+                    e_ : arch'CtrlEvents - arch'Events_c[{i_}] &
+                    c_ = "def" } \/                        // permissive on events in Ec-Ec_i
+  {i_, t_, e_, c_ | i_ : 1..arch'NoSupervisors &
+                    t_ : P(E_(prK,e_),arch'Events_o[{i_}]) &
+                    e_ : Eu &
+                    c_ = "unc" } \/                        // uncontrollable event
+  {i_, t_, e_, c_ | i_ : 1..arch'NoSupervisors &
+                    t_ : P(E_(prK,e_),arch'Events_o[{i_}]) &
+                    e_ : arch'Events_c[{i_}] &
+                    c_ = "and" &
+                    P_1sR(t_,arch'Events_o[{i_}],prK) /\ E_(prK,e_) /= {} };
+
+// Theoretical global of permissive decision rules.
+ def_Sp_G(L,E) == L*E;
+
+// Conjunctive fusion rule.
+ GlobalDecisionsCP(arch,Ev,prK,supervisors_CP) ==
+  {s_, ev_ | ev_ : Ev &
+             s_ : E_(prK,ev_) &
+             !i_.(i_ : 1..arch'NoSupervisors =>
+              #c_.(c_ : {"and","def","unc"} &
+               (i_,Ps(s_,arch'Events_o[{i_}]),ev_,c_) : supervisors_CP )) };
+
+// Theoretical definition of antipermissive local decision rules.
+ def_Sa_P_i(L,E) == NAT1*L*E*STRING;
+
+// Local decisions for the disjunctive architecture.       // (2) page 342
+ LocalDecisionsDA(arch,Eu,M,prK) ==
+                                                           // antipermissive on events in Ec-Ec_i
+  {i_, t_, e_, c_ | i_ : 1..arch'NoSupervisors &
+                    t_ : P(E_(prK,e_),arch'Events_o[{i_}]) &
+                    e_ : Eu &
+                    c_ = "unc" } \/                        // uncontrollable event
+  {i_, t_, e_, c_ | i_ : 1..arch'NoSupervisors &
+                    t_ : P(E_(prK,e_),arch'Events_o[{i_}]) &
+                    e_ : arch'Events_c[{i_}] &
+                    c_ = "or" &
+                    P_1sR(t_,arch'Events_o[{i_}],prK) /\ D_(prK,M,e_) = {} };
+
+// Theoretical global of antipermissive decision rules.
+ def_Sa_G(L,E) == L*E;
+
+// Disjunctive fusion rule.
+ GlobalDecisionsDA(arch,Ev,prK,supervisors_DA) ==
+  {s_, ev_ | ev_ : Ev &
+             s_ : E_(prK,ev_) &
+             #(i_,c_).(i_ : 1..arch'NoSupervisors & c_ : {"or","unc"} &
+               (i_,Ps(s_,arch'Events_o[{i_}]),ev_,c_) : supervisors_DA ) };
+
+
+// Theoretical definition of antipermissive local decision rules.
+ def_S_P_i(L,E) == NAT1*L*E*STRING;
+
+// Local decisions for the general architecture.           // (7) page 345
+ LocalDecisionsG(arch,Eu,M,prK) ==
+  {i_, t_, e_, c_ | i_ : 1..arch'NoSupervisors &
+                    t_ : P(E_(prK,e_),arch'Events_o[{i_}]) &
+                    e_ : arch'Events_ce - arch'Events_c[{i_}] &
+                    c_ = "def" } \/                        // permissive
+  {i_, t_, e_, c_ | i_ : 1..arch'NoSupervisors &
+                    t_ : P(E_(prK,e_),arch'Events_o[{i_}]) &
+                    e_ : Eu &
+                    c_ = "unc" } \/                        // uncontrollable event
+  {i_, t_, e_, c_ | i_ : 1..arch'NoSupervisors &
+                    t_ : P(E_(prK,e_),arch'Events_o[{i_}]) &
+                    e_ : arch'Events_c[{i_}] /\ arch'Events_ce &
+                    c_ = "and" &
+                    P_1sR(t_,arch'Events_o[{i_}],prK) /\ E_(prK,e_) /= {} } \/
+  {i_, t_, e_, c_ | i_ : 1..arch'NoSupervisors &
+                    t_ : P(E_(prK,e_),arch'Events_o[{i_}]) &
+                    e_ : arch'Events_c[{i_}] /\ arch'Events_cd &
+                    c_ = "or" &
+                    P_1sR(t_,arch'Events_o[{i_}],prK) /\ D_(prK,M,e_) = {} };
+
+// Theoretical global of decision rules for the general architecture.
+ def_S_G(L,E) == L*E;
+
+// Global decisions for the general architecture.
+ GlobalDecisionsG(arch,Eu,prK,supervisors_G) ==
+  {s_, ev_ | ev_ : Eu &
+             s_ : E_(prK,ev_) &
+             !i_.(i_ : 1..arch'NoSupervisors =>
+              (i_,Ps(s_,arch'Events_o[{i_}]),ev_,"unc") : supervisors_G) } \/
+  {s_, ev_ | ev_ : arch'CtrlEvents &
+             s_ : E_(prK,ev_) &
+             #i_.(i_ : 1..arch'NoSupervisors &
+              (i_,Ps(s_,arch'Events_o[{i_}]),ev_,"or") : supervisors_G) } \/
+  {s_, ev_ | ev_ : arch'CtrlEvents &
+             s_ : E_(prK,ev_) &
+             !i_.(i_ : 1..arch'NoSupervisors =>
+             ((i_,Ps(s_,arch'Events_o[{i_}]),ev_,"and") : supervisors_G or
+              (i_,Ps(s_,arch'Events_o[{i_}]),ev_,"def") : supervisors_G) ) };
+
+
+//---------------------------------------------------------------------
+// Formulation of various conditional coobservability properties
+//   T.-S. Yoo and S. Lafortune,
+//     Decentralized supervisory control with conditional decisions:
+//     Supervisor exitence,
+//     IEEE Transactions on Automatic Control,
+//     49 (11), 1886-1904, 2004.
+//---------------------------------------------------------------------
+
+// C&P coobservability property for the conditional architecture
+// with decentralized fusion rules.
+ GCCPCoobservability(arch,Ece,M,prK) ==
+  !(s1_,e_).(s1_: prK & s1_<-e_ : M-prK & e_ : Ece =>
+   #i_.(i_ : Ic(arch,e_) &
+    !s2_.(s2_<-e_ : prK &
+     Ps(s2_,arch'Events_o[{i_}]) = Ps(s1_,arch'Events_o[{i_}]) =>
+     #j_.(j_ : Ic(arch,e_) &
+      !s3_.(s3_ : M & s3_<-e_ : M &  // s3_ : M to avoid ### Warning: enumerating s2_ : seq (length) : inf ---> 3).
+       Ps(s3_,arch'Events_o[{j_}]) = Ps(s2_,arch'Events_o[{j_}]) =>
+       s3_<-e_ : prK ) ) ) ) );
+
+GCCPCoobservability_(arch,Ece,M,prK) ==
+  !(s1_,e_).(s1_: D_(prK,M,e_) & e_ : Ece =>
+   #i_.(i_ : Ic(arch, e_) &
+    !s2_.(s2_ : P_1PsR(s1_,arch'Events_o[{i_}],prK) /\ E_(prK,e_) =>
+     #j_.(j_ : Ic(arch,e_) &
+      !s3_.(s3_ : P_1PsR(s2_,arch'Events_o[{j_}],M) & s3_<-e_ : M => s3_<-e_ : prK) ) ) ) );
+
+// The formulation of Yoo and Lafortune causes a warning message with ProB
+// (### Warning: enumerating s2_ : seq (length) : inf ---> 3). See the comment just above.
+ GCCPCoobservability__(arch,Ece,M,prK) ==
+  !(s1_,e_).(s1_: prK & s1_<-e_ : M-prK & e_ : Ece =>
+   #i_.(i_ : Ic(arch, e_) &
+    !s2_.(s2_<-e_ : AppendEvent_(P_1PsR(s1_,arch'Events_o[{i_}],prK),{e_}) /\ prK =>
+     #j_.(j_ : Ic(arch,e_) &
+      AppendEvent_(P_1PsR(s2_,arch'Events_o[{j_}],M),{e_}) /\ M <: prK ) ) ) );
+
+// D&A coobservability property for the conditional architecture
+// with decentralized fusion rules.
+ GCDACoobservability(arch,Ecd,M,prK) ==
+  !(s1_,e_).(s1_ : prK & s1_<-e_ : prK & e_ : Ecd =>
+   #i_.(i_ : Ic(arch,e_) &
+    !s2_.(s2_<-e_ : M-prK &
+     Ps(s2_,arch'Events_o[{i_}]) = Ps(s1_,arch'Events_o[{i_}]) =>
+     #j_.(j_ : Ic(arch,e_) &
+      !s3_.(s3_: prK &
+       Ps(s3_,arch'Events_o[{j_}]) = Ps(s2_,arch'Events_o[{j_}]) =>
+       s3_<-e_ /: prK ) ) ) ) );
+
+GCDACoobservability_(arch,Ecd,M,prK) ==
+  !(s1_,e_).(s1_: E_(prK,e_) & e_ : Ecd =>
+   #i_.(i_ : Ic(arch, e_) &
+    !s2_.(s2_ : P_1PsR(s1_,arch'Events_o[{i_}],M) & s2_<-e_ : M & s2_<-e_ /: prK =>
+     #j_.(j_ : Ic(arch,e_) &
+      P_1PsR(s2_,arch'Events_o[{j_}],prK) /\ E_(prK,e_) = {} ) ) ) );
+
+// The formulation of Yoo and Lafortune causes a warning message with ProB
+// (### Warning: enumerating s2_ : seq (length) : inf ---> 3).
+ GCDACoobservability__(arch,Ecd,M,prK) ==
+  !(s1_, e_).(s1_ : prK & s1_<-e_ : prK & e_ : Ecd =>
+   #i_.(i_ : Ic(arch, e_) &
+    !s2_.(s2_<-e_ : AppendEvent_(P_1PsR(s1_,arch'Events_o[{i_}],M),{e_}) /\ M-prK =>
+     #j_.(j_ : Ic(arch, e_) &
+      AppendEvent_(P_1PsR(s2_,arch'Events_o[{j_}],prK), {e_}) /\ prK = {} ) ) ) );
+
+// Coobservability property for the conditional architecture.
+// with decentralized fusion rules
+ GCCoobservability(arch,Ece,Ecd,M,prK) ==
+  GCCPCoobservability(arch,Ece,M,prK) &
+  GCDACoobservability(arch,Ecd,M,prK);
+
+ GCCoobservability_(arch,Ece,Ecd,M,prK) ==
+  GCCPCoobservability_(arch,Ece,M,prK) &
+  GCDACoobservability_(arch,Ecd,M,prK);
+
+ GCCoobservability__(arch,Ece,Ecd,M,prK) ==
+  GCCPCoobservability__(arch,Ece,M,prK) &
+  GCDACoobservability__(arch,Ecd,M,prK);
+
+// Theoretical of decisions for the conditional architecture.
+ def_Sl_d_dc_e_ec(L1,L2,E) == L1*NAT1*L2*E;
+
+// Local decisions for the conditional architecture ((13) page 1893).
+ LocalDecisionsEnbl(arch,M,prK) ==
+  {s_, i_, t_, e_ | i_ : 1..arch'NoSupervisors &
+                    s_ : prK & t_ = Ps(s_,arch'Events_o[{i_}]) &
+                    #s1_.(s1_ : P_1PsR(s_,arch'Events_o[{i_}],M) & s1_<-e_ : M) &  // event physically possible
+                    e_: arch'Events_c[{i_}] &
+                    !s1_.(s1_ : P_1PsR(s_,arch'Events_o[{i_}],M) & s1_<-e_ : M => s1_<-e_ : prK) };
+
+ LocalDecisionsDsbl(arch,M,prK) ==
+  {s_, i_, t_, e_ | i_ : 1..arch'NoSupervisors &
+                    s_ : prK & t_ = Ps(s_,arch'Events_o[{i_}]) &
+                    #s1_.(s1_ : P_1PsR(s_,arch'Events_o[{i_}],M) & s1_<-e_ : M) &  // event physically possible
+                    e_: arch'Events_c[{i_}] & 
+                    P_1PsR(s_,arch'Events_o[{i_}],prK) /\ E_(prK,e_) = {} };
+
+ LocalDecisionsEnbl_c(arch,M,prK) ==
+  {s_, i_, t_, e_ | i_ : 1..arch'NoSupervisors &
+                    s_ : prK & t_ = Ps(s_,arch'Events_o[{i_}]) &
+                    #s1_.(s1_ : P_1PsR(s_,arch'Events_o[{i_}],M) & s1_<-e_ : M) &  // event physically possible
+                    e_: arch'Events_c[{i_}] &
+                    !s1_.(s1_ : P_1PsR(s_,arch'Events_o[{i_}],M) & s1_<-e_ : M & s1_<-e_ /: prK =>
+                     #j_.(j_ : Ic(arch,e_) &
+                      P_1PsR(s1_,arch'Events_o[{j_}],prK) /\ E_(prK,e_) = {} ) ) };
+
+ LocalDecisionsDsbl_c(arch,M,prK) ==
+  {s_, i_, t_, e_ | i_ : 1..arch'NoSupervisors &
+                    s_ : prK & t_ = Ps(s_,arch'Events_o[{i_}]) &
+                    #s1_.(s1_ : P_1PsR(s_,arch'Events_o[{i_}],M) & s1_<-e_ : M) &  // event physically possible
+                    e_: arch'Events_c[{i_}] &
+                    !s1_.(s1_ : P_1PsR(s_,arch'Events_o[{i_}],prK) /\ E_(prK,e_) =>
+                     #j_.(j_ : Ic(arch,e_) &
+                      !s2_.(s2_ : P_1PsR(s1_,arch'Events_o[{j_}],M) & s2_<-e_ : M => s2_<-e_ : prK) ) ) };
+
+// Theoretical of decisions for the conditional architecture.
+ def_Sg_e_d(L,E) == L*E;
+
+// Global decisions for the conditional architecture.
+ GlobalDecisionDA(arch,Enbl,Dsbl,Enbl_c) ==
+  {s_, ev_ | #(i_).(i_ : 1..arch'NoSupervisors & (s_,i_,Ps(s_,arch'Events_o[{i_}]),ev_) : Enbl)} \/
+  {s_, ev_ | #(i_).(i_ : 1..arch'NoSupervisors & (s_,i_,Ps(s_,arch'Events_o[{i_}]),ev_) : Enbl_c) &
+              not(#(i_).(i_ : 1..arch'NoSupervisors & (s_,i_,Ps(s_,arch'Events_o[{i_}]),ev_) : Dsbl)) };
+ GlobalDecisionCP(arch,Enbl,Dsbl,Dsbl_c) ==
+  {s_, ev_ | #(i_).(i_ : 1..arch'NoSupervisors & (s_,i_,Ps(s_,arch'Events_o[{i_}]),ev_) : Dsbl)} \/
+  {s_, ev_ | #(i_).(i_ : 1..arch'NoSupervisors & (s_,i_,Ps(s_,arch'Events_o[{i_}]),ev_) : Dsbl_c) &
+              not(#(i_).(i_ : 1..arch'NoSupervisors & (s_,i_,Ps(s_,arch'Events_o[{i_}]),ev_) : Enbl)) };
+
+// Control-nonconflicting property.
+ CtrlNonconflicting(Se,Sd) ==
+  Se /\ Sd = {};
+
+//---------------------------------------------------------------------
+// Formulation of various m-coobservability properties
+//   H. Chakib and A. Khousmi,
+//     Multi-decision C&P_D&A architecture for the decentralized control
+//     of discrete-event systems,
+//     IEEE Conference on Automation Science and Engineering (CASE),
+//     187-193, 2008.
+//---------------------------------------------------------------------
+
+
+ Ic_(arch,e) == {i_ | i_ : 1..arch'NoSupervisors &
+                      e : arch'Events_c[{i_}] };
+
+ CPmCoobservability(arch,Ece,M,prK,PEs) ==
+  !e_.(e_ : Ece =>
+   !S_.(S_ : PEs(e_) => D_(prK,M,e_) /\
+    INTER(i_).(i_ : Ic_(arch,e_) |
+     P_1PR(S_,arch'Events_o[{i_}],prK) ) = {} ) );
+
+ CPmCoobservability_e(arch,e,prK,DprK_e,PE) ==
+  !S_.(S_ : PE => DprK_e /\
+   INTER(i_).(i_ : Ic_(arch,e) |
+    P_1PR(S_,arch'Events_o[{i_}],prK) ) = {} );
+
+ DAmCoobservability(arch,Ecd,prK,PDs) ==
+  !e_.(e_ : Ecd =>
+   !S_.(S_ : PDs(e_) => E_(prK,e_) /\
+    INTER(i_).(i_ : Ic_(arch,e_) |
+     P_1PR(S_,arch'Events_o[{i_}],prK) ) = {} ) );
+
+ DAmCoobservability_e(arch,e,prK,EprK_e,PD) ==
+  !S_.(S_ : PD => EprK_e /\
+   INTER(i_).(i_ : Ic_(arch,e) |
+    P_1PR(S_,arch'Events_o[{i_}],prK) ) = {} );
+
+// mCoobservability property.
+ mCoobservability(arch,Ece,Ecd,M,prK,PEs,PDs) ==
+  CPmCoobservability(arch,Ece,M,prK,PEs) &
+  DAmCoobservability(arch,Ecd,prK,PDs);
+
+// Decisions for the multi-decision control architecture.
+
+// Theoretical definitions of an SFBC function.
+ def_Sup_j_i(L,E) == NAT1*NAT1*L*E +-> {FALSE,TRUE};
+ def_S_j(L,E) == NAT1*L*E +-> {FALSE,TRUE};
+ def_Sup_G(L,E) == L*E +-> {FALSE,TRUE};
+ 
+ MicroDecisionsCP(e,j,arch,prK,M,Es_e_j) ==
+  {j_, i_, t_, ev_, md_ | i_ : 1..arch'NoSupervisors &
+                          j_ = j &
+                          t_ : P(E_(prK,ev_),arch'Events_o[{i_}]) \/ P(D_(prK,M,ev_),arch'Events_o[{i_}]) &
+                          ((ev_ = e &
+                            P_1sR(t_,arch'Events_o[{i_}],prK) /\ Es_e_j /= {} ) or
+                           ev_ : (arch'Events_ce - arch'Events_c[{i_}]) ) &
+                          md_ = TRUE } \/
+  {j_, i_, t_, ev_, md_ | i_ : 1..arch'NoSupervisors &
+                          j_ = j &
+                          t_ : P(E_(prK,ev_),arch'Events_o[{i_}]) \/ P(D_(prK,M,ev_),arch'Events_o[{i_}]) &
+                          ev_ = e &
+                          P_1sR(t_,arch'Events_o[{i_}],prK) /\ Es_e_j = {} &
+                          md_ = FALSE };
+
+ MicroDecisionsDA(e,j,arch,prK,M,Ds_e_j) ==
+  {j_, i_, t_, ev_, md_ | i_ : 1..arch'NoSupervisors &
+                          j_ = j &
+                          t_ : P(E_(prK,ev_),arch'Events_o[{i_}]) \/ P(D_(prK,M,ev_),arch'Events_o[{i_}]) &
+                          ((ev_ = e &
+                            P_1sR(t_,arch'Events_o[{i_}],M) /\ Ds_e_j /= {} ) or
+                           ev_ : (arch'Events_cd - arch'Events_c[{i_}]) ) &
+                          md_ = FALSE} \/
+  {j_, i_, t_, ev_, md_ | i_ : 1..arch'NoSupervisors &
+                          j_ = j &
+                          t_ : P(E_(prK,ev_),arch'Events_o[{i_}]) \/ P(D_(prK,M,ev_),arch'Events_o[{i_}]) &
+                          ev_ = e &
+                          P_1sR(t_,arch'Events_o[{i_}],M) /\ Ds_e_j = {} &
+                          md_ = TRUE};
+
+ IntermediateDecisions(arch,prK,M,Ece,Ede,n_sup,sup_JI) ==
+  {j_, s_, ev_, id_ | ev_ : Ece &
+                      s_ : E_(prK,ev_) \/ D_(prK,M,ev_) &
+                      !i_.(i_ : 1..n_sup => sup_JI(j_,i_,Ps(s_,arch'Events_o[{i_}]),ev_) = TRUE) &
+                      id_ = TRUE } \/
+  {j_, s_, ev_, id_ | ev_ : Ece &
+                      s_ : E_(prK,ev_) \/ D_(prK,M,ev_) &
+                      #i_.(i_ : 1..n_sup & sup_JI(j_,i_,Ps(s_,arch'Events_o[{i_}]),ev_) = FALSE) &
+                      id_ = FALSE } \/
+  {j_, s_, ev_, id_ | ev_ : Ede &
+                      s_ : E_(prK,ev_) \/ D_(prK,M,ev_) &
+                      #i_.(i_ : 1..n_sup & sup_JI(j_,i_,Ps(s_,arch'Events_o[{i_}]),ev_) = TRUE) &
+                      id_ = TRUE } \/
+  {j_, s_, ev_, id_ | ev_ : Ede &
+                      s_ : E_(prK,ev_) \/ D_(prK,M,ev_) &
+                      !i_.(i_ : 1..n_sup => sup_JI(j_,i_,Ps(s_,arch'Events_o[{i_}]),ev_) = FALSE) &
+                      id_ = FALSE };
+
+ FinalDecisions(prK,Ece,Ede,m_decision,sup_J) ==
+  {s_, ev_, fd_ | ev_ : Ece &
+                  #j_.(j_ : 1..m_decision & sup_J(j_,s_,ev_) = TRUE) &
+                  fd_ = TRUE } \/
+  {s_, ev_, fd_ | ev_ : Ece &
+                 !j_.(j_ : 1..m_decision => sup_J(j_,s_,ev_) = FALSE) &
+                  fd_ = FALSE } \/
+  {s_, ev_, fd_ | ev_ : Ede &
+                  !j_.(j_ : 1..m_decision => sup_J(j_,s_,ev_) = TRUE) &
+                  fd_ = TRUE } \/
+  {s_, ev_, fd_ | ev_ : Ede &
+                  #j_.(j_ : 1..m_decision & sup_J(j_,s_,ev_) = FALSE) &
+                  fd_ = FALSE };
+
+
+//---------------------------------------------------------------------
+// Formulation of the N-inference observability property
+//   R. Kumar and S. Takai,
+//     Inference-based ambiguity management in decentralized
+//     decision-making: decentralized control of discrete event systems,
+//     IEEE Transactions on Automatic Control,
+//     52 (10), 1783-1794, 2007.
+//---------------------------------------------------------------------
+
+ LangPair(S) == struct(D: POW(seq(S)), E: POW(seq(S)));
+ LangPairs(S) == struct(D: POW(NAT*seq(S)), E: POW(NAT*seq(S)));
+
+// *** The notation follows the one of the above paper.
+
+ In(sigma,arch) == {i__ | i__ : 1..arch'NoSupervisors &
+  sigma : arch'Events_c[{i__}] };
+
+// Apply the local observation mask on a string w.r.t. the ith local
+// supervisor of a decentralized architecture.
+
+// Relational formulation.
+ Mi(i,s,arch) == {j__, obs_sym__ | #k__.(k__ : 1..size(s) &
+  s(k__) : dom(arch'Msks_o[{i}]) &
+  j__ = card((s /|\ k__)|>dom(arch'Msks_o[{i}])) &
+  obs_sym__ = arch'Msks_o[{i}](s(k__)) )};
+
+// Functional (lambda abstraction) formulation (e stands for sigma).
+// M(se) := M(s)M(e) if M(e) defined, otherwise M(se) := M(s).
+// *** Side effect: Mi_ must be an ABSTRACT_CONSTANTS defined as Mi_ = Mi__(A,Mi_).
+ Mi__(arch,f_) == /*@symbolic*/ %(i, s, Ms).(i : 1..arch'NoSupervisors |
+  IF size(s) = 0 THEN Ms ELSE
+   LET e, locMsk BE e = last(s) & locMsk = arch'Msks_o[{i}] IN
+    IF e : dom(locMsk) THEN
+     f_(i,front(s),locMsk(e)->Ms) ELSE
+     f_(i,front(s),Ms) END END END );
+
+
+// *** In the sequel the definitions use Mi(i,s,arch) instead of Mi_(i,s,[]).
+
+// Apply the local observation mask on a language w.r.t. the ith local
+// supervisor of a decentralized architecture.
+ MiL(i,L,arch) == UNION(s__).(s__ : L | {Mi(i,s__,arch)});
+ //MiL(i,L) == UNION(s__).(s__ : L | {Mi_(i,s__,[])});
+
+// Apply the local observation mask and its inverse on a language L1
+// w.r.t. the ith local supervisor of a decentralized architecture
+// relatively to a language L2.
+ Mi_1Mi(i,L1,L2,arch) == {s_ | s_ : L2 &
+  #t_.(t_ : L1 & Mi(i,t_,arch) = Mi(i,s_,arch)) };
+
+ E0(sigma,prK) == {s_ | s_ : prK & s_<-sigma : prK};
+ D0(sigma,prL,prK) == {s_ | s_ : prK & s_<-sigma : prL-prK};
+// The intersection has been moved inside the quantified intersection to avoid
+// infinite enumeration.
+ Dk_1Ek_1(sigma,Lk1,Lk2,arch) ==
+  INTER(i_).(i_ : In(sigma,arch) | Mi_1Mi(i_,Lk1,Lk2,arch));
+
+// Get the language pair Dk, Ek for a given k = N from D0 and E0.
+ baseCaseD0E0(sigma,prL,prK) ==
+  rec(D: D0(sigma,prL,prK), E: E0(sigma,prK));
+// *** Side effect: GetLangPair_ must be an ABSTRACT_CONSTANTS defined as
+//     GetLangPair_ = GetLangPair__(G,A,GetLangPair_)
+ GetLangPair__(sys,arch,f_) ==
+  %(sigma, Pk, N_).(sigma : sys'ctrlEvents & Pk : LangPair(sys'events) |
+   IF N_ = 0 THEN Pk ELSE
+    LET Pk_ BE
+     Pk_ = rec(D: Dk_1Ek_1(sigma,Pk'E,Pk'D,arch),
+               E: Dk_1Ek_1(sigma,Pk'D,Pk'E,arch) ) IN
+      f_(sigma,Pk_,N_-1) END END );
+
+// Get all language pairs Dk, Ek for a given N from D0 and E0.
+ baseCaseD0E0s(sigma,prL,prK) ==
+  rec(D: {0}*D0(sigma,prL,prK), E: {0}*E0(sigma,prK));
+// *** Side effect: GetLangPairs_ must be an ABSTRACT_CONSTANTS defined as
+//     GetLangPairs_ = GetLangPairs__(G,A,GetLangPairs_).
+ GetLangPairs__(sys,arch,f_) ==
+  %(sigma, Psk, N_, k).(sigma: sys'ctrlEvents & Psk: LangPairs(sys'events) |
+   IF N_ = 0 THEN Psk ELSE
+    LET Psk_ BE
+     Psk_ = rec(D: Psk'D \/ {k+1}*Dk_1Ek_1(sigma,Psk'E[{k}],Psk'D[{k}],arch),
+                E: Psk'E \/ {k+1}*Dk_1Ek_1(sigma,Psk'D[{k}],Psk'E[{k}],arch) ) IN
+      f_(sigma,Psk_,N_-1,k+1) END END );
+
+// Get all language pairs M_i(Dk,Ek) for a given N.
+ GetMaskedLangPairs(Ps_,i,N,arch) ==
+  rec(D: UNION(k_).(k_ : 0..N | {k_}*MiL(i,allLangPairs'D[{k_}],arch)),
+      E: UNION(k_).(k_ : 0..N | {k_}*MiL(i,allLangPairs'E[{k_}],arch)) );
+
+
+// N_inference observability property.
+ N_inference(D_Es,Ec,N) == !e_.(e_ : Ec =>
+  D_Es(e_)'D[{N+1}] = {} or D_Es(e_)'E[{N+1}] = {});
+
+
+// A local decision with an ambiguity level given an implicit controllable
+//   event sigma associated with all language pairs Dk, Ek.
+// ndi(Mi(s),sigma) or nei(Mi(s),sigma).
+ nde_i(i,s,D_Es,N,arch) ==
+  min(UNION(k_).(k_ : 0..N+2 &    // see Definition 2 at page 1786 for the reason of N+2
+   Mi(i,s,arch) /: MiL(i,D_Es[{k_}],arch) | {k_}) );
+// ni(Mi(s),sigma)                     // page 1787
+ n_i(nd_i,ne_i) == min({nd_i,ne_i});
+// ci(Mi(s),sigma)
+ c_i(ci,nd_i,ne_i) ==                  // page 1786
+  IF ne_i < nd_i THEN ci := 1 ELSIF
+     nd_i < ne_i THEN ci := 0 ELSE ci := -1 END;
+
+// A global decision with an ambiguity level given an implicit controllable
+// event sigma associated with all language pairs Dk, Ek.
+// n(s,sigma)                          // page 1785
+ n_(nI) == min(ran(nI));
+// S_i_I(s,sigma)                      // page 1785
+ S_i_I(SI,nI,cI,n,sigma,arch) ==
+  IF !i_.((i_ : In(sigma,arch) & nI(i_) = n) => cI(i_) = 1) THEN
+       SI := enabled ELSIF
+     !i_.((i_ : In(sigma,arch) & nI(i_) = n) => cI(i_) = 0) THEN
+       SI := disabled ELSE SI := unsure END;

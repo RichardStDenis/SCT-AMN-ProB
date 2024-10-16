@@ -1,0 +1,64 @@
+// Richard St-Denis, Universite de Sherbrooke, 2024.
+DEFINITIONS
+
+//---------------------------------------------------------------------
+// Formulation of properties for hierarchical systems
+//   D. Côté and R. St-Denis.
+//     Component-based method for the modeling and control of modular
+//     production systems.
+//     IEEE Transactions on Control Systems Technology,
+//     21 (5), 2013, 1570-1585.
+// An adaptation from
+//   K. C. Wong and W. M. Wohnam,
+//     Hierarchical Control of Discrete-event systems
+//     Discrete Event Dynamic Systems: Theory and Applications,
+//     6 (), 241-273, 1996.
+//---------------------------------------------------------------------
+
+// Natural projections.
+ Ps(s,Eo) == {j__,e_ | #k_.(k_ : 1..size(s) &
+  s(k_) : Eo & j__ = card((s /|\ k_)|>Eo) & e_ = s(k_) )};
+
+// State-based and language-based formulation.
+
+// To be used when no weak consistency of marking to check that at each task in the upper
+// level corresponds a marked state eventually reached in the lower level.
+ EventuallyReachMkState(MM,Tr_A,Mm,theta,inputMap) ==
+  !s_.(s_ : Mm =>
+   (#tr_.(tr_ : {tr__ | tr__ : Tr_A & theta(inputMap(tr__)) : {s_}} &
+    epsilonTR(MM,tr_'state) /\ MM'Xm /= {} ) ) );
+
+// Weak consistency of marking (from more information of a Mealy machine).
+ WeakConsistencyOfMarking(MM,bnd,Tr_A,Lm,Mm,theta,inputMap) ==
+  Mm = Map_L(Lm,theta) &                                   // Mn = theta(Lm)
+  !tr_ .(tr_ : Tr_A & theta(inputMap(tr_)) : Mm =>
+   (!x_.(x_ : GetPreStates_Mealy(MM,tr_'state,bnd) =>      // no entry transition to x
+     not(#(in_,out_,x__).(out_ /= silentEvent & (x__,(in_,out_),x_) : MM'tf)) ) or
+    !x_.(x_ : GetPostStates_Mealy(MM,tr_'state,bnd) =>     // no exit transition from x
+     not(#(in_,out_).(out_ /= silentEvent & (x_,(in_,out_)) : dom(MM'tf))) ) ) );
+
+// Language-based formulation.
+
+// Consistency of marking.
+ ConsistencyOfMarking(L,Lm,Mm,theta) ==
+  Mm = Map_L(Lm,theta) &               // Mn = theta(Lm)
+  Map_L_1(L,Mm,theta) <: Lm;           // theta-1(Mm) <: Lm
+
+// Observer property.
+ Observer(L,M,T,theta) == !(s_,tau_).(s_ : L & tau_ : T &
+  theta(s_)<-tau_ : M => #s__.(s__ : L & size(s__) > size(s_) &
+   s__ /|\ size(s_) = s_ & theta(s__) = theta(s_)<-tau_ ) );
+
+// The set of vocal strings with respect to an output event tau.
+ X_tau(L,E,tau,theta) == {s_ | s_ : L-{[]} &
+  #e_.(e_ : E & last(s_) = e_ &
+   theta(s_) = theta(front(s_))<-tau ) };
+
+// The default set of controllable events of the interface.
+ T_ctrl(L,E,T,Ec,theta) == {tau_ | tau_ : T &
+  UNION(s___).(s___ : X_tau(L,E,tau_,theta) | {last(s___)}) <: Ec};
+
+// Control coincidence condition.
+ ControlCoincidence(L,E,Ec,Tc,theta) ==
+  !tau_.(tau_ : Tc & X_tau(L,E,tau_,theta) /= {} =>
+   !s__.(s__ : X_tau(L,E,tau_,theta) => last(s__) : Ec) );

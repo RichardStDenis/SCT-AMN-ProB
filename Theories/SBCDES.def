@@ -1,0 +1,361 @@
+// copyright Richard St-Denis, Universite de Sherbrooke, 2022.
+DEFINITIONS
+ FSA(X,E) == struct(states: POW(X), events: POW(E),
+  tf: (X*E)+->X, x_0: X, Xm: POW(X) );
+
+ Generator_C(X,E) == struct(states: POW(X), events: POW(E),
+  tf: (X*E)+->X, x_0: X, Xm: POW(X), ctrlEvents: POW(E) );
+
+ Mealy_machine(X,I,O) == struct(states: POW(X), inputs: POW(I), outputs: POW(O),
+  tf: (X*(I*O))+->X, x_0: X, Xm: POW(X), ctrlEvents: POW(I), localctrlEvents: POW(I));
+
+// Transition function of the closed-loop system from a state feedback function
+// w.r.t. disabled events (Q is generally a controllable predicate).
+ tf_closed_loop(G,sfbc,Q) == {x1_,e_,x2_ | x1_ : Q & x2_ : Q &
+  (x1_,e_,x2_) : G'tf & e_ /: sfbc(x1_) };
+
+// Generator of the closed-loop system induced by G and a state feedback function
+// w.r.t. disabled events
+ inducedCloseLoop(G,tf_,Q) ==
+  rec(states: Q,
+      events: G'events,
+      tf: tf_,
+      x_0: G'x_0,
+      Xm: G'Xm /\ Q,
+      ctrlEvents: G'ctrlEvents );
+
+// Induced automaton from a predicate (supCCP or supWCCP) and a state feedback function
+// w.r.t. enabled events
+ InducedAutomaton(G,sfbc,Q) ==
+    rec(states: Q,
+        events: G'events,
+        tf: {t_ | #(x1_,e_,x2_).(x1_ : Q & x2_ : Q & e_ : G'events &
+              t_ = (x1_,e_,x2_) & t_ : G'tf & e_ : sfbc(x1_) ) },
+        x_0: G'x_0,
+        Xm: G'Xm /\ Q,
+        ctrlEvents: G'ctrlEvents );
+
+// Auxiliary definitions.
+
+// Reflexive transitive closure of a binary relation r over D.
+ RTC(r,D) == id(D) \/ closure1(r);
+
+// Unlabelled (binary) transition relation of r w.r.t. a label set L and a predicate S.
+ unlblR(r,L,S) == S<|{a_,b_ | #l_.(l_ : L & (a_,l_,b_) : r)}|>S;
+
+// Unlabelled (binary) transition relation of G w.r.t. the event set E.
+ unlblTR_E(G,E) == {x1_,x2_ | #e___.(e___ : E & (x1_,e___,x2_) : G'tf)};
+
+// Unlabelled (binary) transition relation of G satisfying predicate Q.
+ unlblTR_Q(G,Q) == (Q<|unlblTR_E(G,G'events)|>Q);
+
+// Uncontrollable events.
+ uEvents(G) == G'events-G'ctrlEvents;
+
+//---------------------------------------------------------------------
+// State-based control of discrete event systems.
+//   S. Takai and S. Kodama,
+//     M-controllable subpredicates arising in state feedback control of discrete
+//     event systems,
+//     International Journal of Control, 67 (2), 553-566, 1997.
+//
+//   S. Takai and S. Kodama,
+//     Characterization of all M-controllable subpredicates of a given predicate,
+//     International Journal of Control, 70 (4), 541-549, 1998.
+//
+//   C. Ma and W. M. Wonham,
+//     Nonblocking supervisory control of state tree structures,
+//     Lecture Notes inControl and Information Sciences,
+//     vol. 317, 2005, Springer.
+//
+//   H. Bherer, J. Desharnais and R. St-Denis,
+//     Control of parameterized discrete event systems,
+//     Discrete Event Dynamic Systems: Theory and Applications, 19 (2), 213-265, 2009.
+
+// Observation mask.
+ obsMask(X,Y) ==  X +-> Y;
+
+// Predicates transformers.
+ M_(G,M,O,Q) ==         // M: G'states -> O is an observation mask
+ {y__ | y__ : O & #x___.(x___ : G'states & y__ = M(x___) & x___ : Q)};
+
+ M_1M(G,M,Q) ==
+ {x1_ | x1_ : G'states & #x2_.(x2_ : G'states & M(x1_) = M(x2_) & x2_ : Q)};
+
+// Assumption 1: check if f belongs to the set of SFBC functions F_o.
+ F_o(G,Q,M,f) == !(x1_,x2_).(x1_ : Q & x2_ : Q &
+  M(x1_) = M(x2_) => f(x1_) = f(x2_) );
+
+ ObservabilityClasses(G,M,O) == {X__ | X__ : POW(G'states) &
+  #y_.(y_ : O & X__ = UNION(x_).(M(x_)= y_ | {x_})) };
+
+// Weakest precondition.
+ wp_e(G,e,Q,x) == (x,e) : dom(G'tf) & G'tf(x,e) : Q;
+
+// Weakest liberal precondition : not((x,e) :dom(G'tf)) \/ G'tf(x,e) : Q).
+ wlp_e(G,e,Q,x) == (x,e) : dom(G'tf) => G'tf(x,e) : Q;
+
+ wp(G,e,Q) ==  {x_ | x_ : G'states & wp_e(G,e,Q,x_)};
+
+ wlp(G,e,Q) ==  {x_ | x_ : G'states & wlp_e(G,e,Q,x_)};
+
+// Controllable field of G w.r.t. Q and its dual.
+ CtrlField(G,Q) == {x1_ | !x2_.((x1_,x2_) :
+  RTC(unlblR(G'tf,uEvents(G),G'states),G'states) => x2_ : Q) };
+
+ CtrlField_(G,Q) == {x1_ | !x2_.((x1_,x2_) :
+  RTC(unlblTR_E(G,uEvents(G)),G'states) => x2_ : Q) };
+
+ DualCtrlField(G,Q) == {x1_ | #x2_.((x1_,x2_) :
+  RTC(unlblR(G'tf,uEvents(G),G'states),G'states) & x2_ : Q) };
+
+ DualCtrlField_(G,Q) == {x2_ | #x1_.((x1_,x2_) :
+  RTC(unlblTR_E(G,uEvents(G))~,G'states) & x1_ : Q) };
+
+// Assertion: controllable field and its dual are idempotent and duality.
+ Idempotent(G,Q) ==
+  CtrlField(G,Q) = CtrlField(G,CtrlField(G,Q));
+
+ Idempotent_Dual(G,Q) ==
+  DualCtrlField(G,Q) = DualCtrlField(G,DualCtrlField(G,Q));
+
+ Dual(G,Q) ==
+  CtrlField(G,Q) = G'states-DualCtrlField(G,G'states-Q) &
+  DualCtrlField(G,Q) = G'states-CtrlField(G,G'states-Q);
+
+// Bad event sets.
+ A(G,Q,x) == {e_ | e_ : G'ctrlEvents & not(wlp_e(G,e_,Q,x))};
+
+ A_hat(G,M,Q,y) == {e_ | e_ : G'ctrlEvents &
+  #x__.(x__ : G'states & y = M(x__) & not(wlp_e(G,e_,Q,x__))) };
+
+ A_breve(G,M,Q,y) == {e_ | e_ : G'ctrlEvents &
+  #x__.(x__ : G'states & y = M(x__) & x__ : Q & not(wlp_e(G,e_,Q,x__))) };
+
+// Reachability predicates.
+// Unlabelled (binary) transition relation of G used in the following definitions
+// of rechability predicates R.
+
+ unlblReachTR(G,Q) == {x1_,x2_ | #e_.((x1_,e_,x2_) : G'tf &
+  e_ /: A(G,Q,x1_) & wp_e(G,e_,Q,x1_) )};
+
+ unlblReachTR_hat(G,M,Q) == {x1_,x2_ | #(e_).((x1_,e_,x2_) : G'tf &
+  e_ /: A_hat(G,M,Q,M(x1_)) & wp_e(G,e_,Q,x1_) )};
+
+ unlblReachTR_breve(G,M,Q) == {x1_,x2_ | #(e_).((x1_,e_,x2_) : G'tf &
+  e_ /: A_breve(G,M,Q,M(x1_)) & wp_e(G,e_,Q,x1_) )};
+
+ RorCR(G,Q,Rel,X) == {x_ | x_ : Q &
+  (X<|RTC(Rel, G'states)|>{x_}) /= {} };
+
+// Reachable and coreachable predicates transformers.
+// R(G,Q) is slower than R_(G,Q).
+ R(G,Q) == ran({G'x_0}<|RTC(unlblR(G'tf,G'events,Q),G'states));
+
+ CR(G,Q) == dom(RTC(unlblR(G'tf,G'events,Q),G'states)|>G'Xm);
+
+ R_(G,Q) == RTC(unlblReachTR(G,Q),G'states)[{G'x_0} /\ Q];
+
+ R_hat(G,M,Q) == RTC(unlblReachTR_hat(G,M,Q),G'states)[{G'x_0} /\ Q];
+
+ R_breve(G,M,Q) == RTC(unlblReachTR_breve(G,M,Q),G'states)[{G'x_0} /\ Q];
+
+ Reachable(G,Q) == Q <: R_(G,Q);
+
+ Coreachable(G,Q) == Q <: CR(G,Q);
+
+// The set of coreachable state (to check local modularity).
+ coReachable(G) == dom(closure1({x1_,x2_ | #e_.(e_ : G'events & (x1_,e_,x2_) : G'tf)})|>G'Xm);
+
+// Nonblocking predicate.
+ Nonblocking(G,Q) == R_(G,Q) <: CR(G,Q);
+
+// Weakly controllability property of the predicate Q.
+ WeaklyControllable(G,Q) == Q <: CtrlField(G,Q);
+
+// "weak controllability" is equivalent to "Sigma_u invariant".
+ WeaklyControllable_(G,Q) ==
+  !e_.(e_ : uEvents(G) => Q <: wlp(G,e_,Q));
+
+ WeaklyControllable__(G,Q) == Q <: {x_ | x_ : G'states &
+  !e_.(e_ : uEvents(G) => (wlp_e(G,e_,Q,x_))) };
+
+// Controllability properties.
+ Controllable(G,Q) ==
+  Q <: R_(G,Q) & WeaklyControllable(G,Q);
+
+ StrongMcontrollable(G,M,Q) ==
+  Q <: R_hat(G,M,Q) & WeaklyControllable(G,Q);
+
+ Mcontrollable(G,M,Q) ==
+  Q <: R_breve(G,M,Q) & WeaklyControllable(G,Q);
+
+// Normality property.
+ Normal(G,M,Q) == M_1M(G,M,Q) <: Q;
+
+// Normal predicate.
+ Normality(G,M,O,Q) == UNION(X_).(X_ : ObservabilityClasses(G,M,O) &
+  X_ /\ Q = X_ | X_);
+
+// Assertion: if Q is weakly controllable, then R(G,Q) is controllable.
+ Property(G,Q) == WeaklyControllable(G,Q) => (Controllable(G,R(G,Q)));
+
+// The class of subpredicates of Q that are controllable, M_controllable,
+// strongly M-controllable, and normal and controllable.
+ C(G,Q) == {Q_ | Q_ <: Q & Controllable(G,Q_)};
+ MC(G,M,Q) == {Q_ | Q_ <: Q & Mcontrollable(G,M,Q_)};
+ SMC(G,M,Q) == {Q_ | Q_ <: Q & StrongMcontrollable(G,M,Q_)};
+ NC(G,M,Q) == {Q_ | Q_ <: Q & Normal(G,M,Q_) & Controllable(G,Q_)};
+ CNB(G,Q) == {Q_ | Q_ <: Q & Controllable(G,Q_) & Nonblocking(G,Q_)};
+
+// Other assertions.
+ C1(G,M,Q1,Q2) == Q1 <: Q2 => R_hat(G,M,Q1) <: R_hat(G,M,Q2);   // Lemma 2 of Takai & Kodama, 1997
+ C2(G,M,Q) == R_hat(G,M,Q) <: R_breve(G,M,Q);                   // Lemma 1 of Takai  & Kodama, 1997
+
+// Assertion: if Q is weakly controllable, then R_breve(G,Q) is M-controllable,
+// Theorem 1 of Takai & Kodama 1998.
+ Property_breve(G,M,Q) == WeaklyControllable(G,Q) =>
+  (Mcontrollable(G,M,R_breve(G,M,Q)));
+
+// Definition of supWCCP via the the family of predicates WCCP,
+// unrealistic for a large set of states satisfying a predicate Q.
+ IsASupWCCP(G,superset,sol) ==
+  #Q_.(Q_ <: superset & WeaklyControllable(G,Q_) &
+       Coreachable(G,Q_) & sol = Q_ &
+       !P_.(P_ <: superset & WeaklyControllable(G,P_) &
+            Coreachable(G,P_) => card(P_) <= card(Q_) ) );
+
+// Definition of supCCP via the family of predicates CCP,
+// unrealistic for a large set of states satisfying a predicate Q.
+ IsASupCCP(G,superset,sol) ==
+  #Q_.(Q_ <: superset & Reachable(G,Q_) & Coreachable(G,Q_) &
+       WeaklyControllable(G,Q_) & sol = Q_ &
+       !P_.(P_ <: superset & Reachable(G,P_) & Coreachable(G,P_) &
+            WeaklyControllable(G,P_) => card(P_) <= card(Q_) ) );
+
+// Transformation predicate to compute supCWCP.
+ lambdaGetsupCWCP(G,fun_) == %Qi.(Qi : POW(G'states) |
+  LET Q_ BE Q_ = CtrlField(G,Qi) /\ CR(G,Qi) IN
+   IF Q_ = Qi THEN Q_ ELSE fun_(Q_) END END );
+
+// Transformation predicate to compute supCCP.
+ lambdaGetsupCCP(G,fun_) == %Qi.(Qi : POW(G'states) |
+  LET Q_ BE Q_ = CtrlField(G,Qi) /\ CR(G,Qi) IN
+   IF Q_ = Qi THEN R(G,Q_) ELSE fun_(Q_) END END );
+
+// Transformation predicate to compute supCNCP.
+ lambdaGetsupCNCP(G,M,O,fun_) == %Qi.(Qi : POW(G'states) |
+  LET Q_ BE Q_ = CtrlField(G,Qi) /\ R(G,Qi) /\ CR(G,Qi) /\ Normality(G,M,O,Qi) IN
+   IF Q_ = Qi THEN Q_ ELSE fun_(Q_) END END );
+
+// Transformation predicate to compute supSMCP.
+ lambdaGetsupSMCP(G,M,fun_) == %Qi.(Qi : POW(G'states) |
+  LET Q_ BE Q_ = CtrlField(G,Qi) /\ R_hat(G,M,Qi) IN
+   IF Q_ = Qi THEN Q_ ELSE fun_(Q_) END END );
+
+// Transformation predicate to compute maxMCP.
+ lambdaGetmaxMCP(G,M,fun_) == %Qi.(Qi : POW(G'states) |
+  LET Q_ BE Q_ = CtrlField(G,Qi) /\ R_breve(G,M,Qi) IN
+   IF Q_ = Qi THEN Q_ ELSE fun_(Q_) END END );
+
+// Inductive step of supCWCP stronger than Q.
+ iStepSupCWCP(G,Q,Qi) ==
+   Q /\ INTER(e_).(e_ : uEvents(G) | wlp(G,e_,Qi)) /\ CR(G,Qi);
+
+// Inductive step of supSMCP stronger than Q.
+ iStepSupSMCP(G,M,Q,Qi) ==
+  Q /\ INTER(e_).(e_ : uEvents(G) | wlp(G,e_,Qi)) /\ R_hat(G,M,Qi);
+
+// Better approximation of Q than supSMC(Q) (excluding nonblocking).
+ ApproxQbyMCpred(G,M,Q) == R_breve(G,M,CtrlField(G,Q));
+
+// Assumption 1: check if f belongs to the set of SFBC functions F_0
+ F_0(G, M, f) == !(x_,x__).(x_ : G'states & x__ : G'states &
+  M(x_) = M(x__) => f(x_) = f(x__) );
+
+// Families of predicates for state feedback control functions.
+// The predicate Q must be controllable.
+ f_e(G,Q,e,x) == e /: A(G,Q,x);
+
+// The predicate Q must be controllable and normal.
+ f_normal_e(G,Q,e,x) == e /: A(G,Q,x);
+
+// The predicate Q must be strong M-controllable.
+ f_hat_e(G,M,Q,e,x) == e /: A_hat(G,M,Q,M(x));
+
+// The predicate Q must be M-controllable.
+ f_breve_e(G,M,Q,e,x) == e /: A_breve(G,M,Q,M(x));
+
+// Theoretical definitions of an SFBC function.
+ SFBCf(X,E) == X +-> POW(E);
+
+// The following function are defined for all states
+// Events on undefined transition are systematically enabled.
+ f_a(G,Q) == {x_,E_ |
+  E_ = UNION(e_).(e_ : G'events & f_e(G,Q,e_,x_) | {e_}) };
+ f_d(G,Q) == {x_,E_ |
+  E_ = UNION(e_).(e_ : A(G,Q,x_) | {e_}) };
+
+ f_normal(G,M,Q) == {x_,E_ | // do NOT add "x_ : Q" to check the above assumption F_0
+  E_ = UNION(e_).(e_: G'events & (x_,e_) : dom(G'tf) &
+  f_normal_e(G,Q,e_,x_) | {e_}) };
+
+ f_hat(G,M,Q) == {x_,E_ |    // do NOT add "x_ : Q" to check the above assumption F_0
+  E_ = UNION(e_).(e_: G'events &  (x_,e_) : dom(G'tf) &
+  f_hat_e(G,M,Q,e_,x_) | {e_}) };
+
+ f_breve(G,M,Q) == {x_,E_ |   // do NOT add "x_ : Q" to check the above assumption F_0
+  E_ = UNION(e_).(e_: G'events & (x_,e_) : dom(G'tf) &
+   f_breve_e(G,M,Q,e_,x_) | {e_}) };
+
+// Equivalent definitions of SFBC functions from the SFBC w.r.t. a controllable
+// predicate in total observation (IMPORTANT: does not to be used when considering
+// nonblocking).
+// Events on undefined transition are systematically enabled to check the
+// above assumption F_0.
+ f_hat_d(G,M,f) == {x_,E_ | x_ : G'states & E_ <: G'ctrlEvents &
+  E_ = UNION(x__).(x__ : dom(f) & M(x__) = M(x_) | f(x__)) };
+ f_hat_a(G,M,f) == {x_,E_ | x_ : G'states & E_ <: G'events &
+  E_ = INTER(x__).(x__ : dom(f) & M(x__) = M(x_) | f(x__)) };
+
+ f_breve_d(G,M,Q,f) == {x_,E_ | x_ : M_1M(G,M,Q) & E_ <: G'ctrlEvents &
+  E_ = UNION(x__).(x__ : dom(f) & M(x__) = M(x_) & x__ : Q | f(x__)) };
+ f_breve_a(G,M,Q,f) == {x_,E_ | x_ : M_1M(G,M,Q) & E_ <: G'events &
+  E_ = INTER(x__).(x__ : dom(f) & M(x__) = M(x_) & x__ : Q | f(x__)) };
+
+// The SFBC function that corresponds to a (normal) controllable predicate Q,
+// but for the set of disabled events at any state x satisfying Q.
+ SFBC(G,Q) == {x_,E_ | x_ : Q &
+  E_ = UNION(e_).(e_: G'ctrlEvents & e_ : A(G,Q,x_) | {e_}) };
+
+// The SFBC function that corresponds to a (normal) controllable predicate Q,
+// but for the set of enabled events at any state satisfying Q.
+ SFBCEnabled(G,Q) == {x_,E_ | x_ : Q &
+  E_ = UNION(e_).(e_: G'events & (x_,e_) : dom(G'tf) &
+   e_ /: A(G,Q,x_) | {e_} ) };
+
+// The SFBC relation that corresponds to a (normal) controllable Q,
+// but for the set of enabled events at any state.
+ SFBCEnabled_(G,Q) == {x_,e_ | (x_,e_) : dom(G'tf) & e_ /: A(G,Q,x_)};
+
+// The SFBC function that corresponds to a strongly M-controllable Q,
+// but for the set of disabled events at any state x satisfying Q.
+ SFBC_hat(G,M,Q) == {x_,E_ | x_ : Q &
+  E_ = UNION(e_).(e_: G'ctrlEvents & e_ : A_hat(G,M,Q,M(x_)) | {e_}) };
+
+// The SFBC function that corresponds to a strongly M-controllable Q,
+// but for the set of enabled events at any state x satisfying Q.
+ SFBC_hatEnabled(G,M,Q) == {x_,E_ | x_ : Q &
+  E_ = UNION(e_).(e_: G'events & (x_,e_) : dom(G'tf) &
+   e_ /: A_hat(G,M,Q,M(x_)) | {e_} ) };
+
+// The SFBC function that corresponds to a M-controllable Q,
+// but for the set of disabled events at any state x satisfying Q.
+ SFBC_breve(G,M,Q) == {x_,E_ | x_ : Q &
+  E_ = UNION(e_).(e_: G'ctrlEvents & e_ : A_breve(G,M,Q,M(x_)) | {e_}) };
+
+// The SFBC function that corresponds to a M-controllable Q,
+// but for the set of enabled events at any state x satisfying Q.
+ SFBC_breveEnabled(G,M,Q) == {x_,E_ | x_ : Q &
+  E_ = UNION(e_).(e_: G'events & (x_,e_) : dom(G'tf) &
+   e_ /: A_breve(G,M,Q,M(x_)) | {e_} ) };

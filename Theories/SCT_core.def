@@ -1,0 +1,522 @@
+// Richard St-Denis, Universite de Sherbrooke, 2024.
+DEFINITIONS
+ FSA(X,E) == struct(states: POW(X), events: POW(E),
+  tf: (X*E)+->X, x_0: X, Xm: POW(X) );
+
+ Generator_C(X,E) == struct(states: POW(X), events: POW(E),
+  tf: (X*E)+->X, x_0: X, Xm: POW(X), ctrlEvents: POW(E) );
+
+ uEvents(G,Ec) == G'events-Ec;
+
+// Reflexive transitive closure of a binary relation r over D.
+ RTC(r,D) == id(D) \/ closure1(r);
+
+//---------------------------------------------------------------------
+
+
+// An execution fragment x_1e_1x_2...e_{k-1}x_n is represented
+// as a sequence of states x_1,x_2,...,x_n and a sequence of events
+// e_1,e_2,...,e_{n-1}. The length of the sequence of events is less
+// than or equal to the value of a given bound (i.e., n <= bnd).
+
+// A trace e_1e_2...e_nx is a sequence of events that ends with a state
+// x, where x is the state reachable after the occurrence of e_1,e_2,...,e_n.
+// The length of a trace is less than or equal to the value of a given bound
+// (i.e., n <= bnd).
+
+// A string e_1e_2...e_n is a sequence of events. The length of a words
+// is less than or equal to the value of a given bound (i.e., n <= bnd).
+
+ ExecFragment(X,E) == struct(history: seq(X), string: seq(E));
+ Trace(X,E) == struct(string: seq(E), state: X);
+ String(E) == seq(E);
+
+// The singleton set of the empty trace.
+ emptyTrace(A) == {rec(string:[], state: A'x_0)};
+// The singleton set of the empty task.
+ emptyString(A) == {s_ | s_ : String(A'events) & size(s_) = 0 & A'x_0 : A'Xm};
+
+// Conversions.
+ Fragments2Traces(F) == UNION(f_).(f_ : F |
+  {rec(string: f_'string, state: last(f_'history))} );
+ Fragments2Strings(F) == UNION(f_).(f_ : F | {f_'string});
+
+ Traces2Strings(T) == UNION(t_).(t_ : T | {t_'string});
+ Traces2Tasks(T,Xm) == UNION(t_).(t_ : T & t_'state : Xm | {t_'string});
+ Strings2Traces(L,T) == {t_ | t_ : T & t_'string : L};
+
+//------------------
+
+//Generation of execution fragments.
+
+ GetFragments(A,bnd) ==
+  UNION(i_).(i_ : 1..bnd+1 | {f_ |
+   f_ : ExecFragment(A'states,A'events) &
+   f_'history(1) = A'x_0 &
+   size(f_'history) = i_ & size(f_'string) = i_-1 &
+   !k_.(k_ : 1..i_-1 =>
+        (f_'history(k_),f_'string(k_),f_'history(k_+1)) : A'tf ) });
+
+// ... without cycles w.r.t. the first state.
+GetFragmentsNc1st(A,bnd) ==
+  UNION(i_).(i_ : 1..bnd+1 | {f_ |
+   f_ : ExecFragment(A'states,A'events) &
+   f_'history(1) = A'x_0 &
+   size(f_'history) = i_ & size(f_'string) = i_-1 &
+   !k_.(k_ : 1..i_-1 =>
+        (f_'history(k_),f_'string(k_),f_'history(k_+1)) : A'tf &
+        (k_ /= 1 =>  f_'history(k_) /= f_'history(1)) ) });
+
+// ... without cycles w.r.t. a set of states.
+GetFragmentsNcSst(A,bnd,Sst) ==
+  UNION(i_).(i_ : 1..bnd+1 | {f_ |
+   f_ : ExecFragment(A'states,A'events) &
+   f_'history(1) = A'x_0 &
+   size(f_'history) = i_ & size(f_'string) = i_-1 &
+   !k_.(k_ : 1..i_-1 =>
+        (f_'history(k_),f_'string(k_),f_'history(k_+1)) : A'tf &
+        !j_.(j_ : 1..k_-1 & f_'history(j_) : Sst => f_'history(k_) /= f_'history(j_)) ) });
+
+
+//---------------------------------------------------------------------
+
+
+// Generation of traces with cycles using a logical formula
+// (used by test_composite_component_LB).
+ GetTraces(A,bnd) ==
+  UNION(i_).(i_ : 1..bnd+1 | {t_ |
+   t_ : Trace(A'states,A'events) & size(t_'string) = i_-1 &
+   #seqS_.(seqS_ : seq(A'states) & size(seqS_) = i_ &
+           seqS_(1) = A'x_0 & seqS_(i_) = t_'state &
+           !k_.(k_ : 1..i_-1 =>
+             (seqS_(k_),t_'string(k_),seqS_(k_+1)) : A'tf ) ) });
+
+// ... without cycles w.r.t. the first state (used by test_elementary_component_LB_nc1st
+//     and test_composite_component_LB_nc1st).
+GetTracesNc1st(A,bnd) ==
+  UNION(i_).(i_ : 1..bnd+1 | {t_ |
+   t_ : Trace(A'states,A'events) & size(t_'string) = i_-1 &
+   #seqS_.(seqS_ : seq(A'states) & size(seqS_) = i_ &
+           seqS_(1) = A'x_0 & seqS_(i_) = t_'state &
+           !k_.(k_ : 1..i_-1 =>
+             (seqS_(k_),t_'string(k_),seqS_(k_+1)) : A'tf &
+             (k_ /= 1 =>  seqS_(k_) /= seqS_(1)) ) ) });
+
+// ... without cycles w.r.t. a set of states.
+GetTracesNcSst(A,bnd,Sst) ==
+  UNION(i_).(i_ : 1..bnd+1 | {t_ |
+   t_ : Trace(A'states,A'events) & size(t_'string) = i_-1 &
+   #seqS_.(seqS_ : seq(A'states) & size(seqS_) = i_ &
+           seqS_(1) = A'x_0 & seqS_(i_) = t_'state &
+           !k_.(k_ : 1..i_-1 =>
+             (seqS_(k_),t_'string(k_),seqS_(k_+1)) : A'tf &
+             !j_.(j_ : 1..k_-1 & seqS_(j_) : Sst => seqS_(k_) /= seqS_(j_)) ) ) });
+
+// ... without cycles w.r.t. a set of events.
+//     (used by section6_ex7_1)
+ GetTracesNcSev(A,bnd,Sev) ==
+  UNION(i_).(i_ : 1..bnd+1 | {t_ |
+   t_ : Trace(A'states,A'events) & size(t_'string) = i_-1 &
+   #seqS_.(seqS_ : seq(A'states) & size(seqS_) = i_ &
+           seqS_(1) = A'x_0 & seqS_(i_) = t_'state &
+           !k_.(k_ : 1..i_-1 =>
+             (seqS_(k_),t_'string(k_),seqS_(k_+1)) : A'tf &
+             !j_.(j_ : 1..k_-1 & t_'string(j_) : Sev => t_'string(k_) /= t_'string(j_)) ) ) });
+
+// ... without cycles w.r.t.the first state and a set of events using a logical formula
+//     (used by test_elementary_component_LB_loop).
+ GetTracesNc1stNcSev(A,bnd,Sev) ==
+  UNION(i_).(i_ : 1..bnd+1 | {t_ |
+   t_ : Trace(A'states,A'events) & size(t_'string) = i_-1 &
+   #seqS_.(seqS_ : seq(A'states) & size(seqS_) = i_ &
+           seqS_(1) = A'x_0 & seqS_(i_) = t_'state &
+           !k_.(k_ : 1..i_-1 =>
+             (seqS_(k_),t_'string(k_),seqS_(k_+1)) : A'tf &
+             (k_ /= 1 => seqS_(k_) /= seqS_(1)) &
+             !j_.(j_ : 1..k_-1 & t_'string(j_) : Sev => t_'string(k_) /= t_'string(j_)) ) ) });
+
+// ... without cycles w.r.t. a set of states and a set of events
+//     (used by test_composite_component_LB_loop).
+ GetTracesNcSstSev(A,bnd,Sst,Sev) ==
+  UNION(i_).(i_ : 1..bnd+1 | {t_ |
+   t_ : Trace(A'states,A'events) & size(t_'string) = i_-1 &
+   #seqS_.(seqS_ : seq(A'states) & size(seqS_) = i_ &
+           seqS_(1) = A'x_0 & seqS_(i_) = t_'state &
+           !k_.(k_ : 1..i_-1 =>
+             (seqS_(k_),t_'string(k_),seqS_(k_+1)) : A'tf &
+             !j_.(j_ : 1..k_-1 & seqS_(j_) : Sst => seqS_(k_) /= seqS_(j_)) &
+             !j_.(j_ : 1..k_-1 & t_'string(j_) : Sev => t_'string(k_) /= t_'string(j_)) ) ) });
+
+// ... without cycles w.r.t. the first state and a set of quasi-consecutive events
+//     (used by test_section7_1_IEEE_49_11_H_Fig17, test_elementary_component_LB_loop).
+ GetTracesNc1stNqcSev(A,bnd,Sev) ==
+  UNION(i_).(i_ : 1..bnd+1 | {t_ |
+   t_ : Trace(A'states,A'events) & size(t_'string) = i_-1 &
+   #seqS_.(seqS_ : seq(A'states) & size(seqS_) = i_ &
+           seqS_(1) = A'x_0 & seqS_(i_) = t_'state &
+           !k_.(k_ : 1..i_-1 =>
+             (seqS_(k_),t_'string(k_),seqS_(k_+1)) : A'tf &
+             (k_ > 2 => seqS_(k_) /= seqS_(1)) &
+             (k_ > 1 & t_'string(k_) : Sev => t_'string(k_) /= t_'string(k_-1)) ) ) });
+
+// ... without cycles w.r.t. the first state and a set of quasi-consecutive events
+//     not to a targeted set of states (used by test_elementary_component_LB_loop).
+ GetTracesNc1stNqcSevSst(A,bnd,Sev,Sst) ==
+  UNION(i_).(i_ : 1..bnd+1 | {t_ |
+   t_ : Trace(A'states,A'events) & size(t_'string) = i_-1 &
+   #seqS_.(seqS_ : seq(A'states) & size(seqS_) = i_ &
+           seqS_(1) = A'x_0 & seqS_(i_) = t_'state &
+           !k_.(k_ : 1..i_-1 =>
+             (seqS_(k_),t_'string(k_),seqS_(k_+1)) : A'tf &
+             (k_ /= 1 =>  seqS_(k_) /= seqS_(1)) &
+             (k_ > 2 & t_'string(k_) : Sev & 
+                       seqS_(k_+1) /: Sst => t_'string(k_) /= t_'string(k_-2)) ) ) });
+
+//------------------
+
+// Generation of traces with a lamda abstraction.
+ baseCaseTr(A) == {rec(string: [], state: A'x_0)};
+ baseCaseTk(A) == {s_ | s_ : String(A'events) &
+                        size(s_) = 0 & A'x_0 : A'Xm };
+
+ indStepTr(A,T) == {t2_ | #(t1_,e_).(t1_ : T &
+  (t1_'state,e_,t2_'state) : A'tf & t2_'string = t1_'string<-e_ )};
+
+ indStepTrNC(A,T) == {t2_ | #(t1_,e_).(t1_ : T &
+  (t1_'state,e_,t2_'state ) : A'tf &
+  !k_.(k_ : 1..size(t1_'string) => t1_'string(k_) /= e_) &
+  t2_'string = t1_'string<-e_ )};
+
+// ... with cycles.
+ lambdaGetTraces(A,bnd,fun_) == /*@symbolic*/
+  %(Ti_,i_).(Ti_ : POW(Trace(A'states,A'events)) |
+   LET T_ BE T_ = Ti_ \/ indStepTr(A,Ti_) IN
+    IF i_ = bnd THEN T_ ELSE fun_(T_,i_+1) END
+   END );
+
+// ... without cycles w.r.t. events.
+ lambdaGetTracesNC(A,bnd,fun_) == /*@symbolic*/
+  %(Ti_,i_).(Ti_ : POW(Trace(A'states,A'events)) |
+   LET T_ BE T_ = Ti_ \/ indStepTrNC(A,Ti_) IN
+    IF i_ = bnd THEN T_ ELSE fun_(T_,i_+1) END
+   END );
+
+
+//---------------------------------------------------------------------
+
+
+// Generation of strings with a logical formula.
+ GetStrings(A, bnd) ==
+  UNION(i_).(i_ : 1..bnd+1 | {s_ |
+   s_ : String(A'events) & size(s_) = i_-1 &
+   #seqS_.(seqS_ : seq(A'states) & size(seqS_) = i_ &
+           seqS_(1) = A'x_0 &
+           !k_.(k_ : 1..i_-1 =>
+                (seqS_(k_),s_(k_),seqS_(k_+1)) : A'tf ) ) });
+
+
+//---------------------------------------------------------------------
+
+
+// Generation of a language model with a lambda abstraction
+
+// Generation of a language model (i.e., a pair of languages) with a lambda abstraction.
+// Usage: GetLgModel = LambdaGetLgModel(G,bound_Tr,GetLgModel) &
+//        M_G = GetLgModel(baseCaseTr(G),baseCaseTk(G),1),
+//        where GetLgModel is an ABSTRACT_CONSTANTS.
+// How to recover the languages:  L = prj1(POW(String(Events)),POW(String(Events)))(M_G)
+//                               Lm = prj2(POW(String(Events)),POW(String(Events)))(M_G)
+ lambdaGetLgModel(A,bnd,fun_) == /*@symbolic*/
+  %(Tr_i,Tk_i,i_).(Tr_i : POW(Trace(A'states,A'events)) &
+                   Tk_i : POW(String(A'events)) |
+   LET T_ BE T_ = indStepTr(A,Tr_i) IN
+    LET Tr,Tk BE Tr = Tr_i \/ T_ & Tk = Tk_i \/ Traces2Tasks(T_,A'Xm) IN
+     IF i_ = bnd THEN (Traces2Strings(Tr),Tk) ELSE fun_(Tr,Tk,i_+1) END
+    END END );
+
+// Generation of a language model without cycles w.r.t. events.
+ lambdaGetLgModelNC(A,bnd,fun_) == /*@symbolic*/
+  %(Tr_i,Tk_i,i_).(Tr_i : POW(Trace(A'states,A'events)) &
+                   Tk_i : POW(String(A'events)) |
+   LET T_ BE T_ = indStepTrNC(A,Tr_i) IN
+    LET Tr,Tk BE Tr = Tr_i \/ T_ & Tk = Tk_i \/ Traces2Tasks(T_,A'Xm) IN
+     IF i_ = bnd THEN (Traces2Strings(Tr),Tk) ELSE fun_(Tr,Tk,i_+1) END
+    END END );
+
+// Generation of a singleton set of language model with a lambda abstraction.
+// Usage: GetLgModel = LambdaGetSetLgModel(G,bound_Tr,GetLgModel) &
+//        M_G = GetLgModel(baseCaseTr(G),baseCaseTk(G),1),
+//        where GetLgModel is an ABSTRACT_CONSTANTS.
+// How to recover the languages: ANY L, Lm WHERE L : dom(M_G) & Lm : ran(M_G) THEN ...
+ lambdaGetSetLgModel(A,bnd,fun_) == /*@symbolic*/
+  %(Tr_i,Tk_i,i_).(Tr_i : POW(Trace(A'states,A'events)) &
+                   Tk_i : POW(String(A'events)) |
+   LET T_ BE T_ = indStepTr(A,Tr_i) IN
+    LET Tr,Tk BE Tr = Tr_i \/ T_ & Tk = Tk_i \/ Traces2Tasks(T_,A'Xm) IN
+     IF i_ = bnd THEN {(Traces2Strings(Tr),Tk)} ELSE fun_(Tr,Tk,i_+1) END
+    END END );
+
+
+//---------------------------------------------------------------------
+
+
+// Basic operations on strings.
+ Prefix(s) == {s__ | #k_.(k_ : 0..size(s) & s__ = s /|\ k_)};
+ Postfix(s) == {s__ | #k_.(k_ : 0..size(s) & s__ = s \|/ k_)};
+
+// Operations on languages of strings.
+ pr(L) == UNION(s_).(s_ : L | Prefix(s_));
+ pos_L(L,K) == {s1_ | s1_ : L & #s2_.(s2_ : K & s2_ : Prefix(s1_))};
+
+// The set of sublanguages of a prefix-closed language L that are prefix-closed.
+ F_L(L) == {K_ | K_ : POW(L) & Prefix_closed_(pr(K_),K_)};
+
+//---------------------------------------------------------------------
+
+// Determine the membership of a string to the language.
+ lambdaCheckMembership(A,fun_) == /*@symbolic*/
+  %(x_,s_).(x_ : A'states &
+            s_ : String(A'events) |
+   IF s_ = [] THEN TRUE ELSE
+      IF (x_,first(s_)) : dom(A'tf) THEN fun_(A'tf((x_,first(s_))),tail(s_)) ELSE
+         FALSE END END );
+
+// Get the state reachable after the occurrence a legal string or the last state
+// reachable while recognizing an illegal string.
+ lambdaGetReachableState(A,fun_) == /*@symbolic*/
+  %(x_,s_,s__).(x_ : A'states &
+                s_ : String(A'events) |
+   IF s_ = [] THEN (s__,x_) ELSE
+      IF (x_,first(s_)) : dom(A'tf) THEN fun_(A'tf((x_,first(s_))),tail(s_),s__) ELSE
+         (s_,x_) END END );
+
+//---------------------------------------------------------------------
+// Basic properties of the Supervisory Control Theory
+//   P.J. Ramadge and W.M. Wonham,
+//     The control of discrete event systems,
+//     Proceedings of the IEEE, 77 (1), 81-98, 1989.
+//   R. Kumar and V.K. Garg
+//     Modeling and Control of Logical Discrete Event Systems
+//     Kluwer Academic Publishers, 1995.
+//   C.G. Cassandras and S. Lafortune,
+//     Introduction to Discrete Event Systems,
+//     Springer Nature, 2021.
+//---------------------------------------------------------------------
+
+ AppendEvent(L,E) == UNION(s_,e_).(s_ : L & e_: E | {s_<-e_});
+
+// Prefix closure property.
+ Prefix_closed_(prK,K) == K = prK;
+
+// Postfix closure property.
+ Postfix_closed_(posK,K) == K = posK;
+
+// Nonblocking property.
+ NonBlocking(L,Lm) == pr(Lm) = L;
+
+// Lm(G)-closed property
+ Lm_closed_(prK,K,Lm) == K = prK /\ Lm;
+
+// Relative closure property or Lm(G)-closed property (K included in Lm).
+ Relative_closure_(prK,K,Lm) == K = prK /\ Lm;
+
+// Nonconflicting property also called modularity
+ Nonconflicting_(K1,K2) == pr(K1 /\ K2) = pr(K1) /\ pr(K2);
+
+// Controllability property (K included in E*).
+ Controllability_(prK,L,Eu) == AppendEvent(prK,Eu) /\ L <: prK;
+
+// Prefix-closed property
+ Prefix_closed(prK,K) == !s_.(s_ : prK => s_ : K);
+
+// Lm(G)-closed property
+ Lm_closed(prK,K,Lm) == !s_.(s_ : prK & s_: Lm => s_ : K);
+
+// Relative closure property or Lm(G)-closed property (K included in Lm).
+ Relative_closure(prK,K,Lm) == !s_.(s_ : prK & s_: Lm => s_ : K);
+
+// Controllability property (K included in E*).
+ Controllability(prK,L,Eu) ==
+  !(s_,e_).(s_ : prK & e_ : Eu & s_<-e_ : L => s_<-e_ : prK);
+
+// The class of sublanguages of $K$ that are controllable w.r.t. L and Eu.
+ C(K,L,Eu) == {J | J <: K & Controllability(pr(J),L,Eu)};
+
+//------------------
+
+// Supremal relative closed sublanguage of K (K included in Lm(G)).
+ supR(K,Lm) == K - {s_ | s_ : K &
+  #k_.(k_ : 0..size(s_) & s_/|\k_ : Lm & s_/|\k_ /: K) };
+
+// Inductive step of supC.
+// K included in Lm(G) or K included in L(G) and not prefix closed, L = L(G).
+ iStepSupC(K,prK,L,Eu) == K - {s_ | s_ : K &
+  #(k_,e_).(k_ : 0..size(s_) & e_ : Eu & 
+            (s_/|\k_)<-e_ : L & (s_/|\k_)<-e_ /: prK ) };
+
+// Inductive step of supC (another version).
+// K included in Lm(G) or K included in L(G) and not prefix closed, L = L(G).
+// *** This definition is slower than the previous one.
+ iStepSupC_(K,prK,L,Eu) == K - {s2_ | s2_ : K & #s1_.(s1_ : L &
+  last(s1_) : Eu & s1_ /: prK & front(s1_) : Prefix(s2_)) };
+
+// Inductive step of supC of a prefix-closed language K included in L = L(G).
+ iStepSupC_PC(K,L,Eu) == K - {s_ | s_ : K &
+  #(k_,e_).(k_ : 0..size(s_) & e_ : Eu &
+            (s_/|\k_)<-e_ : L & (s_/|\k_)<-e_ /: K ) };
+
+// Inductive step of supC of a prefix-closed language K included in L = L(G).
+// *** This definition is slower than the previous one.
+ iStepSupC_PC_(K,L,Eu) == K - {s2_ | s2_ : K &
+  #s1_.(s1_ : L & last(s1_) : Eu & s1_ /: K & front(s1_) : Prefix(s2_)) };
+
+//------------------
+
+// Standard definition of a supervisor.
+ Supervisor(L,E) == L --> POW(E);
+
+// For example, L = pr(supRC(.)) or L = pr(supC(.)).
+ supervisorENBL(L,E) == {s_, E_ | s_ : L &
+  E_ = {e_ | e_ : E & s_<-e_ : L} };
+
+//-----
+
+// State realization of a supervisor for finite languages.
+ SRsupervisor(X,Y,E) == X*Y +-> POW(E);
+
+// The range elements are subsets of enabled events.
+// For example, L = pr(supRC(.)) or L = pr(supC(.)).
+ SRsupervisorENBL(T_G,T_H,L,E) == {x_, y_, E_ |
+  E_ = {e_ | e_ : E & #(tG_,tH_).(tG_ : T_G & tH_ : T_H &
+   tH_'string = tG_'string & x_ = tG_'state & y_ = tH_'state &
+   tH_'string<-e_ : L )} & E_ /= {} };
+
+// The range elements are subsets of disabled events.
+// For example, K = pr(supRC(.)) or K = pr(supC(.)) and L prefix closed).
+ SRsupervisorDISBL(T_G,T_H,K,L,Ec) == {x_, y_, E_ |
+  E_ = {e_ | e_ : Ec & #(tG_,tH_).(tG_ : T_G & tH_ : T_H &
+   tH_'string = tG_'string & x_ = tG_'state & y_ = tH_'state &
+   tH_'string : K & tH_'string<-e_ /: K & tH_'string<-e_ : L )} & E_ /= {} };
+
+//-----
+
+// State realization of a supervisor for finite languages when H is
+// a subautomaton of G.
+ SRsupervisor_(X,E) == X +-> POW(E);
+
+// The range elements are subsets of enabled events (T is the set of traces of G or H).
+// For example, L = pr(supRC(.)) or L = pr(supC(.)).
+ SRsupervisorENBL_(T,L,E) == {x_, E_ |
+  E_ = {e_ | e_ : E & #t_.(t_ : T & x_ = t_'state & t_'string<-e_ : L)} & E_ /= {} };
+
+ SRsupervisorTrENBL_(T,E) == {x_, E_ |
+  E_ = {e_ | e_ : E & #(t1_,t2_).(t1_ : T & t2_ : T & x_ = t1_'state &
+   t2_'string = t1_'string<-e_ )} & E_ /= {} };
+
+// The range elements are subsets of disabled events (T is the set of traces of G).
+// For example, K = pr(supRC(.)) or K = pr(supC(.)) and L prefix closed).
+ SRsupervisorDISBL_(T,K,L,Ec) == {x_, E_ |
+  E_ = {e_ | e_: Ec & #t_.(t_ : T & x_ = t_'state &
+   t_'string : K & t_'string<-e_ /: K & t_'string<-e_ : L )} & E_ /= {} };
+
+// The supervisor is a relation
+  supervisor_e_map_(T, K) == {s_, e_ |
+  #t_.(t_: T & t_'string : K & t_'string<-e_ : K & s_ = t_'state) };
+
+//-----
+
+// State realization of a supervisor for sublanguages of infinite languages
+ SRsupervisor__(X,Y,E) == STRING*X*Y +-> POW(E);
+
+// The range elements are subsets of enabled events.
+// For example, L = pr(supRC(.)) or L = pr(supC(.)).
+ SRsupervisorENBLlabel(T_G,T_H,L,E,bnd) == {m_, x_, y_, E_ | m_ = "uncertain" &
+  E_ = {e_ | e_ : E & #(tG_,tH_).(tG_ : T_G & tH_ : T_H &
+   tH_'string = tG_'string & x_ = tG_'state & y_ = tH_'state &
+   size(tH_'string) = bnd-1 & tH_'string<-e_ : L )} & E_ /= {} } \/
+                                           {m_, x_, y_, E_ | m_ = "sure" &
+  E_ = {e_ | e_ : E & #(tG_,tH_).(tG_ : T_G & tH_ : T_H &
+   tH_'string = tG_'string & x_ = tG_'state & y_ = tH_'state &
+   size(tH_'string) < bnd-1 & tH_'string<-e_ : L )} & E_ /= {} };
+
+// The range elements are subsets of disabled events.
+// For example, K = pr(supRC(.)) or K = pr(supC(.)) and L prefix closed.
+ SRsupervisorDISBLlabel(T_G,T_H,K,L,Ec,bnd) == {m_, x_, y_, E_ | m_ = "uncertain" &
+  E_ = {e_ | e_ : Ec & #(tG_,tH_).(tG_ : T_G & tH_ : T_H &
+   tH_'string = tG_'string & x_ = tG_'state & y_ = tH_'state &
+   size(tH_'string) = bnd-1 & tH_'string : K & tH_'string<-e_ /: K &
+    tH_'string<-e_ : L )} & E_ /= {} } \/
+                                          {m_, x_, y_, E_ | m_ = "sure" &
+  E_ = {e_ | e_ : Ec & #(tG_,tH_).(tG_ : T_G & tH_ : T_H &
+   tH_'string = tG_'string & x_ = tG_'state & y_ = tH_'state &
+    size(tH_'string) < bnd-1 & tH_'string : K & tH_'string<-e_ /: K &
+    tH_'string<-e_ : L )} & E_ /= {} };
+
+//-----
+
+// State realization of a supervisor for sublanguages of infinite languages
+// when H is a subautomaton of G.
+ SRsupervisor___(X,E) == STRING*X +-> POW(E);
+
+ SRsupervisorENBLlabel_(T,L,E,bnd) == {m_, x_, E_ | m_ = "uncertain" &
+  E_ = {e_ | e_ : E & #t_.(t_ : T & x_ = t_'state &
+   size(t_'string) = bnd-1 & t_'string<-e_ : L )} & E_ /= {} } \/
+                                      {m_, x_, E_ | m_ = "sure" &
+  E_ = {e_ | e_ : E & #t_.(t_ : T & x_ = t_'state &
+   size(t_'string) < bnd-1 & t_'string<-e_ : L )} & E_ /= {} };
+
+ SRsupervisorTrENBLuncertain_(T,E,bnd) == {x_, E_ |
+  E_ = {e_ | e_ : E & #(t1_,t2_).(t1_ : T & t2_ : T & x_ = t1_'state &
+   size(t1_'string) = bnd-1 & t2_'string = t1_'string<-e_ )} & E_ /= {} };
+
+// The range elements are subsets of disabled events (T is the set of traces of G).
+// For example, K = pr(supRC(.)) or K = pr(supC(.)) an L prefix closed.
+ SRsupervisorDISBLlabel_(T,K,L,Ec,bnd) == {m_, x_, E_ | m_ = "uncertain" &
+  E_ = {e_ | e_ : Ec & #t_.(t_ : T & x_ = t_'state &
+   size(t_'string) = bnd-1 & t_'string : K & t_'string<-e_ /: K &
+   t_'string<-e_ : L )} & E_ /= {} } \/
+                                          {m_, x_, E_ | m_ = "sure" &
+  E_ = {e_ | e_ : Ec & #t_.(t_ : T & x_ = t_'state &
+   size(t_'string) < bnd-1 & t_'string : K & t_'string<-e_ /: K &
+   t_'string<-e_ : L )} & E_ /= {} };
+
+// Transition function of the closed-loop system from a function phi: Z --> POW(E).
+ tf_closed_loop(G_,H_,phi_) == {X1_,e_,X2_ | #(x1_,x2_,x3_,x4_).
+  (x1_ : G_'states & x2_ : H_'states &
+   x3_ : G_'states & x4_ : H_'states &
+   (x1_,e_,x3_) : G_'tf & (x2_,e_,x4_) : H_'tf &
+   e_ : phi(x1_|->x2_) & X1_ = x1_|->x2_ & X2_ = x3_|->x4_ ) };
+
+// Automaton of the closed-loop system from its transition function and
+// feedback function.
+ inducedCloseLoop(G_,H_,tf_) == rec(
+  states: {x1_,x2_ | x1_ : G_'states & x2_ : H_'states} /\ (dom(dom(tf_)) \/ ran(tf_)),
+  events: UNION (E_).(E_ : ran(phi) | E_),
+  tf: tf_,
+  x_0: G_'x_0|->H_'x_0,
+  Xm: {x1_,x2_ | x1_ : G_FB'Xm & x2_ : G_LB'Xm} /\ (dom(dom(tf_)) \/ ran(tf_)),
+  ctrlEvents: G_'ctrlEvents /\ UNION (E_).(E_ : ran(phi) | E_) );
+
+
+//---------------------------------------------------------------------
+// Control structure
+//   K. C. Wong and W. M. Wohnam,
+//     Hierarchical Control of Discrete-event systems
+//     Discrete Event Dynamic Systems: Theory and Applications,
+//     6 (), 241-273, 1996.
+//---------------------------------------------------------------------
+
+// A control structure.
+ ControlStructure(FL,L) == FL --> POW(POW(L));
+
+// Axioms for a map C_ to be a control structure w.r.t. the set of sublanguages
+// of a prefix-closed language L that are prefix-closed.
+ A1(C_,FL) == !(H_).(H_ : FL & C_(H_) <: POW(H_) =>         // {} : C_(H_) because A2
+  !(F_,F__).(F_ : C_(H_) & F__ : C_(H_) & F_ /= F__ => F_\/F__ : C_(H_)) );
+ A2(C_,FL) == !(H_).(H_ : FL => {} : C_(H_) & H_ : C_(H_));
+ A3(C_,FL) == !(H_,K_).(H_ : FL & K_ : C_(H_) => pr(K_) : C_(H_));
+ A4(C_,FL) == !(H_,F_).(H_ : FL & F_ : FL & H_ <: F_ => C_(F_) /\ POW(H_) <: C_(H_));
+
+// The set of pairs of languages H and F for which the condition of axiom A4 is
+// an equality, i.e., C_(F_) /\ POW(H_) = C_(H_)).
+ A4_eq(C_,FL) == {H_,F_ | H_ : FL & F_ : FL & H_ <<: F_ & H_ : F_L(F_) /\ C_(F_)}
