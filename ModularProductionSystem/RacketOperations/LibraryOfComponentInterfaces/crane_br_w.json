@@ -1,0 +1,12 @@
+{
+ "name" : "crane_br_w",
+"states" : ["CBRWp1", "CBRWp2", "CBRWp3", "CBRWw"],
+ "istate" : "CBRWw",
+ "mstates" : ["CBRWw"],
+ "events" : ["eop1", "eop2", "eop3", "pck1", "pck2", "pck3"],
+ "cevents" : ["pck1", "pck2", "pck3"],
+ "transitions" : [
+   ["CBRWw","pck1","CBRWp1"], ["CBRWp1","eop1","CBRWw"],
+   ["CBRWw","pck2","CBRWp2"], ["CBRWp2","eop2","CBRWw"],
+   ["CBRWw","pck3","CBRWp3"], ["CBRWp3","eop3","CBRWw"] ]
+}

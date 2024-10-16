@@ -1,0 +1,11 @@
+{
+ "name" : "tester",
+ "states" : ["TSTa", "TSTr", "TSTw"],
+ "istate" : "TSTr",
+ "mstates" : ["TSTr"],
+ "events" : ["eot", "failure", "success", "test"],
+ "cevents" : ["test", "failure"],
+ "transitions" : [
+    ["TSTr","test","TSTw"], ["TSTw","failure","TSTa"], ["TSTw","success","TSTa"],
+    ["TSTa","eot","TSTr"] ]
+}

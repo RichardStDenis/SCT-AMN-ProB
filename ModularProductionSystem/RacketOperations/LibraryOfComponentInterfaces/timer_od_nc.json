@@ -1,0 +1,10 @@
+{
+ "name" : "timer_od_nc",
+ "states" : ["Ti", "Tip", "Trtc"],
+ "istate" : "Ti",
+ "mstates" : ["Ti"],
+ "events" : ["dexp", "dsbl", "enbl"],
+ "cevents" : [ "dsbl", "enbl"],
+ "transitions" : [
+    ["Ti","enbl","Tip"], ["Tip","dexp","Trtc"], ["Trtc","dsbl","Ti"] ]
+}

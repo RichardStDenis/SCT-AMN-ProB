@@ -1,0 +1,12 @@
+{
+ "name" : "hook_ef",
+ "states" : ["HaWp", "HdWp", "HgWp", "HnWp", "Hrp", "Hwo"],
+ "istate" : "HnWp",
+ "mstates" : ["HnWp"],
+ "events" : ["abort", "confirm", "drop", "eod", "eog", "grab", "rst"],
+ "cevents" : ["confirm", "drop", "grab", "rst"],
+ "transitions" : [
+    ["HnWp","grab","Hwo"],  ["Hwo","confirm","HgWp"], ["HgWp","eog","HaWp"],
+    ["HaWp","drop","HdWp"], ["HdWp","eod","HnWp"],
+                            ["Hwo","abort","Hrp"], ["Hrp","rst","HnWp"] ]
+}

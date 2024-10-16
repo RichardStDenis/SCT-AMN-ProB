@@ -1,0 +1,10 @@
+{
+ "name" : "relay_sd_min",
+ "states" : ["Roff", "Rnoff"],
+ "istate" : "Roff",
+ "mstates" : ["Roff"],
+ "events" : ["activate", "eod"],
+ "cevents" : ["activate"],
+ "transitions" : [
+    ["Roff","activate","Rnoff"], ["Rnoff","eod","Roff"] ]
+}

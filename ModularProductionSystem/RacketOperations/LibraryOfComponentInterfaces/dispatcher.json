@@ -1,0 +1,14 @@
+{
+ "name" : "dispatcher",
+ "states" : ["Dp1", "Dp2", "Dp3", "Dp3p1", "Dp3p2", "Dpxp3"],
+ "istate" : "Dp3",
+ "mstates" : ["Dp1", "Dp2", "Dp3"],
+ "events" : ["p1s", "p2s", "p3s", "select1", "select2", "select3"],
+ "cevents" : ["select1", "select2", "select3"],
+ "transitions" : [
+    ["Dp3","select1","Dp3p1"], ["Dp3p1","p1s","Dp1"], ["Dp1","select2","Dp3p2"],
+                                                      ["Dp1","select3","Dpxp3"],
+    ["Dp3","select2","Dp3p2"], ["Dp3p2","p2s","Dp2"], ["Dp2","select1","Dp3p1"],
+                                                      ["Dp2","select3","Dpxp3"],
+    ["Dpxp3","p3s","Dp3"] ]
+}

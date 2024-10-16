@@ -1,0 +1,10 @@
+{
+ "name" : "crane_lr2_f_w",
+ "states" : ["Cidle", "Cexec"],
+ "istate" : "Cidle",
+ "mstates" : ["Cidle"],
+ "events" : ["rjct", "trsf"],
+ "cevents" : ["rjct", "trsf"],
+ "transitions" : [
+    ["Cidle","rjct","Cexec"], ["Cidle","trsf","Cexec"], ["Cexec","eoo","Cidle"] ]
+}

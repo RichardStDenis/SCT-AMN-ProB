@@ -1,0 +1,11 @@
+{
+ "name" : "relay_sd",
+ "states" : ["Rdtat", "Roff", "Ron", "Rptat"],
+ "istate" : "Roff",
+ "mstates" : ["Roff"],
+ "events" : ["activate", "deactivate", "eoa", "eod"],
+ "cevents" : ["activate", "deactivate"],
+ "transitions" : [
+    ["Roff","activate","Rdtat"], ["Rdtat","eoa","Ron"],
+    ["Ron","deactivate","Rptat"], ["Rptat","eod","Roff"] ]
+}

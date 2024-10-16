@@ -1,0 +1,10 @@
+{
+ "name" : "drill",
+ "states" : ["Dbusy", "Didle"],
+ "istate" : "Didle",
+ "mstates" : ["Didle"],
+ "events" : ["drill", "eod"],
+ "cevents" : ["drill", "eod"],
+ "transitions" : [
+    ["Didle","drill","Dbusy"], ["Dbusy","eod","Didle"] ]
+}

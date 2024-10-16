@@ -1,0 +1,12 @@
+{
+ "name" : "crane_lr",
+ "states" : ["CatL", "CatR", "CaWp", "CgWp", "CnrL", "CnrR"],
+ "istate" : "CatR",
+ "mstates" : ["CatR"],
+ "events" : ["eog", "eoml", "eomr", "grab", "ml", "mr"],
+ "cevents" : ["grab", "ml", "mr"],
+ "transitions" : [
+    ["CatR","ml","CnrL"], ["CnrL","eoml","CatL"],
+    ["CatL","mr","CnrR"], ["CnrR","eomr","CatR"],
+    ["CatL","grab","CgWp"], ["CgWp","eog","CaWp"], ["CaWp","mr","CnrR"] ]
+}

@@ -1,0 +1,11 @@
+{
+ "name" : "jack111",
+ "states" : ["Je", "Jie", "Jir", "Jr"],
+ "istate" : "Jr",
+ "mstates" : ["Jr"],
+ "events" : ["eoe", "eor", "extend", "retract"],
+ "cevents" : ["extend", "retract"],
+ "transitions" : [
+    ["Jr","extend","Jie"], ["Jie","eoe","Je"],
+    ["Je","retract","Jir"], ["Jir","eor","Jr"] ]
+}

@@ -1,0 +1,10 @@
+{
+ "name" : "stepperMotor",
+ "states" : ["SMnm", "SMim"],
+ "istate" : "SMnm",
+ "mstates" : ["SMnm"],
+ "events" : ["eor", "rotate"],
+ "cevents" : ["rotate"],
+ "transitions" : [
+    ["SMnm", "rotate", "SMim"], ["SMim", "eor", "SMnm"]]
+}

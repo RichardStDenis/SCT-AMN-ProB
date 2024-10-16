@@ -1,0 +1,11 @@
+{
+ "name" : "relay_ad_cc",
+ "states" : ["Roff", "Ron", "Rt0at", "Rt1at"],
+ "istate" : "Roff",
+ "mstates" : ["Roff"],
+ "events" : ["activate", "ca", "deactivate", "eoa", "eod"],
+ "cevents" : ["activate", "ca", "deactivate"],
+ "transitions" : [
+    ["Roff","activate","Rt1at"], ["Rt1at","eoa","Ron"], ["Rt1at","ca","Rt0at"],
+    ["Ron","deactivate","Rt0at"], ["Rt0at","eod","Roff"] ]
+}

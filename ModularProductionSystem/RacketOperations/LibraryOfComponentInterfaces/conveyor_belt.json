@@ -1,0 +1,10 @@
+{
+ "name" : "conveyor_belt",
+ "states" : ["BCidle", "BCim"],
+ "istate" : "BCnm",
+ "mstates" : ["BCnm"],
+ "events" : ["mso", "start"],
+ "cevents" : ["start"],
+ "transitions" : [
+    ["BCnm","start","BCim"], ["BCim","mso","BCnm"] ]
+}

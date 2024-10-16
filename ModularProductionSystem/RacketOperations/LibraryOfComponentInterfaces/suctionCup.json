@@ -1,0 +1,11 @@
+{
+ "name" : "suctionCup",
+ "states" : ["SCl", "SCnv", "SCp", "SCv"],
+ "istate" : "SCnv",
+ "mstates" : ["SCnv"],
+ "events" : ["expel", "hdp", "ldp", "pump"],
+ "cevents" : ["expel", "pump"],
+ "transitions" : [
+    ["SCnv","pump","SCp"], ["SCp","hdp","SCv"],
+    ["SCv","expel","SCl"], ["SCl","ldp","SCnv"] ]
+}

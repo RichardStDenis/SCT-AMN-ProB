@@ -1,0 +1,12 @@
+{
+ "name" : "servomotor",
+ "states" : ["SMatpos0", "SMatpos123", "SMnr0", "SMnr123"],
+ "istate" : "SMatpos0",
+ "mstates" : ["SMatpos0"],
+ "events" : ["eog0", "eog123", "gt0", "gt1", "gt2", "gt3"],
+ "cevents" : ["gt0", "gt1", "gt2", "gt3"],
+ "transitions" : [
+    ["SMatpos0","gt1","SMnr123"], ["SMatpos0","gt2","SMnr123"], 
+    ["SMatpos0","gt3","SMnr123"], ["SMnr123","eog123","SMatpos123"],
+    ["SMatpos123","gt0","SMnr0"], ["SMnr0","eog0","SMatpos0"] ]
+}

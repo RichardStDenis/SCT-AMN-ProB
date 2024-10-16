@@ -1,0 +1,10 @@
+{
+ "name" : "conveyor_ts",
+ "states" : ["Cisp", "Ciup"],
+ "istate" : "Cisp",
+ "mstates" : ["Cisp"],
+ "events" : ["eor", "rotate"],
+ "cevents" : ["rotate"],
+ "transitions" : [
+    ["Cisp","rotate","Ciup"], ["Ciup","eor","Cisp"] ]
+}

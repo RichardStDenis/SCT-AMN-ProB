@@ -1,0 +1,11 @@
+{
+ "name" : "crane_br",
+ "states" : ["CBRbusy", "CBRidle"],
+ "istate" : "CBRidle",
+ "mstates" : ["CBRidle"],
+ "events" : ["eot", "pck1", "pck2", "pck3"],
+ "cevents" : ["pck1", "pck2", "pck3"],
+ "transitions" : [
+    ["CBRidle","pck1","CBRbusy"], ["CBRidle","pck2","CBRbusy"],
+    ["CBRidle","pck3","CBRbusy"], ["CBRbusy","eot","CBRidle"] ]
+}
