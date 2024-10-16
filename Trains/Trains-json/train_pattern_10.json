@@ -1,0 +1,20 @@
+{
+ "name" : "train_pattern_10",
+ "states" : ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"],
+ "istate" : "s1",
+ "mstates" : ["s1"],
+ "events" : ["s1TOs2", "s2TOs3", "s3TOs4", "s4TOs5", "s5TOs6",
+             "s6TOs7", "s7TOs8", "s8TOs9", "s9TOs10", "s10TOs1"],
+ "cevents" : ["s2TOs3", "s4TOs5", "s6TOs7", "s8TOs9", "s10TOs1"],
+ "transitions" : [
+   ["s1","s1TOs2","s2"],
+   ["s2","s2TOs3","s3"],
+   ["s3","s3TOs4","s4"],
+   ["s4","s4TOs5","s5"],
+   ["s5","s5TOs6","s6"],
+   ["s6","s6TOs7","s7"],
+   ["s7","s7TOs8","s8"],
+   ["s8","s8TOs9","s9"],
+   ["s9","s9TOs10","s10"],
+   ["s10","s10TOs1","s1"] ]
+}

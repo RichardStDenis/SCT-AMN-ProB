@@ -1,0 +1,13 @@
+{
+ "name" : "train_pattern_4",
+ "states" : ["s1", "s2", "s3", "s4"],
+ "istate" : "s1",
+ "mstates" : ["s1"],
+ "events" : ["s1TOs2", "s2TOs3", "s3TOs4", "s4TOs1"],
+ "cevents" : ["s2TOs3", "s4TOs1"],
+ "transitions" : [
+   ["s1","s1TOs2","s2"],
+   ["s2","s2TOs3","s3"],
+   ["s3","s3TOs4","s4"],
+   ["s4","s4TOs1","s1"] ]
+}
