@@ -1,0 +1,506 @@
+Q1 --> Railway with 4 sections and 2 trains: 16 states and 32 transitions
+
+Bounds: 8 and 8
+Number of traces (free behavior): 511
+Number of words (free behavior): 511
+Number of tasks (free behavior): 75
+Number of traces (legal behavior): 61
+Number of tasks (legal behavior): 17
+Number of prefixes (legal behavior): 61
+Number of iterations: 2
+|supRC(K)|: 1
+|pr(supC(K))|: 1
+States of supC(K): {s2_s4}
+The state realization of the supervisor (enabled events): {}
+The state realization of the supervisor (uncertain enabled events): {}
+
+% Runtime for SOLUTION for SETUP_CONSTANTS: 170 ms (walltime: 170 ms)
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 1380 ms
+"Display statistics..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 1400 ms
+"Calculate supRC..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 1410 ms
+"Calculate supervisor..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 1420 ms
+"End of processing."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 1420 ms
+Deadlock reached after 6 steps (after DisplayEnd).
+
+% Finished processing file after 390 ms walltime (370 ms runtime), since start: 1440 ms
+
+--------
+
+Q2 --> Railway with 4 sections and 2 trains: 16 states and 32 transitions
+
+Bounds: 8 and 8
+Number of traces (free behavior): 511
+Number of words (free behavior): 511
+Number of tasks (free behavior): 75
+Number of traces (legal behavior): 1
+Number of tasks (legal behavior): 1
+Number of prefixes (legal behavior): 1
+Number of iterations: 1
+|supRC(K)|: 1
+|pr(supC(K))|: 1
+States of supC(K): {s2_s4}
+The state realization of the supervisor (enabled events): {}
+The state realization of the supervisor (uncertain enabled events): {}
+
+% Runtime for SOLUTION for SETUP_CONSTANTS: 160 ms (walltime: 160 ms)
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 1810 ms
+"Display statistics..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 1820 ms
+"Calculate supRC..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 1830 ms
+"Calculate supervisor..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 1840 ms
+"End of processing."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 1840 ms
+Deadlock reached after 6 steps (after DisplayEnd).
+% Finished processing file after 290 ms walltime (280 ms runtime), since start: 1860 ms
+
+
+----------------
+
+
+Q1 --> Railway with 6 sections and 2 trains: 36 states and 72 transitions
+
+Bounds: 12 and 12
+Number of traces (free behavior): 8191
+Number of words (free behavior): 8191
+Number of tasks (free behavior): 929
+Number of traces (legal behavior): 1821
+Number of tasks (legal behavior): 366
+Number of prefixes (legal behavior): 1336
+Number of iterations: 2
+|supRC(K)|: 100
+|pr(supC(K))|: 386
+States of supC(K):
+{ s1_s3, s1_s4,                   // s1_s5 and s1_s6 are deduced by symmetry
+  s2_s3, s2_s4, s2_s5, s2_s6,
+  s3_s1, s3_s2, s3_s5, s3_s6,
+  s4_s1, s4_s2, s4_s5, s4_s6,
+  s5_s1, s5_s2, s5_s3, s5_s4,
+  s6_s1, s6_s2, s6_s3, s6_s4
+}
+
+The state realization of the supervisor (enabled events):
+                             On uncontrollable events
+(s2_s4|->{t2_4t5}),
+ (s2_s5|->{t1_2t3}),          (s2_s5|->{t2_5t6}),
+  (s2_s6|->{t1_2t3}),
+
+                              (s3_s5|->{t1_3t4,t2_5t6}),
+(s3_s6|->{t2_6t1}),            (s3_s6|->{t1_3t4})
+                                (s3_s1|->{t1_3t4,t2_1t2}),
+                                 (s3_s2|->{t1_3t4}), <-- (2)
+
+                              (s4_s5|->{t2_5t6}),
+(s4_s6|->{t2_6t1}),
+ (s4_s1|->{t1_4t5}),           (s4_s1|->{t2_1t2}), <-- (1)
+  (s4_s2|->{t1_4t5}), t1 and t2 complete a cycle, symmetrically
+
+                              (s5_s1|->{t1_5t6,t2_1t2}),
+(s5_s2|->{t2_2t3}),            (s5_s2|->{t1_5t6}),
+                                (s5_s3|->{t1_5t6,t2_3t4}),
+                                 (s5_s4|->{t1_5t6}),
+
+                              (s6_s1|->{t2_1t2}),
+(s6_s2|->{t2_2t3}),
+ (s6_s3|->{t1_6t1}),           (s6_s3|->{t2_3t4}),
+  (s6_s4|->{t1_6t1}),
+
+                              (s1_s3|->{t1_1t2,t2_3t4}),
+                               (s1_s4)|->{t1_1t2}), --> (1)
+
+                               (s2_s3)|->{t2_3t4}) --> (2)
+
+The state realization of the supervisor (uncertain enabled events):
+{(s2_s3|->{t2_3t4}),(s1_s4|->{t1_1t2})}
+
+% Runtime for SOLUTION for SETUP_CONSTANTS: 690 ms (walltime: 910 ms)
+Finished Invariant Checking 0 ms walltime (10 ms runtime), since start: 8810 ms
+"Display statistics..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 8920 ms
+"Calculate supRC..."
+Finished Invariant Checking 0 ms walltime (10 ms runtime), since start: 12190 ms
+"Calculate supervisor..."
+Finished Invariant Checking 10 ms walltime (0 ms runtime), since start: 13000 ms
+"End of processing."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 13000 ms
+Deadlock reached after 6 steps (after DisplayEnd).
+% Finished processing file after 11800 ms walltime (9930 ms runtime), since start: 13380 ms
+
+--------
+
+Q2 --> Railway with 6 sections and 2 trains: 36 states and 72 transitions
+
+Bounds: 12 and 12
+Number of traces (free behavior): 8191
+Number of words (free behavior): 8191
+Number of tasks (free behavior): 929
+Number of traces (legal behavior): 190
+Number of tasks (legal behavior): 33
+Number of prefixes (legal behavior): 158
+Number of iterations: 2
+|supRC(K)|: 2
+|pr(supC(K))|: 13
+States of supC(K):
+{s1_s4,
+ s2_s4, s2_s5, s2_s6,
+ s3_s6,
+ s4_s1, s4_s2, s4_s6,
+ s5_s2,
+ s6_s2, s6_s3, s6_s4
+}
+
+The state realization of the supervisor (enabled events):
+                             On uncontrollable events
+(s2_s4|->{t2_4t5}),
+                              (s2_s5|->{t2_5t6}),
+
+(s2_s6|->{t1_2t3}),
+                              (s3_s6|->{t1_3t4}),
+(s4_s6|->{t2_6t1}),
+                              (s4_s1|->{t2_1t2}), <-- (1)
+(s4_s2|->{t1_4t5}), t1 and t2 complete a cycle, symmetrically
+                              (s5_s2|->{t1_5t6}),
+(s6_s2|->{t2_2t3}),
+                              (s6_s3|->{t2_3t4}),
+(s6_s4|->{t1_6t1}),
+                              (s1_s4|->{t1_1t2}), --> (1)
+
+The state realization of the supervisor (uncertain enabled events):
+{(s1_s4|->{t1_1t2})}
+
+% Runtime for SOLUTION for SETUP_CONSTANTS: 610 ms (walltime: 740 ms)
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 2770 ms
+"Display statistics..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 2800 ms
+"Calculate supRC..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 2860 ms
+"Calculate supervisor..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 2890 ms
+"End of processing."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 2890 ms
+Deadlock reached after 6 steps (after DisplayEnd).
+% Finished processing file after 1630 ms walltime (1300 ms runtime), since start: 3220 ms
+
+
+----------------
+
+
+Q1 --> Railway with 8 sections and 2 trains: 64 states and 128 transitions
+
+Bounds: 16 and 16
+Number of traces (free behavior): 131071
+Number of words (free behavior): 131071
+Number of tasks (free behavior): 12875
+Number of traces (legal behavior): 35344
+Number of tasks (legal behavior): 4745
+Number of prefixes (legal behavior): 18188
+Number of iterations: 2
+|supRC(K)|: 2009
+|pr(supC(K))|: 8075
+States of supC(K):
+{s1_s3, s1_s4,     // s1_s5 , s1_s6, s1_s7, and s1_s8  are deduced by symmetry
+ s2_s3, s2_s4, s2_s5, s2_s6, s2_s7, s2_s8,
+ s3_s1, s3_s2, s3_s5, s3_s6, s3_s7, s3_s8,
+ s4_s1, s4_s2, s4_s5, s4_s6, s4_s7, s4_s8,
+ s5_s1, s5_s2, s5_s3, s5_s4, s5_s7, s5_s8,
+ s6_s1, s6_s2, s6_s3, s6_s4, s6_s7, s6_s8
+ s7_s1, s7_s2, s7_s3, s7_s4,      // s7_s5 and s7_s6 are deduced by symmetry
+ s8_s1, s8_s2, s8_s3, s8_s4       // s8_s5 and s8_s6 are deduced by symmetry
+}
+
+The state realization of the supervisor (enabled events):
+                             On uncontrollable events
+(s2_s4|->{t2_4t5})
+ (s2_s5|->{t1_2t3}),          (s2_s5|->{t2_5t6}),
+  (s2_s6|->{t1_2t3,t2_6t7})
+   (s2_s7|->{t1_2t3}),         (s2_s7|->{t2_7t8}),
+    (s2_s8|->{t1_2t3}),
+
+                              (s3_s5|->{t1_3t4,t2_5t6}),
+(s3_s6|->{t2_6t7}),            (s3_s6|->{t1_3t4}),
+                                (s3_s7|->{t1_3t4,t2_7t8}),
+(s3_s8|->{t2_8t1}),              (s3_s8|->{t1_3t4}),
+                                  (s3_s1|->{t1_3t4,t2_1t2}),
+                                   (s3_s2|->{t1_3t4}), <-- (1)
+
+                              (s4_s5|->{t2_5t6}),
+(s4_s6|->{t2_6t7}),
+ (s4_s7|->{t1_4t5}),           (s4_s7|->{t1_7t8}),
+  (s4_s8|->{t1_4t5,t2_8t1}),
+   (s4_s1|->{t1_4t5}),          (s4_s1|->{t2_1t2}), <-- (2)
+    (s4_s2|->{t1_4t5}), t1 and t2 complete a cycle, symmetrically
+
+                              (s5_s7|->{t1_5t6,t2_7t8}),
+(s5_s8|->{t2_8t1}),            (s5_s8|->{t1_5t6}),
+                                (s5_s1|->{t1_5t6,t2_1t2}),
+ (s5_s2|->{t2_2t3}),             (s5_s2|->{t1_5t6}),
+                                  (s5_s3|->{t1_5t6,t2_3t4}),
+                                   (s5_s4|->{t1_5t6})
+
+                              (s6_s7|->{t2_7t8}),
+(s6_s8|->{t2_8t1})
+ (s6_s1|->{t1_6t7}),           (s6_s1|->{t2_1t2}),
+  (s6_s2|->{t1_6t7,t2_2t3}),
+   (s6_s3|->{t1_6t7}),          (s6_s3|->{t2_3t4}),
+    (s6_s4|->{t1_6t7}),
+
+                              (s7_s1|->{t1_7t8,t2_1t2}),
+(s7_s2|->{t2_2t3}),            (s7_s2|->{t1_7t8})
+                                (s7_s3|->{t1_7t8,t2_3t4})
+                                 (s7_s4|->{t1_7t8})
+
+                              (s8_s1|->{t2_1t2}),
+(s8_s2|->{t2_2t3}),
+ (s8_s3|->{t1_8t1}),           (s8_s3|->{t2_3t4})
+  (s8_s4|->{t1_8t1}),
+
+                              (s1_s3|->{t1_1t2,t2_3t4}),
+                               (s1_s4|->{t1_1t2}) --> (2)
+
+                              (s2_s3|->{t2_3t4}) --> (1)
+
+The state realization of the supervisor (uncertain enabled events):
+{(s2_s3|->{t2_3t4}),(s1_s4|->{t1_1t2})}
+
+% Runtime for SOLUTION for SETUP_CONSTANTS: 13150 ms (walltime: 24800 ms)
+Finished Invariant Checking 30 ms walltime (30 ms runtime), since start: 225410 ms
+"Display statistics..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 231550 ms
+"Calculate supRC..."
+Finished Invariant Checking 60 ms walltime (60 ms runtime), since start: 380860 ms
+"Calculate supervisor..."
+Finished Invariant Checking 240 ms walltime (230 ms runtime), since start: 694690 ms
+"End of processing."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 694690 ms
+Deadlock reached after 6 steps (after DisplayEnd).
+% Finished processing file after 700950 ms walltime (627940 ms runtime), since start: 702540 ms
+
+--------
+
+Q2 --> Railway with 8 sections and 2 trains: 64 states and 128 transitions
+
+Bounds: 16 and 16
+Number of traces (free behavior): 131071
+Number of words (free behavior): 131071
+Number of tasks (free behavior): 12875
+Number of traces (legal behavior): 9841
+Number of tasks (legal behavior): 1095
+Number of prefixes (legal behavior): 5104
+Number of iterations: 2
+|supRC(K)|: 217
+|pr(supC(K))|: 1209
+
+States of supC(K):
+{s1_s4,   // s1_s5 and s1_s6 are deduced by symmetry
+ s2_s4, s2_s5, s2_s6, s2_s7, s2_s8,
+ s3_s6, s3_s7, s3_s8,
+ s4_s1, s4_s2, s4_s6, s4_s7, s4_s8,
+ s5_s1, s5_s2, s5_s8,
+ s6_s1, s6_s2, s6_s3, s6_s4, s6_s8
+ s7_s2, s7_s3, s7_s4,
+ s8_s2, s8_s3, s8_s4              // s8_s5 and s8_s6 are deduced by symmetry
+}
+
+The state realization of the supervisor (enabled events):
+                             On uncontrollable events
+(s2_s4|->{t2_4t5}),
+                              (s2_s5|->{t2_5t6}),
+ (s2_s6|->{t1_2t3,t2_6t7}),
+  (s2_s7|->{t1_2t3}),         (s2_s7|->{t2_7t8}),
+   (s2_s8|->{t1_2t3}),
+
+(s3_s6|->{t2_6t7}),           (s3_s6|->{t1_3t4}),
+                               (s3_s7|->{t1_3t4,t2_7t8}),
+                                (s3_s8|->{t1_3t4}),
+
+(s4_s6|->{t2_6t7}),
+                              (s4_s7|->{t2_7t8}),
+ (s4_s8|->{t1_4t5,t2_8t1}),
+  (s4_s1|->{t1_4t5}),         (s4_s1|->{t2_1t2}), <-- (1)
+   (s4_s2|->{t1_4t5}), t1 and t2 complete a cycle, symmetrically
+
+(s5_s8|->{t2_8t1}),           (s5_s8|->{t1_5t6}),
+                               (s5_s1|->{t1_5t6,t2_1t2}),
+                                (s5_s2|->{t1_5t6}),
+
+(s6_s8|->{t2_8t1}),
+                              (s6_s1|->{t2_1t2}),
+ (s6_s2|->{t1_6t7,t2_2t3}),
+  (s6_s3|->{t1_6t7}),         (s6_s3|->{t2_3t4}),
+   (s6_s4|->{t1_6t7}),
+
+(s7_s2|->{t2_2t3}),           (s7_s2|->{t1_7t8}),
+                               (s7_s3|->{t1_7t8,t2_3t4}),
+                                (s7_s4)|->{t1_7t8}),
+
+(s8_s2|->{t2_2t3}),
+                              (s8_s3|->{t2_3t4}),
+ (s8_s4|->{t1_8t1}),
+
+                              (s1_s4|->{t1_1t2}) --> (1)
+
+The state realization of the supervisor (uncertain enabled events):
+{(s1_s4|->{t1_1t2})}
+
+% Runtime for SOLUTION for SETUP_CONSTANTS: 11380 ms (walltime: 24130 ms)
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 61140 ms
+"Display statistics..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 63020 ms
+"Calculate supRC..."
+Finished Invariant Checking 10 ms walltime (10 ms runtime), since start: 79640 ms
+"Calculate supervisor..."
+Finished Invariant Checking 50 ms walltime (50 ms runtime), since start: 87740 ms
+"End of processing."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 87740 ms
+Deadlock reached after 6 steps (after DisplayEnd).
+% Finished processing file after 100840 ms walltime (66840 ms runtime), since start: 102420 ms
+
+
+----------------
+
+
+Q1 --> Railway with 10 sections and 2 trains: 100 states and 200 transitions
+
+Bounds: 20 and 20
+Number of traces (free behavior): 2097151
+Number of words (free behavior): 2097151
+Number of tasks (free behavior): 184761
+Number of traces (legal behavior): 596872
+Number of tasks (legal behavior): 58599
+Number of prefixes (legal behavior): 230457
+Number of iterations: 2
+|supRC(K)|: 26619
+|pr(supC(K))|: 110887
+
+% Runtime for SOLUTION for SETUP_CONSTANTS: 321130 ms (walltime: 839930 ms)
+Finished Invariant Checking 670 ms walltime (660 ms runtime), since start: 6534400 ms
+"Display statistics..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 7783270 ms
+"Calculate supRC..."
+Finished Invariant Checking 1250 ms walltime (1180 ms runtime), since start: 11973280 ms
+^C### TIME-OUT raised during closure expansion ([e_],check_no_inf).
+### set TRACE_INFO preference to TRUE for more details.
+Runtime until TIME-OUT: 25055850
+*** exiting multiple error blocks (4 -> 2) for my_findall_catch_no_error ***
+### TIME-OUT raised during closure expansion ([x_,E_],check_no_inf).
+### set TRACE_INFO preference to TRUE for more details.
+Runtime until TIME-OUT: 33518020
+
+*** User-Interrupt (CTRL-C) while executing operation "GetSupervisors"
+
+*** exiting multiple error blocks (2 -> 0) for catch_enumeration_warning_exceptions ***
+! user_interrupt_signal
+
+
+--------
+
+
+Q2 --> Railway with 10 sections and 2 trains: 100 states and 200 transitions
+
+Bounds: 20 and 20
+Number of traces (free behavior): 2097151
+Number of words (free behavior): 2097151
+Number of tasks (free behavior): 184761
+Number of traces (legal behavior): 228289
+Number of tasks (legal behavior): 16017
+Number of prefixes (legal behavior): 77617
+Number of iterations: 2
+|supRC(K)|: 5151
+|pr(supC(K))|: 29053
+States of supC(K):
+{s1_s4,   // s1_s5 , s1_s6, s1_s7, and s1_s8  are deduced by symmetry
+ s2_s4, s2_s5, s2_s6, s2_s7, s2_s8, s2_s9, s2_s10,
+ s3_s6, s3_s7, s3_s8, s3_s9, s3_s10,
+ s4_s1, s4_s2, s4_s6, s4_s7, s4_s8, s4_s9, s4_s10,
+ s5_s1, s5_s2, s5_s8, s5_s9, s5_s10,
+ s6_s1, s6_s2, s6_s3, s6_s4, s6_s8, s6_s9, s6_s10,
+ s7_s1, s7_s2, s7_s3, s7_s4, s7_s10,
+ s8_s1, s8_s2, s8_s3, s8_s4, s8_s10,   // s8_s5 and s8_s6 are deduced by symmetry
+ s9_s2, s9_s3, s9_s4,                  // s9_s5 and s9_s6 are deduced by symmetry
+ s10_s2, s10_s3, s10_s4                // s10_s5, s10_s6, s10_s7, and s10_s8 are deduced by symmetry
+}
+
+The state realization of the supervisor (enabled events):
+
+                             On uncontrollable events
+(s2_s4|->{t2_4t5}),
+                              (s2_s5)|->{t2_5t6}),
+ (s2_s6|->{t1_2t3,t2_6t7}),
+  (s2_s7|->{t1_2t3}),          (s2_s7|->{t2_7t8}),
+   (s2_s8|->{t1_2t3,t2_8t9}),
+    (s2_s9|->{t1_2t3}),         (s2_s9|->{t2_9t10}),
+     (s2_s10|->{t1_2t3}), *** s2_s1 is illegal, the event t2_10t1 is not anabled
+
+(s3_s6|->{t2_6t7}),           (s3_s6|->{t1_3t4}),
+                               (s3_s7|->{t1_3t4,t2_7t8}),
+ (s3_s8|->{t2_8t9}),            (s3_s8|->{t1_3t4}),
+                                 (s3_s9)|->{t1_3t4,t2_9t10}),
+                                  (s3_s10)|->{t1_3t4}),
+  *** s3_s1 is illegal, the event t2_10t1 is not enabled
+
+(s4_s6|->{t2_6t7}),
+                              (s4_s7|->{t2_7t8}),
+ (s4_s8|->{t1_4t5,t2_8t9}),
+  (s4_s9|->{t1_4t5}),          (s4_s9|->{t2_9t10}),
+   (s4_s10|->{t1_4t5,t2_10t1}),
+    (s4_s1|->{t1_4t5}),         (s4_s1|->{t2_1t2}), <-- (1)
+     (s4_s2|->{t1_4t5}), t1 and t2 complete a cycle, symmetrically
+     *** s4_s3 is illegal, the event t2_2t3 is not enabled
+
+(s5_s8|->{t2_8t9}),           (s5_s8|->{t1_5t6}),
+                               (s5_s9|->{t1_5t6,t2_9t10}),
+ (s5_s10|->{t2_10t1}),          (s5_s10|->{t1_5t6}),
+                                 (s5_s1|->{t1_5t6,t2_1t2}),
+                                  (s5_s2)|->{t1_5t6}),
+  *** s5_s3 is illegal, the event t2_2t3 is not enabled
+
+(s6_s8|->{t2_8t9}),
+                              (s6_s9|->{t2_9t10}),
+ (s6_s10|->{t1_6t7,t2_10t1}),
+  (s6_s1|->{t1_6t7}),          (s6_s1|->{t2_1t2),
+   (s6_s2|->{t1_6t7,t2_2t3}),
+    (s6_s3|->{t1_6t7}),         (s6_s3|->{t2_3t4}),
+     (s6_s4|->{t1_6t7}),
+
+(s7_s10|->{t2_10t1}),         (s7_s10|->{t1_7t8}),
+                               (s7_s1|->{t1_7t8,t2_1t2}),
+ (s7_s2|->{t2_2t3}),            (s7_s2|->{t1_7t8}),
+                                 (s7_s3|->{t1_7t8,t2_3t4}),
+                                  (s7_s4|->{t1_7t8}),
+
+(s8_s10|->{t2_10t1}),
+                              (s8_s1|->{t2_1t2}),
+ (s8_s2|->{t1_8t9,t2_2t3}),
+  (s8_s3|->{t1_8t9}),        (s8_s3|->{t2_3t4}),
+   (s8_s4|->{t1_8t9}),
+
+(s9_s2|->{t2_2t3}),
+                              (s9_s3|->{t1_9t10,t2_3t4}),
+                               (s9_s4|->{t1_9t10}),
+(s10_s2|->{t2_2t3}),
+                               (s10_s3|->{t2_3t4}),
+ (s10_s4|->{t1_10t1}),
+
+                              (s1_s4|->{t1_2t4}), --> (1)
+
+The state realization of the supervisor (uncertain enabled events):
+{(s1_s4|->{t1_1t2})}
+
+
+% Runtime for SOLUTION for SETUP_CONSTANTS: 274880 ms (walltime: 792130 ms)
+Finished Invariant Checking 150 ms walltime (140 ms runtime), since start: 2048820 ms
+"Display statistics..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 2267560 ms
+"Calculate supRC..."
+Finished Invariant Checking 270 ms walltime (270 ms runtime), since start: 2987580 ms
+"Calculate supervisor..."
+Finished Invariant Checking 1970 ms walltime (1960 ms runtime), since start: 12059880 ms
+"End of processing."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 12059880 ms
+Deadlock reached after 6 steps (after DisplayEnd).
+Segmentation fault: 11

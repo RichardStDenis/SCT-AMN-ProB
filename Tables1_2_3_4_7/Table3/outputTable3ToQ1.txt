@@ -1,0 +1,1139 @@
+Trains (total observation --- iterative solution,
+first predicate.
+
+4 sections, 2 trains: 16 states and 32 transitions
+
+Predicate (12 states):
+ iteration number 1
+ iteration number 2
+ iteration number 3
+Iterative solution
+supCCP (1 reachable states):
+{s2_s4}
+
+Disabled events: {(s2_s4|->{t1_2t3,t2_4t1})}
+Enabled events: {(s2_s4|->{})}
+
+
+% Runtime for SOLUTION for SETUP_CONSTANTS: 80 ms (walltime: 80 ms)
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 2100 ms
+"Display statistics..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 2120 ms
+"Compute iteratively the supremal coreachable controllable predicate..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 2190 ms
+"Compute SFBC (disabled events)..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 2200 ms
+"Compute SFBC (enabled events)..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 2210 ms
+"The SFBC functions are complementary."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 2210 ms
+Deadlock reached after 7 steps (after CheckComplementarity_).
+% Finished processing file after 270 ms walltime (250 ms runtime), since start: 2220 ms
+
+-------------------------------------------------
+
+6 sections, 2 trains: 36 states and 72 transitions
+
+Predicate (30 states):
+ iteration number 1
+ iteration number 2
+Iterative solution
+supCCP (24 reachable states):
+{s3_s1,s1_s3,s4_s1,s3_s2,s2_s3,s1_s4,s5_s1,s4_s2,s2_s4,s1_s5,
+ s6_s1,s5_s2,s2_s5,s1_s6,s6_s2,s5_s3,s3_s5,s2_s6,s6_s3,s5_s4,
+ s4_s5,s3_s6,s6_s4,s4_s6}
+
+Disabled events:
+{(s3_s1|->{}),(s1_s3|->{}),(s4_s1|->{}),(s3_s2|->{t2_2t3}),
+ (s2_s3|->{t1_2t3}),(s1_s4|->{}),(s5_s1|->{}),(s4_s2|->{t2_2t3}),
+ (s2_s4|->{t1_2t3}),(s1_s5|->{}),(s6_s1|->{t1_6t1}),(s5_s2|->{}),
+ (s2_s5|->{}),(s1_s6|->{t2_6t1}),(s6_s2|->{t1_6t1}),(s5_s3|->{}),
+ (s3_s5|->{}),(s2_s6|->{t2_6t1}),(s6_s3|->{}),(s5_s4|->{t2_4t5}),
+ (s4_s5|->{t1_4t5}),(s3_s6|->{}),(s6_s4|->{t2_4t5}),(s4_s6|->{t1_4t5})}
+Enabled events: 
+{(s3_s1|->{t1_3t4,t2_1t2}),(s1_s3|->{t1_1t2,t2_3t4}),(s4_s1|->{t1_4t5,t2_1t2}),
+ (s3_s2|->{t1_3t4}),(s2_s3|->{t2_3t4}),(s1_s4|->{t1_1t2,t2_4t5}),
+ (s5_s1|->{t1_5t6,t2_1t2}),(s4_s2|->{t1_4t5}),(s2_s4|->{t2_4t5}),
+ (s1_s5|->{t1_1t2,t2_5t6}),(s6_s1|->{t2_1t2}),(s5_s2|->{t1_5t6,t2_2t3}),
+ (s2_s5|->{t1_2t3,t2_5t6}),(s1_s6|->{t1_1t2}),(s6_s2|->{t2_2t3}),
+ (s5_s3|->{t1_5t6,t2_3t4}),(s3_s5|->{t1_3t4,t2_5t6}),(s2_s6|->{t1_2t3}),
+ (s6_s3|->{t1_6t1,t2_3t4}),(s5_s4|->{t1_5t6}),(s4_s5|->{t2_5t6}),
+ (s3_s6|->{t1_3t4,t2_6t1}),(s6_s4|->{t1_6t1}),(s4_s6|->{t2_6t1})}
+
+% Runtime for SOLUTION for SETUP_CONSTANTS: 80 ms (walltime: 80 ms)
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 1700 ms
+"Display statistics..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 1720 ms
+"Compute iteratively the supremal coreachable controllable predicate..."
+Finished Invariant Checking 10 ms walltime (0 ms runtime), since start: 2120 ms
+"Compute SFBC (disabled events)..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 2130 ms
+"Compute SFBC (enabled events)..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 2140 ms
+"The SFBC functions are complementary."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 2150 ms
+Deadlock reached after 7 steps (after CheckComplementarity_).
+% Finished processing file after 600 ms walltime (590 ms runtime), since start: 2160 ms
+
+-------------------------------------------------
+
+8 sections, 2 trains: 64 states and 128 transitions
+
+Predicate (56 states):
+ iteration number 1
+ iteration number 2
+Iterative solution
+supCCP (48 reachable states):
+{s3_s1,s1_s3,s4_s1,s3_s2,s2_s3,s1_s4,s5_s1,s4_s2,s2_s4,s1_s5,
+ s6_s1,s5_s2,s2_s5,s1_s6,s7_s1,s6_s2,s5_s3,s3_s5,s2_s6,s1_s7,
+ s8_s1,s7_s2,s6_s3,s5_s4,s4_s5,s3_s6,s2_s7,s1_s8,s8_s2,s7_s3,
+ s6_s4,s4_s6,s3_s7,s2_s8,s8_s3,s7_s4,s4_s7,s3_s8,s8_s4,s7_s5,
+ s5_s7,s4_s8,s8_s5,s7_s6,s6_s7,s5_s8,s8_s6,s6_s8}
+
+Disabled events:
+{(s3_s1|->{}),(s1_s3|->{}),(s4_s1|->{}),(s3_s2|->{t2_2t3}),(s2_s3|->{t1_2t3}),
+ (s1_s4|->{}),(s5_s1|->{}),(s4_s2|->{t2_2t3}),(s2_s4|->{t1_2t3}),(s1_s5|->{}),
+ (s6_s1|->{}),(s5_s2|->{}),(s2_s5|->{}),(s1_s6|->{}),(s7_s1|->{}),(s6_s2|->{}),
+ (s5_s3|->{}),(s3_s5|->{}),(s2_s6|->{}),(s1_s7|->{}),(s8_s1|->{t1_8t1}),(s7_s2|->{}),
+ (s6_s3|->{}),(s5_s4|->{t2_4t5}),(s4_s5|->{t1_4t5}),(s3_s6|->{}),(s2_s7|->{}),
+ (s1_s8|->{t2_8t1}),(s8_s2|->{t1_8t1}),(s7_s3|->{}),(s6_s4|->{t2_4t5}),
+ (s4_s6|->{t1_4t5}),(s3_s7|->{}),(s2_s8|->{t2_8t1}),(s8_s3|->{}),(s7_s4|->{}),
+ (s4_s7|->{}),(s3_s8|->{}),(s8_s4|->{}),(s7_s5|->{}),(s5_s7|->{}),(s4_s8|->{}),
+ (s8_s5|->{}),(s7_s6|->{t2_6t7}),(s6_s7|->{t1_6t7}),(s5_s8|->{}),(s8_s6|->{t2_6t7}),
+ (s6_s8|->{t1_6t7})}
+Enabled events:
+{(s3_s1|->{t1_3t4,t2_1t2}),(s1_s3|->{t1_1t2,t2_3t4}),(s4_s1|->{t1_4t5,t2_1t2}),
+ (s3_s2|->{t1_3t4}),(s2_s3|->{t2_3t4}),(s1_s4|->{t1_1t2,t2_4t5}),
+ (s5_s1|->{t1_5t6,t2_1t2}),(s4_s2|->{t1_4t5}),(s2_s4|->{t2_4t5}),
+ (s1_s5|->{t1_1t2,t2_5t6}),(s6_s1|->{t1_6t7,t2_1t2}),(s5_s2|->{t1_5t6,t2_2t3}),
+ (s2_s5|->{t1_2t3,t2_5t6}),(s1_s6|->{t1_1t2,t2_6t7}),(s7_s1|->{t1_7t8,t2_1t2}),
+ (s6_s2|->{t1_6t7,t2_2t3}),(s5_s3|->{t1_5t6,t2_3t4}),(s3_s5|->{t1_3t4,t2_5t6}),
+ (s2_s6|->{t1_2t3,t2_6t7}),(s1_s7|->{t1_1t2,t2_7t8}),(s8_s1|->{t2_1t2}),
+ (s7_s2|->{t1_7t8,t2_2t3}),(s6_s3|->{t1_6t7,t2_3t4}),(s5_s4|->{t1_5t6}),
+ (s4_s5|->{t2_5t6}),(s3_s6|->{t1_3t4,t2_6t7}),(s2_s7|->{t1_2t3,t2_7t8}),
+ (s1_s8|->{t1_1t2}),(s8_s2|->{t2_2t3}),(s7_s3|->{t1_7t8,t2_3t4}),
+ (s6_s4|->{t1_6t7}),(s4_s6|->{t2_6t7}),(s3_s7|->{t1_3t4,t2_7t8}),
+ (s2_s8|->{t1_2t3}),(s8_s3|->{t1_8t1,t2_3t4}),(s7_s4|->{t1_7t8,t2_4t5}),
+ (s4_s7|->{t1_4t5,t2_7t8}),(s3_s8|->{t1_3t4,t2_8t1}),(s8_s4|->{t1_8t1,t2_4t5}),
+ (s7_s5|->{t1_7t8,t2_5t6}),(s5_s7|->{t1_5t6,t2_7t8}),(s4_s8|->{t1_4t5,t2_8t1}),
+ (s8_s5|->{t1_8t1,t2_5t6}),(s7_s6|->{t1_7t8}),(s6_s7|->{t2_7t8}),
+ (s5_s8|->{t1_5t6,t2_8t1}),(s8_s6|->{t1_8t1}),(s6_s8|->{t2_8t1})}
+
+% Runtime for SOLUTION for SETUP_CONSTANTS: 80 ms (walltime: 90 ms)
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 1740 ms
+"Display statistics..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 1750 ms
+"Compute iteratively the supremal coreachable controllable predicate..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 4010 ms
+"Compute SFBC (disabled events)..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 4020 ms
+"Compute SFBC (enabled events)..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 4050 ms
+"The SFBC functions are complementary."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 4050 ms
+Deadlock reached after 7 steps (after CheckComplementarity_).
+% Finished processing file after 2470 ms walltime (2460 ms runtime), since start: 4060 ms
+
+-------------------------------------------------
+
+10 sections, 2 trains: 100 states and 200 transitions
+
+Predicate (90 states):
+ iteration number 1
+ iteration number 2
+Iterative solution
+supCCP (80 reachable states):
+{s3_s1,s1_s3,s4_s1,s3_s2,s2_s3,s1_s4,s5_s1,s4_s2,s2_s4,s1_s5,
+ s6_s1,s5_s2,s2_s5,s1_s6,s7_s1,s6_s2,s5_s3,s3_s5,s2_s6,s1_s7,
+ s8_s1,s7_s2,s6_s3,s5_s4,s4_s5,s3_s6,s2_s7,s1_s8,s9_s1,s8_s2,
+ s7_s3,s6_s4,s4_s6,s3_s7,s2_s8,s1_s9,s10_s1,s9_s2,s8_s3,s7_s4,
+ s4_s7,s3_s8,s2_s9,s1_s10,s10_s2,s9_s3,s8_s4,s7_s5,s5_s7,s4_s8,
+ s3_s9,s2_s10,s10_s3,s9_s4,s8_s5,s7_s6,s6_s7,s5_s8,s4_s9,s3_s10,
+ s10_s4,s9_s5,s8_s6,s6_s8,s5_s9,s4_s10,s10_s5,s9_s6,s6_s9,s5_s10,
+ s10_s6,s9_s7,s7_s9,s6_s10,s10_s7,s9_s8,s8_s9,s7_s10,s10_s8,s8_s10}
+
+Disabled events:
+{(s3_s1|->{}),(s1_s3|->{}),(s4_s1|->{}),(s3_s2|->{t2_2t3}),(s2_s3|->{t1_2t3}),
+ (s1_s4|->{}),(s5_s1|->{}),(s4_s2|->{t2_2t3}),(s2_s4|->{t1_2t3}),(s1_s5|->{}),
+ (s6_s1|->{}),(s5_s2|->{}),(s2_s5|->{}),(s1_s6|->{}),(s7_s1|->{}),(s6_s2|->{}),
+ (s5_s3|->{}),(s3_s5|->{}),(s2_s6|->{}),(s1_s7|->{}),(s8_s1|->{}),(s7_s2|->{}),
+ (s6_s3|->{}),(s5_s4|->{t2_4t5}),(s4_s5|->{t1_4t5}),(s3_s6|->{}),(s2_s7|->{}),
+ (s1_s8|->{}),(s9_s1|->{}),(s8_s2|->{}),(s7_s3|->{}),(s6_s4|->{t2_4t5}),
+ (s4_s6|->{t1_4t5}),(s3_s7|->{}),(s2_s8|->{}),(s1_s9|->{}),(s10_s1|->{t1_10t1}),
+ (s9_s2|->{}),(s8_s3|->{}),(s7_s4|->{}),(s4_s7|->{}),(s3_s8|->{}),(s2_s9|->{}),
+ (s1_s10|->{t2_10t1}),(s10_s2|->{t1_10t1}),(s9_s3|->{}),(s8_s4|->{}),(s7_s5|->{}),
+ (s5_s7|->{}),(s4_s8|->{}),(s3_s9|->{}),(s2_s10|->{t2_10t1}),(s10_s3|->{}),
+ (s9_s4|->{}),(s8_s5|->{}),(s7_s6|->{t2_6t7}),(s6_s7|->{t1_6t7}),(s5_s8|->{}),
+ (s4_s9|->{}),(s3_s10|->{}),(s10_s4|->{}),(s9_s5|->{}),(s8_s6|->{t2_6t7}),
+ (s6_s8|->{t1_6t7}),(s5_s9|->{}),(s4_s10|->{}),(s10_s5|->{}),(s9_s6|->{}),
+ (s6_s9|->{}),(s5_s10|->{}),(s10_s6|->{}),(s9_s7|->{}),(s7_s9|->{}),
+ (s6_s10|->{}),(s10_s7|->{}),(s9_s8|->{t2_8t9}),(s8_s9|->{t1_8t9}),
+ (s7_s10|->{}),(s10_s8|->{t2_8t9}),(s8_s10|->{t1_8t9})}
+Enabled events:
+{(s3_s1|->{t1_3t4,t2_1t2}),(s1_s3|->{t1_1t2,t2_3t4}),(s4_s1|->{t1_4t5,t2_1t2}),
+ (s3_s2|->{t1_3t4}),(s2_s3|->{t2_3t4}),(s1_s4|->{t1_1t2,t2_4t5}),
+ (s5_s1|->{t1_5t6,t2_1t2}),(s4_s2|->{t1_4t5}),(s2_s4|->{t2_4t5}),
+ (s1_s5|->{t1_1t2,t2_5t6}),(s6_s1|->{t1_6t7,t2_1t2}),(s5_s2|->{t1_5t6,t2_2t3}),
+ (s2_s5|->{t1_2t3,t2_5t6}),(s1_s6|->{t1_1t2,t2_6t7}),(s7_s1|->{t1_7t8,t2_1t2}),
+ (s6_s2|->{t1_6t7,t2_2t3}),(s5_s3|->{t1_5t6,t2_3t4}),(s3_s5|->{t1_3t4,t2_5t6}),
+ (s2_s6|->{t1_2t3,t2_6t7}),(s1_s7|->{t1_1t2,t2_7t8}),(s8_s1|->{t1_8t9,t2_1t2}),
+ (s7_s2|->{t1_7t8,t2_2t3}),(s6_s3|->{t1_6t7,t2_3t4}),(s5_s4|->{t1_5t6}),
+ (s4_s5|->{t2_5t6}),(s3_s6|->{t1_3t4,t2_6t7}),(s2_s7|->{t1_2t3,t2_7t8}),
+ (s1_s8|->{t1_1t2,t2_8t9}),(s9_s1|->{t1_9t10,t2_1t2}),(s8_s2|->{t1_8t9,t2_2t3}),
+ (s7_s3|->{t1_7t8,t2_3t4}),(s6_s4|->{t1_6t7}),(s4_s6|->{t2_6t7}),
+ (s3_s7|->{t1_3t4,t2_7t8}),(s2_s8|->{t1_2t3,t2_8t9}),(s1_s9|->{t1_1t2,t2_9t10}),
+ (s10_s1|->{t2_1t2}),(s9_s2|->{t1_9t10,t2_2t3}),(s8_s3|->{t1_8t9,t2_3t4}),
+ (s7_s4|->{t1_7t8,t2_4t5}),(s4_s7|->{t1_4t5,t2_7t8}),(s3_s8|->{t1_3t4,t2_8t9}),
+ (s2_s9|->{t1_2t3,t2_9t10}),(s1_s10|->{t1_1t2}),(s10_s2|->{t2_2t3}),
+ (s9_s3|->{t1_9t10,t2_3t4}),(s8_s4|->{t1_8t9,t2_4t5}),(s7_s5|->{t1_7t8,t2_5t6}),
+ (s5_s7|->{t1_5t6,t2_7t8}),(s4_s8|->{t1_4t5,t2_8t9}),(s3_s9|->{t1_3t4,t2_9t10}),
+ (s2_s10|->{t1_2t3}),(s10_s3|->{t1_10t1,t2_3t4}),(s9_s4|->{t1_9t10,t2_4t5}),
+ (s8_s5|->{t1_8t9,t2_5t6}),(s7_s6|->{t1_7t8}),(s6_s7|->{t2_7t8}),
+ (s5_s8|->{t1_5t6,t2_8t9}),(s4_s9|->{t1_4t5,t2_9t10}),(s3_s10|->{t1_3t4,t2_10t1}),
+ (s10_s4|->{t1_10t1,t2_4t5}),(s9_s5|->{t1_9t10,t2_5t6}),(s8_s6|->{t1_8t9}),
+ (s6_s8|->{t2_8t9}),(s5_s9|->{t1_5t6,t2_9t10}),(s4_s10|->{t1_4t5,t2_10t1}),
+ (s10_s5|->{t1_10t1,t2_5t6}),(s9_s6|->{t1_9t10,t2_6t7}),(s6_s9|->{t1_6t7,t2_9t10}),
+ (s5_s10|->{t1_5t6,t2_10t1}),(s10_s6|->{t1_10t1,t2_6t7}),(s9_s7|->{t1_9t10,t2_7t8}),
+ (s7_s9|->{t1_7t8,t2_9t10}),(s6_s10|->{t1_6t7,t2_10t1}),(s10_s7|->{t1_10t1,t2_7t8}),
+ (s9_s8|->{t1_9t10}),(s8_s9|->{t2_9t10}),(s7_s10|->{t1_7t8,t2_10t1}),
+ (s10_s8|->{t1_10t1}),(s8_s10|->{t2_10t1})}
+
+% Runtime for SOLUTION for SETUP_CONSTANTS: 90 ms (walltime: 90 ms)
+Finished Invariant Checking 10 ms walltime (0 ms runtime), since start: 1780 ms
+"Display statistics..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 1790 ms
+"Compute iteratively the supremal coreachable controllable predicate..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 13530 ms
+"Compute SFBC (disabled events)..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 13550 ms
+"Compute SFBC (enabled events)..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 13580 ms
+"The SFBC functions are complementary."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 13590 ms
+Deadlock reached after 7 steps (after CheckComplementarity_).
+% Finished processing file after 11980 ms walltime (11960 ms runtime), since start: 13600 ms
+
+-------------------------------------------------
+
+12 sections, 2 trains: 144 states and 288 transitions
+
+Predicate (132 states):
+ iteration number 1
+ iteration number 2
+Iterative solution
+supCCP (120 reachable states):
+{s3_s1,s1_s3,s4_s1,s3_s2,s2_s3,s1_s4,s5_s1,s4_s2,s2_s4,s1_s5,
+ s6_s1,s5_s2,s2_s5,s1_s6,s7_s1,s6_s2,s5_s3,s3_s5,s2_s6,s1_s7,
+ s8_s1,s7_s2,s6_s3,s5_s4,s4_s5,s3_s6,s2_s7,s1_s8,s9_s1,s8_s2,
+ s7_s3,s6_s4,s4_s6,s3_s7,s2_s8,s1_s9,s10_s1,s9_s2,s8_s3,s7_s4,
+ s4_s7,s3_s8,s2_s9,s1_s10,s11_s1,s10_s2,s9_s3,s8_s4,s7_s5,s5_s7,
+ s4_s8,s3_s9,s2_s10,s1_s11,s12_s1,s11_s2,s10_s3,s9_s4,s8_s5,s7_s6,
+ s6_s7,s5_s8,s4_s9,s3_s10,s2_s11,s1_s12,s12_s2,s11_s3,s10_s4,s9_s5,
+ s8_s6,s6_s8,s5_s9,s4_s10,s3_s11,s2_s12,s12_s3,s11_s4,s10_s5,s9_s6,
+ s6_s9,s5_s10,s4_s11,s3_s12,s12_s4,s11_s5,s10_s6,s9_s7,s7_s9,s6_s10,
+ s5_s11,s4_s12,s12_s5,s11_s6,s10_s7,s9_s8,s8_s9,s7_s10,s6_s11,s5_s12,
+ s12_s6,s11_s7,s10_s8,s8_s10,s7_s11,s6_s12,s12_s7,s11_s8,s8_s11,s7_s12,
+ s12_s8,s11_s9,s9_s11,s8_s12,s12_s9,s11_s10,s10_s11,s9_s12,s12_s10,s10_s12}
+
+Disabled events:
+{(s3_s1|->{}),(s1_s3|->{}),(s4_s1|->{}),(s3_s2|->{t2_2t3}),(s2_s3|->{t1_2t3}),
+ (s1_s4|->{}),(s5_s1|->{}),(s4_s2|->{t2_2t3}),(s2_s4|->{t1_2t3}),(s1_s5|->{}),
+ (s6_s1|->{}),(s5_s2|->{}),(s2_s5|->{}),(s1_s6|->{}),(s7_s1|->{}),(s6_s2|->{}),
+ (s5_s3|->{}),(s3_s5|->{}),(s2_s6|->{}),(s1_s7|->{}),(s8_s1|->{}),(s7_s2|->{}),
+ (s6_s3|->{}),(s5_s4|->{t2_4t5}),(s4_s5|->{t1_4t5}),(s3_s6|->{}),(s2_s7|->{}),
+ (s1_s8|->{}),(s9_s1|->{}),(s8_s2|->{}),(s7_s3|->{}),(s6_s4|->{t2_4t5}),
+ (s4_s6|->{t1_4t5}),(s3_s7|->{}),(s2_s8|->{}),(s1_s9|->{}),(s10_s1|->{}),
+ (s9_s2|->{}),(s8_s3|->{}),(s7_s4|->{}),(s4_s7|->{}),(s3_s8|->{}),(s2_s9|->{}),
+ (s1_s10|->{}),(s11_s1|->{}),(s10_s2|->{}),(s9_s3|->{}),(s8_s4|->{}),(s7_s5|->{}),
+ (s5_s7|->{}),(s4_s8|->{}),(s3_s9|->{}),(s2_s10|->{}),(s1_s11|->{}),
+ (s12_s1|->{t1_12t1}),(s11_s2|->{}),(s10_s3|->{}),(s9_s4|->{}),(s8_s5|->{}),
+ (s7_s6|->{t2_6t7}),(s6_s7|->{t1_6t7}),(s5_s8|->{}),(s4_s9|->{}),(s3_s10|->{}),
+ (s2_s11|->{}),(s1_s12|->{t2_12t1}),(s12_s2|->{t1_12t1}),(s11_s3|->{}),
+ (s10_s4|->{}),(s9_s5|->{}),(s8_s6|->{t2_6t7}),(s6_s8|->{t1_6t7}),(s5_s9|->{}),
+ (s4_s10|->{}),(s3_s11|->{}),(s2_s12|->{t2_12t1}),(s12_s3|->{}),(s11_s4|->{}),
+ (s10_s5|->{}),(s9_s6|->{}),(s6_s9|->{}),(s5_s10|->{}),(s4_s11|->{}),(s3_s12|->{}),
+ (s12_s4|->{}),(s11_s5|->{}),(s10_s6|->{}),(s9_s7|->{}),(s7_s9|->{}),(s6_s10|->{}),
+ (s5_s11|->{}),(s4_s12|->{}),(s12_s5|->{}),(s11_s6|->{}),(s10_s7|->{}),
+ (s9_s8|->{t2_8t9}),(s8_s9|->{t1_8t9}),(s7_s10|->{}),(s6_s11|->{}),(s5_s12|->{}),
+ (s12_s6|->{}),(s11_s7|->{}),(s10_s8|->{t2_8t9}),(s8_s10|->{t1_8t9}),(s7_s11|->{}),
+ (s6_s12|->{}),(s12_s7|->{}),(s11_s8|->{}),(s8_s11|->{}),(s7_s12|->{}),(s12_s8|->{}),
+ (s11_s9|->{}),(s9_s11|->{}),(s8_s12|->{}),(s12_s9|->{}),(s11_s10|->{t2_10t11}),
+ (s10_s11|->{t1_10t11}),(s9_s12|->{}),(s12_s10|->{t2_10t11}),(s10_s12|->{t1_10t11})}
+Enabled events:
+{(s3_s1|->{t1_3t4,t2_1t2}),(s1_s3|->{t1_1t2,t2_3t4}),(s4_s1|->{t1_4t5,t2_1t2}),
+ (s3_s2|->{t1_3t4}),(s2_s3|->{t2_3t4}),(s1_s4|->{t1_1t2,t2_4t5}),
+ (s5_s1|->{t1_5t6,t2_1t2}),(s4_s2|->{t1_4t5}),(s2_s4|->{t2_4t5}),
+ (s1_s5|->{t1_1t2,t2_5t6}),(s6_s1|->{t1_6t7,t2_1t2}),(s5_s2|->{t1_5t6,t2_2t3}),
+ (s2_s5|->{t1_2t3,t2_5t6}),(s1_s6|->{t1_1t2,t2_6t7}),(s7_s1|->{t1_7t8,t2_1t2}),
+ (s6_s2|->{t1_6t7,t2_2t3}),(s5_s3|->{t1_5t6,t2_3t4}),(s3_s5|->{t1_3t4,t2_5t6}),
+ (s2_s6|->{t1_2t3,t2_6t7}),(s1_s7|->{t1_1t2,t2_7t8}),(s8_s1|->{t1_8t9,t2_1t2}),
+ (s7_s2|->{t1_7t8,t2_2t3}),(s6_s3|->{t1_6t7,t2_3t4}),(s5_s4|->{t1_5t6}),
+ (s4_s5|->{t2_5t6}),(s3_s6|->{t1_3t4,t2_6t7}),(s2_s7|->{t1_2t3,t2_7t8}),
+ (s1_s8|->{t1_1t2,t2_8t9}),(s9_s1|->{t1_9t10,t2_1t2}),(s8_s2|->{t1_8t9,t2_2t3}),
+ (s7_s3|->{t1_7t8,t2_3t4}),(s6_s4|->{t1_6t7}),(s4_s6|->{t2_6t7}),
+ (s3_s7|->{t1_3t4,t2_7t8}),(s2_s8|->{t1_2t3,t2_8t9}),(s1_s9|->{t1_1t2,t2_9t10}),
+ (s10_s1|->{t1_10t11,t2_1t2}),(s9_s2|->{t1_9t10,t2_2t3}),(s8_s3|->{t1_8t9,t2_3t4}),
+ (s7_s4|->{t1_7t8,t2_4t5}),(s4_s7|->{t1_4t5,t2_7t8}),(s3_s8|->{t1_3t4,t2_8t9}),
+ (s2_s9|->{t1_2t3,t2_9t10}),(s1_s10|->{t1_1t2,t2_10t11}),(s11_s1|->{t1_11t12,t2_1t2}),
+ (s10_s2|->{t1_10t11,t2_2t3}),(s9_s3|->{t1_9t10,t2_3t4}),(s8_s4|->{t1_8t9,t2_4t5}),
+ (s7_s5|->{t1_7t8,t2_5t6}),(s5_s7|->{t1_5t6,t2_7t8}),(s4_s8|->{t1_4t5,t2_8t9}),
+ (s3_s9|->{t1_3t4,t2_9t10}),(s2_s10|->{t1_2t3,t2_10t11}),(s1_s11|->{t1_1t2,t2_11t12}),
+ (s12_s1|->{t2_1t2}),(s11_s2|->{t1_11t12,t2_2t3}),(s10_s3|->{t1_10t11,t2_3t4}),
+ (s9_s4|->{t1_9t10,t2_4t5}),(s8_s5|->{t1_8t9,t2_5t6}),(s7_s6|->{t1_7t8}),
+ (s6_s7|->{t2_7t8}),(s5_s8|->{t1_5t6,t2_8t9}),(s4_s9|->{t1_4t5,t2_9t10}),
+ (s3_s10|->{t1_3t4,t2_10t11}),(s2_s11|->{t1_2t3,t2_11t12}),(s1_s12|->{t1_1t2}),
+ (s12_s2|->{t2_2t3}),(s11_s3|->{t1_11t12,t2_3t4}),(s10_s4|->{t1_10t11,t2_4t5}),
+ (s9_s5|->{t1_9t10,t2_5t6}),(s8_s6|->{t1_8t9}),(s6_s8|->{t2_8t9}),
+ (s5_s9|->{t1_5t6,t2_9t10}),(s4_s10|->{t1_4t5,t2_10t11}),(s3_s11|->{t1_3t4,t2_11t12}),
+ (s2_s12|->{t1_2t3}),(s12_s3|->{t1_12t1,t2_3t4}),(s11_s4|->{t1_11t12,t2_4t5}),
+ (s10_s5|->{t1_10t11,t2_5t6}),(s9_s6|->{t1_9t10,t2_6t7}),(s6_s9|->{t1_6t7,t2_9t10}),
+ (s5_s10|->{t1_5t6,t2_10t11}),(s4_s11|->{t1_4t5,t2_11t12}),(s3_s12|->{t1_3t4,t2_12t1}),
+ (s12_s4|->{t1_12t1,t2_4t5}),(s11_s5|->{t1_11t12,t2_5t6}),(s10_s6|->{t1_10t11,t2_6t7}),
+ (s9_s7|->{t1_9t10,t2_7t8}),(s7_s9|->{t1_7t8,t2_9t10}),(s6_s10|->{t1_6t7,t2_10t11}),
+ (s5_s11|->{t1_5t6,t2_11t12}),(s4_s12|->{t1_4t5,t2_12t1}),(s12_s5|->{t1_12t1,t2_5t6}),
+ (s11_s6|->{t1_11t12,t2_6t7}),(s10_s7|->{t1_10t11,t2_7t8}),(s9_s8|->{t1_9t10}),
+ (s8_s9|->{t2_9t10}),(s7_s10|->{t1_7t8,t2_10t11}),(s6_s11|->{t1_6t7,t2_11t12}),
+ (s5_s12|->{t1_5t6,t2_12t1}),(s12_s6|->{t1_12t1,t2_6t7}),(s11_s7|->{t1_11t12,t2_7t8}),
+ (s10_s8|->{t1_10t11}),(s8_s10|->{t2_10t11}),(s7_s11|->{t1_7t8,t2_11t12}),
+ (s6_s12|->{t1_6t7,t2_12t1}),(s12_s7|->{t1_12t1,t2_7t8}),(s11_s8|->{t1_11t12,t2_8t9}),
+ (s8_s11|->{t1_8t9,t2_11t12}),(s7_s12|->{t1_7t8,t2_12t1}),(s12_s8|->{t1_12t1,t2_8t9}),
+ (s11_s9|->{t1_11t12,t2_9t10}),(s9_s11|->{t1_9t10,t2_11t12}),(s8_s12|->{t1_8t9,t2_12t1}),
+ (s12_s9|->{t1_12t1,t2_9t10}),(s11_s10|->{t1_11t12}),(s10_s11|->{t2_11t12}),
+ (s9_s12|->{t1_9t10,t2_12t1}),(s12_s10|->{t1_12t1}),(s10_s12|->{t2_12t1})}
+
+% Runtime for SOLUTION for SETUP_CONSTANTS: 90 ms (walltime: 90 ms)
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 1820 ms
+"Display statistics..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 1830 ms
+"Compute iteratively the supremal coreachable controllable predicate..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 30430 ms
+"Compute SFBC (disabled events)..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 30450 ms
+"Compute SFBC (enabled events)..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 30500 ms
+"The SFBC functions are complementary."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 30500 ms
+Deadlock reached after 7 steps (after CheckComplementarity_).
+% Finished processing file after 28850 ms walltime (28790 ms runtime), since start: 30510 ms
+
+-------------------------------------------------
+
+6 sections, 3 trains: 216 states and 648 transitions
+
+Predicate (120 states):
+ iteration number 1
+ iteration number 2
+ iteration number 3
+Iterative solution
+supCCP (1 reachable states):
+{s2_s4_s6}
+
+Disabled events: {(s2_s4_s6|->{t1_2t3,t2_4t5,t3_6t1})}
+Enabled events: {(s2_s4_s6|->{})}
+
+% Runtime for SOLUTION for SETUP_CONSTANTS: 100 ms (walltime: 90 ms)
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 1990 ms
+"Display statistics..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 2010 ms
+"Compute iteratively the supremal coreachable controllable predicate..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 4600 ms
+"Compute SFBC (disabled events)..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 4600 ms
+"Compute SFBC (enabled events)..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 4610 ms
+"The SFBC functions are complementary."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 4610 ms
+% Finished processing file after 2800 ms walltime (2790 ms runtime), since start: 4620 ms
+
+-------------------------------------------------
+
+8 sections, 3 trains: 512 states and 1536 transitions
+
+Predicate (336 states):
+ iteration number 1
+ iteration number 2
+Iterative solution
+supCCP (96 reachable states):
+{s5_s1_s3,s3_s5_s1,s1_s3_s5,s6_s1_s3,s5_s1_s4,s5_s2_s3,s4_s5_s1,
+ s3_s5_s2,s3_s6_s1,s2_s3_s5,s1_s3_s6,s1_s4_s5,s7_s1_s3,s6_s1_s4,
+ s6_s2_s3,s5_s2_s4,s4_s5_s2,s4_s6_s1,s3_s6_s2,s3_s7_s1,s2_s3_s6,
+ s2_s4_s5,s1_s3_s7,s1_s4_s6,s8_s1_s3,s7_s1_s4,s7_s2_s3,s6_s2_s4,
+ s4_s6_s2,s4_s7_s1,s3_s7_s2,s3_s8_s1,s2_s3_s7,s2_s4_s6,s1_s3_s8,
+ s1_s4_s7,s8_s1_s4,s8_s2_s3,s7_s1_s5,s7_s2_s4,s5_s7_s1,s4_s7_s2,
+ s4_s8_s1,s3_s8_s2,s2_s3_s8,s2_s4_s7,s1_s4_s8,s1_s5_s7,s8_s1_s5,
+ s8_s2_s4,s7_s1_s6,s7_s2_s5,s6_s7_s1,s5_s7_s2,s5_s8_s1,s4_s8_s2,
+ s2_s4_s8,s2_s5_s7,s1_s5_s8,s1_s6_s7,s8_s1_s6,s8_s2_s5,s7_s2_s6,
+ s7_s3_s5,s6_s7_s2,s6_s8_s1,s5_s7_s3,s5_s8_s2,s3_s5_s7,s2_s5_s8,
+ s2_s6_s7,s1_s6_s8,s8_s2_s6,s8_s3_s5,s7_s3_s6,s7_s4_s5,s6_s7_s3,
+ s6_s8_s2,s5_s7_s4,s5_s8_s3,s4_s5_s7,s3_s5_s8,s3_s6_s7,s2_s6_s8,
+ s8_s3_s6,s8_s4_s5,s7_s4_s6,s6_s7_s4,s6_s8_s3,s5_s8_s4,s4_s5_s8,
+ s4_s6_s7,s3_s6_s8,s8_s4_s6,s6_s8_s4,s4_s6_s8}
+
+Disabled events:
+{(s5_s1_s3|->{}),(s3_s5_s1|->{}),(s1_s3_s5|->{}),(s6_s1_s3|->{}),(s5_s1_s4|->{t3_4t5}),
+ (s5_s2_s3|->{t2_2t3}),(s4_s5_s1|->{t1_4t5}),(s3_s5_s2|->{t3_2t3}),(s3_s6_s1|->{}),
+ (s2_s3_s5|->{t1_2t3}),(s1_s3_s6|->{}),(s1_s4_s5|->{t2_4t5}),(s7_s1_s3|->{}),
+ (s6_s1_s4|->{t3_4t5}),(s6_s2_s3|->{t2_2t3}),(s5_s2_s4|->{t2_2t3,t3_4t5}),
+ (s4_s5_s2|->{t1_4t5,t3_2t3}),(s4_s6_s1|->{t1_4t5}),(s3_s6_s2|->{t3_2t3}),
+ (s3_s7_s1|->{}),(s2_s3_s6|->{t1_2t3}),(s2_s4_s5|->{t1_2t3,t2_4t5}),
+ (s1_s3_s7|->{}),(s1_s4_s6|->{t2_4t5}),(s8_s1_s3|->{t1_8t1}),(s7_s1_s4|->{}),
+ (s7_s2_s3|->{t2_2t3}),(s6_s2_s4|->{t2_2t3,t3_4t5}),(s4_s6_s2|->{t1_4t5,t3_2t3}),
+ (s4_s7_s1|->{}),(s3_s7_s2|->{t3_2t3}),(s3_s8_s1|->{t2_8t1}),(s2_s3_s7|->{t1_2t3}),
+ (s2_s4_s6|->{t1_2t3,t2_4t5}),(s1_s3_s8|->{t3_8t1}),(s1_s4_s7|->{}),(s8_s1_s4|->{t1_8t1}),
+ (s8_s2_s3|->{t1_8t1,t2_2t3}),(s7_s1_s5|->{}),(s7_s2_s4|->{t2_2t3}),(s5_s7_s1|->{}),
+ (s4_s7_s2|->{t3_2t3}),(s4_s8_s1|->{t2_8t1}),(s3_s8_s2|->{t2_8t1,t3_2t3}),
+ (s2_s3_s8|->{t1_2t3,t3_8t1}),(s2_s4_s7|->{t1_2t3}),(s1_s4_s8|->{t3_8t1}),
+ (s1_s5_s7|->{}),(s8_s1_s5|->{t1_8t1}),(s8_s2_s4|->{t1_8t1,t2_2t3}),(s7_s1_s6|->{t3_6t7}),
+ (s7_s2_s5|->{}),(s6_s7_s1|->{t1_6t7}),(s5_s7_s2|->{}),(s5_s8_s1|->{t2_8t1}),
+ (s4_s8_s2|->{t2_8t1,t3_2t3}),(s2_s4_s8|->{t1_2t3,t3_8t1}),(s2_s5_s7|->{}),
+ (s1_s5_s8|->{t3_8t1}),(s1_s6_s7|->{t2_6t7}),(s8_s1_s6|->{t1_8t1,t3_6t7}),
+ (s8_s2_s5|->{t1_8t1}),(s7_s2_s6|->{t3_6t7}),(s7_s3_s5|->{}),(s6_s7_s2|->{t1_6t7}),
+ (s6_s8_s1|->{t1_6t7,t2_8t1}),(s5_s7_s3|->{}),(s5_s8_s2|->{t2_8t1}),(s3_s5_s7|->{}),
+ (s2_s5_s8|->{t3_8t1}),(s2_s6_s7|->{t2_6t7}),(s1_s6_s8|->{t2_6t7,t3_8t1}),
+ (s8_s2_s6|->{t1_8t1,t3_6t7}),(s8_s3_s5|->{}),(s7_s3_s6|->{t3_6t7}),(s7_s4_s5|->{t2_4t5}),
+ (s6_s7_s3|->{t1_6t7}),(s6_s8_s2|->{t1_6t7,t2_8t1}),(s5_s7_s4|->{t3_4t5}),(s5_s8_s3|->{}),
+ (s4_s5_s7|->{t1_4t5}),(s3_s5_s8|->{}),(s3_s6_s7|->{t2_6t7}),(s2_s6_s8|->{t2_6t7,t3_8t1}),
+ (s8_s3_s6|->{t3_6t7}),(s8_s4_s5|->{t2_4t5}),(s7_s4_s6|->{t2_4t5,t3_6t7}),
+ (s6_s7_s4|->{t1_6t7,t3_4t5}),(s6_s8_s3|->{t1_6t7}),(s5_s8_s4|->{t3_4t5}),
+ (s4_s5_s8|->{t1_4t5}),(s4_s6_s7|->{t1_4t5,t2_6t7}),(s3_s6_s8|->{t2_6t7}),
+ (s8_s4_s6|->{t2_4t5,t3_6t7}),(s6_s8_s4|->{t1_6t7,t3_4t5}),(s4_s6_s8|->{t1_4t5,t2_6t7})}
+Enabled events:
+{(s5_s1_s3|->{t1_5t6,t2_1t2,t3_3t4}),(s3_s5_s1|->{t1_3t4,t2_5t6,t3_1t2}),
+ (s1_s3_s5|->{t1_1t2,t2_3t4,t3_5t6}),(s6_s1_s3|->{t1_6t7,t2_1t2,t3_3t4}),
+ (s5_s1_s4|->{t1_5t6,t2_1t2}),(s5_s2_s3|->{t1_5t6,t3_3t4}),(s4_s5_s1|->{t2_5t6,t3_1t2}),
+ (s3_s5_s2|->{t1_3t4,t2_5t6}),(s3_s6_s1|->{t1_3t4,t2_6t7,t3_1t2}),
+ (s2_s3_s5|->{t2_3t4,t3_5t6}),(s1_s3_s6|->{t1_1t2,t2_3t4,t3_6t7}),
+ (s1_s4_s5|->{t1_1t2,t3_5t6}),(s7_s1_s3|->{t1_7t8,t2_1t2,t3_3t4}),
+ (s6_s1_s4|->{t1_6t7,t2_1t2}),(s6_s2_s3|->{t1_6t7,t3_3t4}),(s5_s2_s4|->{t1_5t6}),
+ (s4_s5_s2|->{t2_5t6}),(s4_s6_s1|->{t2_6t7,t3_1t2}),(s3_s6_s2|->{t1_3t4,t2_6t7}),
+ (s3_s7_s1|->{t1_3t4,t2_7t8,t3_1t2}),(s2_s3_s6|->{t2_3t4,t3_6t7}),(s2_s4_s5|->{t3_5t6}),
+ (s1_s3_s7|->{t1_1t2,t2_3t4,t3_7t8}),(s1_s4_s6|->{t1_1t2,t3_6t7}),
+ (s8_s1_s3|->{t2_1t2,t3_3t4}),(s7_s1_s4|->{t1_7t8,t2_1t2,t3_4t5}),
+ (s7_s2_s3|->{t1_7t8,t3_3t4}),(s6_s2_s4|->{t1_6t7}),(s4_s6_s2|->{t2_6t7}),
+ (s4_s7_s1|->{t1_4t5,t2_7t8,t3_1t2}),(s3_s7_s2|->{t1_3t4,t2_7t8}),
+ (s3_s8_s1|->{t1_3t4,t3_1t2}),(s2_s3_s7|->{t2_3t4,t3_7t8}),(s2_s4_s6|->{t3_6t7}),
+ (s1_s3_s8|->{t1_1t2,t2_3t4}),(s1_s4_s7|->{t1_1t2,t2_4t5,t3_7t8}),
+ (s8_s1_s4|->{t2_1t2,t3_4t5}),(s8_s2_s3|->{t3_3t4}),(s7_s1_s5|->{t1_7t8,t2_1t2,t3_5t6}),
+ (s7_s2_s4|->{t1_7t8,t3_4t5}),(s5_s7_s1|->{t1_5t6,t2_7t8,t3_1t2}),
+ (s4_s7_s2|->{t1_4t5,t2_7t8}),(s4_s8_s1|->{t1_4t5,t3_1t2}),(s3_s8_s2|->{t1_3t4}),
+ (s2_s3_s8|->{t2_3t4}),(s2_s4_s7|->{t2_4t5,t3_7t8}),(s1_s4_s8|->{t1_1t2,t2_4t5}),
+ (s1_s5_s7|->{t1_1t2,t2_5t6,t3_7t8}),(s8_s1_s5|->{t2_1t2,t3_5t6}),(s8_s2_s4|->{t3_4t5}),
+ (s7_s1_s6|->{t1_7t8,t2_1t2}),(s7_s2_s5|->{t1_7t8,t2_2t3,t3_5t6}),
+ (s6_s7_s1|->{t2_7t8,t3_1t2}),(s5_s7_s2|->{t1_5t6,t2_7t8,t3_2t3}),
+ (s5_s8_s1|->{t1_5t6,t3_1t2}),(s4_s8_s2|->{t1_4t5}),(s2_s4_s8|->{t2_4t5}),
+ (s2_s5_s7|->{t1_2t3,t2_5t6,t3_7t8}),(s1_s5_s8|->{t1_1t2,t2_5t6}),
+ (s1_s6_s7|->{t1_1t2,t3_7t8}),(s8_s1_s6|->{t2_1t2}),(s8_s2_s5|->{t2_2t3,t3_5t6}),
+ (s7_s2_s6|->{t1_7t8,t2_2t3}),(s7_s3_s5|->{t1_7t8,t2_3t4,t3_5t6}),
+ (s6_s7_s2|->{t2_7t8,t3_2t3}),(s6_s8_s1|->{t3_1t2}),(s5_s7_s3|->{t1_5t6,t2_7t8,t3_3t4}),
+ (s5_s8_s2|->{t1_5t6,t3_2t3}),(s3_s5_s7|->{t1_3t4,t2_5t6,t3_7t8}),
+ (s2_s5_s8|->{t1_2t3,t2_5t6}),(s2_s6_s7|->{t1_2t3,t3_7t8}),(s1_s6_s8|->{t1_1t2}),
+ (s8_s2_s6|->{t2_2t3}),(s8_s3_s5|->{t1_8t1,t2_3t4,t3_5t6}),(s7_s3_s6|->{t1_7t8,t2_3t4}),
+ (s7_s4_s5|->{t1_7t8,t3_5t6}),(s6_s7_s3|->{t2_7t8,t3_3t4}),(s6_s8_s2|->{t3_2t3}),
+ (s5_s7_s4|->{t1_5t6,t2_7t8}),(s5_s8_s3|->{t1_5t6,t2_8t1,t3_3t4}),
+ (s4_s5_s7|->{t2_5t6,t3_7t8}),(s3_s5_s8|->{t1_3t4,t2_5t6,t3_8t1}),
+ (s3_s6_s7|->{t1_3t4,t3_7t8}),(s2_s6_s8|->{t1_2t3}),(s8_s3_s6|->{t1_8t1,t2_3t4}),
+ (s8_s4_s5|->{t1_8t1,t3_5t6}),(s7_s4_s6|->{t1_7t8}),(s6_s7_s4|->{t2_7t8}),
+ (s6_s8_s3|->{t2_8t1,t3_3t4}),(s5_s8_s4|->{t1_5t6,t2_8t1}),(s4_s5_s8|->{t2_5t6,t3_8t1}),
+ (s4_s6_s7|->{t3_7t8}),(s3_s6_s8|->{t1_3t4,t3_8t1}),(s8_s4_s6|->{t1_8t1}),
+ (s6_s8_s4|->{t2_8t1}),(s4_s6_s8|->{t3_8t1})}
+
+% Runtime for SOLUTION for SETUP_CONSTANTS: 120 ms (walltime: 120 ms)
+Finished Invariant Checking 10 ms walltime (10 ms runtime), since start: 2360 ms
+"Display statistics..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 2370 ms
+"Compute iteratively the supremal coreachable controllable predicate..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 63370 ms
+"Compute SFBC (disabled events)..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 63390 ms
+"Compute SFBC (enabled events)..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 63440 ms
+"The SFBC functions are complementary."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 63450 ms
+Deadlock reached after 7 steps (after CheckComplementarity_).
+% Finished processing file after 61340 ms walltime (61270 ms runtime), since start: 63460 ms
+
+-------------------------------------------------
+
+10 sections, 3 trains: 1000 states and 3000 transitions
+
+Predicate (720 states):
+ iteration number 1
+ iteration number 2
+Iterative solution
+supCCP (240 reachable states):
+{s5_s1_s3,s3_s5_s1,s1_s3_s5,s6_s1_s3,s5_s1_s4,s5_s2_s3,s4_s5_s1,
+ s3_s5_s2,s3_s6_s1,s2_s3_s5,s1_s3_s6,s1_s4_s5,s7_s1_s3,s6_s1_s4,
+ s6_s2_s3,s5_s2_s4,s4_s5_s2,s4_s6_s1,s3_s6_s2,s3_s7_s1,s2_s3_s6,
+ s2_s4_s5,s1_s3_s7,s1_s4_s6,s8_s1_s3,s7_s1_s4,s7_s2_s3,s6_s2_s4,
+ s4_s6_s2,s4_s7_s1,s3_s7_s2,s3_s8_s1,s2_s3_s7,s2_s4_s6,s1_s3_s8,
+ s1_s4_s7,s9_s1_s3,s8_s1_s4,s8_s2_s3,s7_s1_s5,s7_s2_s4,s5_s7_s1,
+ s4_s7_s2,s4_s8_s1,s3_s8_s2,s3_s9_s1,s2_s3_s8,s2_s4_s7,s1_s3_s9,
+ s1_s4_s8,s1_s5_s7,s10_s1_s3,s9_s1_s4,s9_s2_s3,s8_s1_s5,s8_s2_s4,
+ s7_s1_s6,s7_s2_s5,s6_s7_s1,s5_s7_s2,s5_s8_s1,s4_s8_s2,s4_s9_s1,
+ s3_s9_s2,s3_s10_s1,s2_s3_s9,s2_s4_s8,s2_s5_s7,s1_s3_s10,s1_s4_s9,
+ s1_s5_s8,s1_s6_s7,s10_s1_s4,s10_s2_s3,s9_s1_s5,s9_s2_s4,s8_s1_s6,
+ s8_s2_s5,s7_s2_s6,s7_s3_s5,s6_s7_s2,s6_s8_s1,s5_s7_s3,s5_s8_s2,
+ s5_s9_s1,s4_s9_s2,s4_s10_s1,s3_s5_s7,s3_s10_s2,s2_s3_s10,s2_s4_s9,
+ s2_s5_s8,s2_s6_s7,s1_s4_s10,s1_s5_s9,s1_s6_s8,s10_s1_s5,s10_s2_s4,
+ s9_s1_s6,s9_s2_s5,s8_s2_s6,s8_s3_s5,s7_s3_s6,s7_s4_s5,s6_s7_s3,
+ s6_s8_s2,s6_s9_s1,s5_s7_s4,s5_s8_s3,s5_s9_s2,s5_s10_s1,s4_s5_s7,
+ s4_s10_s2,s3_s5_s8,s3_s6_s7,s2_s4_s10,s2_s5_s9,s2_s6_s8,s1_s5_s10,
+ s1_s6_s9,s10_s1_s6,s10_s2_s5,s9_s1_s7,s9_s2_s6,s9_s3_s5,s8_s3_s6,
+ s8_s4_s5,s7_s4_s6,s7_s9_s1,s6_s7_s4,s6_s8_s3,s6_s9_s2,s6_s10_s1,
+ s5_s8_s4,s5_s9_s3,s5_s10_s2,s4_s5_s8,s4_s6_s7,s3_s5_s9,s3_s6_s8,
+ s2_s5_s10,s2_s6_s9,s1_s6_s10,s1_s7_s9,s10_s1_s7,s10_s2_s6,s10_s3_s5,
+ s9_s1_s8,s9_s2_s7,s9_s3_s6,s9_s4_s5,s8_s4_s6,s8_s9_s1,s7_s9_s2,s7_s10_s1,
+ s6_s8_s4,s6_s9_s3,s6_s10_s2,s5_s9_s4,s5_s10_s3,s4_s5_s9,s4_s6_s8,s3_s5_s10,
+ s3_s6_s9,s2_s6_s10,s2_s7_s9,s1_s7_s10,s1_s8_s9,s10_s1_s8,s10_s2_s7,s10_s3_s6,
+ s10_s4_s5,s9_s2_s8,s9_s3_s7,s9_s4_s6,s8_s9_s2,s8_s10_s1,s7_s9_s3,s7_s10_s2,
+ s6_s9_s4,s6_s10_s3,s5_s10_s4,s4_s5_s10,s4_s6_s9,s3_s6_s10,s3_s7_s9,s2_s7_s10,
+ s2_s8_s9,s1_s8_s10,s10_s2_s8,s10_s3_s7,s10_s4_s6,s9_s3_s8,s9_s4_s7,s8_s9_s3,
+ s8_s10_s2,s7_s9_s4,s7_s10_s3,s6_s10_s4,s4_s6_s10,s4_s7_s9,s3_s7_s10,s3_s8_s9,
+ s2_s8_s10,s10_s3_s8,s10_s4_s7,s9_s4_s8,s9_s5_s7,s8_s9_s4,s8_s10_s3,s7_s9_s5,
+ s7_s10_s4,s5_s7_s9,s4_s7_s10,s4_s8_s9,s3_s8_s10,s10_s4_s8,s10_s5_s7,s9_s5_s8,
+ s9_s6_s7,s8_s9_s5,s8_s10_s4,s7_s9_s6,s7_s10_s5,s6_s7_s9,s5_s7_s10,s5_s8_s9,
+ s4_s8_s10,s10_s5_s8,s10_s6_s7,s9_s6_s8,s8_s9_s6,s8_s10_s5,s7_s10_s6,s6_s7_s10,
+ s6_s8_s9,s5_s8_s10,s10_s6_s8,s8_s10_s6,s6_s8_s10}
+
+Disabled events: 
+{(s5_s1_s3|->{}),(s3_s5_s1|->{}),(s1_s3_s5|->{}),(s6_s1_s3|->{}),(s5_s1_s4|->{t3_4t5}),
+ (s5_s2_s3|->{t2_2t3}),(s4_s5_s1|->{t1_4t5}),(s3_s5_s2|->{t3_2t3}),(s3_s6_s1|->{}),
+ (s2_s3_s5|->{t1_2t3}),(s1_s3_s6|->{}),(s1_s4_s5|->{t2_4t5}),(s7_s1_s3|->{}),
+ (s6_s1_s4|->{t3_4t5}),(s6_s2_s3|->{t2_2t3}),(s5_s2_s4|->{t2_2t3,t3_4t5}),
+ (s4_s5_s2|->{t1_4t5,t3_2t3}),(s4_s6_s1|->{t1_4t5}),(s3_s6_s2|->{t3_2t3}),
+ (s3_s7_s1|->{}),(s2_s3_s6|->{t1_2t3}),(s2_s4_s5|->{t1_2t3,t2_4t5}),(s1_s3_s7|->{}),
+ (s1_s4_s6|->{t2_4t5}),(s8_s1_s3|->{}),(s7_s1_s4|->{}),(s7_s2_s3|->{t2_2t3}),
+ (s6_s2_s4|->{t2_2t3,t3_4t5}),(s4_s6_s2|->{t1_4t5,t3_2t3}),(s4_s7_s1|->{}),
+ (s3_s7_s2|->{t3_2t3}),(s3_s8_s1|->{}),(s2_s3_s7|->{t1_2t3}),(s2_s4_s6|->{t1_2t3,t2_4t5}),
+ (s1_s3_s8|->{}),(s1_s4_s7|->{}),(s9_s1_s3|->{}),(s8_s1_s4|->{}),(s8_s2_s3|->{t2_2t3}),
+ (s7_s1_s5|->{}),(s7_s2_s4|->{t2_2t3}),(s5_s7_s1|->{}),(s4_s7_s2|->{t3_2t3}),
+ (s4_s8_s1|->{}),(s3_s8_s2|->{t3_2t3}),(s3_s9_s1|->{}),(s2_s3_s8|->{t1_2t3}),
+ (s2_s4_s7|->{t1_2t3}),(s1_s3_s9|->{}),(s1_s4_s8|->{}),(s1_s5_s7|->{}),
+ (s10_s1_s3|->{t1_10t1}),(s9_s1_s4|->{}),(s9_s2_s3|->{t2_2t3}),(s8_s1_s5|->{}),
+ (s8_s2_s4|->{t2_2t3}),(s7_s1_s6|->{t3_6t7}),(s7_s2_s5|->{}),(s6_s7_s1|->{t1_6t7}),
+ (s5_s7_s2|->{}),(s5_s8_s1|->{}),(s4_s8_s2|->{t3_2t3}),(s4_s9_s1|->{}),
+ (s3_s9_s2|->{t3_2t3}),(s3_s10_s1|->{t2_10t1}),(s2_s3_s9|->{t1_2t3}),
+ (s2_s4_s8|->{t1_2t3}),(s2_s5_s7|->{}),(s1_s3_s10|->{t3_10t1}),(s1_s4_s9|->{}),
+ (s1_s5_s8|->{}),(s1_s6_s7|->{t2_6t7}),(s10_s1_s4|->{t1_10t1}),
+ (s10_s2_s3|->{t1_10t1,t2_2t3}),(s9_s1_s5|->{}),(s9_s2_s4|->{t2_2t3}),
+ (s8_s1_s6|->{t3_6t7}),(s8_s2_s5|->{}),(s7_s2_s6|->{t3_6t7}),(s7_s3_s5|->{}),
+ (s6_s7_s2|->{t1_6t7}),(s6_s8_s1|->{t1_6t7}),(s5_s7_s3|->{}),(s5_s8_s2|->{}),
+ (s5_s9_s1|->{}),(s4_s9_s2|->{t3_2t3}),(s4_s10_s1|->{t2_10t1}),(s3_s5_s7|->{}),
+ (s3_s10_s2|->{t2_10t1,t3_2t3}),(s2_s3_s10|->{t1_2t3,t3_10t1}),(s2_s4_s9|->{t1_2t3}),
+ (s2_s5_s8|->{}),(s2_s6_s7|->{t2_6t7}),(s1_s4_s10|->{t3_10t1}),(s1_s5_s9|->{}),
+ (s1_s6_s8|->{t2_6t7}),(s10_s1_s5|->{t1_10t1}),(s10_s2_s4|->{t1_10t1,t2_2t3}),
+ (s9_s1_s6|->{}),(s9_s2_s5|->{}),(s8_s2_s6|->{t3_6t7}),(s8_s3_s5|->{}),
+ (s7_s3_s6|->{t3_6t7}),(s7_s4_s5|->{t2_4t5}),(s6_s7_s3|->{t1_6t7}),(s6_s8_s2|->{t1_6t7}),
+ (s6_s9_s1|->{}),(s5_s7_s4|->{t3_4t5}),(s5_s8_s3|->{}),(s5_s9_s2|->{}),
+ (s5_s10_s1|->{t2_10t1}),(s4_s5_s7|->{t1_4t5}),(s4_s10_s2|->{t2_10t1,t3_2t3}),
+ (s3_s5_s8|->{}),(s3_s6_s7|->{t2_6t7}),(s2_s4_s10|->{t1_2t3,t3_10t1}),
+ (s2_s5_s9|->{}),(s2_s6_s8|->{t2_6t7}),(s1_s5_s10|->{t3_10t1}),(s1_s6_s9|->{}),
+ (s10_s1_s6|->{t1_10t1}),(s10_s2_s5|->{t1_10t1}),(s9_s1_s7|->{}),(s9_s2_s6|->{}),
+ (s9_s3_s5|->{}),(s8_s3_s6|->{t3_6t7}),(s8_s4_s5|->{t2_4t5}),(s7_s4_s6|->{t2_4t5,t3_6t7}),
+ (s7_s9_s1|->{}),(s6_s7_s4|->{t1_6t7,t3_4t5}),(s6_s8_s3|->{t1_6t7}),(s6_s9_s2|->{}),
+ (s6_s10_s1|->{t2_10t1}),(s5_s8_s4|->{t3_4t5}),(s5_s9_s3|->{}),(s5_s10_s2|->{t2_10t1}),
+ (s4_s5_s8|->{t1_4t5}),(s4_s6_s7|->{t1_4t5,t2_6t7}),(s3_s5_s9|->{}),(s3_s6_s8|->{t2_6t7}),
+ (s2_s5_s10|->{t3_10t1}),(s2_s6_s9|->{}),(s1_s6_s10|->{t3_10t1}),(s1_s7_s9|->{}),
+ (s10_s1_s7|->{t1_10t1}),(s10_s2_s6|->{t1_10t1}),(s10_s3_s5|->{}),(s9_s1_s8|->{t3_8t9}),
+ (s9_s2_s7|->{}),(s9_s3_s6|->{}),(s9_s4_s5|->{t2_4t5}),(s8_s4_s6|->{t2_4t5,t3_6t7}),
+ (s8_s9_s1|->{t1_8t9}),(s7_s9_s2|->{}),(s7_s10_s1|->{t2_10t1}),
+ (s6_s8_s4|->{t1_6t7,t3_4t5}),(s6_s9_s3|->{}),(s6_s10_s2|->{t2_10t1}),
+ (s5_s9_s4|->{t3_4t5}),(s5_s10_s3|->{}),(s4_s5_s9|->{t1_4t5}),
+ (s4_s6_s8|->{t1_4t5,t2_6t7}),(s3_s5_s10|->{}),(s3_s6_s9|->{}),(s2_s6_s10|->{t3_10t1}),
+ (s2_s7_s9|->{}),(s1_s7_s10|->{t3_10t1}),(s1_s8_s9|->{t2_8t9}),
+ (s10_s1_s8|->{t1_10t1,t3_8t9}),(s10_s2_s7|->{t1_10t1}),(s10_s3_s6|->{}),
+ (s10_s4_s5|->{t2_4t5}),(s9_s2_s8|->{t3_8t9}),(s9_s3_s7|->{}),
+ (s9_s4_s6|->{t2_4t5}),(s8_s9_s2|->{t1_8t9}),(s8_s10_s1|->{t1_8t9,t2_10t1}),
+ (s7_s9_s3|->{}),(s7_s10_s2|->{t2_10t1}),(s6_s9_s4|->{t3_4t5}),(s6_s10_s3|->{}),
+ (s5_s10_s4|->{t3_4t5}),(s4_s5_s10|->{t1_4t5}),(s4_s6_s9|->{t1_4t5}),(s3_s6_s10|->{}),
+ (s3_s7_s9|->{}),(s2_s7_s10|->{t3_10t1}),(s2_s8_s9|->{t2_8t9}),
+ (s1_s8_s10|->{t2_8t9,t3_10t1}),(s10_s2_s8|->{t1_10t1,t3_8t9}),(s10_s3_s7|->{}),
+ (s10_s4_s6|->{t2_4t5}),(s9_s3_s8|->{t3_8t9}),(s9_s4_s7|->{}),(s8_s9_s3|->{t1_8t9}),
+ (s8_s10_s2|->{t1_8t9,t2_10t1}),(s7_s9_s4|->{}),(s7_s10_s3|->{}),(s6_s10_s4|->{t3_4t5}),
+ (s4_s6_s10|->{t1_4t5}),(s4_s7_s9|->{}),(s3_s7_s10|->{}),(s3_s8_s9|->{t2_8t9}),
+ (s2_s8_s10|->{t2_8t9,t3_10t1}),(s10_s3_s8|->{t3_8t9}),(s10_s4_s7|->{}),
+ (s9_s4_s8|->{t3_8t9}),(s9_s5_s7|->{}),(s8_s9_s4|->{t1_8t9}),(s8_s10_s3|->{t1_8t9}),
+ (s7_s9_s5|->{}),(s7_s10_s4|->{}),(s5_s7_s9|->{}),(s4_s7_s10|->{}),(s4_s8_s9|->{t2_8t9}),
+ (s3_s8_s10|->{t2_8t9}),(s10_s4_s8|->{t3_8t9}),(s10_s5_s7|->{}),(s9_s5_s8|->{t3_8t9}),
+ (s9_s6_s7|->{t2_6t7}),(s8_s9_s5|->{t1_8t9}),(s8_s10_s4|->{t1_8t9}),(s7_s9_s6|->{t3_6t7}),
+ (s7_s10_s5|->{}),(s6_s7_s9|->{t1_6t7}),(s5_s7_s10|->{}),(s5_s8_s9|->{t2_8t9}),
+ (s4_s8_s10|->{t2_8t9}),(s10_s5_s8|->{t3_8t9}),(s10_s6_s7|->{t2_6t7}),
+ (s9_s6_s8|->{t2_6t7,t3_8t9}),(s8_s9_s6|->{t1_8t9,t3_6t7}),(s8_s10_s5|->{t1_8t9}),
+ (s7_s10_s6|->{t3_6t7}),(s6_s7_s10|->{t1_6t7}),(s6_s8_s9|->{t1_6t7,t2_8t9}),
+ (s5_s8_s10|->{t2_8t9}),(s10_s6_s8|->{t2_6t7,t3_8t9}),(s8_s10_s6|->{t1_8t9,t3_6t7}),
+ (s6_s8_s10|->{t1_6t7,t2_8t9})}
+Enabled events:
+{(s5_s1_s3|->{t1_5t6,t2_1t2,t3_3t4}),(s3_s5_s1|->{t1_3t4,t2_5t6,t3_1t2}),
+ (s1_s3_s5|->{t1_1t2,t2_3t4,t3_5t6}),(s6_s1_s3|->{t1_6t7,t2_1t2,t3_3t4}),
+ (s5_s1_s4|->{t1_5t6,t2_1t2}),(s5_s2_s3|->{t1_5t6,t3_3t4}),(s4_s5_s1|->{t2_5t6,t3_1t2}),
+ (s3_s5_s2|->{t1_3t4,t2_5t6}),(s3_s6_s1|->{t1_3t4,t2_6t7,t3_1t2}),
+ (s2_s3_s5|->{t2_3t4,t3_5t6}),(s1_s3_s6|->{t1_1t2,t2_3t4,t3_6t7}),
+ (s1_s4_s5|->{t1_1t2,t3_5t6}),(s7_s1_s3|->{t1_7t8,t2_1t2,t3_3t4}),
+ (s6_s1_s4|->{t1_6t7,t2_1t2}),(s6_s2_s3|->{t1_6t7,t3_3t4}),(s5_s2_s4|->{t1_5t6}),
+ (s4_s5_s2|->{t2_5t6}),(s4_s6_s1|->{t2_6t7,t3_1t2}),(s3_s6_s2|->{t1_3t4,t2_6t7}),
+ (s3_s7_s1|->{t1_3t4,t2_7t8,t3_1t2}),(s2_s3_s6|->{t2_3t4,t3_6t7}),(s2_s4_s5|->{t3_5t6}),
+ (s1_s3_s7|->{t1_1t2,t2_3t4,t3_7t8}),(s1_s4_s6|->{t1_1t2,t3_6t7}),
+ (s8_s1_s3|->{t1_8t9,t2_1t2,t3_3t4}),(s7_s1_s4|->{t1_7t8,t2_1t2,t3_4t5}),
+ (s7_s2_s3|->{t1_7t8,t3_3t4}),(s6_s2_s4|->{t1_6t7}),(s4_s6_s2|->{t2_6t7}),
+ (s4_s7_s1|->{t1_4t5,t2_7t8,t3_1t2}),(s3_s7_s2|->{t1_3t4,t2_7t8}),
+ (s3_s8_s1|->{t1_3t4,t2_8t9,t3_1t2}),(s2_s3_s7|->{t2_3t4,t3_7t8}),
+ (s2_s4_s6|->{t3_6t7}),(s1_s3_s8|->{t1_1t2,t2_3t4,t3_8t9}),
+ (s1_s4_s7|->{t1_1t2,t2_4t5,t3_7t8}),(s9_s1_s3|->{t1_9t10,t2_1t2,t3_3t4}),
+ (s8_s1_s4|->{t1_8t9,t2_1t2,t3_4t5}),(s8_s2_s3|->{t1_8t9,t3_3t4}),
+ (s7_s1_s5|->{t1_7t8,t2_1t2,t3_5t6}),(s7_s2_s4|->{t1_7t8,t3_4t5}),
+ (s5_s7_s1|->{t1_5t6,t2_7t8,t3_1t2}),(s4_s7_s2|->{t1_4t5,t2_7t8}),
+ (s4_s8_s1|->{t1_4t5,t2_8t9,t3_1t2}),(s3_s8_s2|->{t1_3t4,t2_8t9}),
+ (s3_s9_s1|->{t1_3t4,t2_9t10,t3_1t2}),(s2_s3_s8|->{t2_3t4,t3_8t9}),
+ (s2_s4_s7|->{t2_4t5,t3_7t8}),(s1_s3_s9|->{t1_1t2,t2_3t4,t3_9t10}),
+ (s1_s4_s8|->{t1_1t2,t2_4t5,t3_8t9}),(s1_s5_s7|->{t1_1t2,t2_5t6,t3_7t8}),
+ (s10_s1_s3|->{t2_1t2,t3_3t4}),(s9_s1_s4|->{t1_9t10,t2_1t2,t3_4t5}),
+ (s9_s2_s3|->{t1_9t10,t3_3t4}),(s8_s1_s5|->{t1_8t9,t2_1t2,t3_5t6}),
+ (s8_s2_s4|->{t1_8t9,t3_4t5}),(s7_s1_s6|->{t1_7t8,t2_1t2}),
+ (s7_s2_s5|->{t1_7t8,t2_2t3,t3_5t6}),(s6_s7_s1|->{t2_7t8,t3_1t2}),
+ (s5_s7_s2|->{t1_5t6,t2_7t8,t3_2t3}),(s5_s8_s1|->{t1_5t6,t2_8t9,t3_1t2}),
+ (s4_s8_s2|->{t1_4t5,t2_8t9}),(s4_s9_s1|->{t1_4t5,t2_9t10,t3_1t2}),
+ (s3_s9_s2|->{t1_3t4,t2_9t10}),(s3_s10_s1|->{t1_3t4,t3_1t2}),
+ (s2_s3_s9|->{t2_3t4,t3_9t10}),(s2_s4_s8|->{t2_4t5,t3_8t9}),
+ (s2_s5_s7|->{t1_2t3,t2_5t6,t3_7t8}),(s1_s3_s10|->{t1_1t2,t2_3t4}),
+ (s1_s4_s9|->{t1_1t2,t2_4t5,t3_9t10}),(s1_s5_s8|->{t1_1t2,t2_5t6,t3_8t9}),
+ (s1_s6_s7|->{t1_1t2,t3_7t8}),(s10_s1_s4|->{t2_1t2,t3_4t5}),
+ (s10_s2_s3|->{t3_3t4}),(s9_s1_s5|->{t1_9t10,t2_1t2,t3_5t6}),
+ (s9_s2_s4|->{t1_9t10,t3_4t5}),(s8_s1_s6|->{t1_8t9,t2_1t2}),
+ (s8_s2_s5|->{t1_8t9,t2_2t3,t3_5t6}),(s7_s2_s6|->{t1_7t8,t2_2t3}),
+ (s7_s3_s5|->{t1_7t8,t2_3t4,t3_5t6}),(s6_s7_s2|->{t2_7t8,t3_2t3}),
+ (s6_s8_s1|->{t2_8t9,t3_1t2}),(s5_s7_s3|->{t1_5t6,t2_7t8,t3_3t4}),
+ (s5_s8_s2|->{t1_5t6,t2_8t9,t3_2t3}),(s5_s9_s1|->{t1_5t6,t2_9t10,t3_1t2}),
+ (s4_s9_s2|->{t1_4t5,t2_9t10}),(s4_s10_s1|->{t1_4t5,t3_1t2}),
+ (s3_s5_s7|->{t1_3t4,t2_5t6,t3_7t8}),(s3_s10_s2|->{t1_3t4}),
+ (s2_s3_s10|->{t2_3t4}),(s2_s4_s9|->{t2_4t5,t3_9t10}),
+ (s2_s5_s8|->{t1_2t3,t2_5t6,t3_8t9}),(s2_s6_s7|->{t1_2t3,t3_7t8}),
+ (s1_s4_s10|->{t1_1t2,t2_4t5}),(s1_s5_s9|->{t1_1t2,t2_5t6,t3_9t10}),
+ (s1_s6_s8|->{t1_1t2,t3_8t9}),(s10_s1_s5|->{t2_1t2,t3_5t6}),(s10_s2_s4|->{t3_4t5}),
+ (s9_s1_s6|->{t1_9t10,t2_1t2,t3_6t7}),(s9_s2_s5|->{t1_9t10,t2_2t3,t3_5t6}),
+ (s8_s2_s6|->{t1_8t9,t2_2t3}),(s8_s3_s5|->{t1_8t9,t2_3t4,t3_5t6}),
+ (s7_s3_s6|->{t1_7t8,t2_3t4}),(s7_s4_s5|->{t1_7t8,t3_5t6}),
+ (s6_s7_s3|->{t2_7t8,t3_3t4}),(s6_s8_s2|->{t2_8t9,t3_2t3}),
+ (s6_s9_s1|->{t1_6t7,t2_9t10,t3_1t2}),(s5_s7_s4|->{t1_5t6,t2_7t8}),
+ (s5_s8_s3|->{t1_5t6,t2_8t9,t3_3t4}),(s5_s9_s2|->{t1_5t6,t2_9t10,t3_2t3}),
+ (s5_s10_s1|->{t1_5t6,t3_1t2}),(s4_s5_s7|->{t2_5t6,t3_7t8}),
+ (s4_s10_s2|->{t1_4t5}),(s3_s5_s8|->{t1_3t4,t2_5t6,t3_8t9}),
+ (s3_s6_s7|->{t1_3t4,t3_7t8}),(s2_s4_s10|->{t2_4t5}),
+ (s2_s5_s9|->{t1_2t3,t2_5t6,t3_9t10}),(s2_s6_s8|->{t1_2t3,t3_8t9}),
+ (s1_s5_s10|->{t1_1t2,t2_5t6}),(s1_s6_s9|->{t1_1t2,t2_6t7,t3_9t10}),
+ (s10_s1_s6|->{t2_1t2,t3_6t7}),(s10_s2_s5|->{t2_2t3,t3_5t6}),
+ (s9_s1_s7|->{t1_9t10,t2_1t2,t3_7t8}),(s9_s2_s6|->{t1_9t10,t2_2t3,t3_6t7}),
+ (s9_s3_s5|->{t1_9t10,t2_3t4,t3_5t6}),(s8_s3_s6|->{t1_8t9,t2_3t4}),
+ (s8_s4_s5|->{t1_8t9,t3_5t6}),(s7_s4_s6|->{t1_7t8}),(s7_s9_s1|->{t1_7t8,t2_9t10,t3_1t2}),
+ (s6_s7_s4|->{t2_7t8}),(s6_s8_s3|->{t2_8t9,t3_3t4}),(s6_s9_s2|->{t1_6t7,t2_9t10,t3_2t3}),
+ (s6_s10_s1|->{t1_6t7,t3_1t2}),(s5_s8_s4|->{t1_5t6,t2_8t9}),
+ (s5_s9_s3|->{t1_5t6,t2_9t10,t3_3t4}),(s5_s10_s2|->{t1_5t6,t3_2t3}),
+ (s4_s5_s8|->{t2_5t6,t3_8t9}),(s4_s6_s7|->{t3_7t8}),(s3_s5_s9|->{t1_3t4,t2_5t6,t3_9t10}),
+ (s3_s6_s8|->{t1_3t4,t3_8t9}),(s2_s5_s10|->{t1_2t3,t2_5t6}),
+ (s2_s6_s9|->{t1_2t3,t2_6t7,t3_9t10}),(s1_s6_s10|->{t1_1t2,t2_6t7}),
+ (s1_s7_s9|->{t1_1t2,t2_7t8,t3_9t10}),(s10_s1_s7|->{t2_1t2,t3_7t8}),
+ (s10_s2_s6|->{t2_2t3,t3_6t7}),(s10_s3_s5|->{t1_10t1,t2_3t4,t3_5t6}),
+ (s9_s1_s8|->{t1_9t10,t2_1t2}),(s9_s2_s7|->{t1_9t10,t2_2t3,t3_7t8}),
+ (s9_s3_s6|->{t1_9t10,t2_3t4,t3_6t7}),(s9_s4_s5|->{t1_9t10,t3_5t6}),
+ (s8_s4_s6|->{t1_8t9}),(s8_s9_s1|->{t2_9t10,t3_1t2}),(s7_s9_s2|->{t1_7t8,t2_9t10,t3_2t3}),
+ (s7_s10_s1|->{t1_7t8,t3_1t2}),(s6_s8_s4|->{t2_8t9}),(s6_s9_s3|->{t1_6t7,t2_9t10,t3_3t4}),
+ (s6_s10_s2|->{t1_6t7,t3_2t3}),(s5_s9_s4|->{t1_5t6,t2_9t10}),
+ (s5_s10_s3|->{t1_5t6,t2_10t1,t3_3t4}),(s4_s5_s9|->{t2_5t6,t3_9t10}),
+ (s4_s6_s8|->{t3_8t9}),(s3_s5_s10|->{t1_3t4,t2_5t6,t3_10t1}),
+ (s3_s6_s9|->{t1_3t4,t2_6t7,t3_9t10}),(s2_s6_s10|->{t1_2t3,t2_6t7}),
+ (s2_s7_s9|->{t1_2t3,t2_7t8,t3_9t10}),(s1_s7_s10|->{t1_1t2,t2_7t8}),
+ (s1_s8_s9|->{t1_1t2,t3_9t10}),(s10_s1_s8|->{t2_1t2}),(s10_s2_s7|->{t2_2t3,t3_7t8}),
+ (s10_s3_s6|->{t1_10t1,t2_3t4,t3_6t7}),(s10_s4_s5|->{t1_10t1,t3_5t6}),
+ (s9_s2_s8|->{t1_9t10,t2_2t3}),(s9_s3_s7|->{t1_9t10,t2_3t4,t3_7t8}),
+ (s9_s4_s6|->{t1_9t10,t3_6t7}),(s8_s9_s2|->{t2_9t10,t3_2t3}),
+ (s8_s10_s1|->{t3_1t2}),(s7_s9_s3|->{t1_7t8,t2_9t10,t3_3t4}),
+ (s7_s10_s2|->{t1_7t8,t3_2t3}),(s6_s9_s4|->{t1_6t7,t2_9t10}),
+ (s6_s10_s3|->{t1_6t7,t2_10t1,t3_3t4}),(s5_s10_s4|->{t1_5t6,t2_10t1}),
+ (s4_s5_s10|->{t2_5t6,t3_10t1}),(s4_s6_s9|->{t2_6t7,t3_9t10}),
+ (s3_s6_s10|->{t1_3t4,t2_6t7,t3_10t1}),(s3_s7_s9|->{t1_3t4,t2_7t8,t3_9t10}),
+ (s2_s7_s10|->{t1_2t3,t2_7t8}),(s2_s8_s9|->{t1_2t3,t3_9t10}),(s1_s8_s10|->{t1_1t2}),
+ (s10_s2_s8|->{t2_2t3}),(s10_s3_s7|->{t1_10t1,t2_3t4,t3_7t8}),
+ (s10_s4_s6|->{t1_10t1,t3_6t7}),(s9_s3_s8|->{t1_9t10,t2_3t4}),
+ (s9_s4_s7|->{t1_9t10,t2_4t5,t3_7t8}),(s8_s9_s3|->{t2_9t10,t3_3t4}),
+ (s8_s10_s2|->{t3_2t3}),(s7_s9_s4|->{t1_7t8,t2_9t10,t3_4t5}),
+ (s7_s10_s3|->{t1_7t8,t2_10t1,t3_3t4}),(s6_s10_s4|->{t1_6t7,t2_10t1}),
+ (s4_s6_s10|->{t2_6t7,t3_10t1}),(s4_s7_s9|->{t1_4t5,t2_7t8,t3_9t10}),
+ (s3_s7_s10|->{t1_3t4,t2_7t8,t3_10t1}),(s3_s8_s9|->{t1_3t4,t3_9t10}),
+ (s2_s8_s10|->{t1_2t3}),(s10_s3_s8|->{t1_10t1,t2_3t4}),
+ (s10_s4_s7|->{t1_10t1,t2_4t5,t3_7t8}),(s9_s4_s8|->{t1_9t10,t2_4t5}),
+ (s9_s5_s7|->{t1_9t10,t2_5t6,t3_7t8}),(s8_s9_s4|->{t2_9t10,t3_4t5}),
+ (s8_s10_s3|->{t2_10t1,t3_3t4}),(s7_s9_s5|->{t1_7t8,t2_9t10,t3_5t6}),
+ (s7_s10_s4|->{t1_7t8,t2_10t1,t3_4t5}),(s5_s7_s9|->{t1_5t6,t2_7t8,t3_9t10}),
+ (s4_s7_s10|->{t1_4t5,t2_7t8,t3_10t1}),(s4_s8_s9|->{t1_4t5,t3_9t10}),
+ (s3_s8_s10|->{t1_3t4,t3_10t1}),(s10_s4_s8|->{t1_10t1,t2_4t5}),
+ (s10_s5_s7|->{t1_10t1,t2_5t6,t3_7t8}),(s9_s5_s8|->{t1_9t10,t2_5t6}),
+ (s9_s6_s7|->{t1_9t10,t3_7t8}),(s8_s9_s5|->{t2_9t10,t3_5t6}),
+ (s8_s10_s4|->{t2_10t1,t3_4t5}),(s7_s9_s6|->{t1_7t8,t2_9t10}),
+ (s7_s10_s5|->{t1_7t8,t2_10t1,t3_5t6}),(s6_s7_s9|->{t2_7t8,t3_9t10}),
+ (s5_s7_s10|->{t1_5t6,t2_7t8,t3_10t1}),(s5_s8_s9|->{t1_5t6,t3_9t10}),
+ (s4_s8_s10|->{t1_4t5,t3_10t1}),(s10_s5_s8|->{t1_10t1,t2_5t6}),
+ (s10_s6_s7|->{t1_10t1,t3_7t8}),(s9_s6_s8|->{t1_9t10}),
+ (s8_s9_s6|->{t2_9t10}),(s8_s10_s5|->{t2_10t1,t3_5t6}),(s7_s10_s6|->{t1_7t8,t2_10t1}),
+ (s6_s7_s10|->{t2_7t8,t3_10t1}),(s6_s8_s9|->{t3_9t10}),(s5_s8_s10|->{t1_5t6,t3_10t1}),
+ (s10_s6_s8|->{t1_10t1}),(s8_s10_s6|->{t2_10t1}),(s6_s8_s10|->{t3_10t1})}
+
+% Runtime for SOLUTION for SETUP_CONSTANTS: 190 ms (walltime: 190 ms)
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 3050 ms
+"Display statistics..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 3070 ms
+"Compute iteratively the supremal coreachable controllable predicate..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 720600 ms
+"Compute SFBC (disabled events)..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 720650 ms
+"Compute SFBC (enabled events)..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 720760 ms
+"The SFBC functions are complementary."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 720770 ms
+Deadlock reached after 7 steps (after CheckComplementarity_).
+% Finished processing file after 718110 ms walltime (717550 ms runtime), since start: 720800 ms
+
+-------------------------------------------------
+
+12 sections, 3 trains: 1728 states and 5184 transitions
+
+Predicate (1320 states):
+ iteration number 1
+ iteration number 2
+Iterative solution
+supCCP (480 reachable states):
+{s5_s1_s3,s3_s5_s1,s1_s3_s5,s6_s1_s3,s5_s1_s4,s5_s2_s3,s4_s5_s1,
+ s3_s5_s2,s3_s6_s1,s2_s3_s5,s1_s3_s6,s1_s4_s5,s7_s1_s3,s6_s1_s4,
+ s6_s2_s3,s5_s2_s4,s4_s5_s2,s4_s6_s1,s3_s6_s2,s3_s7_s1,s2_s3_s6,
+ s2_s4_s5,s1_s3_s7,s1_s4_s6,s8_s1_s3,s7_s1_s4,s7_s2_s3,s6_s2_s4,
+ s4_s6_s2,s4_s7_s1,s3_s7_s2,s3_s8_s1,s2_s3_s7,s2_s4_s6,s1_s3_s8,
+ s1_s4_s7,s9_s1_s3,s8_s1_s4,s8_s2_s3,s7_s1_s5,s7_s2_s4,s5_s7_s1,
+ s4_s7_s2,s4_s8_s1,s3_s8_s2,s3_s9_s1,s2_s3_s8,s2_s4_s7,s1_s3_s9,
+ s1_s4_s8,s1_s5_s7,s10_s1_s3,s9_s1_s4,s9_s2_s3,s8_s1_s5,s8_s2_s4,
+ s7_s1_s6,s7_s2_s5,s6_s7_s1,s5_s7_s2,s5_s8_s1,s4_s8_s2,s4_s9_s1,s3_s9_s2,
+ s3_s10_s1,s2_s3_s9,s2_s4_s8,s2_s5_s7,s1_s3_s10,s1_s4_s9,s1_s5_s8,s1_s6_s7,
+ s11_s1_s3,s10_s1_s4,s10_s2_s3,s9_s1_s5,s9_s2_s4,s8_s1_s6,s8_s2_s5,s7_s2_s6,
+ s7_s3_s5,s6_s7_s2,s6_s8_s1,s5_s7_s3,s5_s8_s2,s5_s9_s1,s4_s9_s2,s4_s10_s1,
+ s3_s5_s7,s3_s10_s2,s3_s11_s1,s2_s3_s10,s2_s4_s9,s2_s5_s8,s2_s6_s7,s1_s3_s11,
+ s1_s4_s10,s1_s5_s9,s1_s6_s8,s12_s1_s3,s11_s1_s4,s11_s2_s3,s10_s1_s5,s10_s2_s4,
+ s9_s1_s6,s9_s2_s5,s8_s2_s6,s8_s3_s5,s7_s3_s6,s7_s4_s5,s6_s7_s3,s6_s8_s2,s6_s9_s1,
+ s5_s7_s4,s5_s8_s3,s5_s9_s2,s5_s10_s1,s4_s5_s7,s4_s10_s2,s4_s11_s1,s3_s5_s8,s3_s6_s7,
+ s3_s11_s2,s3_s12_s1,s2_s3_s11,s2_s4_s10,s2_s5_s9,s2_s6_s8,s1_s3_s12,s1_s4_s11,s1_s5_s10,
+ s1_s6_s9,s12_s1_s4,s12_s2_s3,s11_s1_s5,s11_s2_s4,s10_s1_s6,s10_s2_s5,s9_s1_s7,s9_s2_s6,
+ s9_s3_s5,s8_s3_s6,s8_s4_s5,s7_s4_s6,s7_s9_s1,s6_s7_s4,s6_s8_s3,s6_s9_s2,s6_s10_s1,
+ s5_s8_s4,s5_s9_s3,s5_s10_s2,s5_s11_s1,s4_s5_s8,s4_s6_s7,s4_s11_s2,s4_s12_s1,s3_s5_s9,
+ s3_s6_s8,s3_s12_s2,s2_s3_s12,s2_s4_s11,s2_s5_s10,s2_s6_s9,s1_s4_s12,s1_s5_s11,s1_s6_s10,
+ s1_s7_s9,s12_s1_s5,s12_s2_s4,s11_s1_s6,s11_s2_s5,s10_s1_s7,s10_s2_s6,s10_s3_s5,s9_s1_s8,
+ s9_s2_s7,s9_s3_s6,s9_s4_s5,s8_s4_s6,s8_s9_s1,s7_s9_s2,s7_s10_s1,s6_s8_s4,s6_s9_s3,
+ s6_s10_s2,s6_s11_s1,s5_s9_s4,s5_s10_s3,s5_s11_s2,s5_s12_s1,s4_s5_s9,s4_s6_s8,s4_s12_s2,
+ s3_s5_s10,s3_s6_s9,s2_s4_s12,s2_s5_s11,s2_s6_s10,s2_s7_s9,s1_s5_s12,s1_s6_s11,s1_s7_s10,
+ s1_s8_s9,s12_s1_s6,s12_s2_s5,s11_s1_s7,s11_s2_s6,s11_s3_s5,s10_s1_s8,s10_s2_s7,s10_s3_s6,
+ s10_s4_s5,s9_s2_s8,s9_s3_s7,s9_s4_s6,s8_s9_s2,s8_s10_s1,s7_s9_s3,s7_s10_s2,s7_s11_s1,
+ s6_s9_s4,s6_s10_s3,s6_s11_s2,s6_s12_s1,s5_s10_s4,s5_s11_s3,s5_s12_s2,s4_s5_s10,s4_s6_s9,
+ s3_s5_s11,s3_s6_s10,s3_s7_s9,s2_s5_s12,s2_s6_s11,s2_s7_s10,s2_s8_s9,s1_s6_s12,s1_s7_s11,
+ s1_s8_s10,s12_s1_s7,s12_s2_s6,s12_s3_s5,s11_s1_s8,s11_s2_s7,s11_s3_s6,s11_s4_s5,
+ s10_s2_s8,s10_s3_s7,s10_s4_s6,s9_s3_s8,s9_s4_s7,s8_s9_s3,s8_s10_s2,s8_s11_s1,s7_s9_s4,
+ s7_s10_s3,s7_s11_s2,s7_s12_s1,s6_s10_s4,s6_s11_s3,s6_s12_s2,s5_s11_s4,s5_s12_s3,
+ s4_s5_s11,s4_s6_s10,s4_s7_s9,s3_s5_s12,s3_s6_s11,s3_s7_s10,s3_s8_s9,s2_s6_s12,
+ s2_s7_s11,s2_s8_s10,s1_s7_s12,s1_s8_s11,s12_s1_s8,s12_s2_s7,s12_s3_s6,s12_s4_s5,
+ s11_s1_s9,s11_s2_s8,s11_s3_s7,s11_s4_s6,s10_s3_s8,s10_s4_s7,s9_s4_s8,s9_s5_s7,
+ s9_s11_s1,s8_s9_s4,s8_s10_s3,s8_s11_s2,s8_s12_s1,s7_s9_s5,s7_s10_s4,s7_s11_s3,
+ s7_s12_s2,s6_s11_s4,s6_s12_s3,s5_s7_s9,s5_s12_s4,s4_s5_s12,s4_s6_s11,s4_s7_s10,
+ s4_s8_s9,s3_s6_s12,s3_s7_s11,s3_s8_s10,s2_s7_s12,s2_s8_s11,s1_s8_s12,s1_s9_s11,
+ s12_s1_s9,s12_s2_s8,s12_s3_s7,s12_s4_s6,s11_s1_s10,s11_s2_s9,s11_s3_s8,s11_s4_s7,
+ s10_s4_s8,s10_s5_s7,s10_s11_s1,s9_s5_s8,s9_s6_s7,s9_s11_s2,s9_s12_s1,s8_s9_s5,
+ s8_s10_s4,s8_s11_s3,s8_s12_s2,s7_s9_s6,s7_s10_s5,s7_s11_s4,s7_s12_s3,s6_s7_s9,
+ s6_s12_s4,s5_s7_s10,s5_s8_s9,s4_s6_s12,s4_s7_s11,s4_s8_s10,s3_s7_s12,s3_s8_s11,
+ s2_s8_s12,s2_s9_s11,s1_s9_s12,s1_s10_s11,s12_s1_s10,s12_s2_s9,s12_s3_s8,s12_s4_s7,
+ s11_s2_s10,s11_s3_s9,s11_s4_s8,s11_s5_s7,s10_s5_s8,s10_s6_s7,s10_s11_s2,s10_s12_s1,
+ s9_s6_s8,s9_s11_s3,s9_s12_s2,s8_s9_s6,s8_s10_s5,s8_s11_s4,s8_s12_s3,s7_s10_s6,
+ s7_s11_s5,s7_s12_s4,s6_s7_s10,s6_s8_s9,s5_s7_s11,s5_s8_s10,s4_s7_s12,s4_s8_s11,
+ s3_s8_s12,s3_s9_s11,s2_s9_s12,s2_s10_s11,s1_s10_s12,s12_s2_s10,s12_s3_s9,s12_s4_s8,
+ s12_s5_s7,s11_s3_s10,s11_s4_s9,s11_s5_s8,s11_s6_s7,s10_s6_s8,s10_s11_s3,s10_s12_s2,
+ s9_s11_s4,s9_s12_s3,s8_s10_s6,s8_s11_s5,s8_s12_s4,s7_s11_s6,s7_s12_s5,s6_s7_s11,
+ s6_s8_s10,s5_s7_s12,s5_s8_s11,s4_s8_s12,s4_s9_s11,s3_s9_s12,s3_s10_s11,s2_s10_s12,
+ s12_s3_s10,s12_s4_s9,s12_s5_s8,s12_s6_s7,s11_s4_s10,s11_s5_s9,s11_s6_s8,s10_s11_s4,
+ s10_s12_s3,s9_s11_s5,s9_s12_s4,s8_s11_s6,s8_s12_s5,s7_s12_s6,s6_s7_s12,s6_s8_s11,
+ s5_s8_s12,s5_s9_s11,s4_s9_s12,s4_s10_s11,s3_s10_s12,s12_s4_s10,s12_s5_s9,s12_s6_s8,
+ s11_s5_s10,s11_s6_s9,s10_s11_s5,s10_s12_s4,s9_s11_s6,s9_s12_s5,s8_s12_s6,s6_s8_s12,
+ s6_s9_s11,s5_s9_s12,s5_s10_s11,s4_s10_s12,s12_s5_s10,s12_s6_s9,s11_s6_s10,s11_s7_s9,
+ s10_s11_s6,s10_s12_s5,s9_s11_s7,s9_s12_s6,s7_s9_s11,s6_s9_s12,s6_s10_s11,s5_s10_s12,
+ s12_s6_s10,s12_s7_s9,s11_s7_s10,s11_s8_s9,s10_s11_s7,s10_s12_s6,s9_s11_s8,s9_s12_s7,
+ s8_s9_s11,s7_s9_s12,s7_s10_s11,s6_s10_s12,s12_s7_s10,s12_s8_s9,s11_s8_s10,s10_s11_s8,
+ s10_s12_s7,s9_s12_s8,s8_s9_s12,s8_s10_s11,s7_s10_s12,s12_s8_s10,s10_s12_s8,s8_s10_s12}
+
+Disabled events: 
+{(s5_s1_s3|->{}),(s3_s5_s1|->{}),(s1_s3_s5|->{}),(s6_s1_s3|->{}),(s5_s1_s4|->{t3_4t5}),
+ (s5_s2_s3|->{t2_2t3}),(s4_s5_s1|->{t1_4t5}),(s3_s5_s2|->{t3_2t3}),(s3_s6_s1|->{}),
+ (s2_s3_s5|->{t1_2t3}),(s1_s3_s6|->{}),(s1_s4_s5|->{t2_4t5}),(s7_s1_s3|->{}),
+ (s6_s1_s4|->{t3_4t5}),(s6_s2_s3|->{t2_2t3}),(s5_s2_s4|->{t2_2t3,t3_4t5}),
+ (s4_s5_s2|->{t1_4t5,t3_2t3}),(s4_s6_s1|->{t1_4t5}),(s3_s6_s2|->{t3_2t3}),(s3_s7_s1|->{}),
+ (s2_s3_s6|->{t1_2t3}),(s2_s4_s5|->{t1_2t3,t2_4t5}),(s1_s3_s7|->{}),(s1_s4_s6|->{t2_4t5}),
+ (s8_s1_s3|->{}),(s7_s1_s4|->{}),(s7_s2_s3|->{t2_2t3}),(s6_s2_s4|->{t2_2t3,t3_4t5}),
+ (s4_s6_s2|->{t1_4t5,t3_2t3}),(s4_s7_s1|->{}),(s3_s7_s2|->{t3_2t3}),(s3_s8_s1|->{}),
+ (s2_s3_s7|->{t1_2t3}),(s2_s4_s6|->{t1_2t3,t2_4t5}),(s1_s3_s8|->{}),(s1_s4_s7|->{}),
+ (s9_s1_s3|->{}),(s8_s1_s4|->{}),(s8_s2_s3|->{t2_2t3}),(s7_s1_s5|->{}),
+ (s7_s2_s4|->{t2_2t3}),(s5_s7_s1|->{}),(s4_s7_s2|->{t3_2t3}),(s4_s8_s1|->{}),
+ (s3_s8_s2|->{t3_2t3}),(s3_s9_s1|->{}),(s2_s3_s8|->{t1_2t3}),(s2_s4_s7|->{t1_2t3}),
+ (s1_s3_s9|->{}),(s1_s4_s8|->{}),(s1_s5_s7|->{}),(s10_s1_s3|->{}),(s9_s1_s4|->{}),
+ (s9_s2_s3|->{t2_2t3}),(s8_s1_s5|->{}),(s8_s2_s4|->{t2_2t3}),(s7_s1_s6|->{t3_6t7}),
+ (s7_s2_s5|->{}),(s6_s7_s1|->{t1_6t7}),(s5_s7_s2|->{}),(s5_s8_s1|->{}),
+ (s4_s8_s2|->{t3_2t3}),(s4_s9_s1|->{}),(s3_s9_s2|->{t3_2t3}),(s3_s10_s1|->{}),
+ (s2_s3_s9|->{t1_2t3}),(s2_s4_s8|->{t1_2t3}),(s2_s5_s7|->{}),(s1_s3_s10|->{}),
+ (s1_s4_s9|->{}),(s1_s5_s8|->{}),(s1_s6_s7|->{t2_6t7}),(s11_s1_s3|->{}),(s10_s1_s4|->{}),
+ (s10_s2_s3|->{t2_2t3}),(s9_s1_s5|->{}),(s9_s2_s4|->{t2_2t3}),(s8_s1_s6|->{t3_6t7}),
+ (s8_s2_s5|->{}),(s7_s2_s6|->{t3_6t7}),(s7_s3_s5|->{}),(s6_s7_s2|->{t1_6t7}),
+ (s6_s8_s1|->{t1_6t7}),(s5_s7_s3|->{}),(s5_s8_s2|->{}),(s5_s9_s1|->{}),
+ (s4_s9_s2|->{t3_2t3}),(s4_s10_s1|->{}),(s3_s5_s7|->{}),(s3_s10_s2|->{t3_2t3}),
+ (s3_s11_s1|->{}),(s2_s3_s10|->{t1_2t3}),(s2_s4_s9|->{t1_2t3}),(s2_s5_s8|->{}),
+ (s2_s6_s7|->{t2_6t7}),(s1_s3_s11|->{}),(s1_s4_s10|->{}),(s1_s5_s9|->{}),
+ (s1_s6_s8|->{t2_6t7}),(s12_s1_s3|->{t1_12t1}),(s11_s1_s4|->{}),(s11_s2_s3|->{t2_2t3}),
+ (s10_s1_s5|->{}),(s10_s2_s4|->{t2_2t3}),(s9_s1_s6|->{}),(s9_s2_s5|->{}),
+ (s8_s2_s6|->{t3_6t7}),(s8_s3_s5|->{}),(s7_s3_s6|->{t3_6t7}),(s7_s4_s5|->{t2_4t5}),
+ (s6_s7_s3|->{t1_6t7}),(s6_s8_s2|->{t1_6t7}),(s6_s9_s1|->{}),(s5_s7_s4|->{t3_4t5}),
+ (s5_s8_s3|->{}),(s5_s9_s2|->{}),(s5_s10_s1|->{}),(s4_s5_s7|->{t1_4t5}),
+ (s4_s10_s2|->{t3_2t3}),(s4_s11_s1|->{}),(s3_s5_s8|->{}),(s3_s6_s7|->{t2_6t7}),
+ (s3_s11_s2|->{t3_2t3}),(s3_s12_s1|->{t2_12t1}),(s2_s3_s11|->{t1_2t3}),
+ (s2_s4_s10|->{t1_2t3}),(s2_s5_s9|->{}),(s2_s6_s8|->{t2_6t7}),(s1_s3_s12|->{t3_12t1}),
+ (s1_s4_s11|->{}),(s1_s5_s10|->{}),(s1_s6_s9|->{}),(s12_s1_s4|->{t1_12t1}),
+ (s12_s2_s3|->{t1_12t1,t2_2t3}),(s11_s1_s5|->{}),(s11_s2_s4|->{t2_2t3}),
+ (s10_s1_s6|->{}),(s10_s2_s5|->{}),(s9_s1_s7|->{}),(s9_s2_s6|->{}),(s9_s3_s5|->{}),
+ (s8_s3_s6|->{t3_6t7}),(s8_s4_s5|->{t2_4t5}),(s7_s4_s6|->{t2_4t5,t3_6t7}),(s7_s9_s1|->{}),
+ (s6_s7_s4|->{t1_6t7,t3_4t5}),(s6_s8_s3|->{t1_6t7}),(s6_s9_s2|->{}),(s6_s10_s1|->{}),
+ (s5_s8_s4|->{t3_4t5}),(s5_s9_s3|->{}),(s5_s10_s2|->{}),(s5_s11_s1|->{}),
+ (s4_s5_s8|->{t1_4t5}),(s4_s6_s7|->{t1_4t5,t2_6t7}),(s4_s11_s2|->{t3_2t3}),
+ (s4_s12_s1|->{t2_12t1}),(s3_s5_s9|->{}),(s3_s6_s8|->{t2_6t7}),
+ (s3_s12_s2|->{t2_12t1,t3_2t3}),(s2_s3_s12|->{t1_2t3,t3_12t1}),(s2_s4_s11|->{t1_2t3}),
+ (s2_s5_s10|->{}),(s2_s6_s9|->{}),(s1_s4_s12|->{t3_12t1}),(s1_s5_s11|->{}),
+ (s1_s6_s10|->{}),(s1_s7_s9|->{}),(s12_s1_s5|->{t1_12t1}),(s12_s2_s4|->{t1_12t1,t2_2t3}),
+ (s11_s1_s6|->{}),(s11_s2_s5|->{}),(s10_s1_s7|->{}),(s10_s2_s6|->{}),(s10_s3_s5|->{}),
+ (s9_s1_s8|->{t3_8t9}),(s9_s2_s7|->{}),(s9_s3_s6|->{}),(s9_s4_s5|->{t2_4t5}),
+ (s8_s4_s6|->{t2_4t5,t3_6t7}),(s8_s9_s1|->{t1_8t9}),(s7_s9_s2|->{}),(s7_s10_s1|->{}),
+ (s6_s8_s4|->{t1_6t7,t3_4t5}),(s6_s9_s3|->{}),(s6_s10_s2|->{}),(s6_s11_s1|->{}),
+ (s5_s9_s4|->{t3_4t5}),(s5_s10_s3|->{}),(s5_s11_s2|->{}),(s5_s12_s1|->{t2_12t1}),
+ (s4_s5_s9|->{t1_4t5}),(s4_s6_s8|->{t1_4t5,t2_6t7}),(s4_s12_s2|->{t2_12t1,t3_2t3}),
+ (s3_s5_s10|->{}),(s3_s6_s9|->{}),(s2_s4_s12|->{t1_2t3,t3_12t1}),(s2_s5_s11|->{}),
+ (s2_s6_s10|->{}),(s2_s7_s9|->{}),(s1_s5_s12|->{t3_12t1}),(s1_s6_s11|->{}),
+ (s1_s7_s10|->{}),(s1_s8_s9|->{t2_8t9}),(s12_s1_s6|->{t1_12t1}),(s12_s2_s5|->{t1_12t1}),
+ (s11_s1_s7|->{}),(s11_s2_s6|->{}),(s11_s3_s5|->{}),(s10_s1_s8|->{t3_8t9}),
+ (s10_s2_s7|->{}),(s10_s3_s6|->{}),(s10_s4_s5|->{t2_4t5}),(s9_s2_s8|->{t3_8t9}),
+ (s9_s3_s7|->{}),(s9_s4_s6|->{t2_4t5}),(s8_s9_s2|->{t1_8t9}),(s8_s10_s1|->{t1_8t9}),
+ (s7_s9_s3|->{}),(s7_s10_s2|->{}),(s7_s11_s1|->{}),(s6_s9_s4|->{t3_4t5}),(s6_s10_s3|->{}),
+ (s6_s11_s2|->{}),(s6_s12_s1|->{t2_12t1}),(s5_s10_s4|->{t3_4t5}),(s5_s11_s3|->{}),
+ (s5_s12_s2|->{t2_12t1}),(s4_s5_s10|->{t1_4t5}),(s4_s6_s9|->{t1_4t5}),(s3_s5_s11|->{}),
+ (s3_s6_s10|->{}),(s3_s7_s9|->{}),(s2_s5_s12|->{t3_12t1}),(s2_s6_s11|->{}),
+ (s2_s7_s10|->{}),(s2_s8_s9|->{t2_8t9}),(s1_s6_s12|->{t3_12t1}),(s1_s7_s11|->{}),
+ (s1_s8_s10|->{t2_8t9}),(s12_s1_s7|->{t1_12t1}),(s12_s2_s6|->{t1_12t1}),(s12_s3_s5|->{}),
+ (s11_s1_s8|->{}),(s11_s2_s7|->{}),(s11_s3_s6|->{}),(s11_s4_s5|->{t2_4t5}),
+ (s10_s2_s8|->{t3_8t9}),(s10_s3_s7|->{}),(s10_s4_s6|->{t2_4t5}),(s9_s3_s8|->{t3_8t9}),
+ (s9_s4_s7|->{}),(s8_s9_s3|->{t1_8t9}),(s8_s10_s2|->{t1_8t9}),(s8_s11_s1|->{}),
+ (s7_s9_s4|->{}),(s7_s10_s3|->{}),(s7_s11_s2|->{}),(s7_s12_s1|->{t2_12t1}),
+ (s6_s10_s4|->{t3_4t5}),(s6_s11_s3|->{}),(s6_s12_s2|->{t2_12t1}),(s5_s11_s4|->{t3_4t5}),
+ (s5_s12_s3|->{}),(s4_s5_s11|->{t1_4t5}),(s4_s6_s10|->{t1_4t5}),(s4_s7_s9|->{}),
+ (s3_s5_s12|->{}),(s3_s6_s11|->{}),(s3_s7_s10|->{}),(s3_s8_s9|->{t2_8t9}),
+ (s2_s6_s12|->{t3_12t1}),(s2_s7_s11|->{}),(s2_s8_s10|->{t2_8t9}),(s1_s7_s12|->{t3_12t1}),
+ (s1_s8_s11|->{}),(s12_s1_s8|->{t1_12t1}),(s12_s2_s7|->{t1_12t1}),(s12_s3_s6|->{}),
+ (s12_s4_s5|->{t2_4t5}),(s11_s1_s9|->{}),(s11_s2_s8|->{}),(s11_s3_s7|->{}),
+ (s11_s4_s6|->{t2_4t5}),(s10_s3_s8|->{t3_8t9}),(s10_s4_s7|->{}),(s9_s4_s8|->{t3_8t9}),
+ (s9_s5_s7|->{}),(s9_s11_s1|->{}),(s8_s9_s4|->{t1_8t9}),(s8_s10_s3|->{t1_8t9}),
+ (s8_s11_s2|->{}),(s8_s12_s1|->{t2_12t1}),(s7_s9_s5|->{}),(s7_s10_s4|->{}),
+ (s7_s11_s3|->{}),(s7_s12_s2|->{t2_12t1}),(s6_s11_s4|->{t3_4t5}),(s6_s12_s3|->{}),
+ (s5_s7_s9|->{}),(s5_s12_s4|->{t3_4t5}),(s4_s5_s12|->{t1_4t5}),(s4_s6_s11|->{t1_4t5}),
+ (s4_s7_s10|->{}),(s4_s8_s9|->{t2_8t9}),(s3_s6_s12|->{}),(s3_s7_s11|->{}),
+ (s3_s8_s10|->{t2_8t9}),(s2_s7_s12|->{t3_12t1}),(s2_s8_s11|->{}),(s1_s8_s12|->{t3_12t1}),
+ (s1_s9_s11|->{}),(s12_s1_s9|->{t1_12t1}),(s12_s2_s8|->{t1_12t1}),(s12_s3_s7|->{}),
+ (s12_s4_s6|->{t2_4t5}),(s11_s1_s10|->{t3_10t11}),(s11_s2_s9|->{}),(s11_s3_s8|->{}),
+ (s11_s4_s7|->{}),(s10_s4_s8|->{t3_8t9}),(s10_s5_s7|->{}),(s10_s11_s1|->{t1_10t11}),
+ (s9_s5_s8|->{t3_8t9}),(s9_s6_s7|->{t2_6t7}),(s9_s11_s2|->{}),(s9_s12_s1|->{t2_12t1}),
+ (s8_s9_s5|->{t1_8t9}),(s8_s10_s4|->{t1_8t9}),(s8_s11_s3|->{}),(s8_s12_s2|->{t2_12t1}),
+ (s7_s9_s6|->{t3_6t7}),(s7_s10_s5|->{}),(s7_s11_s4|->{}),(s7_s12_s3|->{}),
+ (s6_s7_s9|->{t1_6t7}),(s6_s12_s4|->{t3_4t5}),(s5_s7_s10|->{}),(s5_s8_s9|->{t2_8t9}),
+ (s4_s6_s12|->{t1_4t5}),(s4_s7_s11|->{}),(s4_s8_s10|->{t2_8t9}),(s3_s7_s12|->{}),
+ (s3_s8_s11|->{}),(s2_s8_s12|->{t3_12t1}),(s2_s9_s11|->{}),(s1_s9_s12|->{t3_12t1}),
+ (s1_s10_s11|->{t2_10t11}),(s12_s1_s10|->{t1_12t1,t3_10t11}),(s12_s2_s9|->{t1_12t1}),
+ (s12_s3_s8|->{}),(s12_s4_s7|->{}),(s11_s2_s10|->{t3_10t11}),(s11_s3_s9|->{}),
+ (s11_s4_s8|->{}),(s11_s5_s7|->{}),(s10_s5_s8|->{t3_8t9}),(s10_s6_s7|->{t2_6t7}),
+ (s10_s11_s2|->{t1_10t11}),(s10_s12_s1|->{t1_10t11,t2_12t1}),(s9_s6_s8|->{t2_6t7,t3_8t9}),
+ (s9_s11_s3|->{}),(s9_s12_s2|->{t2_12t1}),(s8_s9_s6|->{t1_8t9,t3_6t7}),
+ (s8_s10_s5|->{t1_8t9}),(s8_s11_s4|->{}),(s8_s12_s3|->{}),(s7_s10_s6|->{t3_6t7}),
+ (s7_s11_s5|->{}),(s7_s12_s4|->{}),(s6_s7_s10|->{t1_6t7}),(s6_s8_s9|->{t1_6t7,t2_8t9}),
+ (s5_s7_s11|->{}),(s5_s8_s10|->{t2_8t9}),(s4_s7_s12|->{}),(s4_s8_s11|->{}),
+ (s3_s8_s12|->{}),(s3_s9_s11|->{}),(s2_s9_s12|->{t3_12t1}),(s2_s10_s11|->{t2_10t11}),
+ (s1_s10_s12|->{t2_10t11,t3_12t1}),(s12_s2_s10|->{t1_12t1,t3_10t11}),(s12_s3_s9|->{}),
+ (s12_s4_s8|->{}),(s12_s5_s7|->{}),(s11_s3_s10|->{t3_10t11}),(s11_s4_s9|->{}),
+ (s11_s5_s8|->{}),(s11_s6_s7|->{t2_6t7}),(s10_s6_s8|->{t2_6t7,t3_8t9}),
+ (s10_s11_s3|->{t1_10t11}),(s10_s12_s2|->{t1_10t11,t2_12t1}),(s9_s11_s4|->{}),
+ (s9_s12_s3|->{}),(s8_s10_s6|->{t1_8t9,t3_6t7}),(s8_s11_s5|->{}),(s8_s12_s4|->{}),
+ (s7_s11_s6|->{t3_6t7}),(s7_s12_s5|->{}),(s6_s7_s11|->{t1_6t7}),
+ (s6_s8_s10|->{t1_6t7,t2_8t9}),(s5_s7_s12|->{}),(s5_s8_s11|->{}),(s4_s8_s12|->{}),
+ (s4_s9_s11|->{}),(s3_s9_s12|->{}),(s3_s10_s11|->{t2_10t11}),
+ (s2_s10_s12|->{t2_10t11,t3_12t1}),(s12_s3_s10|->{t3_10t11}),(s12_s4_s9|->{}),
+ (s12_s5_s8|->{}),(s12_s6_s7|->{t2_6t7}),(s11_s4_s10|->{t3_10t11}),(s11_s5_s9|->{}),
+ (s11_s6_s8|->{t2_6t7}),(s10_s11_s4|->{t1_10t11}),(s10_s12_s3|->{t1_10t11}),
+ (s9_s11_s5|->{}),(s9_s12_s4|->{}),(s8_s11_s6|->{t3_6t7}),(s8_s12_s5|->{}),
+ (s7_s12_s6|->{t3_6t7}),(s6_s7_s12|->{t1_6t7}),(s6_s8_s11|->{t1_6t7}),(s5_s8_s12|->{}),
+ (s5_s9_s11|->{}),(s4_s9_s12|->{}),(s4_s10_s11|->{t2_10t11}),(s3_s10_s12|->{t2_10t11}),
+ (s12_s4_s10|->{t3_10t11}),(s12_s5_s9|->{}),(s12_s6_s8|->{t2_6t7}),
+ (s11_s5_s10|->{t3_10t11}),(s11_s6_s9|->{}),(s10_s11_s5|->{t1_10t11}),
+ (s10_s12_s4|->{t1_10t11}),(s9_s11_s6|->{}),(s9_s12_s5|->{}),(s8_s12_s6|->{t3_6t7}),
+ (s6_s8_s12|->{t1_6t7}),(s6_s9_s11|->{}),(s5_s9_s12|->{}),(s5_s10_s11|->{t2_10t11}),
+ (s4_s10_s12|->{t2_10t11}),(s12_s5_s10|->{t3_10t11}),(s12_s6_s9|->{}),
+ (s11_s6_s10|->{t3_10t11}),(s11_s7_s9|->{}),(s10_s11_s6|->{t1_10t11}),
+ (s10_s12_s5|->{t1_10t11}),(s9_s11_s7|->{}),(s9_s12_s6|->{}),(s7_s9_s11|->{}),
+ (s6_s9_s12|->{}),(s6_s10_s11|->{t2_10t11}),(s5_s10_s12|->{t2_10t11}),
+ (s12_s6_s10|->{t3_10t11}),(s12_s7_s9|->{}),(s11_s7_s10|->{t3_10t11}),
+ (s11_s8_s9|->{t2_8t9}),(s10_s11_s7|->{t1_10t11}),(s10_s12_s6|->{t1_10t11}),
+ (s9_s11_s8|->{t3_8t9}),(s9_s12_s7|->{}),(s8_s9_s11|->{t1_8t9}),(s7_s9_s12|->{}),
+ (s7_s10_s11|->{t2_10t11}),(s6_s10_s12|->{t2_10t11}),(s12_s7_s10|->{t3_10t11}),
+ (s12_s8_s9|->{t2_8t9}),(s11_s8_s10|->{t2_8t9,t3_10t11}),(s10_s11_s8|->{t1_10t11,t3_8t9}),
+ (s10_s12_s7|->{t1_10t11}),(s9_s12_s8|->{t3_8t9}),(s8_s9_s12|->{t1_8t9}),
+ (s8_s10_s11|->{t1_8t9,t2_10t11}),(s7_s10_s12|->{t2_10t11}),
+ (s12_s8_s10|->{t2_8t9,t3_10t11}),(s10_s12_s8|->{t1_10t11,t3_8t9}),
+ (s8_s10_s12|->{t1_8t9,t2_10t11})}
+Enabled events: 
+{(s5_s1_s3|->{t1_5t6,t2_1t2,t3_3t4}),(s3_s5_s1|->{t1_3t4,t2_5t6,t3_1t2}),
+ (s1_s3_s5|->{t1_1t2,t2_3t4,t3_5t6}),(s6_s1_s3|->{t1_6t7,t2_1t2,t3_3t4}),
+ (s5_s1_s4|->{t1_5t6,t2_1t2}),(s5_s2_s3|->{t1_5t6,t3_3t4}),(s4_s5_s1|->{t2_5t6,t3_1t2}),
+ (s3_s5_s2|->{t1_3t4,t2_5t6}),(s3_s6_s1|->{t1_3t4,t2_6t7,t3_1t2}),
+ (s2_s3_s5|->{t2_3t4,t3_5t6}),(s1_s3_s6|->{t1_1t2,t2_3t4,t3_6t7}),
+ (s1_s4_s5|->{t1_1t2,t3_5t6}),(s7_s1_s3|->{t1_7t8,t2_1t2,t3_3t4}),
+ (s6_s1_s4|->{t1_6t7,t2_1t2}),(s6_s2_s3|->{t1_6t7,t3_3t4}),(s5_s2_s4|->{t1_5t6}),
+ (s4_s5_s2|->{t2_5t6}),(s4_s6_s1|->{t2_6t7,t3_1t2}),(s3_s6_s2|->{t1_3t4,t2_6t7}),
+ (s3_s7_s1|->{t1_3t4,t2_7t8,t3_1t2}),(s2_s3_s6|->{t2_3t4,t3_6t7}),(s2_s4_s5|->{t3_5t6}),
+ (s1_s3_s7|->{t1_1t2,t2_3t4,t3_7t8}),(s1_s4_s6|->{t1_1t2,t3_6t7}),
+ (s8_s1_s3|->{t1_8t9,t2_1t2,t3_3t4}),(s7_s1_s4|->{t1_7t8,t2_1t2,t3_4t5}),
+ (s7_s2_s3|->{t1_7t8,t3_3t4}),(s6_s2_s4|->{t1_6t7}),(s4_s6_s2|->{t2_6t7}),
+ (s4_s7_s1|->{t1_4t5,t2_7t8,t3_1t2}),(s3_s7_s2|->{t1_3t4,t2_7t8}),
+ (s3_s8_s1|->{t1_3t4,t2_8t9,t3_1t2}),(s2_s3_s7|->{t2_3t4,t3_7t8}),
+ (s2_s4_s6|->{t3_6t7}),(s1_s3_s8|->{t1_1t2,t2_3t4,t3_8t9}),
+ (s1_s4_s7|->{t1_1t2,t2_4t5,t3_7t8}),(s9_s1_s3|->{t1_9t10,t2_1t2,t3_3t4}),
+ (s8_s1_s4|->{t1_8t9,t2_1t2,t3_4t5}),(s8_s2_s3|->{t1_8t9,t3_3t4}),
+ (s7_s1_s5|->{t1_7t8,t2_1t2,t3_5t6}),(s7_s2_s4|->{t1_7t8,t3_4t5}),
+ (s5_s7_s1|->{t1_5t6,t2_7t8,t3_1t2}),(s4_s7_s2|->{t1_4t5,t2_7t8}),
+ (s4_s8_s1|->{t1_4t5,t2_8t9,t3_1t2}),(s3_s8_s2|->{t1_3t4,t2_8t9}),
+ (s3_s9_s1|->{t1_3t4,t2_9t10,t3_1t2}),(s2_s3_s8|->{t2_3t4,t3_8t9}),
+ (s2_s4_s7|->{t2_4t5,t3_7t8}),(s1_s3_s9|->{t1_1t2,t2_3t4,t3_9t10}),
+ (s1_s4_s8|->{t1_1t2,t2_4t5,t3_8t9}),(s1_s5_s7|->{t1_1t2,t2_5t6,t3_7t8}),
+ (s10_s1_s3|->{t1_10t11,t2_1t2,t3_3t4}),(s9_s1_s4|->{t1_9t10,t2_1t2,t3_4t5}),
+ (s9_s2_s3|->{t1_9t10,t3_3t4}),(s8_s1_s5|->{t1_8t9,t2_1t2,t3_5t6}),
+ (s8_s2_s4|->{t1_8t9,t3_4t5}),(s7_s1_s6|->{t1_7t8,t2_1t2}),
+ (s7_s2_s5|->{t1_7t8,t2_2t3,t3_5t6}),(s6_s7_s1|->{t2_7t8,t3_1t2}),
+ (s5_s7_s2|->{t1_5t6,t2_7t8,t3_2t3}),(s5_s8_s1|->{t1_5t6,t2_8t9,t3_1t2}),
+ (s4_s8_s2|->{t1_4t5,t2_8t9}),(s4_s9_s1|->{t1_4t5,t2_9t10,t3_1t2}),
+ (s3_s9_s2|->{t1_3t4,t2_9t10}),(s3_s10_s1|->{t1_3t4,t2_10t11,t3_1t2}),
+ (s2_s3_s9|->{t2_3t4,t3_9t10}),(s2_s4_s8|->{t2_4t5,t3_8t9}),
+ (s2_s5_s7|->{t1_2t3,t2_5t6,t3_7t8}),(s1_s3_s10|->{t1_1t2,t2_3t4,t3_10t11}),
+ (s1_s4_s9|->{t1_1t2,t2_4t5,t3_9t10}),(s1_s5_s8|->{t1_1t2,t2_5t6,t3_8t9}),
+ (s1_s6_s7|->{t1_1t2,t3_7t8}),(s11_s1_s3|->{t1_11t12,t2_1t2,t3_3t4}),
+ (s10_s1_s4|->{t1_10t11,t2_1t2,t3_4t5}),(s10_s2_s3|->{t1_10t11,t3_3t4}),
+ (s9_s1_s5|->{t1_9t10,t2_1t2,t3_5t6}),(s9_s2_s4|->{t1_9t10,t3_4t5}),
+ (s8_s1_s6|->{t1_8t9,t2_1t2}),(s8_s2_s5|->{t1_8t9,t2_2t3,t3_5t6}),
+ (s7_s2_s6|->{t1_7t8,t2_2t3}),(s7_s3_s5|->{t1_7t8,t2_3t4,t3_5t6}),
+ (s6_s7_s2|->{t2_7t8,t3_2t3}),(s6_s8_s1|->{t2_8t9,t3_1t2}),
+ (s5_s7_s3|->{t1_5t6,t2_7t8,t3_3t4}),(s5_s8_s2|->{t1_5t6,t2_8t9,t3_2t3}),
+ (s5_s9_s1|->{t1_5t6,t2_9t10,t3_1t2}),(s4_s9_s2|->{t1_4t5,t2_9t10}),
+ (s4_s10_s1|->{t1_4t5,t2_10t11,t3_1t2}),(s3_s5_s7|->{t1_3t4,t2_5t6,t3_7t8}),
+ (s3_s10_s2|->{t1_3t4,t2_10t11}),(s3_s11_s1|->{t1_3t4,t2_11t12,t3_1t2}),
+ (s2_s3_s10|->{t2_3t4,t3_10t11}),(s2_s4_s9|->{t2_4t5,t3_9t10}),
+ (s2_s5_s8|->{t1_2t3,t2_5t6,t3_8t9}),(s2_s6_s7|->{t1_2t3,t3_7t8}),
+ (s1_s3_s11|->{t1_1t2,t2_3t4,t3_11t12}),(s1_s4_s10|->{t1_1t2,t2_4t5,t3_10t11}),
+ (s1_s5_s9|->{t1_1t2,t2_5t6,t3_9t10}),(s1_s6_s8|->{t1_1t2,t3_8t9}),
+ (s12_s1_s3|->{t2_1t2,t3_3t4}),(s11_s1_s4|->{t1_11t12,t2_1t2,t3_4t5}),
+ (s11_s2_s3|->{t1_11t12,t3_3t4}),(s10_s1_s5|->{t1_10t11,t2_1t2,t3_5t6}),
+ (s10_s2_s4|->{t1_10t11,t3_4t5}),(s9_s1_s6|->{t1_9t10,t2_1t2,t3_6t7}),
+ (s9_s2_s5|->{t1_9t10,t2_2t3,t3_5t6}),(s8_s2_s6|->{t1_8t9,t2_2t3}),
+ (s8_s3_s5|->{t1_8t9,t2_3t4,t3_5t6}),(s7_s3_s6|->{t1_7t8,t2_3t4}),
+ (s7_s4_s5|->{t1_7t8,t3_5t6}),(s6_s7_s3|->{t2_7t8,t3_3t4}),(s6_s8_s2|->{t2_8t9,t3_2t3}),
+ (s6_s9_s1|->{t1_6t7,t2_9t10,t3_1t2}),(s5_s7_s4|->{t1_5t6,t2_7t8}),
+ (s5_s8_s3|->{t1_5t6,t2_8t9,t3_3t4}),(s5_s9_s2|->{t1_5t6,t2_9t10,t3_2t3}),
+ (s5_s10_s1|->{t1_5t6,t2_10t11,t3_1t2}),(s4_s5_s7|->{t2_5t6,t3_7t8}),
+ (s4_s10_s2|->{t1_4t5,t2_10t11}),(s4_s11_s1|->{t1_4t5,t2_11t12,t3_1t2}),
+ (s3_s5_s8|->{t1_3t4,t2_5t6,t3_8t9}),(s3_s6_s7|->{t1_3t4,t3_7t8}),
+ (s3_s11_s2|->{t1_3t4,t2_11t12}),(s3_s12_s1|->{t1_3t4,t3_1t2}),
+ (s2_s3_s11|->{t2_3t4,t3_11t12}),(s2_s4_s10|->{t2_4t5,t3_10t11}),
+ (s2_s5_s9|->{t1_2t3,t2_5t6,t3_9t10}),(s2_s6_s8|->{t1_2t3,t3_8t9}),
+ (s1_s3_s12|->{t1_1t2,t2_3t4}),(s1_s4_s11|->{t1_1t2,t2_4t5,t3_11t12}),
+ (s1_s5_s10|->{t1_1t2,t2_5t6,t3_10t11}),(s1_s6_s9|->{t1_1t2,t2_6t7,t3_9t10}),
+ (s12_s1_s4|->{t2_1t2,t3_4t5}),(s12_s2_s3|->{t3_3t4}),
+ (s11_s1_s5|->{t1_11t12,t2_1t2,t3_5t6}),(s11_s2_s4|->{t1_11t12,t3_4t5}),
+ (s10_s1_s6|->{t1_10t11,t2_1t2,t3_6t7}),(s10_s2_s5|->{t1_10t11,t2_2t3,t3_5t6}),
+ (s9_s1_s7|->{t1_9t10,t2_1t2,t3_7t8}),(s9_s2_s6|->{t1_9t10,t2_2t3,t3_6t7}),
+ (s9_s3_s5|->{t1_9t10,t2_3t4,t3_5t6}),(s8_s3_s6|->{t1_8t9,t2_3t4}),
+ (s8_s4_s5|->{t1_8t9,t3_5t6}),(s7_s4_s6|->{t1_7t8}),(s7_s9_s1|->{t1_7t8,t2_9t10,t3_1t2}),
+ (s6_s7_s4|->{t2_7t8}),(s6_s8_s3|->{t2_8t9,t3_3t4}),(s6_s9_s2|->{t1_6t7,t2_9t10,t3_2t3}),
+ (s6_s10_s1|->{t1_6t7,t2_10t11,t3_1t2}),(s5_s8_s4|->{t1_5t6,t2_8t9}),
+ (s5_s9_s3|->{t1_5t6,t2_9t10,t3_3t4}),(s5_s10_s2|->{t1_5t6,t2_10t11,t3_2t3}),
+ (s5_s11_s1|->{t1_5t6,t2_11t12,t3_1t2}),(s4_s5_s8|->{t2_5t6,t3_8t9}),
+ (s4_s6_s7|->{t3_7t8}),(s4_s11_s2|->{t1_4t5,t2_11t12}),(s4_s12_s1|->{t1_4t5,t3_1t2}),
+ (s3_s5_s9|->{t1_3t4,t2_5t6,t3_9t10}),(s3_s6_s8|->{t1_3t4,t3_8t9}),(s3_s12_s2|->{t1_3t4}),
+ (s2_s3_s12|->{t2_3t4}),(s2_s4_s11|->{t2_4t5,t3_11t12}),
+ (s2_s5_s10|->{t1_2t3,t2_5t6,t3_10t11}),(s2_s6_s9|->{t1_2t3,t2_6t7,t3_9t10}),
+ (s1_s4_s12|->{t1_1t2,t2_4t5}),(s1_s5_s11|->{t1_1t2,t2_5t6,t3_11t12}),
+ (s1_s6_s10|->{t1_1t2,t2_6t7,t3_10t11}),(s1_s7_s9|->{t1_1t2,t2_7t8,t3_9t10}),
+ (s12_s1_s5|->{t2_1t2,t3_5t6}),(s12_s2_s4|->{t3_4t5}),
+ (s11_s1_s6|->{t1_11t12,t2_1t2,t3_6t7}),(s11_s2_s5|->{t1_11t12,t2_2t3,t3_5t6}),
+ (s10_s1_s7|->{t1_10t11,t2_1t2,t3_7t8}),(s10_s2_s6|->{t1_10t11,t2_2t3,t3_6t7}),
+ (s10_s3_s5|->{t1_10t11,t2_3t4,t3_5t6}),(s9_s1_s8|->{t1_9t10,t2_1t2}),
+ (s9_s2_s7|->{t1_9t10,t2_2t3,t3_7t8}),(s9_s3_s6|->{t1_9t10,t2_3t4,t3_6t7}),
+ (s9_s4_s5|->{t1_9t10,t3_5t6}),(s8_s4_s6|->{t1_8t9}),(s8_s9_s1|->{t2_9t10,t3_1t2}),
+ (s7_s9_s2|->{t1_7t8,t2_9t10,t3_2t3}),(s7_s10_s1|->{t1_7t8,t2_10t11,t3_1t2}),
+ (s6_s8_s4|->{t2_8t9}),(s6_s9_s3|->{t1_6t7,t2_9t10,t3_3t4}),
+ (s6_s10_s2|->{t1_6t7,t2_10t11,t3_2t3}),(s6_s11_s1|->{t1_6t7,t2_11t12,t3_1t2}),
+ (s5_s9_s4|->{t1_5t6,t2_9t10}),(s5_s10_s3|->{t1_5t6,t2_10t11,t3_3t4}),
+ (s5_s11_s2|->{t1_5t6,t2_11t12,t3_2t3}),(s5_s12_s1|->{t1_5t6,t3_1t2}),
+ (s4_s5_s9|->{t2_5t6,t3_9t10}),(s4_s6_s8|->{t3_8t9}),
+ (s4_s12_s2|->{t1_4t5}),(s3_s5_s10|->{t1_3t4,t2_5t6,t3_10t11}),
+ (s3_s6_s9|->{t1_3t4,t2_6t7,t3_9t10}),(s2_s4_s12|->{t2_4t5}),
+ (s2_s5_s11|->{t1_2t3,t2_5t6,t3_11t12}),(s2_s6_s10|->{t1_2t3,t2_6t7,t3_10t11}),
+ (s2_s7_s9|->{t1_2t3,t2_7t8,t3_9t10}),(s1_s5_s12|->{t1_1t2,t2_5t6}),
+ (s1_s6_s11|->{t1_1t2,t2_6t7,t3_11t12}),(s1_s7_s10|->{t1_1t2,t2_7t8,t3_10t11}),
+ (s1_s8_s9|->{t1_1t2,t3_9t10}),(s12_s1_s6|->{t2_1t2,t3_6t7}),
+ (s12_s2_s5|->{t2_2t3,t3_5t6}),(s11_s1_s7|->{t1_11t12,t2_1t2,t3_7t8}),
+ (s11_s2_s6|->{t1_11t12,t2_2t3,t3_6t7}),(s11_s3_s5|->{t1_11t12,t2_3t4,t3_5t6}),
+ (s10_s1_s8|->{t1_10t11,t2_1t2}),(s10_s2_s7|->{t1_10t11,t2_2t3,t3_7t8}),
+ (s10_s3_s6|->{t1_10t11,t2_3t4,t3_6t7}),(s10_s4_s5|->{t1_10t11,t3_5t6}),
+ (s9_s2_s8|->{t1_9t10,t2_2t3}),(s9_s3_s7|->{t1_9t10,t2_3t4,t3_7t8}),
+ (s9_s4_s6|->{t1_9t10,t3_6t7}),(s8_s9_s2|->{t2_9t10,t3_2t3}),
+ (s8_s10_s1|->{t2_10t11,t3_1t2}),(s7_s9_s3|->{t1_7t8,t2_9t10,t3_3t4}),
+ (s7_s10_s2|->{t1_7t8,t2_10t11,t3_2t3}),(s7_s11_s1|->{t1_7t8,t2_11t12,t3_1t2}),
+ (s6_s9_s4|->{t1_6t7,t2_9t10}),(s6_s10_s3|->{t1_6t7,t2_10t11,t3_3t4}),
+ (s6_s11_s2|->{t1_6t7,t2_11t12,t3_2t3}),(s6_s12_s1|->{t1_6t7,t3_1t2}),
+ (s5_s10_s4|->{t1_5t6,t2_10t11}),(s5_s11_s3|->{t1_5t6,t2_11t12,t3_3t4}),
+ (s5_s12_s2|->{t1_5t6,t3_2t3}),(s4_s5_s10|->{t2_5t6,t3_10t11}),
+ (s4_s6_s9|->{t2_6t7,t3_9t10}),(s3_s5_s11|->{t1_3t4,t2_5t6,t3_11t12}),
+ (s3_s6_s10|->{t1_3t4,t2_6t7,t3_10t11}),(s3_s7_s9|->{t1_3t4,t2_7t8,t3_9t10}),
+ (s2_s5_s12|->{t1_2t3,t2_5t6}),(s2_s6_s11|->{t1_2t3,t2_6t7,t3_11t12}),
+ (s2_s7_s10|->{t1_2t3,t2_7t8,t3_10t11}),(s2_s8_s9|->{t1_2t3,t3_9t10}),
+ (s1_s6_s12|->{t1_1t2,t2_6t7}),(s1_s7_s11|->{t1_1t2,t2_7t8,t3_11t12}),
+ (s1_s8_s10|->{t1_1t2,t3_10t11}),(s12_s1_s7|->{t2_1t2,t3_7t8}),
+ (s12_s2_s6|->{t2_2t3,t3_6t7}),(s12_s3_s5|->{t1_12t1,t2_3t4,t3_5t6}),
+ (s11_s1_s8|->{t1_11t12,t2_1t2,t3_8t9}),(s11_s2_s7|->{t1_11t12,t2_2t3,t3_7t8}),
+ (s11_s3_s6|->{t1_11t12,t2_3t4,t3_6t7}),(s11_s4_s5|->{t1_11t12,t3_5t6}),
+ (s10_s2_s8|->{t1_10t11,t2_2t3}),(s10_s3_s7|->{t1_10t11,t2_3t4,t3_7t8}),
+ (s10_s4_s6|->{t1_10t11,t3_6t7}),(s9_s3_s8|->{t1_9t10,t2_3t4}),
+ (s9_s4_s7|->{t1_9t10,t2_4t5,t3_7t8}),(s8_s9_s3|->{t2_9t10,t3_3t4}),
+ (s8_s10_s2|->{t2_10t11,t3_2t3}),(s8_s11_s1|->{t1_8t9,t2_11t12,t3_1t2}),
+ (s7_s9_s4|->{t1_7t8,t2_9t10,t3_4t5}),(s7_s10_s3|->{t1_7t8,t2_10t11,t3_3t4}),
+ (s7_s11_s2|->{t1_7t8,t2_11t12,t3_2t3}),(s7_s12_s1|->{t1_7t8,t3_1t2}),
+ (s6_s10_s4|->{t1_6t7,t2_10t11}),(s6_s11_s3|->{t1_6t7,t2_11t12,t3_3t4}),
+ (s6_s12_s2|->{t1_6t7,t3_2t3}),(s5_s11_s4|->{t1_5t6,t2_11t12}),
+ (s5_s12_s3|->{t1_5t6,t2_12t1,t3_3t4}),(s4_s5_s11|->{t2_5t6,t3_11t12}),
+ (s4_s6_s10|->{t2_6t7,t3_10t11}),(s4_s7_s9|->{t1_4t5,t2_7t8,t3_9t10}),
+ (s3_s5_s12|->{t1_3t4,t2_5t6,t3_12t1}),(s3_s6_s11|->{t1_3t4,t2_6t7,t3_11t12}),
+ (s3_s7_s10|->{t1_3t4,t2_7t8,t3_10t11}),(s3_s8_s9|->{t1_3t4,t3_9t10}),
+ (s2_s6_s12|->{t1_2t3,t2_6t7}),(s2_s7_s11|->{t1_2t3,t2_7t8,t3_11t12}),
+ (s2_s8_s10|->{t1_2t3,t3_10t11}),(s1_s7_s12|->{t1_1t2,t2_7t8}),
+ (s1_s8_s11|->{t1_1t2,t2_8t9,t3_11t12}),(s12_s1_s8|->{t2_1t2,t3_8t9}),
+ (s12_s2_s7|->{t2_2t3,t3_7t8}),(s12_s3_s6|->{t1_12t1,t2_3t4,t3_6t7}),
+ (s12_s4_s5|->{t1_12t1,t3_5t6}),(s11_s1_s9|->{t1_11t12,t2_1t2,t3_9t10}),
+ (s11_s2_s8|->{t1_11t12,t2_2t3,t3_8t9}),(s11_s3_s7|->{t1_11t12,t2_3t4,t3_7t8}),
+ (s11_s4_s6|->{t1_11t12,t3_6t7}),(s10_s3_s8|->{t1_10t11,t2_3t4}),
+ (s10_s4_s7|->{t1_10t11,t2_4t5,t3_7t8}),(s9_s4_s8|->{t1_9t10,t2_4t5}),
+ (s9_s5_s7|->{t1_9t10,t2_5t6,t3_7t8}),(s9_s11_s1|->{t1_9t10,t2_11t12,t3_1t2}),
+ (s8_s9_s4|->{t2_9t10,t3_4t5}),(s8_s10_s3|->{t2_10t11,t3_3t4}),
+ (s8_s11_s2|->{t1_8t9,t2_11t12,t3_2t3}),(s8_s12_s1|->{t1_8t9,t3_1t2}),
+ (s7_s9_s5|->{t1_7t8,t2_9t10,t3_5t6}),(s7_s10_s4|->{t1_7t8,t2_10t11,t3_4t5}),
+ (s7_s11_s3|->{t1_7t8,t2_11t12,t3_3t4}),(s7_s12_s2|->{t1_7t8,t3_2t3}),
+ (s6_s11_s4|->{t1_6t7,t2_11t12}),(s6_s12_s3|->{t1_6t7,t2_12t1,t3_3t4}),
+ (s5_s7_s9|->{t1_5t6,t2_7t8,t3_9t10}),(s5_s12_s4|->{t1_5t6,t2_12t1}),
+ (s4_s5_s12|->{t2_5t6,t3_12t1}),(s4_s6_s11|->{t2_6t7,t3_11t12}),
+ (s4_s7_s10|->{t1_4t5,t2_7t8,t3_10t11}),(s4_s8_s9|->{t1_4t5,t3_9t10}),
+ (s3_s6_s12|->{t1_3t4,t2_6t7,t3_12t1}),(s3_s7_s11|->{t1_3t4,t2_7t8,t3_11t12}),
+ (s3_s8_s10|->{t1_3t4,t3_10t11}),(s2_s7_s12|->{t1_2t3,t2_7t8}),
+ (s2_s8_s11|->{t1_2t3,t2_8t9,t3_11t12}),(s1_s8_s12|->{t1_1t2,t2_8t9}),
+ (s1_s9_s11|->{t1_1t2,t2_9t10,t3_11t12}),(s12_s1_s9|->{t2_1t2,t3_9t10}),
+ (s12_s2_s8|->{t2_2t3,t3_8t9}),(s12_s3_s7|->{t1_12t1,t2_3t4,t3_7t8}),
+ (s12_s4_s6|->{t1_12t1,t3_6t7}),(s11_s1_s10|->{t1_11t12,t2_1t2}),
+ (s11_s2_s9|->{t1_11t12,t2_2t3,t3_9t10}),(s11_s3_s8|->{t1_11t12,t2_3t4,t3_8t9}),
+ (s11_s4_s7|->{t1_11t12,t2_4t5,t3_7t8}),(s10_s4_s8|->{t1_10t11,t2_4t5}),
+ (s10_s5_s7|->{t1_10t11,t2_5t6,t3_7t8}),(s10_s11_s1|->{t2_11t12,t3_1t2}),
+ (s9_s5_s8|->{t1_9t10,t2_5t6}),(s9_s6_s7|->{t1_9t10,t3_7t8}),
+ (s9_s11_s2|->{t1_9t10,t2_11t12,t3_2t3}),(s9_s12_s1|->{t1_9t10,t3_1t2}),
+ (s8_s9_s5|->{t2_9t10,t3_5t6}),(s8_s10_s4|->{t2_10t11,t3_4t5}),
+ (s8_s11_s3|->{t1_8t9,t2_11t12,t3_3t4}),(s8_s12_s2|->{t1_8t9,t3_2t3}),
+ (s7_s9_s6|->{t1_7t8,t2_9t10}),(s7_s10_s5|->{t1_7t8,t2_10t11,t3_5t6}),
+ (s7_s11_s4|->{t1_7t8,t2_11t12,t3_4t5}),(s7_s12_s3|->{t1_7t8,t2_12t1,t3_3t4}),
+ (s6_s7_s9|->{t2_7t8,t3_9t10}),(s6_s12_s4|->{t1_6t7,t2_12t1}),
+ (s5_s7_s10|->{t1_5t6,t2_7t8,t3_10t11}),(s5_s8_s9|->{t1_5t6,t3_9t10}),
+ (s4_s6_s12|->{t2_6t7,t3_12t1}),(s4_s7_s11|->{t1_4t5,t2_7t8,t3_11t12}),
+ (s4_s8_s10|->{t1_4t5,t3_10t11}),(s3_s7_s12|->{t1_3t4,t2_7t8,t3_12t1}),
+ (s3_s8_s11|->{t1_3t4,t2_8t9,t3_11t12}),(s2_s8_s12|->{t1_2t3,t2_8t9}),
+ (s2_s9_s11|->{t1_2t3,t2_9t10,t3_11t12}),(s1_s9_s12|->{t1_1t2,t2_9t10}),
+ (s1_s10_s11|->{t1_1t2,t3_11t12}),(s12_s1_s10|->{t2_1t2}),(s12_s2_s9|->{t2_2t3,t3_9t10}),
+ (s12_s3_s8|->{t1_12t1,t2_3t4,t3_8t9}),(s12_s4_s7|->{t1_12t1,t2_4t5,t3_7t8}),
+ (s11_s2_s10|->{t1_11t12,t2_2t3}),(s11_s3_s9|->{t1_11t12,t2_3t4,t3_9t10}),
+ (s11_s4_s8|->{t1_11t12,t2_4t5,t3_8t9}),(s11_s5_s7|->{t1_11t12,t2_5t6,t3_7t8}),
+ (s10_s5_s8|->{t1_10t11,t2_5t6}),(s10_s6_s7|->{t1_10t11,t3_7t8}),
+ (s10_s11_s2|->{t2_11t12,t3_2t3}),(s10_s12_s1|->{t3_1t2}),(s9_s6_s8|->{t1_9t10}),
+ (s9_s11_s3|->{t1_9t10,t2_11t12,t3_3t4}),(s9_s12_s2|->{t1_9t10,t3_2t3}),
+ (s8_s9_s6|->{t2_9t10}),(s8_s10_s5|->{t2_10t11,t3_5t6}),
+ (s8_s11_s4|->{t1_8t9,t2_11t12,t3_4t5}),(s8_s12_s3|->{t1_8t9,t2_12t1,t3_3t4}),
+ (s7_s10_s6|->{t1_7t8,t2_10t11}),(s7_s11_s5|->{t1_7t8,t2_11t12,t3_5t6}),
+ (s7_s12_s4|->{t1_7t8,t2_12t1,t3_4t5}),(s6_s7_s10|->{t2_7t8,t3_10t11}),
+ (s6_s8_s9|->{t3_9t10}),(s5_s7_s11|->{t1_5t6,t2_7t8,t3_11t12}),
+ (s5_s8_s10|->{t1_5t6,t3_10t11}),(s4_s7_s12|->{t1_4t5,t2_7t8,t3_12t1}),
+ (s4_s8_s11|->{t1_4t5,t2_8t9,t3_11t12}),(s3_s8_s12|->{t1_3t4,t2_8t9,t3_12t1}),
+ (s3_s9_s11|->{t1_3t4,t2_9t10,t3_11t12}),(s2_s9_s12|->{t1_2t3,t2_9t10}),
+ (s2_s10_s11|->{t1_2t3,t3_11t12}),(s1_s10_s12|->{t1_1t2}),(s12_s2_s10|->{t2_2t3}),
+ (s12_s3_s9|->{t1_12t1,t2_3t4,t3_9t10}),(s12_s4_s8|->{t1_12t1,t2_4t5,t3_8t9}),
+ (s12_s5_s7|->{t1_12t1,t2_5t6,t3_7t8}),(s11_s3_s10|->{t1_11t12,t2_3t4}),
+ (s11_s4_s9|->{t1_11t12,t2_4t5,t3_9t10}),(s11_s5_s8|->{t1_11t12,t2_5t6,t3_8t9}),
+ (s11_s6_s7|->{t1_11t12,t3_7t8}),(s10_s6_s8|->{t1_10t11}),
+ (s10_s11_s3|->{t2_11t12,t3_3t4}),(s10_s12_s2|->{t3_2t3}),
+ (s9_s11_s4|->{t1_9t10,t2_11t12,t3_4t5}),(s9_s12_s3|->{t1_9t10,t2_12t1,t3_3t4}),
+ (s8_s10_s6|->{t2_10t11}),(s8_s11_s5|->{t1_8t9,t2_11t12,t3_5t6}),
+ (s8_s12_s4|->{t1_8t9,t2_12t1,t3_4t5}),(s7_s11_s6|->{t1_7t8,t2_11t12}),
+ (s7_s12_s5|->{t1_7t8,t2_12t1,t3_5t6}),(s6_s7_s11|->{t2_7t8,t3_11t12}),
+ (s6_s8_s10|->{t3_10t11}),(s5_s7_s12|->{t1_5t6,t2_7t8,t3_12t1}),
+ (s5_s8_s11|->{t1_5t6,t2_8t9,t3_11t12}),(s4_s8_s12|->{t1_4t5,t2_8t9,t3_12t1}),
+ (s4_s9_s11|->{t1_4t5,t2_9t10,t3_11t12}),(s3_s9_s12|->{t1_3t4,t2_9t10,t3_12t1}),
+ (s3_s10_s11|->{t1_3t4,t3_11t12}),(s2_s10_s12|->{t1_2t3}),(s12_s3_s10|->{t1_12t1,t2_3t4}),
+ (s12_s4_s9|->{t1_12t1,t2_4t5,t3_9t10}),(s12_s5_s8|->{t1_12t1,t2_5t6,t3_8t9}),
+ (s12_s6_s7|->{t1_12t1,t3_7t8}),(s11_s4_s10|->{t1_11t12,t2_4t5}),
+ (s11_s5_s9|->{t1_11t12,t2_5t6,t3_9t10}),(s11_s6_s8|->{t1_11t12,t3_8t9}),
+ (s10_s11_s4|->{t2_11t12,t3_4t5}),(s10_s12_s3|->{t2_12t1,t3_3t4}),
+ (s9_s11_s5|->{t1_9t10,t2_11t12,t3_5t6}),(s9_s12_s4|->{t1_9t10,t2_12t1,t3_4t5}),
+ (s8_s11_s6|->{t1_8t9,t2_11t12}),(s8_s12_s5|->{t1_8t9,t2_12t1,t3_5t6}),
+ (s7_s12_s6|->{t1_7t8,t2_12t1}),(s6_s7_s12|->{t2_7t8,t3_12t1}),
+ (s6_s8_s11|->{t2_8t9,t3_11t12}),(s5_s8_s12|->{t1_5t6,t2_8t9,t3_12t1}),
+ (s5_s9_s11|->{t1_5t6,t2_9t10,t3_11t12}),(s4_s9_s12|->{t1_4t5,t2_9t10,t3_12t1}),
+ (s4_s10_s11|->{t1_4t5,t3_11t12}),(s3_s10_s12|->{t1_3t4,t3_12t1}),
+ (s12_s4_s10|->{t1_12t1,t2_4t5}),(s12_s5_s9|->{t1_12t1,t2_5t6,t3_9t10}),
+ (s12_s6_s8|->{t1_12t1,t3_8t9}),(s11_s5_s10|->{t1_11t12,t2_5t6}),
+ (s11_s6_s9|->{t1_11t12,t2_6t7,t3_9t10}),(s10_s11_s5|->{t2_11t12,t3_5t6}),
+ (s10_s12_s4|->{t2_12t1,t3_4t5}),(s9_s11_s6|->{t1_9t10,t2_11t12,t3_6t7}),
+ (s9_s12_s5|->{t1_9t10,t2_12t1,t3_5t6}),(s8_s12_s6|->{t1_8t9,t2_12t1}),
+ (s6_s8_s12|->{t2_8t9,t3_12t1}),(s6_s9_s11|->{t1_6t7,t2_9t10,t3_11t12}),
+ (s5_s9_s12|->{t1_5t6,t2_9t10,t3_12t1}),(s5_s10_s11|->{t1_5t6,t3_11t12}),
+ (s4_s10_s12|->{t1_4t5,t3_12t1}),(s12_s5_s10|->{t1_12t1,t2_5t6}),
+ (s12_s6_s9|->{t1_12t1,t2_6t7,t3_9t10}),(s11_s6_s10|->{t1_11t12,t2_6t7}),
+ (s11_s7_s9|->{t1_11t12,t2_7t8,t3_9t10}),(s10_s11_s6|->{t2_11t12,t3_6t7}),
+ (s10_s12_s5|->{t2_12t1,t3_5t6}),(s9_s11_s7|->{t1_9t10,t2_11t12,t3_7t8}),
+ (s9_s12_s6|->{t1_9t10,t2_12t1,t3_6t7}),(s7_s9_s11|->{t1_7t8,t2_9t10,t3_11t12}),
+ (s6_s9_s12|->{t1_6t7,t2_9t10,t3_12t1}),(s6_s10_s11|->{t1_6t7,t3_11t12}),
+ (s5_s10_s12|->{t1_5t6,t3_12t1}),(s12_s6_s10|->{t1_12t1,t2_6t7}),
+ (s12_s7_s9|->{t1_12t1,t2_7t8,t3_9t10}),(s11_s7_s10|->{t1_11t12,t2_7t8}),
+ (s11_s8_s9|->{t1_11t12,t3_9t10}),(s10_s11_s7|->{t2_11t12,t3_7t8}),
+ (s10_s12_s6|->{t2_12t1,t3_6t7}),(s9_s11_s8|->{t1_9t10,t2_11t12}),
+ (s9_s12_s7|->{t1_9t10,t2_12t1,t3_7t8}),(s8_s9_s11|->{t2_9t10,t3_11t12}),
+ (s7_s9_s12|->{t1_7t8,t2_9t10,t3_12t1}),(s7_s10_s11|->{t1_7t8,t3_11t12}),
+ (s6_s10_s12|->{t1_6t7,t3_12t1}),(s12_s7_s10|->{t1_12t1,t2_7t8}),
+ (s12_s8_s9|->{t1_12t1,t3_9t10}),(s11_s8_s10|->{t1_11t12}),(s10_s11_s8|->{t2_11t12}),
+ (s10_s12_s7|->{t2_12t1,t3_7t8}),(s9_s12_s8|->{t1_9t10,t2_12t1}),
+ (s8_s9_s12|->{t2_9t10,t3_12t1}),(s8_s10_s11|->{t3_11t12}),
+ (s7_s10_s12|->{t1_7t8,t3_12t1}),(s12_s8_s10|->{t1_12t1}),
+ (s10_s12_s8|->{t2_12t1}),(s8_s10_s12|->{t3_12t1})}
+
+% Runtime for SOLUTION for SETUP_CONSTANTS: 320 ms (walltime: 310 ms)
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 4530 ms
+"Display statistics..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 4550 ms
+"Compute iteratively the supremal coreachable controllable predicate..."
+Finished Invariant Checking 0 ms walltime (10 ms runtime), since start: 5516880 ms
+"Compute SFBC (disabled events)..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 5516990 ms
+"Compute SFBC (enabled events)..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 5517270 ms
+"The SFBC functions are complementary."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 5517270 ms
+Deadlock reached after 7 steps (after CheckComplementarity_).
+% Finished processing file after 5513480 ms walltime (5510580 ms runtime), since start: 5517320 ms
+

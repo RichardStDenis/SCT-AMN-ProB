@@ -1,0 +1,97 @@
+Maze with 5 rooms: 25 states and 70 transitions
+
+Bounds: 7 and 7
+Number of traces (free behavior): 1785
+Number of strings (free behavior): 1785
+Number of traces (legal behavior): 265
+Number of strings (legal behavior): 265
+Number of iterations: 2
+|supRC(K)|: 86
+supC_(K): {{},{(1|->c2to0)},{(1|->c2to0),(2|->c0to1)},{(1|->c2to0),(2|->c0to3)},{(1|->c2to0),(2|->m4to3)},{(1|->m4to3)},{(1|->m4to3),(2|->c2to0)},{(1|->m4to3),(2|->m3to0)},[c2to0,c0to1,c1to2],[c2to0,c0to1,c1to3],[c2to0,c0to1,c1to2,c2to0],[c2to0,c0to1,c1to2,m4to3],[c2to0,c0to1,c1to3,c3to1],[c2to0,c0to3,c3to1],[c2to0,c0to3,c3to1,c1to2],[c2to0,c0to3,c3to1,c1to3],[m4to3,m3to0,m0to4],[m4to3,m3to0,m0to4,c2to0],[m4to3,m3to0,m0to4,m4to3],[c2to0,c0to1,c1to2,c2to0,c0to1],[c2to0,c0to1,c1to2,c2to0,c0to3],[c2to0,c0to1,c1to2,c2to0,m4to3],[c2to0,c0to1,c1to2,m4to3,c2to0],[c2to0,c0to1,c1to2,m4to3,m3to0],[c2to0,c0to1,c1to2,c2to0,c0to1,c1to2],[c2to0,c0to1,c1to2,c2to0,c0to1,c1to3],[c2to0,c0to1,c1to2,c2to0,c0to3,c3to1],[c2to0,c0to1,c1to2,m4to3,m3to0,m0to4],[c2to0,c0to1,c1to3,c3to1,c1to2],[c2to0,c0to1,c1to3,c3to1,c1to3],[c2to0,c0to1,c1to3,c3to1,c1to2,c2to0],[c2to0,c0to1,c1to3,c3to1,c1to2,m4to3],[c2to0,c0to1,c1to3,c3to1,c1to3,c3to1],[c2to0,c0to3,c3to1,c1to2,c2to0],[c2to0,c0to3,c3to1,c1to2,m4to3],[c2to0,c0to3,c3to1,c1to3,c3to1],[c2to0,c0to3,c3to1,c1to2,c2to0,c0to1],[c2to0,c0to3,c3to1,c1to2,c2to0,c0to3],[c2to0,c0to3,c3to1,c1to2,c2to0,m4to3],[c2to0,c0to3,c3to1,c1to3,c3to1,c1to2],[c2to0,c0to3,c3to1,c1to3,c3to1,c1to3],[c2to0,c0to3,c3to1,c1to2,m4to3,c2to0],[c2to0,c0to3,c3to1,c1to2,m4to3,m3to0],[m4to3,m3to0,m0to4,c2to0,c0to1],[m4to3,m3to0,m0to4,c2to0,c0to3],[m4to3,m3to0,m0to4,c2to0,m4to3],[m4to3,m3to0,m0to4,m4to3,c2to0],[m4to3,m3to0,m0to4,m4to3,m3to0],[m4to3,m3to0,m0to4,c2to0,c0to1,c1to2],[m4to3,m3to0,m0to4,c2to0,c0to1,c1to3],[m4to3,m3to0,m0to4,c2to0,c0to3,c3to1],[m4to3,m3to0,m0to4,m4to3,m3to0,m0to4],[c2to0,c0to3,c3to1,c1to2,c2to0,c0to1,c1to2],[c2to0,c0to3,c3to1,c1to2,c2to0,c0to1,c1to3],[c2to0,c0to3,c3to1,c1to2,c2to0,c0to1,m4to3],[c2to0,c0to3,c3to1,c1to2,m4to3,c2to0,c0to1],[c2to0,c0to3,c3to1,c1to2,c2to0,c0to3,c3to1],[c2to0,c0to3,c3to1,c1to2,c2to0,m4to3,c0to1],[c2to0,c0to3,c3to1,c1to2,m4to3,m3to0,m0to4],[c2to0,c0to1,c1to2,c2to0,c0to1,c1to2,c2to0],[c2to0,c0to1,c1to2,c2to0,c0to1,c1to2,m4to3],[c2to0,c0to1,c1to2,c2to0,c0to1,c1to3,c3to1],[c2to0,c0to1,c1to2,c2to0,c0to3,c3to1,c1to2],[c2to0,c0to1,c1to2,c2to0,c0to3,c3to1,c1to3],[c2to0,c0to1,c1to2,c2to0,c0to3,c3to1,m4to3],[m4to3,m3to0,m0to4,c2to0,c0to1,c1to2,c2to0],[m4to3,m3to0,m0to4,c2to0,c0to1,c1to2,m4to3],[m4to3,m3to0,m0to4,c2to0,c0to1,c1to3,c3to1],[m4to3,m3to0,m0to4,c2to0,c0to3,c3to1,c1to2],[m4to3,m3to0,m0to4,c2to0,c0to3,c3to1,c1to3],[m4to3,m3to0,m0to4,c2to0,c0to3,c3to1,m4to3],[c2to0,c0to3,c3to1,c1to3,c3to1,c1to2,c2to0],[c2to0,c0to3,c3to1,c1to3,c3to1,c1to2,m4to3],[c2to0,c0to3,c3to1,c1to3,c3to1,c1to3,c3to1],[c2to0,c0to1,c1to3,c3to1,c1to2,c2to0,c0to1],[c2to0,c0to1,c1to3,c3to1,c1to2,c2to0,c0to3],[c2to0,c0to1,c1to3,c3to1,c1to2,c2to0,m4to3],[c2to0,c0to1,c1to3,c3to1,c1to3,c3to1,c1to2],[c2to0,c0to1,c1to3,c3to1,c1to3,c3to1,c1to3],[c2to0,c0to1,c1to3,c3to1,c1to3,c3to1,m4to3],[c2to0,c0to1,c1to3,c3to1,c1to2,m4to3,c2to0],[c2to0,c0to1,c1to3,c3to1,c1to2,m4to3,m3to0],[c2to0,c0to1,c1to2,m4to3,m3to0,m0to4,c2to0],[c2to0,c0to1,c1to2,m4to3,m3to0,m0to4,m4to3],[m4to3,m3to0,m0to4,m4to3,m3to0,m0to4,c2to0],[m4to3,m3to0,m0to4,m4to3,m3to0,m0to4,m4to3]}
+
+The state realization of the supervisor (disabled events):
+
+(("sure"|->r2_r4)|->{c2to0,m4to3}),  (("uncertain"|->r2_r4)|->{c2to0,m4to3}),  these events are enabled with certainty at r2_r4 ==> to be ignored
+
+(("sure"|->r2_r3)|->{c2to0}),        OK
+(("sure"|->r2_r0)|->{c2to0,m0to2}),  (("uncertain"|->r2_r0)|->{c2to0,m0to2}),  these events are not enabled at r2_r0 ==> sure
+
+(("sure"|->r0_r4)|->{c0to3,m4to3}),  OK
+(("sure"|->r1_r4)|->{m4to3}),        (("uncertain"|->r1_r4)|->{m4to3}),        this event is not enabled at r1_r4 ==> sure
+(("sure"|->r3_r4)|->{c3to4,m4to3}),  OK
+
+The state realization of the supervisor (enabled events):
+
+{(("sure"|->r2_r4)|->{c2to0,m4to3}), OK
+
+(("sure"|->r2_r3)|->{m3to0}),        OK
+(("sure"|->r2_r0)|->{m0to4}),        (("uncertain"|->r2_r0)|->{m0to4}),        this event is not disabled at r2_r0 ==> sure
+
+(("sure"|->r0_r4)|->{c0to1,c0to3}),  OK
+(("sure"|->r1_r4)|->{c1to2,c1to3}),  (("uncertain"|->r1_r4)|->{c1to2}),        c1to3 is uncontrollable and c1to2 is not disabled at r1_r4 ==> sure
+(("sure"|->r3_r4)|->{c3to1}),        OK
+
+% Runtime for SOLUTION for SETUP_CONSTANTS: 240 ms (walltime: 250 ms)
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 2310 ms
+"Display statistics..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 2330 ms
+"Calculate supRC..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 2610 ms
+"Calculate supervisor..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 4820 ms
+Deadlock reached after 5 steps (after GetSupervisors).
+% Finished processing file after 3300 ms walltime (3040 ms runtime), since start: 4870 ms
+
+-------
+
+Maze with 8 rooms: 40 states and 97 transitions
+
+Bounds: 12 and 12
+Number of traces (free behavior): 271915
+Number of strings (free behavior): 271915
+Number of traces (legal behavior): 18740
+Number of strings (legal behavior): 18740
+Number of iterations: 4
+|supRC(K)|: 937
+
+The state realization of the supervisor (disabled events):
+
+(("sure"|->r2_r4)|->{c2to0,m4to3}),  (("uncertain"|->r2_r4)|->{c2to0,m4to3}),  these events are enabled with certainty at r2_r4 ==> to be ignored
+
+(("sure"|->r2_r3)|->{c2to0}),        OK
+(("sure"|->r2_r0)|->{c2to0,m0to2}),  (("uncertain"|->r2_r0)|->{c2to0,m0to2}),  these events are not enabled at r2_r0 ==> sure
+
+(("sure"|->r0_r4)|->{c0to3,m4to3}),
+(("sure"|->r1_r4)|->{m4to3}),        (("uncertain"|->r1_r4)|->{m4to3}),        this event is not enabled at r1_r4 ==> sure
+(("sure"|->r3_r4)|->{c3to4,m4to3}),  OK
+
+(("sure"|->r5_r4)|->{m4to3}),        OK
+(("sure"|->r6_r4)|->{m4to3}),        OK
+
+
+The state realization of the supervisor (enabled events):
+
+(("sure"|->r2_r4)|->{c2to0,m4to3}),  OK
+
+(("sure"|->r2_r3)|->{m3to0}),        OK
+(("sure"|->r2_r0)|->{m0to4}),        (("uncertain"|->r2_r0)|->{m0to4}),        this event is not disabled at r2_r0 ==> sure
+
+
+(("sure"|->r0_r4)|->{c0to1,c0to3}),  OK
+(("sure"|->r1_r4)|->{c1to2,c1to5}),  (("uncertain"|->r1_r4)|->{c1to2}),        c1to5 is uncontrollable and c1to2 is not disabled at r1_r4 ==> sure
+(("sure"|->r3_r4)|->{c3to1}),        OK
+
+(("sure"|->r5_r4)|->{c5to6}),        OK
+
+(("sure"|->r6_r4)|->{c6to3}),        OK
+
+% Runtime for SOLUTION for SETUP_CONSTANTS: 16580 ms (walltime: 22350 ms)
+Finished Invariant Checking 130 ms walltime (130 ms runtime), since start: 377020 ms
+"Display statistics..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 377050 ms
+"Calculate supRC..."
+Finished Invariant Checking 160 ms walltime (150 ms runtime), since start: 615700 ms
+"Calculate supervisor..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 938650 ms
+Deadlock reached after 5 steps (after GetSupervisors).
+% Finished processing file after 948660 ms walltime (850000 ms runtime), since start: 950230 ms

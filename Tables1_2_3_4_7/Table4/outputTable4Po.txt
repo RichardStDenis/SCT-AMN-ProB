@@ -1,0 +1,545 @@
+Trains (partial observation --- iterative solution,
+
+6 sections, 2 trains, 3 tunnels: 36 states and 72 transitions
+
+Predicate Q1 (30 states):
+ iteration number 1
+ iteration number 2
+Iterative solution
+supSMCP (24 reachable states):
+{s3_s1,s1_s3,s4_s1,s3_s2,s2_s3,s1_s4,s5_s1,s4_s2,s2_s4,s1_s5,
+ s6_s1,s5_s2,s2_s5,s1_s6,s6_s2,s5_s3,s3_s5,s2_s6,s6_s3,s5_s4,
+ s4_s5,s3_s6,s6_s4,s4_s6}
+
+Enabled events (partiel observation):
+{(s3_s1|->{t1_3t4,t2_1t2}),(s1_s3|->{t1_1t2,t2_3t4}),(s4_s1|->{t1_4t5,t2_1t2}),
+ (s3_s2|->{t1_3t4}),(s2_s3|->{t2_3t4}),(s1_s4|->{t1_1t2,t2_4t5}),
+ (s5_s1|->{t1_5t6,t2_1t2}),(s4_s2|->{t1_4t5}),(s2_s4|->{t2_4t5}),
+ (s1_s5|->{t1_1t2,t2_5t6}),(s6_s1|->{t2_1t2}),(s5_s2|->{t1_5t6,t2_2t3}),
+ (s2_s5|->{t1_2t3,t2_5t6}),(s1_s6|->{t1_1t2}),(s6_s2|->{t2_2t3}),
+ (s5_s3|->{t1_5t6,t2_3t4}),(s3_s5|->{t1_3t4,t2_5t6}),
+ (s2_s6|->{t1_2t3}),(s6_s3|->{t1_6t1,t2_3t4}),(s5_s4|->{t1_5t6}),
+ (s4_s5|->{t2_5t6}),(s3_s6|->{t1_3t4,t2_6t1}),(s6_s4|->{t1_6t1}),(s4_s6|->{t2_6t1})}
+Disabled events (partiel observation):
+{(s3_s1|->{t2_2t3}),(s1_s3|->{t1_2t3}),(s4_s1|->{t2_2t3}),(s3_s2|->{t2_2t3}),
+ (s2_s3|->{t1_2t3}),(s1_s4|->{t1_2t3}),(s5_s1|->{t1_6t1}),(s4_s2|->{t2_2t3}),
+ (s2_s4|->{t1_2t3}),(s1_s5|->{t2_6t1}),(s6_s1|->{t1_6t1}),(s5_s2|->{t1_6t1}),
+ (s2_s5|->{t2_6t1}),(s1_s6|->{t2_6t1}),(s6_s2|->{t1_6t1}),(s5_s3|->{t2_4t5}),
+ (s3_s5|->{t1_4t5}),(s2_s6|->{t2_6t1}),(s6_s3|->{t2_4t5}),(s5_s4|->{t2_4t5}),
+ (s4_s5|->{t1_4t5}),(s3_s6|->{t1_4t5}),(s6_s4|->{t2_4t5}),(s4_s6|->{t1_4t5})}
+
+% Runtime for SOLUTION for SETUP_CONSTANTS: 90 ms (walltime: 90 ms)
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 1860 ms
+"Display statistics..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 1880 ms
+"Compute iteratively the supremal strong M-controllable predicate..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 2200 ms
+"Compute SFBC (enabled events partial observation)..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 2220 ms
+"Compute SFBC (disabled events partial observation)..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 2240 ms
+"The SFBC functions are complementary."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 2240 ms
+Deadlock reached after 7 steps (after CheckComplementarity).
+% Finished processing file after 680 ms walltime (660 ms runtime), since start: 2250 ms
+
+-------------------------------------------------
+
+6 sections, 2 trains, 3 tunnels: 36 states and 72 transitions
+
+Predicate Q2 (18 states):
+ iteration number 1
+ iteration number 2
+ iteration number 3
+Iterative solution
+supSMCP (1 reachable states):
+{s2_s4}
+
+Enabled events (partiel observation): {(s2_s4|->{})}
+Disabled events (partiel observation): {(s2_s4|->{t1_2t3,t2_4t5})}
+
+% Runtime for SOLUTION for SETUP_CONSTANTS: 80 ms (walltime: 90 ms)
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 1870 ms
+"Display statistics..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 1890 ms
+"Compute iteratively the supremal strong M-controllable predicate..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 1970 ms
+"Compute SFBC (enabled events partial observation)..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 1990 ms
+"Compute SFBC (disabled events partial observation)..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 1990 ms
+"The SFBC functions are complementary."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 2000 ms
+Deadlock reached after 7 steps (after CheckComplementarity).
+% Finished processing file after 420 ms walltime (410 ms runtime), since start: 2000 ms
+
+-------------------------------------------------
+
+8 sections, 2 trains, 1 tunnel: 64 states and 128 transitions
+
+Predicate Q1 (56 states):
+ iteration number 1
+ iteration number 2
+Iterative solution
+supSMCP Q1 (44 reachable states):
+{s3_s1,s1_s3,s4_s1,s3_s2,s2_s3,s1_s4,s5_s1,s4_s2,s2_s4,s1_s5,
+ s6_s1,s5_s2,s2_s5,s1_s6,s7_s1,s6_s2,s2_s6,s1_s7,s8_s1,s7_s2,
+ s6_s3,s3_s6,s2_s7,s1_s8,s8_s2,s7_s3,s6_s4,s4_s6,s3_s7,s2_s8,
+ s8_s3,s7_s4,s4_s7,s3_s8,s8_s4,s7_s5,s5_s7,s4_s8,s8_s5,s7_s6,
+ s6_s7,s5_s8,s8_s6,s6_s8}
+
+Enabled events (partiel observation):
+{(s3_s1|->{t1_3t4,t2_1t2}),(s1_s3|->{t1_1t2,t2_3t4}),(s4_s1|->{t1_4t5,t2_1t2}),
+ (s3_s2|->{t1_3t4}),(s2_s3|->{t2_3t4}),(s1_s4|->{t1_1t2,t2_4t5}),
+ (s5_s1|->{t1_5t6,t2_1t2}),(s4_s2|->{t1_4t5}),(s2_s4|->{t2_4t5}),
+ (s1_s5|->{t1_1t2,t2_5t6}),(s6_s1|->{t1_6t7,t2_1t2}),(s5_s2|->{t1_5t6}),
+ (s2_s5|->{t2_5t6}),(s1_s6|->{t1_1t2,t2_6t7}),(s7_s1|->{t1_7t8,t2_1t2}),
+ (s6_s2|->{t1_6t7,t2_2t3}),(s2_s6|->{t1_2t3,t2_6t7}),(s1_s7|->{t1_1t2,t2_7t8}),
+ (s8_s1|->{t2_1t2}),(s7_s2|->{t1_7t8,t2_2t3}),(s6_s3|->{t1_6t7,t2_3t4}),
+ (s3_s6|->{t1_3t4,t2_6t7}),(s2_s7|->{t1_2t3,t2_7t8}),(s1_s8|->{t1_1t2}),
+ (s8_s2|->{t2_2t3}),(s7_s3|->{t1_7t8,t2_3t4}),(s6_s4|->{t1_6t7}),
+ (s4_s6|->{t2_6t7}),(s3_s7|->{t1_3t4,t2_7t8}),(s2_s8|->{t1_2t3}),
+ (s8_s3|->{t1_8t1,t2_3t4}),(s7_s4|->{t1_7t8,t2_4t5}),(s4_s7|->{t1_4t5,t2_7t8}),
+ (s3_s8|->{t1_3t4,t2_8t1}),(s8_s4|->{t1_8t1,t2_4t5}),(s7_s5|->{t1_7t8,t2_5t6}),
+ (s5_s7|->{t1_5t6,t2_7t8}),(s4_s8|->{t1_4t5,t2_8t1}),(s8_s5|->{t1_8t1,t2_5t6}),
+ (s7_s6|->{t1_7t8}),(s6_s7|->{t2_7t8}),(s5_s8|->{t1_5t6,t2_8t1}),
+ (s8_s6|->{t1_8t1}),(s6_s8|->{t2_8t1})}
+Disabled events (partiel observation):
+{(s3_s1|->{}),(s1_s3|->{}),(s4_s1|->{}),(s3_s2|->{t2_2t3}),(s2_s3|->{t1_2t3}),
+ (s1_s4|->{}),(s5_s1|->{}),(s4_s2|->{t2_2t3}),(s2_s4|->{t1_2t3}),(s1_s5|->{}),
+ (s6_s1|->{}),(s5_s2|->{t2_2t3}),(s2_s5|->{t1_2t3}),(s1_s6|->{}),(s7_s1|->{}),
+ (s6_s2|->{}),(s2_s6|->{}),(s1_s7|->{}),(s8_s1|->{t1_8t1}),(s7_s2|->{}),
+ (s6_s3|->{t2_4t5}),(s3_s6|->{t1_4t5}),(s2_s7|->{}),(s1_s8|->{t2_8t1}),
+ (s8_s2|->{t1_8t1}),(s7_s3|->{}),(s6_s4|->{t2_4t5}),(s4_s6|->{t1_4t5}),
+ (s3_s7|->{}),(s2_s8|->{t2_8t1}),(s8_s3|->{}),(s7_s4|->{}),(s4_s7|->{}),
+ (s3_s8|->{}),(s8_s4|->{}),(s7_s5|->{}),(s5_s7|->{}),(s4_s8|->{}),(s8_s5|->{}),
+ (s7_s6|->{t2_6t7}),(s6_s7|->{t1_6t7}),(s5_s8|->{}),(s8_s6|->{t2_6t7}),
+ (s6_s8|->{t1_6t7})}
+
+% Runtime for SOLUTION for SETUP_CONSTANTS: 80 ms (walltime: 90 ms)
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 4600 ms
+"Display statistics..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 4620 ms
+"Compute iteratively the supremal strong M-controllable predicate..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 6180 ms
+"Compute SFBC (enabled events partial observation)..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 6220 ms
+"Compute SFBC (disabled events partial observation)..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 6240 ms
+"The SFBC functions are complementary."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 6240 ms
+Deadlock reached after 7 steps (after CheckComplementarity).
+% Finished processing file after 4660 ms walltime (4650 ms runtime), since start: 6250 ms
+
+-------------------------------------------------
+
+8 sections, 2 trains, 1 tunnel: 64 states and 128 transitions
+
+Predicate Q2 (40 states):
+ iteration number 1
+ iteration number 2
+ iteration number 3
+Iterative solution
+supSMCP (24 reachable states):
+{s6_s1,s1_s6,s6_s2,s2_s6,s7_s2,s6_s3,s3_s6,s2_s7,s8_s2,s7_s3,
+ s6_s4,s4_s6,s3_s7,s2_s8,s8_s3,s7_s4,s4_s7,s3_s8,s8_s4,s4_s8,
+ s8_s5,s5_s8,s8_s6,s6_s8}
+
+Enabled events (partiel observation):
+{(s6_s1|->{t2_1t2}),(s1_s6|->{t1_1t2}),(s6_s2|->{t1_6t7,t2_2t3}),
+ (s2_s6|->{t1_2t3,t2_6t7}),(s7_s2|->{t1_7t8,t2_2t3}),(s6_s3|->{t2_3t4}),
+ (s3_s6|->{t1_3t4}),(s2_s7|->{t1_2t3,t2_7t8}),(s8_s2|->{t2_2t3}),
+ (s7_s3|->{t1_7t8,t2_3t4}),(s6_s4|->{}),(s4_s6|->{}),(s3_s7|->{t1_3t4,t2_7t8}),
+ (s2_s8|->{t1_2t3}),(s8_s3|->{t2_3t4}),(s7_s4|->{t1_7t8}),(s4_s7|->{t2_7t8}),
+ (s3_s8|->{t1_3t4}),(s8_s4|->{t2_4t5}),(s4_s8|->{t1_4t5}),(s8_s5|->{t2_5t6}),
+ (s5_s8|->{t1_5t6}),(s8_s6|->{t1_8t1}),(s6_s8|->{t2_8t1})}
+Disabled events (partiel observation):
+{(s6_s1|->{t1_6t7}),(s1_s6|->{t2_6t7}),(s6_s2|->{}),(s2_s6|->{}),(s7_s2|->{}),
+ (s6_s3|->{t1_6t7,t2_4t5}),(s3_s6|->{t1_4t5,t2_6t7}),(s2_s7|->{}),(s8_s2|->{t1_8t1}),
+ (s7_s3|->{t2_4t5}),(s6_s4|->{t1_6t7,t2_4t5}),(s4_s6|->{t1_4t5,t2_6t7}),
+ (s3_s7|->{t1_4t5}),(s2_s8|->{t2_8t1}),(s8_s3|->{t1_8t1}),(s7_s4|->{t2_4t5}),
+ (s4_s7|->{t1_4t5}),(s3_s8|->{t2_8t1}),(s8_s4|->{t1_8t1}),(s4_s8|->{t2_8t1}),
+ (s8_s5|->{t1_8t1}),(s5_s8|->{t2_8t1}),(s8_s6|->{t2_6t7}),(s6_s8|->{t1_6t7})}
+
+% Runtime for SOLUTION for SETUP_CONSTANTS: 90 ms (walltime: 90 ms)
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 4530 ms
+"Display statistics..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 4550 ms
+"Compute iteratively the supremal strong M-controllable predicate..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 5490 ms
+"Compute SFBC (enabled events partial observation)..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 5520 ms
+"Compute SFBC (disabled events partial observation)..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 5540 ms
+"The SFBC functions are complementary."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 5540 ms
+% Finished processing file after 3960 ms walltime (3940 ms runtime), since start: 5550 ms
+
+-------------------------------------------------
+
+8 sections, 2 trains, 2 tunnels: 64 states and 128 transitions
+
+Predicate Q1 (56 states):
+ iteration number 1
+ iteration number 2
+ iteration number 3
+Iterative solution
+supSMCP (40 reachable states):
+{s4_s1,s1_s4,s5_s1,s4_s2,s2_s4,s1_s5,s6_s1,s5_s2,s2_s5,s1_s6,
+ s7_s1,s6_s2,s5_s3,s3_s5,s2_s6,s1_s7,s8_s1,s7_s2,s6_s3,s5_s4,
+ s4_s5,s3_s6,s2_s7,s1_s8,s8_s2,s7_s3,s6_s4,s4_s6,s3_s7,s2_s8,
+ s8_s3,s7_s4,s4_s7,s3_s8,s8_s4,s4_s8,s8_s5,s5_s8,s8_s6,s6_s8}
+
+Enabled events (partiel observation):
+{(s4_s1|->{t1_4t5,t2_1t2}),(s1_s4|->{t1_1t2,t2_4t5}),(s5_s1|->{t1_5t6,t2_1t2}),
+ (s4_s2|->{t1_4t5}),(s2_s4|->{t2_4t5}),(s1_s5|->{t1_1t2,t2_5t6}),
+ (s6_s1|->{t1_6t7,t2_1t2}),(s5_s2|->{t1_5t6,t2_2t3}),(s2_s5|->{t1_2t3,t2_5t6}),
+ (s1_s6|->{t1_1t2,t2_6t7}),(s7_s1|->{t1_7t8,t2_1t2}),(s6_s2|->{t1_6t7,t2_2t3}),
+ (s5_s3|->{t1_5t6,t2_3t4}),(s3_s5|->{t1_3t4,t2_5t6}),(s2_s6|->{t1_2t3,t2_6t7}),
+ (s1_s7|->{t1_1t2,t2_7t8}),(s8_s1|->{t2_1t2}),(s7_s2|->{t1_7t8,t2_2t3}),
+ (s6_s3|->{t1_6t7,t2_3t4}),(s5_s4|->{t1_5t6}),(s4_s5|->{t2_5t6}),
+ (s3_s6|->{t1_3t4,t2_6t7}),(s2_s7|->{t1_2t3,t2_7t8}),(s1_s8|->{t1_1t2}),
+ (s8_s2|->{t2_2t3}),(s7_s3|->{t1_7t8,t2_3t4}),(s6_s4|->{t1_6t7}),
+ (s4_s6|->{t2_6t7}),(s3_s7|->{t1_3t4,t2_7t8}),(s2_s8|->{t1_2t3}),
+ (s8_s3|->{t2_3t4}),(s7_s4|->{t1_7t8}),(s4_s7|->{t2_7t8}),(s3_s8|->{t1_3t4}),
+ (s8_s4|->{t1_8t1,t2_4t5}),(s4_s8|->{t1_4t5,t2_8t1}),(s8_s5|->{t1_8t1,t2_5t6}),
+ (s5_s8|->{t1_5t6,t2_8t1}),(s8_s6|->{t1_8t1}),(s6_s8|->{t2_8t1})}
+Disabled events (partiel observation):
+ {(s4_s1|->{}),(s1_s4|->{}),(s5_s1|->{}),(s4_s2|->{t2_2t3}),(s2_s4|->{t1_2t3}),
+  (s1_s5|->{}),(s6_s1|->{}),(s5_s2|->{}),(s2_s5|->{}),(s1_s6|->{}),(s7_s1|->{}),
+  (s6_s2|->{}),(s5_s3|->{}),(s3_s5|->{}),(s2_s6|->{}),(s1_s7|->{}),(s8_s1|->{t1_8t1}),
+  (s7_s2|->{}),(s6_s3|->{}),(s5_s4|->{t2_4t5}),(s4_s5|->{t1_4t5}),(s3_s6|->{}),
+  (s2_s7|->{}),(s1_s8|->{t2_8t1}),(s8_s2|->{t1_8t1}),(s7_s3|->{}),(s6_s4|->{t2_4t5}),
+  (s4_s6|->{t1_4t5}),(s3_s7|->{}),(s2_s8|->{t2_8t1}),(s8_s3|->{t1_8t1}),
+  (s7_s4|->{t2_4t5}),(s4_s7|->{t1_4t5}),(s3_s8|->{t2_8t1}),(s8_s4|->{}),
+  (s4_s8|->{}),(s8_s5|->{}),(s5_s8|->{}),(s8_s6|->{t2_6t7}),(s6_s8|->{t1_6t7})}
+
+% Runtime for SOLUTION for SETUP_CONSTANTS: 90 ms (walltime: 80 ms)
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 4570 ms
+"Display statistics..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 4580 ms
+"Compute iteratively the supremal strong M-controllable predicate..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 6780 ms
+"Compute SFBC (enabled events partial observation)..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 6820 ms
+"Compute SFBC (disabled events partial observation)..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 6840 ms
+"The SFBC functions are complementary."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 6840 ms
+Deadlock reached after 7 steps (after CheckComplementarity).
+% Finished processing file after 5240 ms walltime (5220 ms runtime), since start: 6860 ms
+
+-------------------------------------------------
+
+8 sections, 2 trains, 2 tunnels: 64 states and 128 transitions
+
+Predicate Q2 (40 states):
+ iteration number 1
+ iteration number 2
+ iteration number 3
+Iterative solution
+supSMCP (30 reachable states):
+{s4_s1,s1_s4,s5_s1,s4_s2,s2_s4,s1_s5,s6_s1,s5_s2,s2_s5,s1_s6,
+ s6_s2,s2_s6,s7_s2,s6_s3,s3_s6,s8_s2,s7_s3,s6_s4,s4_s6,s3_s7,
+ s8_s3,s7_s4,s4_s7,s3_s8,s8_s4,s4_s8,s8_s5,s5_s8,s8_s6,s6_s8}
+
+Enabled events (partiel observation):
+{(s4_s1|->{t1_4t5,t2_1t2}),(s1_s4|->{t1_1t2,t2_4t5}),(s5_s1|->{t1_5t6,t2_1t2}),
+ (s4_s2|->{}),(s2_s4|->{}),(s1_s5|->{t1_1t2,t2_5t6}),(s6_s1|->{t2_1t2}),
+ (s5_s2|->{t1_5t6}),(s2_s5|->{t2_5t6}),(s1_s6|->{t1_1t2}),(s6_s2|->{t1_6t7,t2_2t3}),
+ (s2_s6|->{t1_2t3}),(s7_s2|->{t1_7t8,t2_2t3}),(s6_s3|->{t1_6t7,t2_3t4}),
+ (s3_s6|->{t1_3t4,t2_6t7}),(s8_s2|->{t2_2t3}),(s7_s3|->{t1_7t8,t2_3t4}),
+ (s6_s4|->{t1_6t7}),(s4_s6|->{t2_6t7}),(s3_s7|->{t1_3t4,t2_7t8}),
+ (s8_s3|->{t2_3t4}),(s7_s4|->{t1_7t8}),(s4_s7|->{t2_7t8}),(s3_s8|->{t1_3t4}),
+ (s8_s4|->{t1_8t1,t2_4t5}),(s4_s8|->{t1_4t5,t2_8t1}),(s8_s5|->{t1_8t1,t2_5t6}),
+ (s5_s8|->{t1_5t6,t2_8t1}),(s8_s6|->{}),(s6_s8|->{})}
+Disabled events (partiel observation):
+{(s4_s1|->{}),(s1_s4|->{}),(s5_s1|->{}),(s4_s2|->{t1_4t5,t2_2t3}),
+ (s2_s4|->{t1_2t3,t2_4t5}),(s1_s5|->{}),(s6_s1|->{t1_6t7}),(s5_s2|->{t2_2t3}),
+ (s2_s5|->{t1_2t3}),(s1_s6|->{t2_6t7}),(s6_s2|->{}),(s2_s6|->{t2_6t7}),
+ (s7_s2|->{}),(s6_s3|->{}),(s3_s6|->{}),(s8_s2|->{t1_8t1}),(s7_s3|->{}),
+ (s6_s4|->{t2_4t5}),(s4_s6|->{t1_4t5}),(s3_s7|->{}),(s8_s3|->{t1_8t1}),
+ (s7_s4|->{t2_4t5}),(s4_s7|->{t1_4t5}),(s3_s8|->{t2_8t1}),(s8_s4|->{}),
+ (s4_s8|->{}),(s8_s5|->{}),(s5_s8|->{}),(s8_s6|->{t1_8t1,t2_6t7}),
+ (s6_s8|->{t1_6t7,t2_8t1})}
+
+% Runtime for SOLUTION for SETUP_CONSTANTS: 80 ms (walltime: 90 ms)
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 4550 ms
+"Display statistics..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 4560 ms
+"Compute iteratively the supremal strong M-controllable predicate..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 5590 ms
+"Compute SFBC (enabled events partial observation)..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 5630 ms
+"Compute SFBC (disabled events partial observation)..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 5650 ms
+"The SFBC functions are complementary."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 5650 ms
+Deadlock reached after 7 steps (after CheckComplementarity).
+% Finished processing file after 4040 ms walltime (4030 ms runtime), since start: 5660 ms
+
+-------------------------------------------------
+-------------------------------------------------
+
+6 sections, 2 trains, 3 tunnels: 36 states and 72 transitions
+
+Predicate Q1 (30 states):
+Solution
+appMCP (24 reachable states):
+{s3_s1,s1_s3,s4_s1,s3_s2,s2_s3,s1_s4,s5_s1,s4_s2,s2_s4,s1_s5,
+ s6_s1,s5_s2,s2_s5,s1_s6,s6_s2,s5_s3,s3_s5,s2_s6,s6_s3,s5_s4,
+ s4_s5,s3_s6,s6_s4,s4_s6}
+
+Enabled events (partiel observation):
+{(s3_s1|->{t1_3t4,t2_1t2}),(s1_s3|->{t1_1t2,t2_3t4}),(s4_s1|->{t1_4t5,t2_1t2}),
+ (s3_s2|->{t1_3t4}),(s2_s3|->{t2_3t4}),(s1_s4|->{t1_1t2,t2_4t5}),
+ (s5_s1|->{t1_5t6,t2_1t2}),(s4_s2|->{t1_4t5}),(s2_s4|->{t2_4t5}),
+ (s1_s5|->{t1_1t2,t2_5t6}),(s6_s1|->{t2_1t2}),(s5_s2|->{t1_5t6,t2_2t3}),
+ (s2_s5|->{t1_2t3,t2_5t6}),(s1_s6|->{t1_1t2}),(s6_s2|->{t2_2t3}),
+ (s5_s3|->{t1_5t6,t2_3t4}),(s3_s5|->{t1_3t4,t2_5t6}),(s2_s6|->{t1_2t3}),
+ (s6_s3|->{t1_6t1,t2_3t4}),(s5_s4|->{t1_5t6}),(s4_s5|->{t2_5t6}),
+ (s3_s6|->{t1_3t4,t2_6t1}),(s6_s4|->{t1_6t1}),(s4_s6|->{t2_6t1})}
+Disabled events (partiel observation):
+{(s3_s1|->{t2_2t3}),(s1_s3|->{t1_2t3}),(s4_s1|->{t2_2t3}),(s3_s2|->{t2_2t3}),
+ (s2_s3|->{t1_2t3}),(s1_s4|->{t1_2t3}),(s5_s1|->{t1_6t1}),(s4_s2|->{t2_2t3}),
+ (s2_s4|->{t1_2t3}),(s1_s5|->{t2_6t1}),(s6_s1|->{t1_6t1}),(s5_s2|->{t1_6t1}),
+ (s2_s5|->{t2_6t1}),(s1_s6|->{t2_6t1}),(s6_s2|->{t1_6t1}),(s5_s3|->{t2_4t5}),
+ (s3_s5|->{t1_4t5}),(s2_s6|->{t2_6t1}),(s6_s3|->{t2_4t5}),(s5_s4|->{t2_4t5}),
+ (s4_s5|->{t1_4t5}),(s3_s6|->{t1_4t5}),(s6_s4|->{t2_4t5}),(s4_s6|->{t1_4t5})}
+
+% Runtime for SOLUTION for SETUP_CONSTANTS: 90 ms (walltime: 90 ms)
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 1880 ms
+"Display statistics..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 1900 ms
+"Compute a M-controllable predicate..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 2530 ms
+"Compute SFBC (enabled events partial observation)..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 2550 ms
+"Compute SFBC (disabled events partial observation)..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 2570 ms
+"The SFBC functions are complementary."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 2570 ms
+Deadlock reached after 7 steps (after CheckComplementarity).
+% Finished processing file after 990 ms walltime (980 ms runtime), since start: 2580 ms
+
+-------------------------------------------------
+
+6 sections, 2 trains, 3 tunnels: 36 states and 72 transitions
+
+Predicate Q2 (18 states):
+Solution
+appMCP (1 reachable states):
+{s2_s4}
+
+Enabled events (partiel observation): {(s2_s4|->{})}
+Disabled events (partiel observation): {(s2_s4|->{t1_2t3,t2_4t5})}
+
+% Runtime for SOLUTION for SETUP_CONSTANTS: 90 ms (walltime: 90 ms)
+Finished Invariant Checking 10 ms walltime (0 ms runtime), since start: 1880 ms
+"Display statistics..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 1890 ms
+"Compute a M-controllable predicate..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 2370 ms
+"Compute SFBC (enabled events partial observation)..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 2390 ms
+"Compute SFBC (disabled events partial observation)..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 2400 ms
+"The SFBC functions are complementary."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 2400 ms
+Deadlock reached after 7 steps (after CheckComplementarity).
+% Finished processing file after 830 ms walltime (820 ms runtime), since start: 2410 ms
+
+
+-------------------------------------------------
+
+8 sections, 2 trains, 1 tunnel: 64 states and 128 transitions
+
+Predicate Q1 (56 states):
+Solution
+appMCP (44 reachable states):
+{s3_s1,s1_s3,s4_s1,s3_s2,s2_s3,s1_s4,s5_s1,s4_s2,s2_s4,s1_s5,
+ s6_s1,s5_s2,s2_s5,s1_s6,s7_s1,s6_s2,s2_s6,s1_s7,s8_s1,s7_s2,
+ s6_s3,s3_s6,s2_s7,s1_s8,s8_s2,s7_s3,s6_s4,s4_s6,s3_s7,s2_s8,
+ s8_s3,s7_s4,s4_s7,s3_s8,s8_s4,s7_s5,s5_s7,s4_s8,s8_s5,s7_s6,
+ s6_s7,s5_s8,s8_s6,s6_s8}
+
+Enabled events (partiel observation):
+{(s3_s1|->{t1_3t4,t2_1t2}),(s1_s3|->{t1_1t2,t2_3t4}),(s4_s1|->{t1_4t5,t2_1t2}),
+ (s3_s2|->{t1_3t4}),(s2_s3|->{t2_3t4}),(s1_s4|->{t1_1t2,t2_4t5}),
+ (s5_s1|->{t1_5t6,t2_1t2}),(s4_s2|->{t1_4t5}),(s2_s4|->{t2_4t5}),
+ (s1_s5|->{t1_1t2,t2_5t6}),(s6_s1|->{t1_6t7,t2_1t2}),
+ (s5_s2|->{t1_5t6}),(s2_s5|->{t2_5t6}),(s1_s6|->{t1_1t2,t2_6t7}),
+ (s7_s1|->{t1_7t8,t2_1t2}),(s6_s2|->{t1_6t7,t2_2t3}),(s2_s6|->{t1_2t3,t2_6t7}),
+ (s1_s7|->{t1_1t2,t2_7t8}),(s8_s1|->{t2_1t2}),(s7_s2|->{t1_7t8,t2_2t3}),
+ (s6_s3|->{t1_6t7,t2_3t4}),(s3_s6|->{t1_3t4,t2_6t7}),(s2_s7|->{t1_2t3,t2_7t8}),
+ (s1_s8|->{t1_1t2}),(s8_s2|->{t2_2t3}),(s7_s3|->{t1_7t8,t2_3t4}),
+ (s6_s4|->{t1_6t7}),(s4_s6|->{t2_6t7}),(s3_s7|->{t1_3t4,t2_7t8}),
+ (s2_s8|->{t1_2t3}),(s8_s3|->{t1_8t1,t2_3t4}),(s7_s4|->{t1_7t8,t2_4t5}),
+ (s4_s7|->{t1_4t5,t2_7t8}),(s3_s8|->{t1_3t4,t2_8t1}),(s8_s4|->{t1_8t1,t2_4t5}),
+ (s7_s5|->{t1_7t8,t2_5t6}),(s5_s7|->{t1_5t6,t2_7t8}),(s4_s8|->{t1_4t5,t2_8t1}),
+ (s8_s5|->{t1_8t1,t2_5t6}),(s7_s6|->{t1_7t8}),(s6_s7|->{t2_7t8}),
+ (s5_s8|->{t1_5t6,t2_8t1}),(s8_s6|->{t1_8t1}),(s6_s8|->{t2_8t1})}
+Disabled events (partiel observation):
+{(s3_s1|->{}),(s1_s3|->{}),(s4_s1|->{}),(s3_s2|->{t2_2t3}),(s2_s3|->{t1_2t3}),
+ (s1_s4|->{}),(s5_s1|->{}),(s4_s2|->{t2_2t3}),(s2_s4|->{t1_2t3}),(s1_s5|->{}),
+ (s6_s1|->{}),(s5_s2|->{t2_2t3}),(s2_s5|->{t1_2t3}),(s1_s6|->{}),(s7_s1|->{}),
+ (s6_s2|->{}),(s2_s6|->{}),(s1_s7|->{}),(s8_s1|->{t1_8t1}),(s7_s2|->{}),
+ (s6_s3|->{t2_4t5}),(s3_s6|->{t1_4t5}),(s2_s7|->{}),(s1_s8|->{t2_8t1}),
+ (s8_s2|->{t1_8t1}),(s7_s3|->{}),(s6_s4|->{t2_4t5}),(s4_s6|->{t1_4t5}),
+ (s3_s7|->{}),(s2_s8|->{t2_8t1}),(s8_s3|->{}),(s7_s4|->{}),(s4_s7|->{}),
+ (s3_s8|->{}),(s8_s4|->{}),(s7_s5|->{}),(s5_s7|->{}),(s4_s8|->{}),(s8_s5|->{}),
+ (s7_s6|->{t2_6t7}),(s6_s7|->{t1_6t7}),(s5_s8|->{}),(s8_s6|->{t2_6t7}),
+ (s6_s8|->{t1_6t7})}
+
+% Runtime for SOLUTION for SETUP_CONSTANTS: 90 ms (walltime: 80 ms)
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 4640 ms
+"Display statistics..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 4650 ms
+"Compute a M-controllable predicate..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 18590 ms
+"Compute SFBC (enabled events partial observation)..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 18620 ms
+"Compute SFBC (disabled events partial observation)..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 18650 ms
+"The SFBC functions are complementary."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 18650 ms
+Deadlock reached after 7 steps (after CheckComplementarity).
+% Finished processing file after 17050 ms walltime (17020 ms runtime), since start: 18660 ms
+
+-------------------------------------------------
+
+8 sections, 2 trains, 1 tunnel: 64 states and 128 transitions
+
+Predicate Q2 (40 states):
+Solution
+appMCP (24 reachable states):
+{s6_s1,s1_s6,s6_s2,s2_s6,s7_s2,s6_s3,s3_s6,s2_s7,s8_s2,s7_s3,
+ s6_s4,s4_s6,s3_s7,s2_s8,s8_s3,s7_s4,s4_s7,s3_s8,s8_s4,s4_s8,
+ s8_s5,s5_s8,s8_s6,s6_s8}
+
+Enabled events (partiel observation):
+{(s6_s1|->{t2_1t2}),(s1_s6|->{t1_1t2}),(s6_s2|->{t1_6t7,t2_2t3}),
+ (s2_s6|->{t1_2t3,t2_6t7}),(s7_s2|->{t1_7t8,t2_2t3}),(s6_s3|->{t1_6t7,t2_3t4}),
+ (s3_s6|->{t1_3t4,t2_6t7}),(s2_s7|->{t1_2t3,t2_7t8}),(s8_s2|->{t2_2t3}),
+ (s7_s3|->{t1_7t8,t2_3t4}),(s6_s4|->{t1_6t7}),(s4_s6|->{t2_6t7}),
+ (s3_s7|->{t1_3t4,t2_7t8}),(s2_s8|->{t1_2t3}),(s8_s3|->{t2_3t4}),
+ (s7_s4|->{t1_7t8}),(s4_s7|->{t2_7t8}),(s3_s8|->{t1_3t4}),(s8_s4|->{t2_4t5}),
+ (s4_s8|->{t1_4t5}),(s8_s5|->{t2_5t6}),(s5_s8|->{t1_5t6}),(s8_s6|->{t1_8t1}),
+ (s6_s8|->{t2_8t1})}
+Disabled events (partiel observation):
+{(s6_s1|->{t1_6t7}),(s1_s6|->{t2_6t7}),(s6_s2|->{}),(s2_s6|->{}),(s7_s2|->{}),
+ (s6_s3|->{t2_4t5}),(s3_s6|->{t1_4t5}),(s2_s7|->{}),(s8_s2|->{t1_8t1}),
+ (s7_s3|->{t2_4t5}),(s6_s4|->{t2_4t5}),(s4_s6|->{t1_4t5}),(s3_s7|->{t1_4t5}),
+ (s2_s8|->{t2_8t1}),(s8_s3|->{t1_8t1}),(s7_s4|->{t2_4t5}),(s4_s7|->{t1_4t5}),
+ (s3_s8|->{t2_8t1}),(s8_s4|->{t1_8t1}),(s4_s8|->{t2_8t1}),(s8_s5|->{t1_8t1}),
+ (s5_s8|->{t2_8t1}),(s8_s6|->{t2_6t7}),(s6_s8|->{t1_6t7})}
+
+% Runtime for SOLUTION for SETUP_CONSTANTS: 90 ms (walltime: 90 ms)
+Finished Invariant Checking 10 ms walltime (10 ms runtime), since start: 4480 ms
+"Display statistics..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 4490 ms
+"Compute a M-controllable predicate..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 17930 ms
+"Compute SFBC (enabled events partial observation)..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 17970 ms
+"Compute SFBC (disabled events partial observation)..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 17990 ms
+"The SFBC functions are complementary."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 17990 ms
+Deadlock reached after 7 steps (after CheckComplementarity).
+% Finished processing file after 16410 ms walltime (16380 ms runtime), since start: 18000 ms
+
+-------------------------------------------------
+
+8 sections, 2 trains, 2 tunnels: 64 states and 128 transitions
+
+Predicate Q1 (56 states):
+Solution
+appMCP (40 reachable states):
+{s4_s1,s1_s4,s5_s1,s4_s2,s2_s4,s1_s5,s6_s1,s5_s2,s2_s5,s1_s6,
+ s7_s1,s6_s2,s5_s3,s3_s5,s2_s6,s1_s7,s8_s1,s7_s2,s6_s3,s5_s4,
+ s4_s5,s3_s6,s2_s7,s1_s8,s8_s2,s7_s3,s6_s4,s4_s6,s3_s7,s2_s8,
+ s8_s3,s7_s4,s4_s7,s3_s8,s8_s4,s4_s8,s8_s5,s5_s8,s8_s6,s6_s8}
+
+Enabled events (partiel observation):
+{(s4_s1|->{t1_4t5,t2_1t2}),(s1_s4|->{t1_1t2,t2_4t5}),(s5_s1|->{t1_5t6,t2_1t2}),
+ (s4_s2|->{t1_4t5}),(s2_s4|->{t2_4t5}),(s1_s5|->{t1_1t2,t2_5t6}),
+ (s6_s1|->{t1_6t7,t2_1t2}),(s5_s2|->{t1_5t6,t2_2t3}),(s2_s5|->{t1_2t3,t2_5t6}),
+ (s1_s6|->{t1_1t2,t2_6t7}),(s7_s1|->{t1_7t8,t2_1t2}),(s6_s2|->{t1_6t7,t2_2t3}),
+ (s5_s3|->{t1_5t6,t2_3t4}),(s3_s5|->{t1_3t4,t2_5t6}),(s2_s6|->{t1_2t3,t2_6t7}),
+ (s1_s7|->{t1_1t2,t2_7t8}),(s8_s1|->{t2_1t2}),(s7_s2|->{t1_7t8,t2_2t3}),
+ (s6_s3|->{t1_6t7,t2_3t4}),(s5_s4|->{t1_5t6}),(s4_s5|->{t2_5t6}),
+ (s3_s6|->{t1_3t4,t2_6t7}),(s2_s7|->{t1_2t3,t2_7t8}),(s1_s8|->{t1_1t2}),
+ (s8_s2|->{t2_2t3}),(s7_s3|->{t1_7t8,t2_3t4}),(s6_s4|->{t1_6t7}),
+ (s4_s6|->{t2_6t7}),(s3_s7|->{t1_3t4,t2_7t8}),(s2_s8|->{t1_2t3}),
+ (s8_s3|->{t2_3t4}),(s7_s4|->{t1_7t8}),(s4_s7|->{t2_7t8}),(s3_s8|->{t1_3t4}),
+ (s8_s4|->{t1_8t1,t2_4t5}),(s4_s8|->{t1_4t5,t2_8t1}),(s8_s5|->{t1_8t1,t2_5t6}),
+ (s5_s8|->{t1_5t6,t2_8t1}),(s8_s6|->{t1_8t1}),(s6_s8|->{t2_8t1})}
+Disabled events (partiel observation):
+{(s4_s1|->{}),(s1_s4|->{}),(s5_s1|->{}),(s4_s2|->{t2_2t3}),(s2_s4|->{t1_2t3}),
+ (s1_s5|->{}),(s6_s1|->{}),(s5_s2|->{}),(s2_s5|->{}),(s1_s6|->{}),(s7_s1|->{}),
+ (s6_s2|->{}),(s5_s3|->{}),(s3_s5|->{}),(s2_s6|->{}),(s1_s7|->{}),
+ (s8_s1|->{t1_8t1}),(s7_s2|->{}),(s6_s3|->{}),(s5_s4|->{t2_4t5}),
+ (s4_s5|->{t1_4t5}),(s3_s6|->{}),(s2_s7|->{}),(s1_s8|->{t2_8t1}),
+ (s8_s2|->{t1_8t1}),(s7_s3|->{}),(s6_s4|->{t2_4t5}),(s4_s6|->{t1_4t5}),
+ (s3_s7|->{}),(s2_s8|->{t2_8t1}),(s8_s3|->{t1_8t1}),(s7_s4|->{t2_4t5}),
+ (s4_s7|->{t1_4t5}),(s3_s8|->{t2_8t1}),(s8_s4|->{}),(s4_s8|->{}),
+ (s8_s5|->{}),(s5_s8|->{}),(s8_s6|->{t2_6t7}),(s6_s8|->{t1_6t7})}
+
+% Runtime for SOLUTION for SETUP_CONSTANTS: 90 ms (walltime: 90 ms)
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 4550 ms
+"Display statistics..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 4560 ms
+"Compute a M-controllable predicate..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 17770 ms
+"Compute SFBC (enabled events partial observation)..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 17810 ms
+"Compute SFBC (disabled events partial observation)..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 17830 ms
+"The SFBC functions are complementary."
+% Finished processing file after 16230 ms walltime (16200 ms runtime), since start: 17850 ms
+
+-------------------------------------------------
+
+8 sections, 2 trains, 2 tunnels: 64 states and 128 transitions
+
+Predicate Q2 (40 states):
+Solution
+appMCP (30 reachable states):
+{s4_s1,s1_s4,s5_s1,s4_s2,s2_s4,s1_s5,s6_s1,s5_s2,s2_s5,s1_s6,
+ s6_s2,s2_s6,s7_s2,s6_s3,s3_s6,s8_s2,s7_s3,s6_s4,s4_s6,s3_s7,
+ s8_s3,s7_s4,s4_s7,s3_s8,s8_s4,s4_s8,s8_s5,s5_s8,s8_s6,s6_s8}
+
+Enabled events (partiel observation):
+{(s4_s1|->{t1_4t5,t2_1t2}),(s1_s4|->{t1_1t2,t2_4t5}),(s5_s1|->{t1_5t6,t2_1t2}),
+ (s4_s2|->{t1_4t5}),(s2_s4|->{t2_4t5}),(s1_s5|->{t1_1t2,t2_5t6}),(s6_s1|->{t2_1t2}),
+ (s5_s2|->{t1_5t6}),(s2_s5|->{t2_5t6}),(s1_s6|->{t1_1t2}),(s6_s2|->{t1_6t7,t2_2t3}),
+ (s2_s6|->{t1_2t3}),(s7_s2|->{t1_7t8,t2_2t3}),(s6_s3|->{t1_6t7,t2_3t4}),
+ (s3_s6|->{t1_3t4,t2_6t7}),(s8_s2|->{t2_2t3}),(s7_s3|->{t1_7t8,t2_3t4}),
+ (s6_s4|->{t1_6t7}),(s4_s6|->{t2_6t7}),(s3_s7|->{t1_3t4,t2_7t8}),
+ (s8_s3|->{t2_3t4}),(s7_s4|->{t1_7t8}),(s4_s7|->{t2_7t8}),(s3_s8|->{t1_3t4}),
+ (s8_s4|->{t1_8t1,t2_4t5}),(s4_s8|->{t1_4t5,t2_8t1}),(s8_s5|->{t1_8t1,t2_5t6}),
+ (s5_s8|->{t1_5t6,t2_8t1}),(s8_s6|->{t1_8t1}),(s6_s8|->{t2_8t1})}
+Disabled events (partiel observation):
+{(s4_s1|->{}),(s1_s4|->{}),(s5_s1|->{}),(s4_s2|->{t2_2t3}),(s2_s4|->{t1_2t3}),
+ (s1_s5|->{}),(s6_s1|->{t1_6t7}),(s5_s2|->{t2_2t3}),(s2_s5|->{t1_2t3}),
+ (s1_s6|->{t2_6t7}),(s6_s2|->{}),(s2_s6|->{t2_6t7}),(s7_s2|->{}),(s6_s3|->{}),
+ (s3_s6|->{}),(s8_s2|->{t1_8t1}),(s7_s3|->{}),(s6_s4|->{t2_4t5}),(s4_s6|->{t1_4t5}),
+ (s3_s7|->{}),(s8_s3|->{t1_8t1}),(s7_s4|->{t2_4t5}),(s4_s7|->{t1_4t5}),
+ (s3_s8|->{t2_8t1}),(s8_s4|->{}),(s4_s8|->{}),(s8_s5|->{}),(s5_s8|->{}),
+ (s8_s6|->{t2_6t7}),(s6_s8|->{t1_6t7})}
+
+% Runtime for SOLUTION for SETUP_CONSTANTS: 90 ms (walltime: 80 ms)
+Finished Invariant Checking 10 ms walltime (0 ms runtime), since start: 4520 ms
+"Display statistics..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 4530 ms
+"Compute a M-controllable predicate..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 17890 ms
+"Compute SFBC (enabled events partial observation)..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 17930 ms
+"Compute SFBC (disabled events partial observation)..."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 17940 ms
+"The SFBC functions are complementary."
+Finished Invariant Checking 0 ms walltime (0 ms runtime), since start: 17940 ms
+Deadlock reached after 7 steps (after CheckComplementarity).
+% Finished processing file after 16350 ms walltime (16320 ms runtime), since start: 17960 ms

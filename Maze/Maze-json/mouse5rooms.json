@@ -1,0 +1,13 @@
+{
+ "name" : "mouse5rooms",
+ "states" : ["r0", "r1", "r2", "r3", "r4"],
+ "istate" : "r4",
+ "mstates" : ["r4"],
+ "events" : ["m0to2", "m2to1", "m1to0",
+             "m0to4", "m4to3", "m3to0" ],
+ "cevents" : ["m0to2", "m2to1", "m1to0",
+              "m0to4", "m4to3", "m3to0" ],
+ "transitions" : [
+   ["r0","m0to2","r2"], ["r2","m2to1","r1"], ["r1","m1to0","r0"],
+   ["r0","m0to4","r4"], ["r4","m4to3","r3"], ["r3","m3to0","r0"] ]
+}

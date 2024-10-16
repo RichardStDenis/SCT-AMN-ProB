@@ -1,0 +1,16 @@
+{
+ "name" : "cat8rooms",
+ "states" : ["r0", "r1", "r2", "r3", "r4", "r5", "r6", "r7"],
+ "istate" : "r2",
+ "mstates" : ["r2"],
+ "events" : ["c0to1", "c1to2", "c2to0",
+             "c0to3", "c3to4", "c4to0",
+             "c1to5", "c5to6", "c6to7", "c6to3", "c3to1" ],
+ "cevents" : ["c0to1", "c1to2", "c2to0",
+              "c0to3", "c3to4", "c4to0", "c3to1" ],
+ "transitions" : [
+   ["r0","c0to1","r1"], ["r1","c1to2","r2"], ["r2","c2to0","r0"],
+   ["r0","c0to3","r3"], ["r3","c3to4","r4"], ["r4","c4to0","r0"],
+   ["r1","c1to5","r5"], ["r5","c5to6","r6"], ["r6","c6to7","r7"],
+   ["r6","c6to3","r3"], ["r3","c3to1","r1"] ]
+}
