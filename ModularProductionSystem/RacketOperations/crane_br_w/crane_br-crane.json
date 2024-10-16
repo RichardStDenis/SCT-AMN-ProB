@@ -1,0 +1,6 @@
+{
+ "name" : "crane_br-crane",
+ "states" : [["CBRbusy", "Cbusy"], ["CBRidle", "Cidle"]],
+ "events" : [["eot", "C_eot"], ["pck1", "C_pck1"],
+             ["pck2", "C_pck2"], ["pck3", "C_pck3"] ]
+}

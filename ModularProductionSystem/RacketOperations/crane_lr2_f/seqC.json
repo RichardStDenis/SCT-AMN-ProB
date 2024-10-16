@@ -1,0 +1,12 @@
+{
+ "name" : "seqC",
+ "states" : ["fm", "nm"],
+ "istate" : "nm",
+ "mstates" : ["nm"],
+ "events" : ["BR_eor", "H_abort"],
+ "cevents" : [],
+ "transitions" : [
+   ["nm","H_abort","fm"],
+   ["fm","BR_eor","nm"],
+   ["nm","BR_eor","nm"] ]
+}

@@ -1,0 +1,13 @@
+{
+ "name" : "boom",
+ "states" : ["BMe", "BMie", "BMir", "BMr"],
+ "istate" : "BMe",
+ "mstates" : ["BMe"],
+ "events" : ["BM_eogr", "BM_eogl", "BM_gr", "BM_gl"],
+ "cevents" : ["BM_gr", "BM_gl"],
+ "transitions" : [
+   ["BMr","BM_gr","BMie"],
+   ["BMie","BM_eogr","BMe"],
+   ["BMe","BM_gl","BMir"],
+   ["BMir","BM_eogl","BMr"] ]
+}

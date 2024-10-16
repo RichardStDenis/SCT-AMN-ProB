@@ -1,0 +1,6 @@
+{
+ "name" : "jack211r-hook",
+ "states" : [["Je", "He"], ["Jie", "Hie"], ["Jir", "Hir"], ["Jr", "Hr"]],
+ "events" : [["eoe", "H_eog"], ["eor", "H_eor"],
+             ["extend", "H_grab"], ["retract", "H_release"] ]
+}

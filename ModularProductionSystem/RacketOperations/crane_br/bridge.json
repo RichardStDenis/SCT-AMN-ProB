@@ -1,0 +1,13 @@
+{
+ "name" : "bridge",
+ "states" : ["BRe", "BRie", "BRir", "BRr"],
+ "istate" : "BRr",
+ "mstates" : ["BRr"],
+ "events" : ["BR_eoe", "BR_eoc", "BR_expand", "BR_contract"],
+ "cevents" : ["BR_expand", "BR_contract"],
+ "transitions" : [
+   ["BRr","BR_expand","BRie"],
+   ["BRie","BR_eoe","BRe"],
+   ["BRe","BR_contract","BRir"],
+   ["BRir","BR_eoc","BRr"] ]
+}

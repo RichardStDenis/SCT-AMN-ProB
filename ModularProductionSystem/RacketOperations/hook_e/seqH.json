@@ -1,0 +1,10 @@
+{
+ "name" : "seqH",
+ "states" : ["drpStg", "grbStg"],
+ "istate" : "grbStg",
+ "mstates" : ["grbStg"],
+ "events" : ["W_eoa"],
+ "cevents" : [],
+ "transitions" : [
+    ["grbStg","W_eoa","drpStg"], ["drpStg","W_eoa","grbStg"] ]
+}

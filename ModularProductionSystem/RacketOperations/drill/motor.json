@@ -1,0 +1,13 @@
+{
+ "name" : "motor",
+ "states" : ["Miv", "Mnv", "Mfv", "Mdv"],
+ "istate" : "Mnv",
+ "mstates" : ["Mnv"],
+ "events" : ["M_tOn", "M_tOff", "M_fs", "M_ns"],
+ "cevents" : ["M_tOn", "M_tOff"],
+ "transitions" : [
+   ["Mnv","M_tOn","Miv"],
+   ["Miv","M_fs","Mfv"],
+   ["Mfv","M_tOff","Mdv"],
+   ["Mdv","M_ns","Mnv"] ]
+}

@@ -1,0 +1,15 @@
+{
+ "name" : "boom",
+ "states" : ["BMatpos0", "BMatpos123", "BMnr0", "BMnr123"],
+ "istate" : "BMatpos0",
+ "mstates" : ["BMatpos0"],
+ "events" : ["BM_eomb", "BM_eomf", "BM_mb", "BM_mf1", "BM_mf2", "BM_mf3"],
+ "cevents" : ["BM_mb", "BM_mf1", "BM_mf2", "BM_mf3"],
+ "transitions" : [
+   ["BMatpos0","BM_mf1","BMnr123"],
+   ["BMatpos0","BM_mf2","BMnr123"],
+   ["BMatpos0","BM_mf3","BMnr123"],
+   ["BMnr123","BM_eomf","BMatpos123"],
+   ["BMatpos123","BM_mb","BMnr0"],
+   ["BMnr0","BM_eomb","BMatpos0"] ]
+}

@@ -1,0 +1,6 @@
+{
+ "name" : "jack211r-boom",
+ "states" : [["Je", "BMe"], ["Jie", "BMie"], ["Jir", "BMir"], ["Jr", "BMr"]],
+ "events" : [["eoe", "BM_eogr"], ["eor", "BM_eogl"],
+             ["extend", "BM_gr"], ["retract", "BM_gl"] ]
+}

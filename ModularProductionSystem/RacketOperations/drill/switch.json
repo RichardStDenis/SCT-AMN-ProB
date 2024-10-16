@@ -1,0 +1,10 @@
+{
+ "name" : "switch",
+ "states" : ["isOff", "isOn"],
+ "istate" : "isOff",
+ "mstates" : ["isOff"],
+ "events" : ["start", "stop"],
+ "cevents" : ["start", "stop"],
+ "transitions" : [
+    ["isOff", "start", "isOn"], ["isOn", "stop", "isOff"] ]
+}

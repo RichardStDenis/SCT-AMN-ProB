@@ -1,0 +1,15 @@
+{
+ "name" : "seqH",
+ "states" : ["drpStg", "failStg", "grbStg"],
+ "istate" : "grbStg",
+ "mstates" : ["grbStg"],
+ "events" : ["clr", "W_cd", "W_eoa", "W_eod", "H_cg", "H_grab"],
+ "cevents" : ["clr", "W_cd", "H_cg", "H_grab"],
+ "transitions" : [
+    ["grbStg","W_eoa","drpStg"], ["grbStg","W_eod","failStg"],
+    ["drpStg","W_eoa","grbStg"],
+    ["failStg","clr","grbStg"],
+    ["grbStg","W_cd","grbStg"], ["grbStg","H_grab","grbStg"],
+    ["drpStg","W_eod","drpStg"],
+    ["failStg","W_eoa","failStg"], ["failStg","W_eod","failStg"], ["failStg","H_cg","failStg"] ]
+}

@@ -1,0 +1,13 @@
+{
+ "name" : "crane",
+ "states" : ["Cbusy", "Cidle"],
+ "istate" : "Cidle",
+ "mstates" : ["Cidle"],
+ "events" : ["C_eot", "C_pck1", "C_pck2", "C_pck3"],
+ "cevents" : ["C_pck1", "C_pck2", "C_pck3"],
+ "transitions" : [
+   ["Cidle","C_pck1","Cbusy"],
+   ["Cidle","C_pck2","Cbusy"],
+   ["Cidle","C_pck3","Cbusy"],
+   ["Cbusy","C_eot","Cidle"] ]
+}

@@ -1,0 +1,9 @@
+{
+ "name" : "hook_ef-hoist",
+ "states" : [["HaWp", "HaWp"], ["HdWp", "HdWp"],
+             ["HgWp", "HgWp"], ["HnWp", "HnWp"],
+             ["Hrp", "Hrp"], ["Hwo", "Hwo"] ],
+ "events" : [["abort", "H_abort"], ["confirm", "H_confirm"],
+             ["drop", "H_drop"], ["eod", "H_eod"],
+             ["eog", "H_eog"], ["grab", "H_grab"], ["rst", "H_reset"] ]
+}

@@ -1,0 +1,13 @@
+{
+ "name" : "clamp",
+ "states" : ["Ce", "Cie", "Cir", "Cr"],
+ "istate" : "Cr",
+ "mstates" : ["Cr"],
+ "events" : ["C_eoc", "C_eou", "C_clamp", "C_unclamp"],
+ "cevents" : ["C_clamp", "C_unclamp"],
+ "transitions" : [
+   ["Cr","C_clamp","Cie"],
+   ["Cie","C_eoc","Ce"],
+   ["Ce","C_unclamp","Cir"],
+   ["Cir","C_eou","Cr"] ]
+}

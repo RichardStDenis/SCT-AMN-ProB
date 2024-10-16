@@ -1,0 +1,10 @@
+{
+ "name" : "operation",
+ "states" : ["dp", "fp"],
+ "istate" : "dp",
+ "mstates" : ["dp"],
+ "events" : ["stop", "A_eoa"],
+ "cevents" : ["stop"],
+ "transitions" : [
+    ["dp", "A_eoa", "fp"], ["fp", "A_eoa", "fp"], ["fp", "stop", "dp"] ]
+}

@@ -1,0 +1,16 @@
+{
+ "name" : "hoist",
+ "states" : ["HaWp", "HdWp", "HgWp", "HnWp", "Hrp", "Hwo"],
+ "istate" : "HnWp",
+ "mstates" : ["HnWp"],
+ "events" : ["H_abort", "H_confirm", "H_drop", "H_eod", "H_eog", "H_grab", "H_reset"],
+ "cevents" : ["H_confirm", "H_drop", "H_grab", "H_reset"],
+ "transitions" : [
+   ["HnWp","H_grab","Hwo"],
+   ["Hwo","H_confirm","HgWp"],
+   ["HgWp","H_eog","HaWp"],
+   ["HaWp","H_drop","HdWp"],
+   ["HdWp","H_eod","HnWp"],
+   ["Hwo","H_abort","Hrp"],
+   ["Hrp","H_reset","HnWp"] ]
+}

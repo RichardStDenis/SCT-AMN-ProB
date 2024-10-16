@@ -1,0 +1,13 @@
+{
+ "name" : "seqC",
+ "states" : ["rjt", "trf", "idle"],
+ "istate" : "idle",
+ "mstates" : ["idle"],
+ "events" : ["reject", "transfer", "C_eor", "C_eot"],
+ "cevents" : ["reject", "transfer"],
+ "transitions" : [
+    ["idle","reject","rjt"],   ["rjt","C_eor","idle"],
+    ["idle","transfer","trf"], ["trf","C_eot","idle"],
+    ["idle","C_eor","idle"],   ["idle","C_eot","idle"],
+    ["rjt","C_eot","rjt"],     ["trf","C_eor","trf"] ]
+}

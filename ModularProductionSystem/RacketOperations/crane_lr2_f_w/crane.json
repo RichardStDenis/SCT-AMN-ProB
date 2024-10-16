@@ -1,0 +1,18 @@
+{
+ "name" : "crane",
+ "states" : ["CatLa", "CatLaEp", "CatLnWp", "CatLaEpWo", "CatRaRp", "CatRaTp", "CatRaWp"],
+ "istate" : "CatLnWp",
+ "mstates" : ["CatLnWp"],
+ "events" : ["C_abort", "C_confirm", "C_eoa", "C_eog", "C_eor", "C_eot", "C_grab", "C_reject", "C_transfer"],
+ "cevents" : ["C_confirm", "C_grab", "C_reject", "C_transfer"],
+ "transitions" : [
+   ["CatLnWp","C_grab","CatLaEpWo"],
+   ["CatLaEpWo","C_confirm","CatLaEp"],
+   ["CatLaEp","C_eog","CatRaWp"],
+   ["CatRaWp","C_reject","CatRaRp"],
+   ["CatRaRp","C_eor","CatLnWp"],
+   ["CatRaWp","C_transfer","CatRaTp"],
+   ["CatRaTp","C_eot","CatLnWp"],
+   ["CatLaEpWo","C_abort","CatLa"],
+   ["CatLa","C_eoa","CatLnWp"] ]
+}

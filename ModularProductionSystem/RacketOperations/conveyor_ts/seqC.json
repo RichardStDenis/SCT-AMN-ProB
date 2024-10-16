@@ -1,0 +1,10 @@
+{
+ "name" : "seqC",
+ "states" : ["p1", "p2"],
+ "istate" : "p1",
+ "mstates" : ["p1"],
+ "events" : ["M_eos", "T_exp"],
+ "cevents" : [],
+ "transitions" : [
+    ["p1","M_eos","p2"], ["p1","T_exp","p1"], ["p2","T_exp","p1"], ["p2","M_eos","p2"]]
+}

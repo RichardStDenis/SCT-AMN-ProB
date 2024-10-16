@@ -1,0 +1,11 @@
+{
+ "name" : "motor",
+ "states" : ["Mim", "Mnm"],
+ "istate" : "Mnm",
+ "mstates" : ["Mnm"],
+ "events" : ["M_eos", "M_step"],
+ "cevents" : ["M_step"],
+ "transitions" : [
+   ["Mnm","M_step","Mim"],
+   ["Mim","M_eos","Mnm"] ]
+}

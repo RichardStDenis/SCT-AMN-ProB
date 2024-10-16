@@ -1,0 +1,13 @@
+{
+ "name" : "hook",
+ "states" : ["Hl", "Hnv", "Hp", "Hv"],
+ "istate" : "Hnv",
+ "mstates" : ["Hnv"],
+ "events" : ["H_drop", "H_eog", "H_eod", "H_grab"],
+ "cevents" : ["H_drop", "H_grab"],
+ "transitions" : [
+   ["Hnv","H_grab","Hp"],
+   ["Hp","H_eog","Hv"],
+   ["Hv","H_drop","Hl"],
+   ["Hl","H_eod","Hnv"] ]
+}

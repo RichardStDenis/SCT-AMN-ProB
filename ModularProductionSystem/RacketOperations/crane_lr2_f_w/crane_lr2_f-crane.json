@@ -1,0 +1,9 @@
+{
+ "name" : "crane_lr2_f-crane",
+ "states" : [["CatLa", "CatLa"], ["CatLaEp", "CatLaEp"], ["CatLnWp", "CatLnWp"],
+             ["CatLaEpWo", "CatLaEpWo"], ["CatRaRp", "CatRaRp"], ["CatRaTp", "CatRaTp"],
+             ["CatRaWp", "CatRaWp"] ],
+ "events" : [["abort", "C_abort"], ["confirm", "C_confirm"], ["eoa", "C_eoa"],
+             ["eog", "C_eog"], ["eor", "C_eor"], ["eot", "C_eot"],
+             ["grab", "C_grab"], ["reject", "C_reject"], ["transfer", "C_transfer"] ]
+}

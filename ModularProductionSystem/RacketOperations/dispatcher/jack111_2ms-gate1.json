@@ -1,0 +1,6 @@
+{
+ "name" : "jack111-gate1",
+ "states" : [["Je", "G1e"], ["Jie", "G1ie"], ["Jir", "G1ir"], ["Jr", "G1r"]],
+ "events" : [["eoe", "G1_eoc"], ["eor", "G1_eoo"],
+             ["extend", "G1_close"], ["retract", "G1_open"] ]
+}

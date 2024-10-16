@@ -1,0 +1,11 @@
+{
+ "name" : "arm",
+ "states" : ["Anr", "Ar"],
+ "istate" : "Ar",
+ "mstates" : ["Ar"],
+ "events" : ["A_gd", "A_eoa"],
+ "cevents" : ["A_gd"],
+ "transitions" : [
+   ["Ar","A_gd","Anr"],
+   ["Anr","A_eoa","Ar"] ]
+}

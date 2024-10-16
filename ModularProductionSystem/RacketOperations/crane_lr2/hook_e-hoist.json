@@ -1,0 +1,7 @@
+{
+ "name" : "hook_e-hoist",
+ "states" : [["HaWp", "HaWp"], ["HdWp", "HdWp"],
+             ["HgWp", "HgWp"], ["HnWp", "HnWp"] ],
+ "events" : [["drop", "H_drop"], ["eod", "H_eod"],
+             ["eog", "H_eog"], ["grab", "H_grab"] ]
+}

@@ -1,0 +1,7 @@
+{
+ "name" : "relay_sd-motor",
+ "states" : [["Rdtat", "Miv"], ["Roff", "Mnv"],
+             ["Ron", "Mfv"], ["Rptat", "Mdv"]],
+ "events" : [["activate", "M_tOn"], ["deactivate", "M_tOff"],
+             ["eoa", "M_fs"], ["eod", "M_ns"] ]
+}

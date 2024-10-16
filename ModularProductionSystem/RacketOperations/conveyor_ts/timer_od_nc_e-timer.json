@@ -1,0 +1,5 @@
+{
+ "name" : "timer_od_nc_e-timer",
+ "states" : [["Ti", "Ti"], ["Tip", "Tip"], ["Trtc", "Trtc"]],
+ "events" : [["dexp", "T_exp"], ["dsbl", "T_clr"], ["enbl", "T_set"]]
+}

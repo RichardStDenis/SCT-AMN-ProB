@@ -1,0 +1,7 @@
+{
+ "name" : "crane_lr2-crane",
+ "states" : [["CatLaEp", "CatLaEp"], ["CatLnWp", "CatLnWp"], ["CatRaRp", "CatRaRp"], 
+             ["CatRaTp", "CatRaTp"], ["CatRaWp", "CatRaWp"] ],
+ "events" : [["eog", "C_eog"], ["eor", "C_eor"], ["eot", "C_eot"],
+             ["grab", "C_grab"], ["reject", "C_reject"], ["transfer", "C_transfer"] ]
+}

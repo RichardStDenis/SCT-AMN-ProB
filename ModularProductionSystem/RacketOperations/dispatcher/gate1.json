@@ -1,0 +1,13 @@
+{
+ "name" : "gate1",
+ "states" : ["G1e", "G1ie", "G1ir", "G1r"],
+ "istate" : "G1r",
+ "mstates" : ["G1e", "G1r"],
+ "events" : ["G1_eoc", "G1_eoo", "G1_close", "G1_open"],
+ "cevents" : ["G1_close", "G1_open"],
+ "transitions" : [
+   ["G1r","G1_close","G1ie"],
+   ["G1ie","G1_eoc","G1e"],
+   ["G1e","G1_open","G1ir"],
+   ["G1ir","G1_eoo","G1r"] ]
+}

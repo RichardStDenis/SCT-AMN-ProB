@@ -1,0 +1,5 @@
+{
+ "name" : "jack211rmin-arm",
+ "states" : [["Jnr", "Anr"], ["Jr", "Ar"]],
+ "events" : [["extend", "A_gd"], ["eor", "A_eoa"]]
+}

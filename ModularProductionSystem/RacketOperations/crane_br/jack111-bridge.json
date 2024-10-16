@@ -1,0 +1,6 @@
+{
+ "name" : "jack111-bridge",
+ "states" : [["Je", "BRe"], ["Jie", "BRie"], ["Jir", "BRir"], ["Jr", "BRr"]],
+ "events" : [["eoe", "BR_eoe"], ["eor", "BR_eoc"],
+             ["extend", "BR_expand"], ["retract", "BR_contract"] ]
+}

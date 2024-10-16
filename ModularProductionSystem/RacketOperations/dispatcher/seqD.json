@@ -1,0 +1,19 @@
+{
+ "name" : "seqD",
+ "states" : ["g1og2o", "g1cg2o", "g2cg1o", "g1cg2c", "g2cg1c"],
+ "istate" : "g1og2o",
+ "mstates" : ["g1og2o", "g1cg2o", "g2cg1o"],
+ "events" : ["G1_eoc", "G1_eoo", "G2_eoc", "G2_eoo"],
+ "cevents" : [],
+ "transitions" : [
+   ["g1og2o","G1_eoc","g1cg2o"], ["g1cg2o","G1_eoo","g1og2o"],
+   ["g1og2o","G2_eoc","g2cg1o"], ["g2cg1o","G2_eoo","g1og2o"],
+   ["g1cg2o","G2_eoc","g1cg2c"], ["g1cg2c","G1_eoo","g2cg1o"],
+   ["g2cg1o","G1_eoc","g2cg1c"], ["g2cg1c","G2_eoo","g1cg2o"],
+
+   ["g1og2o","G1_eoo","g1og2o"], ["g1og2o","G2_eoo","g1og2o"],
+   ["g1cg2o","G1_eoc","g1cg2o"], ["g1cg2o","G2_eoo","g1cg2o"],
+   ["g2cg1o","G1_eoo","g2cg1o"], ["g2cg1o","G2_eoc","g2cg1o"],
+   ["g1cg2c","G1_eoc","g1cg2c"], ["g1cg2c","G2_eoc","g1cg2c"], ["g1cg2c","G2_eoo","g1cg2c"],
+   ["g2cg1c","G1_eoc","g2cg1c"], ["g2cg1c","G2_eoc","g2cg1c"], ["g2cg1c","G1_eoo","g2cg1c"] ]
+}

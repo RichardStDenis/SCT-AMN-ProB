@@ -1,0 +1,12 @@
+{
+ "name" : "seqC",
+ "states" : ["p1", "p2", "p3", "w"],
+ "istate" : "w",
+ "mstates" : ["w"],
+ "events" : ["C_eot", "C_pck1", "C_pck2", "C_pck3"],
+ "cevents" : ["C_pck1", "C_pck2", "C_pck3"],
+ "transitions" : [
+   ["w","C_pck1","p1"], ["p1","C_eot","w"],
+   ["w","C_pck2","p2"], ["p2","C_eot","w"],
+   ["w","C_pck3","p3"], ["p3","C_eot","w"] ]
+}

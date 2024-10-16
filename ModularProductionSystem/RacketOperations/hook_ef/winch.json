@@ -1,0 +1,14 @@
+{
+ "name" : "winch",
+ "states" : ["We", "Wie", "Wir", "Wr"],
+ "istate" : "Wr",
+ "mstates" : ["Wr"],
+ "events" : ["W_cd", "W_eod", "W_eoa", "W_gd", "W_gu"],
+ "cevents" : ["W_cd", "W_gd", "W_gu"],
+ "transitions" : [
+   ["Wr","W_gd","Wie"],
+   ["Wie","W_eod","We"],
+   ["Wie","W_cd","Wir"],
+   ["We","W_gu","Wir"],
+   ["Wir","W_eoa","Wr"] ]
+}

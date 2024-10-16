@@ -1,0 +1,5 @@
+{
+ "name" : "stepperMotor-motor",
+ "states" : [["SMim", "Mim"], ["SMnm", "Mnm"]],
+ "events" : [["eor", "M_eos"], ["rotate", "M_step"]]
+}

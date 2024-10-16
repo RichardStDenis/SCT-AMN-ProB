@@ -1,0 +1,7 @@
+{
+ "name" : "servomotor-boom",
+ "states" : [["SMatpos0", "BMatpos0"], ["SMatpos123", "BMatpos123"],
+             ["SMnr0", "BMnr0"], ["SMnr123", "BMnr123"] ],
+ "events" : [["eog0", "BM_eomb"], ["eog123", "BM_eomf"],
+             ["gt0", "BM_mb"], ["gt1", "BM_mf1"], ["gt2", "BM_mf2"], ["gt3", "BM_mf3"] ]
+}

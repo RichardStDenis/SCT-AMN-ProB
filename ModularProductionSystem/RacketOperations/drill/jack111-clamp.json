@@ -1,0 +1,6 @@
+{
+ "name" : "jack111-clamp",
+ "states" : [["Je", "Ce"], ["Jie", "Cie"], ["Jir", "Cir"], ["Jr", "Cr"]],
+ "events" : [["eoe", "C_eoc"], ["eor", "C_eou"],
+             ["extend", "C_clamp"], ["retract", "C_unclamp"] ]
+}

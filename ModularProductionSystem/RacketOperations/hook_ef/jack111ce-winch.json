@@ -1,0 +1,6 @@
+{
+ "name" : "jack111ce-winch",
+ "states" : [["Je", "We"], ["Jie", "Wie"], ["Jir", "Wir"], ["Jr", "Wr"]],
+ "events" : [["ce", "W_cd"], ["eoe", "W_eod"], ["eor", "W_eoa"],
+             ["extend", "W_gd"], ["retract", "W_gu"] ]
+}

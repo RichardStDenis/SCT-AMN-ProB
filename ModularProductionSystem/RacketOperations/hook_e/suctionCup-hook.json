@@ -1,0 +1,6 @@
+{
+ "name" : "suctionCup-hook",
+ "states" : [["SCl", "Hl"], ["SCnv", "Hnv"], ["SCp", "Hp"], ["SCv", "Hv"]],
+ "events" : [["expel", "H_drop"], ["hdp", "H_eog"],
+             ["ldp", "H_eod"], ["pump", "H_grab"] ]
+}
