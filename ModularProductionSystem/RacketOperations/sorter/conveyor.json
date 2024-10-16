@@ -1,0 +1,11 @@
+{
+ "name" : "conveyor",
+ "states" : ["Cnm", "Cim"],
+ "istate" : "Cnm",
+ "mstates" : ["Cnm"],
+ "events" : ["Cmso", "Cstart"],
+ "cevents" : ["Cstart"],
+ "transitions" : [
+   ["Cnm","Cstart","Cim"],
+   ["Cim","Cmso","Cnm"] ]
+}

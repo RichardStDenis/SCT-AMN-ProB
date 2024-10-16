@@ -1,0 +1,5 @@
+{
+ "name" : "jack100min-gate",
+ "states" : [["Jnr","Gnc"], ["Jr","Gc"]],
+ "events" : [["eor","G_eoc"], ["extend","G_open"]]
+}

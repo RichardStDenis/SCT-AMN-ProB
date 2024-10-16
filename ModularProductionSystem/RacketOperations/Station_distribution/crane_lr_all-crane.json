@@ -1,0 +1,8 @@
+{
+ "name" : "crane_lr_all-crane",
+ "states" : [["CatL", "CatL"], ["CatR", "CatR"], ["CatRaWp", "CatRaWp"],
+             ["CaWp", "CaWp"], ["CdWp", "CdWp"], ["CgWp", "CgWp"],
+             ["CnrL", "CnrL"], ["CnrR", "CnrR"], ["CnrRaWp", "CnrRaWp"] ],
+ "events" : [["drop", "C_drop"], ["eod", "C_eod"], ["eog", "C_eog"], ["eoml", "C_eogl"],
+             ["eomr", "C_eogr"], ["grab", "C_grab"], ["ml", "C_gl"], ["mr", "C_gr"] ]
+}

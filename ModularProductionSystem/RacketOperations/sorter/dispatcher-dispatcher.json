@@ -1,0 +1,7 @@
+{
+ "name" : "dispatcher-dispatcher",
+ "states" : [["Dp1", "Dp1"], ["Dp2", "Dp2"], ["Dp3", "Dp3"],
+             ["Dp3p1", "Dp3p1"], ["Dp3p2", "Dp3p2"], ["Dpxp3", "Dpxp3"] ],
+ "events" : [["p1s", "Dp1s"], ["p2s", "Dp2s"], ["p3s", "Dp3s"],
+             ["select1", "Dselect1"], ["select2", "Dselect2"], ["select3", "Dselect3"] ]
+}

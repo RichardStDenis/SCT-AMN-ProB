@@ -1,0 +1,5 @@
+{
+ "name" : "conveyor_belt-conveyor",
+ "states" : [["BCnm", "Cnm"], ["BCim", "Cim"]],
+ "events" : [["mso", "Cmso"], ["start", "Cstart"]]
+}

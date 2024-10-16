@@ -1,0 +1,13 @@
+{
+ "name" : "tester",
+ "states" : ["Ttia", "Tidl", "Ttiw"],
+ "istate" : "Tidl",
+ "mstates" : ["Tidl"],
+ "events" : ["T_eot", "T_failure", "T_success", "T_test"],
+ "cevents" : ["T_test"],
+ "transitions" : [
+   ["Tidl","T_test","Ttiw"],
+   ["Ttiw","T_failure","Ttia"],
+   ["Ttiw","T_success","Ttia"],
+   ["Ttia","T_eot","Tidl"] ]
+}

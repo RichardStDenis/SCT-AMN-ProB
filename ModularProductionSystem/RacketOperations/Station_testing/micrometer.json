@@ -1,0 +1,14 @@
+{
+ "name" : "micrometer",
+ "states" : ["Midl", "Mim", "Mmc", "Mrk"],
+ "istate" : "Midl",
+ "mstates" : ["Midl"],
+ "events" : ["M_eot", "M_fail", "M_test", "M_reset", "M_pass"],
+ "cevents" : ["M_test", "M_reset"],
+ "transitions" : [
+   ["Midl","M_test","Mim"],
+   ["Mim","M_fail","Mrk"],
+   ["Mim","M_pass","Mrk"],
+   ["Mrk","M_eot","Mmc"],
+   ["Mmc","M_reset","Midl"] ]
+}

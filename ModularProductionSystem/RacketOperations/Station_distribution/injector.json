@@ -1,0 +1,13 @@
+{
+ "name" : "injector",
+ "states" : ["Ie", "Iie", "Ir", "Iwim"],
+ "istate" : "Ir",
+ "mstates" : ["Ir"],
+ "events" : ["I_eoi", "I_inject", "I_rearm", "I_wpa"],
+ "cevents" : ["I_inject", "I_rearm"],
+ "transitions" : [
+   ["Ir","I_wpa","Iwim"],
+   ["Iwim","I_inject","Iie"],
+   ["Iie","I_eoi","Ie"],
+   ["Ie","I_rearm","Ir"] ]
+}

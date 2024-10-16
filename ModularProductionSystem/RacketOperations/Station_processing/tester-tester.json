@@ -1,0 +1,5 @@
+{
+ "name" : "tester-tester",
+ "states" : [["TSTa","Ttia"], ["TSTr","Tidl"], ["TSTw","Ttiw"]],
+ "events" : [["eot","T_eot"], ["failure","T_failure"], ["success","T_success"], ["test","T_test"]]
+}

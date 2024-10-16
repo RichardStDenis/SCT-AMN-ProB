@@ -1,0 +1,5 @@
+{
+ "name" : "jack110min-evacuator",
+ "states" : [["Jnr", "Enr"], ["Jr", "Er"]],
+ "events" : [["eor", "E_eoe"], ["extend", "E_evacuate"]]
+}

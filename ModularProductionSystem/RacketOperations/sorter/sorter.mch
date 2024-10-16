@@ -1,0 +1,146 @@
+// copyright Richard St_Denis, Universite de Sherbrooke, 2023.
+MODEL SBsorter
+
+SETS
+ States = {w_Cnm_Dp3, p1_Cnm_Dp3, w_Cnm_Dp3p1,
+           w_Cnm_Dp3p2, w_Cim_Dp3, p2_Cnm_Dp3,
+           p3_Cnm_Dp3, p1_Cim_Dp3, p1_Cnm_Dp3p1,
+           p1_Cnm_Dp3p2, w_Cim_Dp3p1, p2_Cnm_Dp3p1,
+           p3_Cnm_Dp3p1, w_Cnm_Dp1, w_Cim_Dp3p2,
+           p2_Cnm_Dp3p2, p3_Cnm_Dp3p2, w_Cnm_Dp2,
+           p2_Cim_Dp3, p3_Cim_Dp3, p1_Cim_Dp3p1,
+           p1_Cim_Dp3p2, p1_Cnm_Dp1, p1_Cnm_Dp2,
+           p2_Cim_Dp3p1, p3_Cim_Dp3p1, w_Cim_Dp1,
+           p2_Cnm_Dp1, p3_Cnm_Dp1, w_Cnm_Dpxp3,
+           p2_Cim_Dp3p2, p3_Cim_Dp3p2, w_Cim_Dp2,
+           p2_Cnm_Dp2, p3_Cnm_Dp2, p1_Cim_Dp1,
+           p1_Cim_Dp2, p1_Cnm_Dpxp3, p2_Cim_Dp1,
+           p3_Cim_Dp1, w_Cim_Dpxp3, p2_Cnm_Dpxp3,
+           p3_Cnm_Dpxp3, p2_Cim_Dp2, p3_Cim_Dp2,
+           p1_Cim_Dpxp3, p2_Cim_Dpxp3, p3_Cim_Dpxp3 };
+ Events = {cp1, cp2, cp3, Cmso, Dp1s, Dp2s, Dp3s, Cstart, Dselect1, Dselect2, Dselect3};
+ LocalStates = {p1, p2, p3, w, Cnm, Cim, Dp1, Dp2, Dp3, Dp3p1, Dp3p2, Dpxp3}
+
+CONSTANTS
+ G_FB,
+ seqS, conveyor, dispatcher,
+ Qpred, BadStates
+
+PROPERTIES
+ G_FB = rec(       // Automaton modeling the free behavior
+            states: States,
+            events: Events,
+            tf: {(w_Cnm_Dp3,cp1,p1_Cnm_Dp3), (w_Cnm_Dp3,Dselect1,w_Cnm_Dp3p1), (w_Cnm_Dp3,Dselect2,w_Cnm_Dp3p2),
+                 (w_Cnm_Dp3,Cstart,w_Cim_Dp3), (w_Cnm_Dp3,cp2,p2_Cnm_Dp3), (w_Cnm_Dp3,cp3,p3_Cnm_Dp3),
+                 (p1_Cnm_Dp3,Cstart,p1_Cim_Dp3), (p1_Cnm_Dp3,Dselect1,p1_Cnm_Dp3p1), (p1_Cnm_Dp3,Dselect2,p1_Cnm_Dp3p2),
+                 (w_Cnm_Dp3p1,cp1,p1_Cnm_Dp3p1), (w_Cnm_Dp3p1,Cstart,w_Cim_Dp3p1), (w_Cnm_Dp3p1,cp2,p2_Cnm_Dp3p1),
+                 (w_Cnm_Dp3p1,cp3,p3_Cnm_Dp3p1), (w_Cnm_Dp3p1,Dp1s,w_Cnm_Dp1), (w_Cnm_Dp3p2,cp1,p1_Cnm_Dp3p2),
+                 (w_Cnm_Dp3p2,Cstart,w_Cim_Dp3p2), (w_Cnm_Dp3p2,cp2,p2_Cnm_Dp3p2), (w_Cnm_Dp3p2,cp3,p3_Cnm_Dp3p2),
+                 (w_Cnm_Dp3p2,Dp2s,w_Cnm_Dp2), (w_Cim_Dp3,cp1,p1_Cim_Dp3), (w_Cim_Dp3,Dselect1,w_Cim_Dp3p1),
+                 (w_Cim_Dp3,Dselect2,w_Cim_Dp3p2), (w_Cim_Dp3,cp2,p2_Cim_Dp3), (w_Cim_Dp3,cp3,p3_Cim_Dp3),
+                 (w_Cim_Dp3,Cmso,w_Cnm_Dp3), (p2_Cnm_Dp3,Cstart,p2_Cim_Dp3), (p2_Cnm_Dp3,Dselect1,p2_Cnm_Dp3p1),
+                 (p2_Cnm_Dp3,Dselect2,p2_Cnm_Dp3p2), (p3_Cnm_Dp3,Cstart,p3_Cim_Dp3), (p3_Cnm_Dp3,Dselect1,p3_Cnm_Dp3p1),
+                 (p3_Cnm_Dp3,Dselect2,p3_Cnm_Dp3p2), (p1_Cim_Dp3,Cmso,w_Cnm_Dp3), (p1_Cim_Dp3,Dselect1,p1_Cim_Dp3p1),
+                 (p1_Cim_Dp3,Dselect2,p1_Cim_Dp3p2), (p1_Cnm_Dp3p1,Cstart,p1_Cim_Dp3p1), (p1_Cnm_Dp3p1,Dp1s,p1_Cnm_Dp1),
+                 (p1_Cnm_Dp3p2,Cstart,p1_Cim_Dp3p2), (p1_Cnm_Dp3p2,Dp2s,p1_Cnm_Dp2), (w_Cim_Dp3p1,cp1,p1_Cim_Dp3p1),
+                 (w_Cim_Dp3p1,cp2,p2_Cim_Dp3p1), (w_Cim_Dp3p1,cp3,p3_Cim_Dp3p1), (w_Cim_Dp3p1,Cmso,w_Cnm_Dp3p1),
+                 (w_Cim_Dp3p1,Dp1s,w_Cim_Dp1), (p2_Cnm_Dp3p1,Cstart,p2_Cim_Dp3p1), (p2_Cnm_Dp3p1,Dp1s,p2_Cnm_Dp1),
+                 (p3_Cnm_Dp3p1,Cstart,p3_Cim_Dp3p1), (p3_Cnm_Dp3p1,Dp1s,p3_Cnm_Dp1), (w_Cnm_Dp1,cp1,p1_Cnm_Dp1),
+                 (w_Cnm_Dp1,Dselect2,w_Cnm_Dp3p2), (w_Cnm_Dp1,Dselect3,w_Cnm_Dpxp3), (w_Cnm_Dp1,Cstart,w_Cim_Dp1),
+                 (w_Cnm_Dp1,cp2,p2_Cnm_Dp1), (w_Cnm_Dp1,cp3,p3_Cnm_Dp1), (w_Cim_Dp3p2,cp1,p1_Cim_Dp3p2),
+                 (w_Cim_Dp3p2,cp2,p2_Cim_Dp3p2), (w_Cim_Dp3p2,cp3,p3_Cim_Dp3p2), (w_Cim_Dp3p2,Cmso,w_Cnm_Dp3p2),
+                 (w_Cim_Dp3p2,Dp2s,w_Cim_Dp2), (p2_Cnm_Dp3p2,Cstart,p2_Cim_Dp3p2), (p2_Cnm_Dp3p2,Dp2s,p2_Cnm_Dp2),
+                 (p3_Cnm_Dp3p2,Cstart,p3_Cim_Dp3p2), (p3_Cnm_Dp3p2,Dp2s,p3_Cnm_Dp2), (w_Cnm_Dp2,cp1,p1_Cnm_Dp2),
+                 (w_Cnm_Dp2,Dselect1,w_Cnm_Dp3p1), (w_Cnm_Dp2,Dselect3,w_Cnm_Dpxp3), (w_Cnm_Dp2,Cstart,w_Cim_Dp2),
+                 (w_Cnm_Dp2,cp2,p2_Cnm_Dp2), (w_Cnm_Dp2,cp3,p3_Cnm_Dp2), (p2_Cim_Dp3,Cmso,w_Cnm_Dp3),
+                 (p2_Cim_Dp3,Dselect1,p2_Cim_Dp3p1), (p2_Cim_Dp3,Dselect2,p2_Cim_Dp3p2), (p3_Cim_Dp3,Cmso,w_Cnm_Dp3),
+                 (p3_Cim_Dp3,Dselect1,p3_Cim_Dp3p1), (p3_Cim_Dp3,Dselect2,p3_Cim_Dp3p2), (p1_Cim_Dp3p1,Cmso,w_Cnm_Dp3p1),
+                 (p1_Cim_Dp3p1,Dp1s,p1_Cim_Dp1), (p1_Cim_Dp3p2,Cmso,w_Cnm_Dp3p2), (p1_Cim_Dp3p2,Dp2s,p1_Cim_Dp2),
+                 (p1_Cnm_Dp1,Cstart,p1_Cim_Dp1), (p1_Cnm_Dp1,Dselect2,p1_Cnm_Dp3p2), (p1_Cnm_Dp1,Dselect3,p1_Cnm_Dpxp3),
+                 (p1_Cnm_Dp2,Cstart,p1_Cim_Dp2), (p1_Cnm_Dp2,Dselect1,p1_Cnm_Dp3p1), (p1_Cnm_Dp2,Dselect3,p1_Cnm_Dpxp3),
+                 (p2_Cim_Dp3p1,Cmso,w_Cnm_Dp3p1), (p2_Cim_Dp3p1,Dp1s,p2_Cim_Dp1), (p3_Cim_Dp3p1,Cmso,w_Cnm_Dp3p1),
+                 (p3_Cim_Dp3p1,Dp1s,p3_Cim_Dp1), (w_Cim_Dp1,cp1,p1_Cim_Dp1), (w_Cim_Dp1,Dselect2,w_Cim_Dp3p2),
+                 (w_Cim_Dp1,Dselect3,w_Cim_Dpxp3), (w_Cim_Dp1,cp2,p2_Cim_Dp1), (w_Cim_Dp1,cp3,p3_Cim_Dp1),
+                 (w_Cim_Dp1,Cmso,w_Cnm_Dp1), (p2_Cnm_Dp1,Cstart,p2_Cim_Dp1), (p2_Cnm_Dp1,Dselect2,p2_Cnm_Dp3p2),
+                 (p2_Cnm_Dp1,Dselect3,p2_Cnm_Dpxp3), (p3_Cnm_Dp1,Cstart,p3_Cim_Dp1), (p3_Cnm_Dp1,Dselect2,p3_Cnm_Dp3p2),
+                 (p3_Cnm_Dp1,Dselect3,p3_Cnm_Dpxp3), (w_Cnm_Dpxp3,cp1,p1_Cnm_Dpxp3), (w_Cnm_Dpxp3,Cstart,w_Cim_Dpxp3),
+                 (w_Cnm_Dpxp3,cp2,p2_Cnm_Dpxp3), (w_Cnm_Dpxp3,cp3,p3_Cnm_Dpxp3), (w_Cnm_Dpxp3,Dp3s,w_Cnm_Dp3),
+                 (p2_Cim_Dp3p2,Cmso,w_Cnm_Dp3p2), (p2_Cim_Dp3p2,Dp2s,p2_Cim_Dp2), (p3_Cim_Dp3p2,Cmso,w_Cnm_Dp3p2),
+                 (p3_Cim_Dp3p2,Dp2s,p3_Cim_Dp2), (w_Cim_Dp2,cp1,p1_Cim_Dp2), (w_Cim_Dp2,Dselect1,w_Cim_Dp3p1),
+                 (w_Cim_Dp2,Dselect3,w_Cim_Dpxp3), (w_Cim_Dp2,cp2,p2_Cim_Dp2), (w_Cim_Dp2,cp3,p3_Cim_Dp2),
+                 (w_Cim_Dp2,Cmso,w_Cnm_Dp2), (p2_Cnm_Dp2,Cstart,p2_Cim_Dp2), (p2_Cnm_Dp2,Dselect1,p2_Cnm_Dp3p1),
+                 (p2_Cnm_Dp2,Dselect3,p2_Cnm_Dpxp3), (p3_Cnm_Dp2,Cstart,p3_Cim_Dp2), (p3_Cnm_Dp2,Dselect1,p3_Cnm_Dp3p1),
+                 (p3_Cnm_Dp2,Dselect3,p3_Cnm_Dpxp3), (p1_Cim_Dp1,Cmso,w_Cnm_Dp1), (p1_Cim_Dp1,Dselect2,p1_Cim_Dp3p2),
+                 (p1_Cim_Dp1,Dselect3,p1_Cim_Dpxp3), (p1_Cim_Dp2,Cmso,w_Cnm_Dp2), (p1_Cim_Dp2,Dselect1,p1_Cim_Dp3p1),
+                 (p1_Cim_Dp2,Dselect3,p1_Cim_Dpxp3), (p1_Cnm_Dpxp3,Cstart,p1_Cim_Dpxp3), (p1_Cnm_Dpxp3,Dp3s,p1_Cnm_Dp3),
+                 (p2_Cim_Dp1,Cmso,w_Cnm_Dp1), (p2_Cim_Dp1,Dselect2,p2_Cim_Dp3p2), (p2_Cim_Dp1,Dselect3,p2_Cim_Dpxp3),
+                 (p3_Cim_Dp1,Cmso,w_Cnm_Dp1), (p3_Cim_Dp1,Dselect2,p3_Cim_Dp3p2), (p3_Cim_Dp1,Dselect3,p3_Cim_Dpxp3),
+                 (w_Cim_Dpxp3,cp1,p1_Cim_Dpxp3), (w_Cim_Dpxp3,cp2,p2_Cim_Dpxp3), (w_Cim_Dpxp3,cp3,p3_Cim_Dpxp3),
+                 (w_Cim_Dpxp3,Cmso,w_Cnm_Dpxp3), (w_Cim_Dpxp3,Dp3s,w_Cim_Dp3), (p2_Cnm_Dpxp3,Cstart,p2_Cim_Dpxp3),
+                 (p2_Cnm_Dpxp3,Dp3s,p2_Cnm_Dp3), (p3_Cnm_Dpxp3,Cstart,p3_Cim_Dpxp3), (p3_Cnm_Dpxp3,Dp3s,p3_Cnm_Dp3),
+                 (p2_Cim_Dp2,Cmso,w_Cnm_Dp2), (p2_Cim_Dp2,Dselect1,p2_Cim_Dp3p1), (p2_Cim_Dp2,Dselect3,p2_Cim_Dpxp3),
+                 (p3_Cim_Dp2,Cmso,w_Cnm_Dp2), (p3_Cim_Dp2,Dselect1,p3_Cim_Dp3p1), (p3_Cim_Dp2,Dselect3,p3_Cim_Dpxp3),
+                 (p1_Cim_Dpxp3,Cmso,w_Cnm_Dpxp3), (p1_Cim_Dpxp3,Dp3s,p1_Cim_Dp3), (p2_Cim_Dpxp3,Cmso,w_Cnm_Dpxp3),
+                 (p2_Cim_Dpxp3,Dp3s,p2_Cim_Dp3), (p3_Cim_Dpxp3,Cmso,w_Cnm_Dpxp3), (p3_Cim_Dpxp3,Dp3s,p3_Cim_Dp3) },
+            x_0: w_Cnm_Dp3,
+            Xm: {w_Cnm_Dp1, w_Cnm_Dp2, w_Cnm_Dp3},
+            ctrlEvents: {cp1, cp2, cp3, Cstart, Dselect1, Dselect2, Dselect3} )
+ &
+ seqS = {
+      (w_Cnm_Dp3,w),(p1_Cnm_Dp3,p1),(w_Cnm_Dp3p1,w),
+      (w_Cnm_Dp3p2,w),(w_Cim_Dp3,w),(p2_Cnm_Dp3,p2),
+      (p3_Cnm_Dp3,p3),(p1_Cim_Dp3,p1),(p1_Cnm_Dp3p1,p1),
+      (p1_Cnm_Dp3p2,p1),(w_Cim_Dp3p1,w),(p2_Cnm_Dp3p1,p2),
+      (p3_Cnm_Dp3p1,p3),(w_Cnm_Dp1,w),(w_Cim_Dp3p2,w),
+      (p2_Cnm_Dp3p2,p2),(p3_Cnm_Dp3p2,p3),(w_Cnm_Dp2,w),
+      (p2_Cim_Dp3,p2),(p3_Cim_Dp3,p3),(p1_Cim_Dp3p1,p1),
+      (p1_Cim_Dp3p2,p1),(p1_Cnm_Dp1,p1),(p1_Cnm_Dp2,p1),
+      (p2_Cim_Dp3p1,p2),(p3_Cim_Dp3p1,p3),(w_Cim_Dp1,w),
+      (p2_Cnm_Dp1,p2),(p3_Cnm_Dp1,p3),(w_Cnm_Dpxp3,w),
+      (p2_Cim_Dp3p2,p2),(p3_Cim_Dp3p2,p3),(w_Cim_Dp2,w),
+      (p2_Cnm_Dp2,p2),(p3_Cnm_Dp2,p3),(p1_Cim_Dp1,p1),
+      (p1_Cim_Dp2,p1),(p1_Cnm_Dpxp3,p1),(p2_Cim_Dp1,p2),
+      (p3_Cim_Dp1,p3),(w_Cim_Dpxp3,w),(p2_Cnm_Dpxp3,p2),
+      (p3_Cnm_Dpxp3,p3),(p2_Cim_Dp2,p2),(p3_Cim_Dp2,p3),
+      (p1_Cim_Dpxp3,p1),(p2_Cim_Dpxp3,p2),(p3_Cim_Dpxp3,p3) }
+ &
+ conveyor = {
+      (w_Cnm_Dp3,Cnm),(p1_Cnm_Dp3,Cnm),(w_Cnm_Dp3p1,Cnm),
+      (w_Cnm_Dp3p2,Cnm),(w_Cim_Dp3,Cim),(p2_Cnm_Dp3,Cnm),
+      (p3_Cnm_Dp3,Cnm),(p1_Cim_Dp3,Cim),(p1_Cnm_Dp3p1,Cnm),
+      (p1_Cnm_Dp3p2,Cnm),(w_Cim_Dp3p1,Cim),(p2_Cnm_Dp3p1,Cnm),
+      (p3_Cnm_Dp3p1,Cnm),(w_Cnm_Dp1,Cnm),(w_Cim_Dp3p2,Cim),
+      (p2_Cnm_Dp3p2,Cnm),(p3_Cnm_Dp3p2,Cnm),(w_Cnm_Dp2,Cnm),
+      (p2_Cim_Dp3,Cim),(p3_Cim_Dp3,Cim),(p1_Cim_Dp3p1,Cim),
+      (p1_Cim_Dp3p2,Cim),(p1_Cnm_Dp1,Cnm),(p1_Cnm_Dp2,Cnm),
+      (p2_Cim_Dp3p1,Cim),(p3_Cim_Dp3p1,Cim),(w_Cim_Dp1,Cim),
+      (p2_Cnm_Dp1,Cnm),(p3_Cnm_Dp1,Cnm),(w_Cnm_Dpxp3,Cnm),
+      (p2_Cim_Dp3p2,Cim),(p3_Cim_Dp3p2,Cim),(w_Cim_Dp2,Cim),
+      (p2_Cnm_Dp2,Cnm),(p3_Cnm_Dp2,Cnm),(p1_Cim_Dp1,Cim),
+      (p1_Cim_Dp2,Cim),(p1_Cnm_Dpxp3,Cnm),(p2_Cim_Dp1,Cim),
+      (p3_Cim_Dp1,Cim),(w_Cim_Dpxp3,Cim),(p2_Cnm_Dpxp3,Cnm),
+      (p3_Cnm_Dpxp3,Cnm),(p2_Cim_Dp2,Cim),(p3_Cim_Dp2,Cim),
+      (p1_Cim_Dpxp3,Cim),(p2_Cim_Dpxp3,Cim),(p3_Cim_Dpxp3,Cim) }
+ &
+ dispatcher = {
+      (w_Cnm_Dp3,Dp3),(p1_Cnm_Dp3,Dp3),(w_Cnm_Dp3p1,Dp3p1),
+      (w_Cnm_Dp3p2,Dp3p2),(w_Cim_Dp3,Dp3),(p2_Cnm_Dp3,Dp3),
+      (p3_Cnm_Dp3,Dp3),(p1_Cim_Dp3,Dp3),(p1_Cnm_Dp3p1,Dp3p1),
+      (p1_Cnm_Dp3p2,Dp3p2),(w_Cim_Dp3p1,Dp3p1),(p2_Cnm_Dp3p1,Dp3p1),
+      (p3_Cnm_Dp3p1,Dp3p1),(w_Cnm_Dp1,Dp1),(w_Cim_Dp3p2,Dp3p2),
+      (p2_Cnm_Dp3p2,Dp3p2),(p3_Cnm_Dp3p2,Dp3p2),(w_Cnm_Dp2,Dp2),
+      (p2_Cim_Dp3,Dp3),(p3_Cim_Dp3,Dp3),(p1_Cim_Dp3p1,Dp3p1),
+      (p1_Cim_Dp3p2,Dp3p2),(p1_Cnm_Dp1,Dp1),(p1_Cnm_Dp2,Dp2),
+      (p2_Cim_Dp3p1,Dp3p1),(p3_Cim_Dp3p1,Dp3p1),(w_Cim_Dp1,Dp1),
+      (p2_Cnm_Dp1,Dp1),(p3_Cnm_Dp1,Dp1),(w_Cnm_Dpxp3,Dpxp3),
+      (p2_Cim_Dp3p2,Dp3p2),(p3_Cim_Dp3p2,Dp3p2),(w_Cim_Dp2,Dp2),
+      (p2_Cnm_Dp2,Dp2),(p3_Cnm_Dp2,Dp2),(p1_Cim_Dp1,Dp1),
+      (p1_Cim_Dp2,Dp2),(p1_Cnm_Dpxp3,Dpxp3),(p2_Cim_Dp1,Dp1),
+      (p3_Cim_Dp1,Dp1),(w_Cim_Dpxp3,Dpxp3),(p2_Cnm_Dpxp3,Dpxp3),
+      (p3_Cnm_Dpxp3,Dpxp3),(p2_Cim_Dp2,Dp2),(p3_Cim_Dp2,Dp2),
+      (p1_Cim_Dpxp3,Dpxp3),(p2_Cim_Dpxp3,Dpxp3),(p3_Cim_Dpxp3,Dpxp3) }
+ &
+ BadStates =  States    // to be completed
+ &
+ Qpred = States - BadStates
+END

@@ -1,0 +1,6 @@
+{
+ "name" : "jack111ce-probe",
+ "states" : [["Je", "Pe"], ["Jie", "Pie"], ["Jir", "Pir"], ["Jr", "Pr"]],
+ "events" : [["ce", "P_cd"], ["eoe", "P_eod"], ["eor", "P_eoa"],
+             ["extend", "P_gd"], ["retract", "P_gu"] ]
+}

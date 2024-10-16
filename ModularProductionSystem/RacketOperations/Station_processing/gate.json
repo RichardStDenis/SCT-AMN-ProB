@@ -1,0 +1,11 @@
+{
+ "name" : "gate",
+ "states" : ["Gnc", "Gc"],
+ "istate" : "Gc",
+ "mstates" : ["Gc"],
+ "events" : ["G_eoc", "G_open"],
+ "cevents" : ["G_open"],
+ "transitions" : [
+   ["Gc","G_open","Gnc"],
+   ["Gnc","G_eoc","Gc"] ]
+}

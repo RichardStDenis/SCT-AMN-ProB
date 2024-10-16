@@ -1,0 +1,11 @@
+{
+ "name" : "processing",
+ "states" : ["Pready", "Punready"],
+ "istate" : "Pready",
+ "mstates" : ["Pready"],
+ "events" : ["P_open", "P_eoc"],
+ "cevents" : ["P_open"],
+ "transitions" : [
+   ["Pready","P_open","Punready"],
+   ["Punready","P_eoc","Pready"] ]
+}

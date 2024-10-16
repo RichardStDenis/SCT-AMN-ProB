@@ -1,0 +1,16 @@
+{
+ "name" : "seqS",
+ "states" : ["p1", "p2", "p3", "w"],
+ "istate" : "w",
+ "mstates" : ["w"],
+ "events" : ["cp1", "cp2", "cp3", "Cmso", "Dp1s", "Dp2s", "Dp3s"],
+ "cevents" : ["cp1", "cp2", "cp3"],
+ "transitions" : [
+   ["w","cp1","p1"], ["p1","Cmso","w"], ["p1","Dp1s","p1"],
+   ["w","cp2","p2"], ["p2","Cmso","w"], ["p2","Dp2s","p2"],
+   ["w","cp3","p3"], ["p3","Cmso","w"], ["p3","Dp3s","p3"],
+   ["w","Cmso","w"], ["w","Dp1s","w"], ["w","Dp2s","w"] , ["w","Dp3s","w"],
+   ["p1","Dp2s","p1"], ["p1","Dp3s","p1"],
+   ["p2","Dp1s","p2"], ["p2","Dp3s","p2"],
+   ["p3","Dp1s","p3"], ["p3","Dp2s","p3"] ]
+}

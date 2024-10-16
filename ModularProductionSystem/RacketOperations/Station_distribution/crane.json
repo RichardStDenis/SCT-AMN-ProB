@@ -1,0 +1,19 @@
+{
+ "name" : "crane",
+ "states" : ["CatL", "CatR", "CatRaWp", "CaWp", "CdWp", "CgWp", "CnrL", "CnrR", "CnrRaWp"],
+ "istate" : "CatR",
+ "mstates" : ["CatR"],
+ "events" : ["C_drop", "C_eod", "C_eog", "C_eogl", "C_eogr", "C_grab", "C_gl", "C_gr"],
+ "cevents" : ["C_drop", "C_grab", "C_gl", "C_gr"],
+ "transitions" : [
+   ["CatR","C_gl","CnrL"],
+   ["CnrL","C_eogl","CatL"],
+   ["CatL","C_gr","CnrR"],
+   ["CnrR","C_eogr","CatR"],
+   ["CatL","C_grab","CgWp"],
+   ["CgWp","C_eog","CaWp"],
+   ["CaWp","C_gr","CnrRaWp"],
+   ["CnrRaWp","C_eogr","CatRaWp"],
+   ["CatRaWp","C_drop","CdWp"],
+   ["CdWp","C_eod","CatR"] ]
+}

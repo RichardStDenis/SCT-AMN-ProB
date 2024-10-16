@@ -1,0 +1,5 @@
+{
+ "name" : "conveyor_ts_rotarytable",
+ "states" : [["Cisp","Ridl"], ["Ciup","Rria"]],
+ "events" : [["eor","R_eor"], ["rotate","R_rotate"]]
+}

@@ -1,0 +1,15 @@
+{
+ "name" : "testing",
+ "states" : ["Tidle", "Tit", "Tpause", "Trt", "Twt"],
+ "istate" : "Tidle",
+ "mstates" : ["Tidle"],
+ "events" : ["T_eot", "T_eotwp", "T_fail", "T_pass", "T_test", "T_twp"],
+ "cevents" : ["T_test", "T_twp"],
+ "transitions" : [
+   ["Tidle","T_test","Tpause"],
+   ["Tpause","T_fail","Trt"],
+   ["Trt","T_eot","Tidle"],
+   ["Tpause","T_pass","Twt"],
+   ["Twt","T_twp","Tit"],
+   ["Tit","T_eotwp","Trt"] ]
+}

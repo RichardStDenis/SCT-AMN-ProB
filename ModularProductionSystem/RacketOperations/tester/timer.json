@@ -1,0 +1,13 @@
+{
+ "name" : "timer",
+ "states" : ["Ti", "Tip", "Trtc"],
+ "istate" : "Ti",
+ "mstates" : ["Ti"],
+ "events" : ["T_exp", "T_clr", "T_set", "T_rst"],
+ "cevents" : ["T_clr", "T_set", "T_rst"],
+ "transitions" : [
+   ["Ti","T_set","Tip"],
+   ["Tip","T_rst","Ti"],
+   ["Tip","T_exp","Trtc"],
+   ["Trtc","T_clr","Ti"] ]
+}

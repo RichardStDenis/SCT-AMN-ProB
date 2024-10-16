@@ -1,0 +1,12 @@
+{
+ "name" : "seqM",
+ "states" : ["bom", "mip", "eom"],
+ "istate" : "bom",
+ "mstates" : ["bom"],
+ "events" : ["rst", "P_eoa", "T_exp"],
+ "cevents" : ["rst"],
+ "transitions" : [
+    ["bom","T_exp","mip"], ["bom","P_eoa","bom"],
+    ["mip","P_eoa","eom"], ["mip","T_exp","mip"],
+    ["eom","rst","bom"], ["eom","P_eoa","eom"], ["eom","T_exp","eom"] ]
+}

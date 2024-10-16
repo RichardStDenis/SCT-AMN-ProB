@@ -1,0 +1,12 @@
+{
+ "name" : "crane",
+ "states" : ["Cidl", "Ccia"],
+ "istate" : "Cidl",
+ "mstates" : ["Cidl"],
+ "events" : ["C_eoa", "C_reject", "C_transfer"],
+ "cevents" : ["C_reject", "C_transfer"],
+ "transitions" : [
+   ["Cidl","C_reject","Ccia"],
+   ["Cidl","C_transfer","Ccia"],
+   ["Ccia","C_eoa","Cidl"] ]
+}

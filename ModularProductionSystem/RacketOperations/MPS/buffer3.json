@@ -1,0 +1,11 @@
+{
+ "name" : "buffer3",
+ "states" : ["b30", "b31"],
+ "istate" : "b30",
+ "mstates" : ["b30"],
+ "events" : [ "H_stop", "P_eoc"],
+ "cevents" : [],
+ "transitions" : [
+    ["b30","P_eoc","b31"], ["b31","H_stop","b30"],
+    ["b30","H_stop","b30"], ["b31","P_eoc","b31"] ]
+}

@@ -1,0 +1,15 @@
+{
+ "name" : "sorter",
+ "states" : ["Snpt", "Sp1t", "Sp2t", "Sp3t"],
+ "istate" : "Snpt",
+ "mstates" : ["Snpt"],
+ "events" : ["S_mp1", "S_mp2", "S_mp3", "S_pap1", "S_pap2", "S_pap3"],
+ "cevents" : ["S_mp1", "S_mp2", "S_mp3"],
+ "transitions" : [
+   ["Snpt","S_mp1","Sp1t"],
+   ["Sp1t","S_pap1","Snpt"],
+   ["Snpt","S_mp2","Sp2t"],
+   ["Sp2t","S_pap2","Snpt"],
+   ["Snpt","S_mp3","Sp3t"],
+   ["Sp3t","S_pap3","Snpt"] ]
+}

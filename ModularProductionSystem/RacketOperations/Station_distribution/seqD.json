@@ -1,0 +1,47 @@
+{
+ "name" : "seqD",
+ "states" : ["s0", "s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8",
+             "s9", "s10", "s11", "s12", "s13", "s14", "s15", "s16" ],
+ "istate" : "s0",
+ "mstates" : ["s0"],
+ "events" : ["reset", "I_eoi", "I_rearm", "I_wpa",
+             "C_eog", "C_eogl", "C_eogr", "C_gl" ],
+ "cevents" : ["reset", "I_rearm", "C_gl"],
+ "transitions" : [
+    ["s0","I_wpa","s1"], ["s1","I_eoi","s2"],
+    ["s2","C_gl","s2"], ["s2","C_eogl","s3"],
+    ["s3","C_eog","s4"], ["s4","I_rearm","s5"],
+    ["s5","I_wpa","s6"], ["s5","C_eogr","s7"], ["s7","C_gl","s11"],
+    ["s6","C_eogr","s8"], ["s7","I_wpa","s8"],
+    ["s8","I_eoi","s9"], ["s9","C_gl","s9"], ["s9","C_eogl","s10"],
+    ["s10","reset","s3"],
+    ["s11","I_wpa","s12"], ["s11","C_eogl","s13"], ["s13","reset","s16"],
+    ["s12","C_eogl","s14"], ["s13","I_wpa","s14"],
+    ["s14","reset","s15"], ["s15","C_eogr","s1"],
+    ["s16","I_wpa","s15"], ["s16","C_eogr","s0"],
+
+    ["s0","I_eoi","s0"], ["s0","C_eogl","s0"], ["s0","C_eogr","s0"], ["s0","C_eog","s0"],
+    ["s7","I_eoi","s7"], ["s7","C_eogl","s7"], ["s7","C_eogr","s7"], ["s7","C_eog","s7"],
+    ["s13","I_eoi","s13"], ["s13","C_eogl","s13"], ["s13","C_eogr","s13"], ["s13","C_eog","s13"],
+
+    ["s1","I_wpa","s1"], ["s1","C_eogl","s1"], ["s1","C_eogr","s1"], ["s1","C_eog","s1"],
+    ["s8","I_wpa","s8"], ["s8","C_eogl","s8"], ["s8","C_eogr","s8"], ["s8","C_eog","s8"],
+
+    ["s2","I_wpa","s2"], ["s2","I_eoi","s2"], ["s2","C_eogr","s2"], ["s2","C_eog","s2"],
+    ["s9","I_wpa","s9"], ["s9","I_eoi","s9"], ["s9","C_eogr","s9"], ["s9","C_eog","s9"],
+    ["s12","I_wpa","s12"], ["s12","I_eoi","s12"], ["s12","C_eogr","s12"], ["s12","C_eog","s12"],
+
+    ["s3","I_wpa","s3"], ["s3","I_eoi","s3"], ["s3","C_eogl","s3"], ["s3","C_eogr","s3"],
+
+    ["s4","I_wpa","s4"], ["s4","I_eoi","s4"], ["s4","C_eogl","s4"], ["s4","C_eogr","s4"], ["s4","C_eog","s4"],
+    ["s10","I_wpa","s10"], ["s10","I_eoi","s10"], ["s10","C_eogl","s10"],["s10","C_eogr","s10"], ["s10","C_eog","s10"],
+    ["s14","I_wpa","s14"], ["s14","I_eoi","s14"], ["s14","C_eogl","s14"],["s14","C_eogr","s14"], ["s14","C_eog","s14"],
+
+    ["s5","I_eoi","s5"], ["s5","C_eogl","s5"], ["s5","C_eog","s5"],
+    ["s16","I_eoi","s16"], ["s16","C_eogl","s16"], ["s16","C_eog","s16"],
+
+    ["s6","I_wpa","s6"], ["s6","I_eoi","s6"], ["s6","C_eogl","s6"], ["s6","C_eog","s6"],
+    ["s15","I_wpa","s15"], ["s15","I_eoi","s15"], ["s15","C_eogl","s15"], ["s15","C_eog","s15"],
+
+    ["s11","I_eoi","s11"], ["s11","C_eogr","s11"], ["s11","C_eog","s11"] ]
+}

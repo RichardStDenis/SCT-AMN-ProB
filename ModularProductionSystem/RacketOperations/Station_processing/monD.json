@@ -1,0 +1,11 @@
+{
+ "name" : "monD",
+ "states" : ["dwpa", "dwpd"],
+ "istate" : "dwpa",
+ "mstates" : ["dwpa"],
+ "events" : ["D_eod", "R_eor"],
+ "cevents" : [],
+ "transitions" : [
+   ["dwpa","D_eod","dwpd"], ["dwpd","R_eor","dwpa"],
+   ["dwpa","R_eor","dwpa"], ["dwpd","D_eod","dwpd"] ]
+}

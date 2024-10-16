@@ -1,0 +1,11 @@
+{
+ "name" : "evacuator",
+ "states" : ["Enr", "Er"],
+ "istate" : "Er",
+ "mstates" : ["Er"],
+ "events" : ["E_eoe", "E_evacuate"],
+ "cevents" : ["E_evacuate"],
+ "transitions" : [
+   ["Er","E_evacuate","Enr"],
+   ["Enr","E_eoe","Er"] ]
+}

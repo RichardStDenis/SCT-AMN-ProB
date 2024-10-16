@@ -1,0 +1,6 @@
+{
+ "name" : "micrometer-micrometer",
+ "states" : [["Midl","Midl"], ["Mim","Mim"], ["Mmc","Mmc"], ["Mrk","Mrk"]],
+ "events" : [["eom","M_eot"], ["failure","M_fail"],
+             ["get","M_test"], ["reset","M_reset"] , ["success", "M_pass"]]
+}

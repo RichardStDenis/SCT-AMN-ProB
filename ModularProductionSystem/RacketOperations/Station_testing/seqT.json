@@ -1,0 +1,47 @@
+{
+ "name" : "seqT",
+ "states" : ["idle", "waiting", "passm1", "passm2", "passm3", "passm4",
+                                "failm1", "failm2", "failm3", "failm4" ],
+ "istate" : "idle",
+ "mstates" : ["idle"],
+ "events" : ["start", "L_eolu", "L_eold",
+             "M_eot", "M_fail", "M_reset", "M_pass", "E_eoe"],
+ "cevents" : ["start", "M_reset"],
+ "transitions" : [
+    ["idle","start","waiting"], ["waiting","L_eolu","waiting"],
+    ["waiting","M_pass","passm1"], ["passm1","M_eot","passm2"],
+    ["passm2","E_eoe","passm3"],   ["passm3","L_eold","passm4"],
+    ["passm4","M_reset","idle"],
+    ["waiting","M_fail","failm1"], ["failm1","M_eot","failm2"],
+    ["failm2","L_eold","failm3"],  ["failm3","E_eoe","failm4"],
+    ["failm4","M_reset","idle"],
+
+    ["idle","L_eold","idle"], ["idle","L_eolu","idle"], ["idle","M_eot","idle"],
+    ["idle","M_fail","idle"], ["idle","M_pass","idle"], ["idle","E_eoe","idle"],
+
+    ["waiting","L_eold","waiting"], ["waiting","M_eot","waiting"], ["waiting","E_eoe","waiting"],
+
+    ["passm1","L_eold","passm1"], ["passm1","L_eolu","passm1"],
+    ["passm1","M_fail","passm1"], ["passm1","M_pass","passm1"], ["passm1","E_eoe","passm1"],
+
+    ["passm2","L_eold","passm2"], ["passm2","L_eolu","passm2"], ["passm2","M_eot","passm2"],
+    ["passm2","M_fail","passm2"], ["passm2","M_pass","passm2"],
+
+    ["passm3","L_eolu","passm3"], ["passm3","M_eot","passm3"],
+    ["passm3","M_fail","passm3"], ["passm3","M_pass","passm3"], ["passm3","E_eoe","passm3"],
+
+    ["passm4","L_eold","passm4"], ["passm4","L_eolu","passm4"], ["passm4","M_eot","passm4"],
+    ["passm4","M_fail","passm4"], ["passm4","M_pass","passm4"], ["passm4","E_eoe","passm4"],
+
+    ["failm1","L_eold","failm1"], ["failm1","L_eolu","failm1"],
+    ["failm1","M_fail","failm1"], ["failm1","M_pass","failm1"], ["failm1","E_eoe","failm1"],
+
+    ["failm2","L_eolu","failm2"], ["failm2","M_eot","failm2"],
+    ["failm2","M_fail","failm2"], ["failm2","M_pass","failm2"], ["failm2","E_eoe","failm2"],
+
+    ["failm3","L_eold","failm3"], ["failm3","L_eolu","failm3"], ["failm3","M_eot","failm3"],
+    ["failm3","M_fail","failm3"], ["failm3","M_pass","failm3"],
+
+    ["failm4","L_eold","failm4"], ["failm4","L_eolu","failm4"], ["failm4","M_eot","failm4"],
+    ["failm4","M_fail","failm4"], ["failm4","M_pass","failm4"], ["failm4","E_eoe","failm4"] ]
+}

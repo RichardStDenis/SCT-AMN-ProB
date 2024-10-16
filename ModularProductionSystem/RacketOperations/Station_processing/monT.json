@@ -1,0 +1,11 @@
+{
+ "name" : "monT",
+ "states" : ["twpa", "twpd"],
+ "istate" : "twpa",
+ "mstates" : ["twpa"],
+ "events" : ["R_eor", "T_eot"],
+ "cevents" : [],
+ "transitions" : [
+   ["twpa","T_eot","twpd"], ["twpd","R_eor","twpa"],
+   ["twpa","R_eor","twpa"], ["twpd","T_eot","twpd"] ]
+}

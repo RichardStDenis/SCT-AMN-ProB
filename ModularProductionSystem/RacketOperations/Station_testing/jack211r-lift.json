@@ -1,0 +1,6 @@
+{
+ "name" : "jack211r-lift",
+ "states" : [["Je","Le"], ["Jie","Lie"], ["Jir","Lir"], ["Jr","Lr"]],
+ "events" : [["eoe","L_eolu"], ["eor","L_eold"],
+             ["retract","L_liftdown"], ["extend","L_liftup"] ]
+}

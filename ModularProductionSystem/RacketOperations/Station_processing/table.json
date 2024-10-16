@@ -1,0 +1,11 @@
+{
+ "name" : "table",
+ "states" : ["Ridl", "Rria"],
+ "istate" : "Ridl",
+ "mstates" : ["Ridl"],
+ "events" : ["R_eor", "R_rotate"],
+ "cevents" : ["R_rotate"],
+ "transitions" : [
+   ["Ridl","R_rotate","Rria"],
+   ["Rria","R_eor","Ridl"] ]
+}

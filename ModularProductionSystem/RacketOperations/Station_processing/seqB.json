@@ -1,0 +1,15 @@
+{
+ "name" : "seqB",
+ "states" : ["s00", "s01", "s10", "s11"],
+ "istate" : "s00",
+ "mstates" : ["s00", "s01", "s10", "s11"],
+ "events" : ["C_transfer", "C_reject", "R_eor", "T_failure", "T_success"],
+ "cevents" : ["C_transfer", "C_reject"],
+ "transitions" : [
+   ["s00","T_success","s10"], ["s10","R_eor","s01"],
+   ["s01","R_eor","s00"], ["s01","T_success","s11"], ["s11","R_eor","s01"],
+   ["s00","C_reject","s00"], ["s00","R_eor","s00"], ["s00","T_failure","s00"],
+   ["s10","C_reject","s10"], ["s10","T_failure","s10"], ["s10","T_success","s10"],
+   ["s01","C_transfer","s01"], ["s01","T_failure","s01"],
+   ["s11","C_transfer","s11"], ["s11","T_failure","s11"], ["s11","T_success","s11"] ]
+}

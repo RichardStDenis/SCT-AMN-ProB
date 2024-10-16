@@ -1,0 +1,12 @@
+{
+ "name" : "seqSM",
+ "states" : ["im0", "im123", "rfm0", "rfm123"],
+ "istate" : "rfm123",
+ "mstates" : ["rfm123"],
+ "events" : ["mt0", "mt1", "mt2", "mt3", "T_exp", "T_clr"],
+ "cevents" : ["mt0", "mt1", "mt2", "mt3", "T_clr"],
+ "transitions" : [
+    ["rfm123","mt1","im123"], ["rfm123","mt2","im123"], ["rfm123","mt3","im123"],
+    ["im123","T_exp","rfm0"], ["rfm0","mt0","im0"], ["im0","T_exp","rfm123"],
+    ["rfm0","T_clr","rfm0"], ["rfm123","T_clr","rfm123"] ]
+}

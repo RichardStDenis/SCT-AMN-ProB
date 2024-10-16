@@ -1,0 +1,6 @@
+{
+ "name" : "injector-injector",
+ "states" : [["Ie", "Ie"], ["Iie", "Iie"], ["Ir", "Ir"], ["Iwim", "Iwim"]],
+ "events" : [["eoi", "I_eoi"], ["inject", "I_inject"],
+             ["rearm", "I_rearm"], ["wpa", "I_wpa"] ]
+}

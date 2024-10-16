@@ -1,0 +1,11 @@
+{
+ "name" : "buffer2",
+ "states" : ["b20", "b21"],
+ "istate" : "b20",
+ "mstates" : ["b20"],
+ "events" : ["P_eoc", "T_eotwp"],
+ "cevents" : [],
+ "transitions" : [
+    ["b20","T_eotwp","b21"], ["b21","P_eoc","b20"],
+    ["b20","P_eoc","b20"], ["b21","T_eotwp","b21"] ]
+}

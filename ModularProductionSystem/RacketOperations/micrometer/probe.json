@@ -1,0 +1,13 @@
+{
+ "name" : "probe",
+ "states" : ["Pe", "Pie", "Pir", "Pr"],
+ "istate" : "Pr",
+ "mstates" : ["Pr"],
+ "events" : ["P_eod", "P_eoa", "P_gd", "P_gu"],
+ "cevents" : ["P_gd", "P_gu"],
+ "transitions" : [
+   ["Pr","P_gd","Pie"],
+   ["Pie","P_eod","Pe"],
+   ["Pe","P_gu","Pir"],
+   ["Pir","P_eoa","Pr"] ]
+}

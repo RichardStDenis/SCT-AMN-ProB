@@ -1,0 +1,6 @@
+{
+ "name" : "sorter-sorter",
+ "states" : [["Snpt", "Snpt"], ["Sp1t", "Sp1t"], ["Sp2t", "Sp2t"], ["Sp3t", "Sp3t"]],
+ "events" : [["mp1", "S_mp1"], ["mp2", "S_mp2"], ["mp3", "S_mp3"],
+             ["pap1", "S_pap1"], ["pap2", "S_pap2"], ["pap3", "S_pap3"] ]
+}

@@ -1,0 +1,15 @@
+{
+ "name" : "crane",
+ "states" : ["Cp1", "Cp2", "Cp3", "Cw"],
+ "istate" : "Cw",
+ "mstates" : ["Cw"],
+ "events" : ["C_eop1", "C_eop2", "C_eop3", "C_pck1", "C_pck2", "C_pck3"],
+ "cevents" : ["C_pck1", "C_pck2", "C_pck3"],
+ "transitions" : [
+   ["Cw","C_pck1","Cp1"],
+   ["Cp1","C_eop1","Cw"],
+   ["Cw","C_pck2","Cp2"],
+   ["Cp2","C_eop2","Cw"],
+   ["Cw","C_pck3","Cp3"],
+   ["Cp3","C_eop3","Cw"] ]
+}

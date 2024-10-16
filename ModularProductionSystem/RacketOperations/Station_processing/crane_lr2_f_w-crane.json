@@ -1,0 +1,5 @@
+{
+ "name" : "crane_lr2_f_w-crane",
+ "states" : [["Cidle","Cidl"], ["Cexec","Ccia"]],
+ "events" : [["eoo","C_eoa"], ["rjct","C_reject"], ["trsf","C_transfer"]]
+}

@@ -1,0 +1,11 @@
+{
+ "name" : "buffer1",
+ "states" : ["b10", "b11"],
+ "istate" : "b10",
+ "mstates" : ["b10"],
+ "events" : ["D_creogl", "T_eot"],
+ "cevents" : [],
+ "transitions" : [
+    ["b10","D_creogl","b11"], ["b11","T_eot","b10"],
+    ["b10","T_eot","b10"], ["b11","D_creogl","b11"] ]
+}

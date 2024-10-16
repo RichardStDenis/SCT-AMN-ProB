@@ -1,0 +1,11 @@
+{
+ "name" : "handling",
+ "states" : ["Hbusy", "Hidle"],
+ "istate" : "Hidle",
+ "mstates" : ["Hidle"],
+ "events" : ["H_start", "H_stop"],
+ "cevents" : ["H_start"],
+ "transitions" : [
+   ["Hidle","H_start","Hbusy"],
+   ["Hbusy","H_stop","Hidle"] ]
+}

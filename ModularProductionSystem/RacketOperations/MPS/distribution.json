@@ -1,0 +1,16 @@
+{
+ "name" : "distribution",
+ "states" : ["DcrR", "Dm1stwp", "D2ndwp", "DcrL", "DcrL1"],
+ "istate" : "DcrR",
+ "mstates" : ["DcrR"],
+ "events" : ["D_wpa", "D_release", "D_creogl"],
+ "cevents" : ["D_release"],
+ "transitions" : [
+   ["DcrR","D_wpa","Dm1stwp"],
+   ["Dm1stwp","D_creogl","DcrL"],
+   ["DcrL","D_release","DcrR"],
+   ["DcrL","D_wpa","DcrL1"],
+   ["DcrL1","D_release","Dm1stwp"],
+   ["Dm1stwp","D_wpa","D2ndwp"],
+   ["D2ndwp","D_creogl","DcrL1"] ]
+}

@@ -1,0 +1,13 @@
+{
+ "name" : "lift",
+ "states" : ["Le", "Lie", "Lir", "Lr"],
+ "istate" : "Lr",
+ "mstates" : ["Lr"],
+ "events" : ["L_eolu", "L_eold", "L_liftdown", "L_liftup"],
+ "cevents" : ["L_liftup", "L_liftdown"],
+ "transitions" : [
+   ["Lr","L_liftup","Lie"],
+   ["Lie","L_eolu","Le"],
+   ["Le","L_liftdown","Lir"],
+   ["Lir","L_eold","Lr"] ]
+}

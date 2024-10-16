@@ -1,0 +1,6 @@
+{
+ "name" : "crane_br_w-crane",
+ "states" : [["CBRWp1", "Cp1"], ["CBRWp2", "Cp2"], ["CBRWp3", "Cp3"], ["CBRWw", "Cw"]],
+ "events" : [["eop1", "C_eop1"], ["eop2", "C_eop2"], ["eop3", "C_eop3"],
+             ["pck1", "C_pck1"], ["pck2", "C_pck2"], ["pck3", "C_pck3"] ]
+}

@@ -1,0 +1,11 @@
+{
+ "name" : "buffer1",
+ "states" : ["nwp", "awp"],
+ "istate" : "nwp",
+ "mstates" : ["nwp"],
+ "events" : ["S_mp2", "S_mp3", "S_pap1", "C_eop1"],
+ "cevents" : ["S_mp2", "S_mp3"],
+ "transitions" : [
+   ["nwp","S_pap1","awp"], ["awp","C_eop1","nwp"],
+   ["awp","S_mp2","awp"], ["awp","S_mp3","awp"] ]
+}
