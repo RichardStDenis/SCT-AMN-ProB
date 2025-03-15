@@ -8,7 +8,7 @@ USES
 //LBtrains_LB_2_4_2  /*@file "../../Trains/LBtrains_LB_2_4_2.mch" */
   LBtrains_LB_1_6_2  /*@file "../../Trains/LBtrains_LB_1_6_2.mch" */
 //LBtrains_LB_2_6_2  /*@file "../../Trains/LBtrains_LB_2_6_2.mch" */
-//LBtrains_LB_1_8_2  /*@file "../../Trains/LBtrains_LB_1_8_2.mch" */
+// LBtrains_LB_1_8_2  /*@file "../../Trains/LBtrains_LB_1_8_2.mch" */
 //LBtrains_LB_2_8_2  /*@file "../../Trains/LBtrains_LB_2_8_2.mch" */
 //LBtrains_LB_1_10_2 /*@file "../../Trains/LBtrains_LB_1_10_2.mch" */
 //LBtrains_LB_2_10_2 /*@file "../../Trains/LBtrains_LB_2_10_2.mch" */
@@ -36,6 +36,9 @@ DEFINITIONS
  //---------------------------------------------------------------------
  "../../Theories/SCT_core.def";
  "LibraryIO.def";
+ 
+  SRsupervisorTrENBL__(X,E,T,prK) == UNION(x_).(x_ : X | 
+   {(x_,{e_ | e_: E & #(t_).(t_ : T & t_'state = x_ & t_'string <-e_ : prK)})} )
 
 PROPERTIES
  G_FB : Generator_C(G_FB'states,G_FB'events) &
@@ -54,18 +57,20 @@ PROPERTIES
 
 VARIABLES
  code,
- i, K_i, K_succ_i, T_supK
+ i, K_i, K_succ_i, T_supK, X_sup
 INITIALISATION
  code := 0;
  i := 1;
  K_i := supR(Lm_G_LB,Lm_G_FB);
  K_succ_i := iStepSupC(K_i,pr(K_i),L_G_FB,G_FB'events-G_FB'ctrlEvents);
- T_supK := {}
+ T_supK := {};
+ X_sup := {}
 INVARIANT
  code >= 0 & code <= 4 &
  i >= 1 &
  K_i <: Lm_G_LB & K_succ_i <: Lm_G_LB &
- T_supK <: T_G_LB
+ T_supK <: T_G_LB &
+ X_sup <: G_LB'states
 
 OPERATIONS
  DisplayStatistics = PRE code = 0 THEN
@@ -101,16 +106,21 @@ OPERATIONS
  GetSupervisors = PRE code = 2 THEN
   PRINT("Calculate supervisor...");
   T_supK := {t_ | t_ : T_G_LB & t_'string : pr(K_i)};
-  LET sp BE sp = {s_ | s_ : G_LB'states & #t_.(t_ : T_supK & s_ = t_'state)} IN
-   FPRINTF(output_file_name, "States of supC(K): ~w~n", [sp]) END;
+  X_sup := {x_ | x_ : G_LB'states & #t_.(t_ : T_supK & x_ = t_'state)};
+  FPRINTF(output_file_name, "States of supC(K): ~w~n", [X_sup]);
+//  LET sp BE sp = {s_ | s_ : G_LB'states & #t_.(t_ : T_supK & s_ = t_'state)} IN
+//   FPRINTF(output_file_name, "States of supC(K): ~w~n", [sp]) END;
   ANY phi WHERE
    phi : SRsupervisor_(G_FB'states,G_FB'events) &
-   phi = SRsupervisorTrENBL_(T_supK,G_FB'ctrlEvents) THEN
-    FPRINTF(output_file_name,"The state realization of the supervisor (enabled events): ~w~n",[phi]) END;
-  ANY phi WHERE
-   phi : SRsupervisor_(G_FB'states,G_FB'events) &
-   phi = SRsupervisorTrENBLuncertain_(T_supK,G_FB'events,bound_G_FB) THEN
-    FPRINTF(output_file_name,"The state realization of the supervisor (uncertain enabled events): ~w~n",[phi]) END;
+//   phi = SRsupervisorTrENBL_(T_supK,G_FB'ctrlEvents) THEN
+   phi = SRsupervisorTrENBL__(X_sup,G_FB'ctrlEvents,T_supK,pr(K_i)) THEN
+    LET phi_ BE phi_ = {x_,E_ | (x_,E_) : phi & E_ /= {}} IN
+
+    FPRINTF(output_file_name,"The state realization of the supervisor (enabled events): ~w~n",[phi_]) END END;
+//  ANY phi WHERE
+//   phi : SRsupervisor_(G_FB'states,G_FB'events) &
+//   phi = SRsupervisorTrENBLuncertain_(T_supK,G_FB'events,bound_G_FB) THEN
+//    FPRINTF(output_file_name,"The state realization of the supervisor (uncertain enabled events): ~w~n",[phi]) END;
   code := 3
  END;
 

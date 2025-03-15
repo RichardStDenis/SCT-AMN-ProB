@@ -8,11 +8,11 @@ USES
 //LBtrains_LB_2_4_2  /*@file "../../Trains/LBtrains_LB_2_4_2.mch" */
 //LBtrains_LB_1_6_2  /*@file "../../Trains/LBtrains_LB_1_6_2.mch" */
 //LBtrains_LB_2_6_2  /*@file "../../Trains/LBtrains_LB_2_6_2.mch" */
-//LBtrains_LB_1_8_2  /*@file "../../Trains/LBtrains_LB_1_8_2.mch" */
-  LBtrains_LB_2_8_2  /*@file "../../Trains/LBtrains_LB_2_8_2.mch" */
+  LBtrains_LB_1_8_2  /*@file "../../Trains/LBtrains_LB_1_8_2.mch" */
+//LBtrains_LB_2_8_2  /*@file "../../Trains/LBtrains_LB_2_8_2.mch" */
 //LBtrains_LB_1_10_2 /*@file "../../Trains/LBtrains_LB_1_10_2.mch" */
 //LBtrains_LB_2_10_2 /*@file "../../Trains/LBtrains_LB_2_10_2.mch" */
-//LBtrains_LB_1_12_2 /*@file "../../Trains/LBtrains_LB_1_12_2.mch" */
+// LBtrains_LB_1_12_2 /*@file "../../Trains/LBtrains_LB_1_12_2.mch" */
 //LBtrains_LB_2_12_2 /*@file "../../Trains/LBtrains_LB_2_12_2.mch" */
 
 CONSTANTS
@@ -45,11 +45,11 @@ PROPERTIES
  output_file_name = "~/Documents/SCTBenchmark/output_trains.txt" &
 
  GetTracesFB = lambdaGetTraces(G_FB,bound_G_FB,GetTracesFB) &
- T_G_FB = GetTracesFB(baseCaseTr(G_FB),1) &
+ T_G_FB = GetTracesFB(baseCaseTr(G_FB),0) &
  L_G_FB = Traces2Strings(T_G_FB) &
 
  GetTracesLB = lambdaGetTraces(G_LB,bound_G_LB,GetTracesLB) &
- T_G_LB = GetTracesLB(baseCaseTr(G_LB),1) &
+ T_G_LB = GetTracesLB(baseCaseTr(G_LB),0) &
  L_G_LB = Traces2Strings(T_G_LB)
 
 VARIABLES
