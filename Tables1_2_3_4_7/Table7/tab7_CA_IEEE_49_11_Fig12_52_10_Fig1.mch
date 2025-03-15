@@ -10,8 +10,8 @@ SEES
  // w.r.t. the general architecture (Sigma_ce = {c} and Sigma_cd = {d}) and
  // Sigma_c_1 = {c, d}, Sigma_c_2 = {c, d} and
  // Sigma_o_1 = {a, ap, c, d}, Sigma_o_2 = {b, bp, c, d}.
-   IEEE_49_11_H_Fig12 /*@file "../../DataExamples/IEEE_49_11_H_Fig12.mch" */
- //IEEE_52_10_Ex1_H_Fig1 /*@file "../../DataExamples/IEEE_52_10_Ex1_H_Fig1.mch" */
+ //IEEE_49_11_H_Fig12 /*@file "../../DataExamples/IEEE_49_11_H_Fig12.mch" */
+ IEEE_52_10_Ex1_H_Fig1 /*@file "../../DataExamples/IEEE_52_10_Ex1_H_Fig1.mch" */
 
 DEFINITIONS
  //---------------------------------------------------------------------
@@ -20,7 +20,7 @@ DEFINITIONS
  SET_PREF_MAX_INITIALISATIONS == 1;
  SET_PREF_MAX_OPERATIONS == 1;
  SET_PREF_TIME_OUT == 1000000;
- SET_PREF_SMT == TRUE;
+ SET_PREF_SMT == FALSE;
  SET_PREF_KODKOD == FALSE;
  //---------------------------------------------------------------------
  // Import the theory
@@ -58,6 +58,8 @@ OPERATIONS
  VerifyGCCoobservability =
   SELECT GCCoobservability(A_d,A_d'Events_ce,A_d'Events_cd,L_G,L_H) THEN
    PRINT("K is conditionally coobservable.");
+   PRINTF("E_ce: ~w~n",[A_d'Events_ce]);
+   PRINTF("E_cd: ~w~n",[A_d'Events_cd]);
    S_e_i := LocalDecisionsEnbl(A_d,L_G,L_H);
    PRINTF("Local decisions (enabled unconditionally): ~n ~w~n",[S_e_i]);
    S_ec_i := LocalDecisionsEnbl_c(A_d,L_G,L_H);
@@ -73,7 +75,9 @@ OPERATIONS
    IF CtrlNonconflicting(S_e,S_d) THEN
       PRINT("The control is nonconflicting.") ELSE
       PRINT("The control is conflicting.") END ELSE
-    PRINT("K is not conditionally coobservable.") END END
+    PRINT("K is not conditionally coobservable.");
+    PRINTF("E_ce: ~w~n",[A_d'Events_ce]);
+    PRINTF("E_cd: ~w~n",[A_d'Events_cd]) END END
 
 /*
 OUTPUT (IEEE_49_11_H_Fig12.mch):
@@ -85,6 +89,8 @@ random(2,1)
 perform_random_step(1,2)
 random(2,1)
 "K is conditionally coobservable."
+E_ce: {c}
+E_cd: {d}
 Local decisions (enabled unconditionally): 
  {((({(1|->a),(2|->bp)}|->2)|->{(1|->bp)})|->c),
   ((({(1|->b),(2|->ap)}|->1)|->{(1|->ap)})|->c),
@@ -126,6 +132,12 @@ Remark: c is enabled by default from the string [], since there is no decision b
         d is disabled by default from the string [c,d], since there is no decision by any local
         supervisor.
 
+
+-------------
+
+On MacBook Pro with last version of ProB 20.2.2024:
+% Finished processing file after 2204 ms walltime (2189 ms runtime), since start: 4290 ms
+
 ----------------------------------------
 
 OUTPUT (IEEE_52_10_Ex1_H_Fig1.mch):
@@ -137,7 +149,11 @@ random(2,1)
 perform_random_step(1,2)
 random(2,1)
 "K is not conditionally coobservable."
-
+E_ce: {c}
+E_cd: {}
+or
+E_ce: {}
+E_cd: {c}
 ALL OPERATIONS COVERED
 
 perform_random_step(1,3)
@@ -148,4 +164,9 @@ finished_random_animate(3,[runtime/1980,total_runtime/1980,walltime/2240])
 
 % Finished process_file (errors=0, warnings=0)
 % ProB Finished
+
+-------------
+
+On MacBook Pro with last version of ProB 20.2.2024:
+% Finished processing file after 367 ms walltime (361 ms runtime), since start: 2464 ms
 */

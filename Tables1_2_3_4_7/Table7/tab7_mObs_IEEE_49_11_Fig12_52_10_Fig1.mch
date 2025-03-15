@@ -5,7 +5,7 @@ SEES
  //---------------------------------------------------------------------
  // Machine for input data
  //---------------------------------------------------------------------
-   IEEE_49_11_H_Fig12 /*@file "../../DataExamples/IEEE_49_11_H_Fig12.mch" */
+ IEEE_49_11_H_Fig12 /*@file "../../DataExamples/IEEE_49_11_H_Fig12.mch" */
  //IEEE_52_10_Ex1_H_Fig1 /*@file "../../DataExamples/IEEE_52_10_Ex1_H_Fig1.mch" */
 
 DEFINITIONS
@@ -167,6 +167,11 @@ finished_random_animate(4,[runtime/1270,total_runtime/1270,walltime/1400])
 % Finished process_file (errors=0, warnings=0)
 % ProB Finished
 
+-------------
+
+On MacBook Pro with last version of ProB 20.2.2024:
+% Finished processing file after 788 ms walltime (779 ms runtime), since start: 3002 ms
+
 
 ----------------------------------------
 
@@ -199,4 +204,9 @@ finished_random_animate(4,[runtime/760,total_runtime/760,walltime/820])
 
 % Finished process_file (errors=0, warnings=0)
 % ProB Finished
+
+-------------
+
+On MacBook Pro with last version of ProB 20.2.2024:
+% Finished processing file after 684 ms walltime (675 ms runtime), since start: 2849 ms
 */

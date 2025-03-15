@@ -24,16 +24,16 @@ DEFINITIONS
  "LibraryIO.def"
 
 CONSTANTS
- T_G, L_G, T_H, L_H,    // Languages for free and legal behaviors
+ Tr_G, L_G, Tr_H, L_H,  // Languages for free and legal behaviors
  max_m                  // Parameter of the m-co-observability property
 
 PROPERTIES
  G_fb : Generator_C_O(G_fb'states,G_fb'events) &
  H_lb : FSA(H_lb'states,H_lb'events) &
- T_G = GetTracesNc1stNqcSev(G_fb,bound,{p,s}) &
- L_G = Traces2Strings(T_G) &
- T_H = GetTracesNc1stNqcSev(H_lb,bound,{p,s}) &
- L_H = Traces2Strings(T_H) &
+ Tr_G = GetTracesNc1stNqcSev(G_fb,bound,{pass,stop}) &
+ L_G = Traces2Strings(Tr_G) &
+ Tr_H = GetTracesNc1stNqcSev(H_lb,bound,{pass,stop}) &
+ L_H = Traces2Strings(Tr_H) &
  max_m = 3
 
 VARIABLES
@@ -71,7 +71,7 @@ OPERATIONS
      UNION(S_).(S_ : PE | S_) = E_(L_H,e_) &
      CPmCoobservability_e(A_d,e_,L_H,D_(L_H,L_G,e_),PE) THEN
       PRINT("K is C&P3-coobservable.");
-      PRINT(p |-> PE);
+      PRINT(pass |-> PE);
       allPE_ce :=  allPE_ce \/ {e_|->(PE-{{}})} END;
     Ece := Ece - {e_}
    INVARIANT Ece <: A_d'Events_ce VARIANT card(Ece) END;
@@ -86,7 +86,7 @@ OPERATIONS
      UNION(S_).(S_ : PE | S_) = D_(L_H,L_G,e_) &
      DAmCoobservability_e(A_d,e_,L_H,E_(L_H,e_),PE) THEN
       PRINT("K is D&A3-coobservable.");
-    PRINT(p |-> PE);
+    PRINT(pass |-> PE);
     allPE_cd :=  allPE_cd \/ {e_|->(PE-{{}})} END;
     Ecd := Ecd - {e_}
    INVARIANT Ecd <: A_d'Events_cd VARIANT card(Ecd) END END;
@@ -197,4 +197,9 @@ finished_random_animate(4,[runtime/7460,total_runtime/7460,walltime/8520])
 
 % Finished process_file (errors=0, warnings=0)
 % ProB Finished
+
+-------------
+
+On MacBook Pro with last version of ProB 20.2.2024:
+% Finished processing file after 4321 ms walltime (4298 ms runtime), since start: 6504 ms
 */

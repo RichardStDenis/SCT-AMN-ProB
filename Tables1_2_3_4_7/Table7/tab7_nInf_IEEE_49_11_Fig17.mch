@@ -16,7 +16,7 @@ DEFINITIONS
  SET_PREF_MAX_INITIALISATIONS == 1;
  SET_PREF_MAX_OPERATIONS == 1;
  SET_PREF_TIME_OUT == 1000000;
- SET_PREF_SMT == TRUE;
+ SET_PREF_SMT == FALSE;
  SET_PREF_KODKOD == FALSE;
  //---------------------------------------------------------------------
  // Import the theory
@@ -31,17 +31,17 @@ SETS
  ABSTRACT_CONSTANTS GetLangPairs_
 
 CONSTANTS
- T_G, L_G, T_H, L_H,    // Languages for free and legal behaviors
- N                      // Main argument of the observability property
+ Tr_G, L_G, Tr_H, L_H,  // Languages for free and legal behaviors
+ N_inf                  // Main argument of the observability property
 
 PROPERTIES
  G_fb : Generator_C_O(G_fb'states,G_fb'events) &
  H_lb : FSA(H_lb'states,H_lb'events) &
- T_G = GetTracesNc1stNqcSev(G_fb,bound,{p,s}) &
- L_G = Traces2Strings(T_G) &
- T_H = GetTracesNc1stNqcSev(H_lb,bound,{p,s}) &
- L_H = Traces2Strings(T_H) &
- N = 4 &
+ Tr_G = GetTracesNc1stNqcSev(G_fb,bound,{pass,stop}) &
+ L_G = Traces2Strings(Tr_G) &
+ Tr_H = GetTracesNc1stNqcSev(H_lb,bound,{pass,stop}) &
+ L_H = Traces2Strings(Tr_H) &
+ N_inf = 4 &
 
  GetLangPairs_ = GetLangPairs__(G_fb,A_d,GetLangPairs_)
 
@@ -62,7 +62,7 @@ OPERATIONS
     Sigma_c := G_fb'ctrlEvents;   N_e := 0;
     WHILE Sigma_c /= {} & N_e /= -1 DO   // loop on all controllable events
      e_ :: Sigma_c;          // choice of a controllable event
-     LP_e := GetLangPairs_(e_,baseCaseD0E0s(e_,L_G,L_H),N,0);
+     LP_e := GetLangPairs_(e_,baseCaseD0E0s(e_,L_G,L_H),N_inf,0);
      //PRINT(LP_e);
      n_e := max(dom(LP_e'D) \/ dom(LP_e'E));
      //PRINT(n_e);
@@ -73,9 +73,9 @@ OPERATIONS
        N_e := max({N_e,n_e}) ELSE N_e := -1 END;
      Sigma_c := Sigma_c - {e_}
     INVARIANT Sigma_c <: G_fb'ctrlEvents VARIANT card(Sigma_c) END;
-    IF N_e >= 0 & N_e <= N THEN
+    IF N_e >= 0 & N_e <= N_inf THEN
      code := 1 || PRINTF("K is ~w-inference observable\n",[N_e]) ELSE
-     PRINTF("K is not ~w-inference observable\n",[N]) END END END;
+     PRINTF("K is not ~w-inference observable\n",[N_inf]) END END END;
 
  GetDecentralizedSupervisor = 
   PRE code = 1 THEN
@@ -97,7 +97,7 @@ OPERATIONS
     WHILE Sigma_c /= {} DO   // for all controllable events
      e_ :: Sigma_c;
      //PRINT("Dk and Ek for:"); PRINT(e_);
-     allPLs := GetLangPairs_(e_,baseCaseD0E0s(e_,L_G,L_H),N,0);
+     allPLs := GetLangPairs_(e_,baseCaseD0E0s(e_,L_G,L_H),N_inf,0);
      //PRINT(allPLs);
      L := L_G;
      WHILE L /= {} DO       // for all strings of L(G)
@@ -108,9 +108,9 @@ OPERATIONS
       WHILE i_th <= A_d'NoSupervisors DO  // for all local supervisors
        IF i_th : In(e_,A_d) THEN
         PRINT(i_th);   PRINT(Mi(i_th,s_,A_d));
-        ndi_s_sigma := nde_i(i_th,s_,allPLs'E,N,A_d);
+        ndi_s_sigma := nde_i(i_th,s_,allPLs'E,N_inf,A_d);
         PRINTF("| ~w ",[ndi_s_sigma]);
-        nei_s_sigma := nde_i(i_th,s_,allPLs'D,N,A_d);
+        nei_s_sigma := nde_i(i_th,s_,allPLs'D,N_inf,A_d);
         PRINTF(" | ~w ",[nei_s_sigma]);
         c_i(ci_s_sigma, ndi_s_sigma,nei_s_sigma);
         PRINTF(" | ~w ",[ci_s_sigma]);
@@ -1581,4 +1581,10 @@ finished_random_animate(4,[runtime/4920,total_runtime/4970,walltime/5540])
 % Finished process_file (errors=0, warnings=1)
 % ProB Finished
 ! Total Errors: 0, Warnings:1
+
+
+-------------
+
+On MacBook Pro with last version of ProB 20.2.2024:
+% Finished processing file after 4965 ms walltime (4875 ms runtime), since start: 7133 ms
 */

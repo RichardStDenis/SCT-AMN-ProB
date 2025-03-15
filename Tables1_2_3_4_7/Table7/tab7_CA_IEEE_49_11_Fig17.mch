@@ -17,7 +17,7 @@ DEFINITIONS
  SET_PREF_MAX_INITIALISATIONS == 1;
  SET_PREF_MAX_OPERATIONS == 1;
  SET_PREF_TIME_OUT == 1000000;
- SET_PREF_SMT == TRUE;   // to avoid a warning
+ SET_PREF_SMT == FALSE;
  SET_PREF_KODKOD == FALSE;
  //---------------------------------------------------------------------
  // Import the theory
@@ -27,15 +27,15 @@ DEFINITIONS
  "LibraryIO.def"
 
 CONSTANTS
- T_G, L_G, T_H, L_H     // Languages for free and legal behaviors
+ Tr_G, L_G, Tr_H, L_H     // Languages for free and legal behaviors
 
 PROPERTIES
  G_fb : Generator_C_O(G_fb'states,G_fb'events) &
  H_lb : FSA(H_lb'states,H_lb'events) &
- T_G = GetTracesNc1stNqcSev(G_fb,bound,{p,s}) &
- L_G = Traces2Strings(T_G) &
- T_H = GetTracesNc1stNqcSev(H_lb,bound,{p,s}) &
- L_H = Traces2Strings(T_H)
+ Tr_G = GetTracesNc1stNqcSev(G_fb,bound,{pass,stop}) &
+ L_G = Traces2Strings(Tr_G) &
+ Tr_H = GetTracesNc1stNqcSev(H_lb,bound,{pass,stop}) &
+ L_H = Traces2Strings(Tr_H)
 
 VARIABLES
  S_d_i, S_dc_i, S_e_i, S_ec_i,    // Local decisions
@@ -57,6 +57,8 @@ OPERATIONS
  VerifyGCCoobservability =
   PRE GCCoobservability(A_d,A_d'Events_ce,A_d'Events_cd,L_G,L_H) THEN
    PRINT("K is conditionally coobservable.");
+   PRINTF("E_ce: ~w~n",[A_d'Events_ce]);
+   PRINTF("E_cd: ~w~n",[A_d'Events_cd]);
    S_e_i := LocalDecisionsEnbl(A_d,L_G,L_H);
    PRINTF("Local decisions (enabled unconditionally): ~n ~w~n",[S_e_i]);
    S_ec_i := LocalDecisionsEnbl_c(A_d,L_G,L_H);
@@ -83,6 +85,8 @@ random(2,1)
 perform_random_step(1,2)
 random(2,1)
 "K is conditionally coobservable."
+E_ce: {pass}
+E_cd: {stop}
 Local decisions (enabled unconditionally): 
  {((({(1|->i1),(2|->o2)}|->2)|->{(1|->o2)})|->p),((({(1|->i2),(2|->o1)}|->1)|->{(1|->o1)})|->p),
   ((([p,i1,o2]|->2)|->{(1|->p),(2|->o2)})|->p),((([p,i1,s,o2]|->2)|->[p,s,o2])|->p),
@@ -182,4 +186,9 @@ finished_random_animate(3,[runtime/25450,total_runtime/25450,walltime/28600])
 
 % Finished process_file (errors=0, warnings=0)
 % ProB Finished
+
+-------------
+
+On MacBook Pro with last version of ProB 20.2.2024:
+% Finished processing file after 10764 ms walltime (10709 ms runtime), since start: 12289 ms
 */
