@@ -187,15 +187,25 @@ GetTracesNcSst(A,bnd,Sst) ==
   !k_.(k_ : 1..size(t1_'string) => t1_'string(k_) /= e_) &
   t2_'string = t1_'string<-e_ )};
 
-// ... with cycles.
+// ... with cycles (including the case bnd = 0).
  lambdaGetTraces(A,bnd,fun_) == /*@symbolic*/
+  %(Ti_,i_).(Ti_ : POW(Trace(A'states,A'events)) |
+   IF i_ = bnd THEN Ti_ ELSE
+      fun_(Ti_ \/ indStepTr(A,Ti_),i_+1) END );
+   
+ lambdaGetTraces_(A,bnd,fun_) == /*@symbolic*/
   %(Ti_,i_).(Ti_ : POW(Trace(A'states,A'events)) |
    LET T_ BE T_ = Ti_ \/ indStepTr(A,Ti_) IN
     IF i_ = bnd THEN T_ ELSE fun_(T_,i_+1) END
    END );
 
-// ... without cycles w.r.t. events.
+// ... without cycles w.r.t. events (including the case bnd = 0).
  lambdaGetTracesNC(A,bnd,fun_) == /*@symbolic*/
+  %(Ti_,i_).(Ti_ : POW(Trace(A'states,A'events)) |
+   IF i_ = bnd THEN Ti_ ELSE
+      fun_(Ti_ \/ indStepTrNC(A,Ti_),i_+1) END );
+   
+ lambdaGetTracesNC_(A,bnd,fun_) == /*@symbolic*/
   %(Ti_,i_).(Ti_ : POW(Trace(A'states,A'events)) |
    LET T_ BE T_ = Ti_ \/ indStepTrNC(A,Ti_) IN
     IF i_ = bnd THEN T_ ELSE fun_(T_,i_+1) END
@@ -226,7 +236,16 @@ GetTracesNcSst(A,bnd,Sst) ==
 //        where GetLgModel is an ABSTRACT_CONSTANTS.
 // How to recover the languages:  L = prj1(POW(String(Events)),POW(String(Events)))(M_G)
 //                               Lm = prj2(POW(String(Events)),POW(String(Events)))(M_G)
+
+// (including the case bnd = 0)
  lambdaGetLgModel(A,bnd,fun_) == /*@symbolic*/
+  %(Tr_i,Tk_i,i_).(Tr_i : POW(Trace(A'states,A'events)) &
+                   Tk_i : POW(String(A'events)) |
+   IF i_ = bnd THEN (Traces2Strings(Tr_i),Tk_i) ELSE
+    LET T_ BE T_ = indStepTr(A,Tr_i) IN
+     fun_(Tr_i \/ T_,Tk_i \/ Traces2Tasks(T_,A'Xm),i_+1) END END );
+
+ lambdaGetLgModel_(A,bnd,fun_) == /*@symbolic*/
   %(Tr_i,Tk_i,i_).(Tr_i : POW(Trace(A'states,A'events)) &
                    Tk_i : POW(String(A'events)) |
    LET T_ BE T_ = indStepTr(A,Tr_i) IN
@@ -234,8 +253,15 @@ GetTracesNcSst(A,bnd,Sst) ==
      IF i_ = bnd THEN (Traces2Strings(Tr),Tk) ELSE fun_(Tr,Tk,i_+1) END
     END END );
 
-// Generation of a language model without cycles w.r.t. events.
+// Generation of a language model without cycles w.r.t. events (including the case bnd = 0).
  lambdaGetLgModelNC(A,bnd,fun_) == /*@symbolic*/
+  %(Tr_i,Tk_i,i_).(Tr_i : POW(Trace(A'states,A'events)) &
+                   Tk_i : POW(String(A'events)) |
+   IF i_ = bnd THEN (Traces2Strings(Tr_i),Tk_i) ELSE
+    LET T_ BE T_ = indStepTrNC(A,Tr_i) IN
+     fun_(Tr_i \/ T_,Tk_i \/ Traces2Tasks(T_,A'Xm),i_+1) END END );
+    
+ lambdaGetLgModelNC_(A,bnd,fun_) == /*@symbolic*/
   %(Tr_i,Tk_i,i_).(Tr_i : POW(Trace(A'states,A'events)) &
                    Tk_i : POW(String(A'events)) |
    LET T_ BE T_ = indStepTrNC(A,Tr_i) IN
@@ -249,6 +275,13 @@ GetTracesNcSst(A,bnd,Sst) ==
 //        where GetLgModel is an ABSTRACT_CONSTANTS.
 // How to recover the languages: ANY L, Lm WHERE L : dom(M_G) & Lm : ran(M_G) THEN ...
  lambdaGetSetLgModel(A,bnd,fun_) == /*@symbolic*/
+  %(Tr_i,Tk_i,i_).(Tr_i : POW(Trace(A'states,A'events)) &
+                   Tk_i : POW(String(A'events)) |
+   IF i_ = bnd THEN {(Traces2Strings(Tr_i),Tk_i)} ELSE
+    LET T_ BE T_ = indStepTr(A,Tr_i) IN
+     fun_(Tr_i \/ T_,Tk_i \/ Traces2Tasks(T_,A'Xm),i_+1) END END );
+    
+ lambdaGetSetLgModel_(A,bnd,fun_) == /*@symbolic*/
   %(Tr_i,Tk_i,i_).(Tr_i : POW(Trace(A'states,A'events)) &
                    Tk_i : POW(String(A'events)) |
    LET T_ BE T_ = indStepTr(A,Tr_i) IN

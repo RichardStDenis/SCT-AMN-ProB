@@ -90,9 +90,11 @@ DEFINITIONS
   #y_.(y_ : O & X__ = UNION(x_).(M(x_)= y_ | {x_})) };
 
 // Weakest precondition.
- wp_e(G,e,Q,x) == (x,e) : dom(G'tf) & G'tf(x,e) : Q;
+ wp_e(G,e,Q,x) == (x,e) : dom(G'tf) & G'tf[{x|->e}] <: Q;     // to avoid a warning (Leuschel)
+// wp_e(G,e,Q,x) == (x,e) : dom(G'tf) & G'tf(x,e) : Q;
 
-// Weakest liberal precondition : not((x,e) :dom(G'tf)) \/ G'tf(x,e) : Q).
+// Weakest liberal precondition : not((x,e) :dom(G'tf)) \/ G'tf(x,e) : Q.
+// wlp_e(G,e,Q,x) == (x,e) : dom(G'tf) => G'tf[{x|->e}] <: Q; // avoid the same modification because time significantly increases  
  wlp_e(G,e,Q,x) == (x,e) : dom(G'tf) => G'tf(x,e) : Q;
 
  wp(G,e,Q) ==  {x_ | x_ : G'states & wp_e(G,e,Q,x_)};
@@ -101,16 +103,16 @@ DEFINITIONS
 
 // Controllable field of G w.r.t. Q and its dual.
  CtrlField(G,Q) == {x1_ | !x2_.((x1_,x2_) :
-  RTC(unlblR(G'tf,uEvents(G),G'states),G'states) => x2_ : Q) };
+  RTC(unlblR(G'tf,uEvents(G),G'states),G'states) => x2_ : Q ) };
 
  CtrlField_(G,Q) == {x1_ | !x2_.((x1_,x2_) :
-  RTC(unlblTR_E(G,uEvents(G)),G'states) => x2_ : Q) };
+  RTC(unlblTR_E(G,uEvents(G)),G'states) => x2_ : Q ) };
 
  DualCtrlField(G,Q) == {x1_ | #x2_.((x1_,x2_) :
-  RTC(unlblR(G'tf,uEvents(G),G'states),G'states) & x2_ : Q) };
+  RTC(unlblR(G'tf,uEvents(G),G'states),G'states) & x2_ : Q ) };
 
  DualCtrlField_(G,Q) == {x2_ | #x1_.((x1_,x2_) :
-  RTC(unlblTR_E(G,uEvents(G))~,G'states) & x1_ : Q) };
+  RTC(unlblTR_E(G,uEvents(G))~,G'states) & x1_ : Q ) };
 
 // Assertion: controllable field and its dual are idempotent and duality.
  Idempotent(G,Q) ==
