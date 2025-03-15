@@ -5,9 +5,9 @@ MODEL tab1_traces_NC
  // Model for input data
  //---------------------------------------------------------------------
 USES
-  trains_6_2  /*@file "../../Trains/trains_6_2.mch" */
+//trains_6_2  /*@file "../../Trains/trains_6_2.mch" */
 //trains_6_3  /*@file "../../Trains/trains_6_3.mch" */
-//trains_12_2 /*@file "../../Trains/trains_12_2.mch" */
+  trains_12_2 /*@file "../../Trains/trains_12_2.mch" */
 
 CONSTANTS T_G_NC
 
@@ -20,7 +20,7 @@ DEFINITIONS
  SET_PREF_MAX_INITIALISATIONS == 1;
  SET_PREF_MAX_OPERATIONS == 1;
  SET_PREF_TIME_OUT == 10000000;
- SET_PREF_SMT == TRUE;
+ SET_PREF_SMT == FALSE;
  //---------------------------------------------------------------------
  // Import the theory
  //---------------------------------------------------------------------
@@ -28,9 +28,9 @@ DEFINITIONS
  "LibraryIO.def";
 
 PROPERTIES
- G : FSA(G'states,G'events) &
- GetSetTracesNC = lambdaGetTracesNC(G,bound,GetSetTracesNC) &
- T_G_NC = GetSetTracesNC(baseCaseTr(G),1)
+ G_FB : FSA(G_FB'states,G_FB'events) &
+ GetSetTracesNC = lambdaGetTracesNC(G_FB,bound,GetSetTracesNC) &
+ T_G_NC = GetSetTracesNC(baseCaseTr(G_FB),0)
 
 VARIABLES
  code

@@ -5,11 +5,11 @@ MODEL tab1_traces
  // Model for input data
  //---------------------------------------------------------------------
 USES
-  trains_6_2  /*@file "../../Trains/trains_6_2.mch" */
+//trains_6_2  /*@file "../../Trains/trains_6_2.mch" */
 //trains_6_3  /*@file "../../Trains/trains_6_3.mch" */
-//trains_12_2 /*@file "../../Trains/trains_12_2.mch" */
+  trains_12_2 /*@file "../../Trains/trains_12_2.mch" */
 
-CONSTANTS T_G
+CONSTANTS Tr_G
 
 ABSTRACT_CONSTANTS GetSetTraces
 
@@ -20,7 +20,7 @@ DEFINITIONS
  SET_PREF_MAX_INITIALISATIONS == 1;
  SET_PREF_MAX_OPERATIONS == 1;
  SET_PREF_TIME_OUT == 10000000;
- SET_PREF_SMT == TRUE;
+ SET_PREF_SMT == FALSE;
  //---------------------------------------------------------------------
  // Import the theory
  //---------------------------------------------------------------------
@@ -28,9 +28,9 @@ DEFINITIONS
  "LibraryIO.def";
 
 PROPERTIES
- G : FSA(G'states,G'events) &
- GetSetTraces = lambdaGetTraces(G,bound,GetSetTraces) &
- T_G = GetSetTraces(baseCaseTr(G),1)
+ G_FB : FSA(G_FB'states,G_FB'events) &
+ GetSetTraces = lambdaGetTraces(G_FB,bound,GetSetTraces) &
+ Tr_G = GetSetTraces(baseCaseTr(G_FB),0)
 
 VARIABLES
  code
@@ -44,7 +44,7 @@ INVARIANT
 OPERATIONS
  DisplayStatistics = PRE code = 0 THEN
   PRINTF("Bound on the length of traces: ~w~n", [bound]);
-  PRINTF("Number of traces: ~w~n", [card(T_G)]);
-//PRINTF("Traces: ~w~n", [T_G]);
+  PRINTF("Number of traces: ~w~n", [card(Tr_G)]);
+//PRINTF("Traces: ~w~n", [Tr_G]);
   code := 1 END
 END
