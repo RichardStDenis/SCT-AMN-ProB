@@ -23,6 +23,7 @@ DEFINITIONS
  SET_PREF_TIME_OUT == 50000000;
  SET_PREF_SMT == FALSE;
  SET_PREF_KODKOD == FALSE;
+ SET_PREF_ALLOW_COMPLEX_LETS ==TRUE;
  //---------------------------------------------------------------------
  // Import the theory
  //---------------------------------------------------------------------

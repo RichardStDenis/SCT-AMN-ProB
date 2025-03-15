@@ -16,7 +16,7 @@ DEFINITIONS
  SET_PREF_MAX_INITIALISATIONS == 1;
  SET_PREF_MAX_OPERATIONS == 1;
  SET_PREF_TIME_OUT == 1000000;
- SET_PREF_SMT == TRUE;
+ SET_PREF_SMT == FALSE;
  //---------------------------------------------------------------------
  // Import the theory
  //---------------------------------------------------------------------

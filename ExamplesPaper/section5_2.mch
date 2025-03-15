@@ -18,7 +18,7 @@ DEFINITIONS
  SET_PREF_MAX_INITIALISATIONS == 1;
  SET_PREF_MAX_OPERATIONS == 1;
  SET_PREF_TIME_OUT == 1000000;
- SET_PREF_SMT == TRUE;
+ SET_PREF_SMT == FALSE;
  //---------------------------------------------------------------------
  // Import the theory
  //---------------------------------------------------------------------
@@ -40,8 +40,8 @@ Gsys = rec(states: States,    // Automaton modeling the uncontrolled behavior
  GetsupCCP = lambdaGetsupCCP(Gsys,GetsupCCP)
 
 OPERATIONS
- SearchSupWCCP = ANY sup WHERE
-  IsASupWCCP(Gsys,CtrlField(Gsys,Qspec),sup) THEN PRINT(sup) END;
+ SearchSupWCCP = ANY sup_ WHERE
+  IsASupWCCP(Gsys,CtrlField(Gsys,Qspec),sup_) THEN PRINT(sup_) END;
 
  Display_SFBC = LET sup BE sup = GetsupCCP(Qspec) IN
   PRINT(A(Gsys,sup,x0));

@@ -74,13 +74,13 @@ G_A = rec(states: StatesG_A,
  input_map = GetInputMap(T_agent,G_A'states,G_A'inputs,G_A'outputs)
 
 VARIABLES
- theta   // A causal map
+ Theta   // A causal map
 
 INVARIANT
- theta : CausalMap(G_A'inputs,VocalOutput)
+ Theta : CausalMap(G_A'inputs,VocalOutput)
 
 INITIALISATION
- theta := GetCausalMap(T_agent,Input,Output,VocalOutput)
+ Theta := GetCausalMap(T_agent,Input,Output,VocalOutput)
 
 OPERATIONS
  DisplayResults =
@@ -89,7 +89,7 @@ OPERATIONS
    PRINTF("Post-states: ~w~n",[UNION(x_).(x_ : G_A'states | {(x_,GetPostStates_Mealy(G_A,x_,bound_G_A))})]) END;
 
  CheckWeakConsistencyOfMarking = PRE
-  WeakConsistencyOfMarking(G_A,bound_G_A ,T_agent,Lm_G_A,Lm_G_I,theta,input_map) THEN
+  WeakConsistencyOfMarking(G_A,bound_G_A ,T_agent,Lm_G_A,Lm_G_I,Theta,input_map) THEN
    PRINT("Weak consistency of marking") END
 END
 

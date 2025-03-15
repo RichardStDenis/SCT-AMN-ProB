@@ -79,29 +79,29 @@ PROPERTIES
  input_map = GetInputMap(T_agent,G_A'states,G_A'inputs,G_A'outputs)
 
 VARIABLES
- theta   // A causal map
+ Theta   // A causal map
 
 INVARIANT
- theta : CausalMap(G_A'inputs,G_I'events)
+ Theta : CausalMap(G_A'inputs,G_I'events)
 
 INITIALISATION
- theta := GetCausalMap(T_agent,Input,Output,VocalOutput)
+ Theta := GetCausalMap(T_agent,Input,Output,VocalOutput)
 
 OPERATIONS
  Check_WeakConsistencyOfMarking = PRE
-  WeakConsistencyOfMarking(G_A,bound_G_A,T_agent,Lm_G_A,Lm_G_I,theta,input_map) THEN
+  WeakConsistencyOfMarking(G_A,bound_G_A,T_agent,Lm_G_A,Lm_G_I,Theta,input_map) THEN
    PRINT("Marking is weakly consistent.") END;
 
  Check_ConsistencyOfMarking = PRE
-  ConsistencyOfMarking(L_G_A,Lm_G_A,Lm_G_I,theta) THEN
+  ConsistencyOfMarking(L_G_A,Lm_G_A,Lm_G_I,Theta) THEN
    PRINT("Marking is consistent.") END;
 
  Check_ObserverProperty = PRE
-  Observer(L_G_A,L_G_I,G_I'events,theta) THEN
+  Observer(L_G_A,L_G_I,G_I'events,Theta) THEN
    PRINT("The causal map is an observer.") END;
 
  Check_ConditionOnSCT = PRE
-  ControlCoincidence(L_G_A,G_A'inputs,G_A'ctrlEvents,G_I'ctrlEvents,theta) THEN
+  ControlCoincidence(L_G_A,G_A'inputs,G_A'ctrlEvents,G_I'ctrlEvents,Theta) THEN
    PRINT("Control coincidence property is satisfied.") END END
 
 /*

@@ -10,7 +10,7 @@ SEES
 SETS T; Y
 
 CONSTANTS
- Q_,                         // set of good states
+ Q,                          // set of good states
  S,                          // set of sections
  dist,                       // distance between two sections
  prj_pos_1, prj_pos_2        // projections of a global state to local states
@@ -37,7 +37,7 @@ DEFINITIONS
 PROPERTIES
  card(T) = 3 &
  card(Y) = 9 &
- Q_ = Qpred1 &
+ Q = Qpred1 &
  S = LocalStates &           // rename the set of local states
  prj_pos_1 = t61 &
  prj_pos_2 = t62 &
@@ -56,10 +56,10 @@ VARIABLES
  supCCP       // supremal controllable and coreachable predicate stronger than Q
 
 INITIALISATION
- supCCP := GetsupCCP(Q_)
+ supCCP := GetsupCCP(Q)
 
 INVARIANT
- supCCP <: Q_
+ supCCP <: Q
 
 OPERATIONS
  findMask = ANY f_, Tr_, m_ WHERE
@@ -74,9 +74,9 @@ OPERATIONS
   !x_.(x_ : G_FB'states => 
    m_(x_) = Tr_(f_(prj_pos_1(x_)),f_(prj_pos_2(x_))) ) &
 
-  supCCP = R_breve(G_FB,m_,CtrlField(G_FB,Q_)) THEN
+  supCCP = R_breve(G_FB,m_,CtrlField(G_FB,Q)) THEN
    PRINT(f_); PRINT(Tr_); PRINT(m_);
-   PRINT(R_breve(G_FB,m_,CtrlField(G_FB,Q_))); PRINT(supCCP) END END
+   PRINT(R_breve(G_FB,m_,CtrlField(G_FB,Q))); PRINT(supCCP) END END
 
 /*
 OUTPUT:
