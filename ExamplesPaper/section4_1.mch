@@ -7,8 +7,8 @@ SETS
  States = {s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10};
  Events = {e0, e1, e2, e3, e4, e5, e6, e7, e8, e9, e10}
 
-CONSTANTS G, T_G, L_G, Lm_G, bound_T_G,
-          H, T_H, L_H, Lm_H, bound_T_H
+CONSTANTS G_FB, T_G_FB, L_G_FB, Lm_G_FB, bound_T_G_FB,
+          G_LB, T_G_LB, L_G_LB, Lm_G_LB, bound_T_G_LB
 
 DEFINITIONS
  //---------------------------------------------------------------------
@@ -25,7 +25,7 @@ DEFINITIONS
  "LibraryIO.def";
 
 PROPERTIES
- G = rec(               // Automaton modeling the free behavior
+ G_FB = rec(            // Automaton modeling the free behavior
          states: States,
          events: Events,
          tf: {(s0,e1,s1), (s1,e2,s2), (s2,e10,s10),
@@ -36,11 +36,11 @@ PROPERTIES
          Xm: // States \/         /* prefix closed  */
              {s4, s10},
          ctrlEvents: {e1, e2, e4, e8, e9} ) &
- G : Generator_C(G'states,G'events)
+ G_FB : Generator_C(G_FB'states,G_FB'events)
  &
- bound_T_G = 8
+ bound_T_G_FB = 8
  &
- H = rec(               // Automaton modeling the legal behavior
+ G_LB = rec(            // Automaton modeling the legal behavior
          states: States
 //                 - {s6}    /* uncontrollable */ 
                  - {s2},
@@ -57,31 +57,34 @@ PROPERTIES
              {s10} //)
              /* LmG-closed */ \/ {s4} )
  & 
- H: FSA(H'states,H'events)
+ G_LB: FSA(G_LB'states,G_LB'events)
  &
- bound_T_H = 8
+ bound_T_G_LB = 8
 
-// Prefix-closed: G'Xm = States" and "H'Xm = States - {x2}".
-// not relatively closed: remove "\/ {s4}" in marked states of H.
+// Prefix-closed: G_FB'Xm = States" and "G_LB'Xm = States - {x2}".
+// not relatively closed: remove "\/ {s4}" in marked states of G_LB.
 // controllable: remove "- {s6}" in states of H and
 //               remove "- {(s4,e6,s6)} - {(s6,e10,s10)}" in
-//               transitions of H.
+//               transitions of G_LB.
  &
- T_G = GetTraces(G,bound_T_G) &
- T_H = GetTraces(H,bound_T_H) &
- L_G = Traces2Strings(T_G) & Lm_G = Traces2Tasks(T_G,G'Xm) &
- L_H = Traces2Strings(T_H) & Lm_H = Traces2Tasks(T_H,H'Xm)
+ T_G_FB = GetTraces(G_FB,bound_T_G_FB) &
+ T_G_LB = GetTraces(G_LB,bound_T_G_LB) &
+ L_G_FB = Traces2Strings(T_G_FB) & Lm_G_FB = Traces2Tasks(T_G_FB,G_FB'Xm) &
+ L_G_LB = Traces2Strings(T_G_LB) & Lm_G_LB = Traces2Tasks(T_G_LB,G_LB'Xm)
 
 OPERATIONS
- VerifyProperties = PRE Lm_H <: Lm_G &
-  Controllability(pr(Lm_H),L_G,G'events-G'ctrlEvents) &
-  Relative_closure(pr(Lm_H),Lm_H,Lm_G) &
-  Prefix_closed_(Lm_H,L_H) THEN skip END;
+ VerifyProperties = PRE Lm_G_LB <: Lm_G_FB THEN
+  IF Controllability(pr(Lm_G_LB),L_G_FB,G_FB'events-G_FB'ctrlEvents) THEN
+     PRINT("Controllability.") END;
+  IF Relative_closure(pr(Lm_G_LB),Lm_G_LB,Lm_G_FB) THEN
+     PRINT("Relative closure.") END;
+  IF Prefix_closed_(Lm_G_LB,L_G_LB) THEN 
+     PRINT("Prefix closed.") END END;
 
  checkResults = PRE
-  Controllability_(pr(Lm_H),L_G,G'events-G'ctrlEvents) <=>
-   Controllability(pr(Lm_H),L_G,G'events-G'ctrlEvents) &
-  Relative_closure_(pr(Lm_H),Lm_H,Lm_G) <=>
-   Relative_closure(pr(Lm_H),Lm_H,Lm_G)
- THEN skip END
+  Controllability_(pr(Lm_G_LB),L_G_FB,G_FB'events-G_FB'ctrlEvents) <=>
+   Controllability(pr(Lm_G_LB),L_G_FB,G_FB'events-G_FB'ctrlEvents) &
+  Relative_closure_(pr(Lm_G_LB),Lm_G_LB,Lm_G_FB) <=>
+   Relative_closure(pr(Lm_G_LB),Lm_G_LB,Lm_G_FB)
+ THEN PRINT("The results are consistent.") END
 END

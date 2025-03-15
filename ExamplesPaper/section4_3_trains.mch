@@ -44,12 +44,12 @@ PROPERTIES
 
 
  GetTracesFB = lambdaGetTraces(G_FB,bound_G_FB,GetTracesFB) &
- T_G_FB = GetTracesFB(baseCaseTr(G_FB),1) &
+ T_G_FB = GetTracesFB(baseCaseTr(G_FB),0) &
  L_G_FB = Traces2Strings(T_G_FB) &
  Lm_G_FB = Traces2Tasks(T_G_FB,G_FB'Xm) &
 
  GetTracesLB = lambdaGetTraces(G_LB,bound_G_LB,GetTracesLB) &
- T_G_LB = GetTracesLB(baseCaseTr(G_LB),1) &
+ T_G_LB = GetTracesLB(baseCaseTr(G_LB),0) &
 //L_G_LB = Traces2Strings(T_G_LB) &     // select this line or the next one
  L_G_LB = pr(Lm_G_LB) &
  Lm_G_LB = Traces2Tasks(T_G_LB,G_LB'Xm)
